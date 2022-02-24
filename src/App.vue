@@ -33,21 +33,17 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld style="min-height:120vh;"/>
-      <!-- TODO: install vue-router -->
-      <!-- <router-view></router-view> -->
+      <router-view class="view"></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
   },
 
   data: () => ({
@@ -56,5 +52,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.view {
+  min-height:120vh
+}
 </style>
