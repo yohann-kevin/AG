@@ -12,10 +12,10 @@
           class="text-center"
           cols="12"
         >
-          <h1 class="text-h4 font-weight-thin mb-4">
+          <h1 class="text-h1 font-weight-thin mb-4">
             AG Scouting
           </h1>
-          <h4 class="subheading">
+          <h4 class="text-h4">
             Phrase d'accroche
           </h4>
         </v-col>
