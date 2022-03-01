@@ -22,7 +22,7 @@
 
       <v-spacer></v-spacer>
 
-      <div>
+      <div id="nav">
         <router-link to="/">Home</router-link>
         <router-link to="/contact">Contact</router-link>
       </div>
@@ -60,6 +60,13 @@ export default {
 </script>
 
 <style scoped>
+#nav {
+  width: 45%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .view {
   min-height:120vh
 }
