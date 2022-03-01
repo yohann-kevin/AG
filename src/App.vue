@@ -67,6 +67,32 @@ export default {
   flex-wrap: wrap;
 }
 
+#nav > a {
+  text-decoration: none;
+  font-size: 22px;
+  color: #000;
+  display: inline-block;
+  position: relative;
+}
+
+#nav > a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2.5px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+#nav > a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 .view {
   min-height:120vh
 }
