@@ -22,6 +22,13 @@
 
       <v-spacer></v-spacer>
 
+      <div>
+        <router-link to="/">Home</router-link>
+        <router-link to="/contact">Contact</router-link>
+      </div>
+
+      <v-spacer></v-spacer>
+
       <v-btn
         href="https://www.instagram.com/ag.scouting/"
         target="_blank"
