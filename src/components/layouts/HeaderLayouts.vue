@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 #nav {
-  width: 45%;
+  width: 30%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

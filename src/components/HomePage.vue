@@ -2,7 +2,6 @@
   <div>
     <IntroductionSection/>
     <ModelSection/>
-    <div style="min-height:100vh"></div>
   </div>
 </template>
 
