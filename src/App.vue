@@ -28,6 +28,6 @@ export default {
 
 <style scoped>
 .view {
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 </style>

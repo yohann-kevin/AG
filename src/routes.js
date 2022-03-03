@@ -1,17 +1,23 @@
 import HomePage from './components/HomePage.vue';
 import ContactPage from './components/ContactPage.vue';
+import AdminLoginPage from './components/AdminLoginPage.vue';
 import Error404 from './components/404Page.vue';
 
 var routes = [
     { 
         path: "/", 
-        name: "Home",
+        name: "home",
         component: HomePage,
     },
     {
         path: "/contact",
-        name: "Contact",
+        name: "contact",
         component: ContactPage
+    },
+    {
+      path: "/administration",
+      name: "administration",
+      component: AdminLoginPage
     },
     {
       path: "*",
