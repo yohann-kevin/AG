@@ -3,8 +3,8 @@
     <h2 class="admin-login-title">Administration login</h2>
     
     <v-card class="admin-login-container">
-      <label for="email">Email or Name :</label>
-      <input type="mail" name="mail" ref="emailInput">
+      <label for="login">Email or Name :</label>
+      <input type="text" name="login" ref="loginInput">
 
       <label for="password">Password : </label>
       <input type="password" name="password" ref="passwordInput">
@@ -21,19 +21,19 @@
 export default {
   name: "AdminLoginPage",
   data: () => ({
-    email: "",
+    login: "",
     password: ""
   }),
   methods: {
     resetForm() {
-      this.$refs.emailInput.value = "";
+      this.$refs.loginInput.value = "";
       this.$refs.passwordInput.value = "";
     },
     sendForm() {
-      if (this.checkEmptyValue(this.$refs.emailInput) && this.checkEmptyValue(this.$refs.passwordInput)) {
-        this.email = this.$refs.emailInput.value;
+      if (this.checkEmptyValue(this.$refs.loginInput) && this.checkEmptyValue(this.$refs.passwordInput)) {
+        this.login = this.$refs.loginInput.value;
         this.password = this.$refs.passwordInput.value;
-        alert("password : " + this.password + " email : " + this.email);
+        this.loginAdmin();
       } else {
         // TODO: manage the case of form is not complete
         alert("Is not okay");
@@ -41,6 +41,29 @@ export default {
     },
     checkEmptyValue(input) {
       return input.value === "" ? false : true;
+    },
+    loginAdmin() {
+      console.log("name : " + this.login);
+      console.log("password : " + this.password);
+      let data = {
+        "login": this.login,
+        "password": this.password
+      };
+
+      let config = {
+        method: 'post',
+        url: 'http://localhost:3000/admin/auth',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+      this.$axios(config).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 }
