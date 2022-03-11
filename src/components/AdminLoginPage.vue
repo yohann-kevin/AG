@@ -60,10 +60,16 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
+        this.connectAdmin(response.data);
       }).catch(error => {
         console.log(error);
       });
+    },
+    connectAdmin(adminData) {
+      this.$store.commit("adminToken", adminData.token);
+      this.$store.commit("adminData", adminData.admin_data);
+      this.$store.commit("adminConnected", true);
+      console.log(this.$store.state.adminData);
     }
   }
 }
