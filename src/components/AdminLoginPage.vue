@@ -69,7 +69,7 @@ export default {
       this.$store.commit("adminToken", adminData.token);
       this.$store.commit("adminData", adminData.admin_data);
       this.$store.commit("adminConnected", true);
-      console.log(this.$store.state.adminData);
+      this.$router.push("administration");
     }
   }
 }

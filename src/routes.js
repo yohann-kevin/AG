@@ -1,7 +1,14 @@
+// page component
 import HomePage from './components/HomePage.vue';
 import ContactPage from './components/ContactPage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
+import AdminHomePage from './components/AdminHomePage.vue';
+
+// error component
 import Error404 from './components/404Page.vue';
+
+// store
+import store from './store.js';
 
 var routes = [
     { 
@@ -15,9 +22,20 @@ var routes = [
         component: ContactPage
     },
     {
+      path: "/adminlogin",
+      name: "administrationLogin",
+      component: AdminLoginPage,
+      beforeEnter(to, from, next) {
+        store.state.adminConnected ? next({ path: "/administration" }) : next();
+      }
+    },
+    {
       path: "/administration",
       name: "administration",
-      component: AdminLoginPage
+      component: AdminHomePage,
+      beforeEnter(to, from, next) {
+        store.state.adminConnected ? next() : next({path: "/adminlogin"});
+      }
     },
     {
       path: "*",
