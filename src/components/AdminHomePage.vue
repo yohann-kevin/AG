@@ -1,12 +1,18 @@
 <template>
   <div class="admin-page">
     <h1>Welcome {{ this.name }} to administration workspace</h1>
+    <AddModelSection/>
   </div>
 </template>
 
 <script>
+import AddModelSection from "./section/AddModelSection.vue";
+
 export default {
   name: "AdminHomePage",
+  components: {
+    AddModelSection
+  },
   data: () => ({
     name: null
   }),
