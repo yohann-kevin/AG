@@ -43,16 +43,15 @@ export default {
       return input.value === "" ? false : true;
     },
     loginAdmin() {
-      console.log("name : " + this.login);
-      console.log("password : " + this.password);
       let data = {
-        "login": this.login,
-        "password": this.password
+        login: this.login,
+        password: this.password
       };
 
+      console.log(process.env.VUE_APP_API_URL);
       let config = {
         method: 'post',
-        url: 'http://localhost:3000/admin/auth',
+        url: process.env.VUE_APP_API_URL + 'admin/auth',
         headers: { 
           'Content-Type': 'application/json'
         },
