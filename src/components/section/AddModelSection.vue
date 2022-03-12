@@ -4,55 +4,55 @@
     <v-card class="model-form">
       <h3>Model information</h3>
       <label for="firstname">Firstname :</label>
-      <input type="text" name="firstname">
+      <input type="text" name="firstname" ref="firstname">
       <label for="lastname">Lastname :</label>
-      <input type="text" name="lastname">
+      <input type="text" name="lastname" ref="lastname">
       <label for="email">Email :</label>
-      <input type="email" name="email">
+      <input type="email" name="email" ref="email">
       <label for="phone">Phone number :</label>
-      <input type="number" name="phone">
+      <input type="number" name="phone" ref="phone">
       <label for="address">Address :</label>
-      <input type="text" name="address">
+      <input type="text" name="address" ref="address">
       <label for="birthdate">Birth date :</label>
-      <input type="date" name="birthdate">
+      <input type="date" name="birthdate" ref="birthdate">
     </v-card>
     <v-card class="model-form">
       <h3>Model measurement</h3>
       <label for="size">Size :</label>
-      <input type="number" name="size">
+      <input type="number" name="size" ref="size">
       <label for="weight">Weight :</label>
-      <input type="number" name="weight">
+      <input type="number" name="weight" ref="weight">
       <label for="color">Color :</label>
-      <input type="text" name="color">
+      <input type="text" name="color" ref="color">
       <label for="haircolor">Hair color :</label>
-      <input type="text" name="haircolor">
+      <input type="text" name="haircolor" ref="haircolor">
       <label for="atrological">Astrological :</label>
-      <input type="text" name="astrological">
+      <input type="text" name="astrological" ref="astrological">
       <label for="description">Description :</label>
-      <textarea name="description"></textarea>
+      <textarea name="description" ref="description"></textarea>
     </v-card>
     <v-card class="model-form">
       <h3>Model social network</h3>
       <label for="instagram">Instagram :</label>
-      <input type="text" name="instagram">
+      <input type="text" name="instagram" ref="instagram">
       <label for="facebook">Facebook :</label>
-      <input type="text" name="facebook">
+      <input type="text" name="facebook" ref="facebook">
       <label for="snapchat">Snapchat :</label>
-      <input type="text" name="snapchat">
+      <input type="text" name="snapchat" ref="snapchat">
       <label for="tiktok">Tiktok :</label>
-      <input type="text" name="tiktok">
+      <input type="text" name="tiktok" ref="tiktok">
       <label for="twitter">Twitter :</label>
-      <input type="text" name="twitter">
+      <input type="text" name="twitter" ref="twitter">
     </v-card>
     <v-card class="model-form">
       <h3>Model pictures</h3>
       <label for="mainpicture">Main picture :</label>
-      <input type="file" name="mainpicture">
+      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
       <label for="pictures">Pictures :</label>
-      <input type="file" name="pictures" multiple="multiple">
+      <input type="file" name="pictures" multiple="multiple" ref="pictures">
     </v-card>
     <div class="model-form-btn">
-      <v-btn text>Send</v-btn>
+      <v-btn text @click="sendModel()">Send</v-btn>
       <v-btn text>Reset</v-btn>
     </div>
   </div>
@@ -64,8 +64,75 @@ export default {
   data: () => ({
     modelInfo: null,
     modelMeasurement: null,
-    modelNetwork: null
+    modelNetwork: null,
+    dataMainPicture: null
   }),
+  methods: {
+    // TODO: manage emprty value
+    sendModel() {
+      this.manageModelInfo();
+      this.manageModelMeasurement();
+      this.manageModelNetwork();
+      this.manageModelMainPicture();
+      this.manageModelPictures();
+    },
+    manageModelInfo() {
+      this.modelInfo = {
+        firstname: this.$refs.firstname.value,
+        lastname: this.$refs.lastname.value,
+        email: this.$refs.email.value,
+        phone: this.$refs.phone.value,
+        address: this.$refs.address.value,
+        birth_date: this.$refs.birthdate.value
+      }
+      // console.log(this.modelInfo);
+    },
+    manageModelMeasurement() {
+      this.modelMeasurement = {
+        size: this.$refs.size.value,
+        weight: this.$refs.weight.value,
+        color: this.$refs.color.value,
+        hair_color: this.$refs.haircolor.value,
+        astrological: this.$refs.astrological.value,
+        description: this.$refs.description.value
+      }
+      // console.log(this.modelMeasurement);
+    },
+    manageModelNetwork() {
+      this.modelNetwork = {
+        instagram: this.$refs.instagram.value,
+        facebook: this.$refs.facebook.value,
+        snapchat: this.$refs.snapchat.value,
+        tiktok: this.$refs.tiktok.value,
+        twitter: this.$refs.twitter.value
+      }
+      // console.log(this.modelNetwork);
+    },
+    manageModelMainPicture() {
+      let picture = this.$refs.mainpicture.files[0];
+      let reader = new FileReader();
+      let dataPicture = [];
+      reader.readAsDataURL(picture);
+      reader.onload = () => {
+        dataPicture.push(reader.result);
+      }
+      // console.log("main picture : ");
+      // console.log(dataPicture);
+    },
+    manageModelPictures() {
+      let pictures = this.$refs.pictures.files;
+      let allDataPictures = [];
+      for (let i = 0; i < pictures.length; i++) {
+        let reader = new FileReader();
+        reader.readAsDataURL(pictures[i]);
+        reader.onload = () => {
+          allDataPictures.push(reader.result);
+        }
+      }
+      // console.log("all picture :");
+      // console.log(allDataPictures);
+    }
+  }
 }
 </script>
 
