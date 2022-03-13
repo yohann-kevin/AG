@@ -22,6 +22,14 @@
       <input type="number" name="size" ref="size">
       <label for="weight">Weight :</label>
       <input type="number" name="weight" ref="weight">
+      <label for="chest">Chest :</label>
+      <input type="number" name="chest" ref="chest">
+      <label for="waist">Waist :</label>
+      <input type="number" name="waist" ref="waist">
+      <label for="hips">Hips :</label>
+      <input type="number" name="hips" ref="hips">
+      <label for="shoes">Shoe size :</label>
+      <input type="number" name="shoes" ref="shoes">
       <label for="color">Color :</label>
       <input type="text" name="color" ref="color">
       <label for="haircolor">Hair color :</label>
@@ -91,6 +99,10 @@ export default {
       this.modelMeasurement = {
         size: this.$refs.size.value,
         weight: this.$refs.weight.value,
+        chest: this.$refs.chest.value,
+        waist: this.$refs.waist.value,
+        hips: this.$refs.hips.value,
+        shoes: this.$refs.shoes.value,
         color: this.$refs.color.value,
         hair_color: this.$refs.haircolor.value,
         astrological: this.$refs.astrological.value,
