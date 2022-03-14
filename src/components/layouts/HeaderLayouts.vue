@@ -32,6 +32,7 @@
       href="https://www.instagram.com/ag.scouting/"
       target="_blank"
       text
+      class="instagram-header-btn"
     >
       <span class="mr-2">Notre instagram</span>
       <v-icon>mdi-instagram</v-icon>
@@ -77,5 +78,17 @@ export default {
 #nav > a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+@media only screen and (max-width: 768px) {
+  #nav {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .instagram-header-btn {
+    display: none;
+  }
 }
 </style>
