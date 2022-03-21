@@ -81,8 +81,9 @@ export default {
       this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
-      this.manageModelMainPicture();
-      this.manageModelPictures();
+      // this.manageModelMainPicture();
+      // this.manageModelPictures();
+      this.sendAllModelData();
     },
     manageModelInfo() {
       this.modelInfo = {
@@ -102,7 +103,7 @@ export default {
         chest: this.$refs.chest.value,
         waist: this.$refs.waist.value,
         hips: this.$refs.hips.value,
-        shoes: this.$refs.shoes.value,
+        shoe_size: this.$refs.shoes.value,
         color: this.$refs.color.value,
         hair_color: this.$refs.haircolor.value,
         astrological: this.$refs.astrological.value,
@@ -143,6 +144,14 @@ export default {
       }
       // console.log("all picture :");
       // console.log(allDataPictures);
+    },
+    sendAllModelData() {
+      let modelData = {
+        model: this.modelInfo,
+        model_info: this.modelMeasurement,
+        model_network: this.modelNetwork
+      }
+      console.log(modelData);
     }
   }
 }
