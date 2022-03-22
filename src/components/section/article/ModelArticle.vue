@@ -18,12 +18,11 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn
-        color="black lighten-2"
-        text
-      >
-        More
-      </v-btn>
+      <router-link to="/model" class="more-btn">
+        <v-btn color="black lighten-2" text>
+          More
+        </v-btn>
+      </router-link>
     </v-card-actions>
   </v-card>
 </template>
@@ -39,5 +38,10 @@ export default {
 .model-article {
   margin-bottom: 25px;
   margin-top: 25px;
+}
+
+.more-btn {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
 }
 </style>
