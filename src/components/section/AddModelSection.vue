@@ -15,6 +15,11 @@
       <input type="text" name="address" ref="address">
       <label for="birthdate">Birth date :</label>
       <input type="date" name="birthdate" ref="birthdate">
+      <label for="sexe">Sexe : </label>
+      <select name="sexe" ref="sexe">
+        <option value="men">Men</option>
+        <option value="woman">Woman</option>
+      </select>
     </v-card>
     <v-card class="model-form">
       <h3>Model measurement</h3>
@@ -34,6 +39,8 @@
       <input type="text" name="color" ref="color">
       <label for="haircolor">Hair color :</label>
       <input type="text" name="haircolor" ref="haircolor">
+      <label for="eyes">Eyes :</label>
+      <input type="text" name="eyes" ref="eyes">
       <label for="atrological">Astrological :</label>
       <input type="text" name="astrological" ref="astrological">
       <label for="description">Description :</label>
@@ -92,7 +99,8 @@ export default {
         email: this.$refs.email.value,
         phone: this.$refs.phone.value,
         address: this.$refs.address.value,
-        birth_date: this.$refs.birthdate.value
+        birth_date: this.$refs.birthdate.value,
+        sexe: this.$refs.sexe.value
       }
       // console.log(this.modelInfo);
     },
@@ -106,6 +114,7 @@ export default {
         shoe_size: this.$refs.shoes.value,
         color: this.$refs.color.value,
         hair_color: this.$refs.haircolor.value,
+        eyes: this.$refs.eyes.value,
         astrological: this.$refs.astrological.value,
         description: this.$refs.description.value
       }
@@ -190,7 +199,7 @@ export default {
   text-align: center;
 }
 
-.model-form input {
+.model-form input, .model-form select {
   width: 40%;
   height: 30px;
   margin: 10px;
@@ -210,6 +219,10 @@ export default {
   outline: none;
   padding: 5px;
   transition: 0.5s;
+}
+
+.model-form option {
+  text-align: center;
 }
 
 .model-form input:hover, .model-form textarea:hover {
