@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>
-      Contact
+      Bientôt disponible
     </h1>
   </div>
 </template>

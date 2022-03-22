@@ -16,6 +16,10 @@
         <li><span class="measurement-name">Yeux :</span> Bleu</li>
         <li><span class="measurement-name">Signe astrologique :</span> Lion</li>
       </ul>
+      <div class="single-model-btn">
+        <v-btn text><router-link to="/">Retour</router-link></v-btn>
+        <v-btn text><router-link to=/contact>Contacter</router-link></v-btn>
+      </div>
     </div>
     <div class="single-model-image">
       <img src="../assets/model-test.jpg" class="image-model" alt="">
@@ -69,5 +73,14 @@ export default {
 .image-model {
   width: 100%;
   border-radius: 4px;
+}
+
+.single-model-btn {
+  margin-top: 90px;
+}
+
+.single-model-btn a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 </style>
