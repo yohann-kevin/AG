@@ -102,7 +102,6 @@ export default {
         birth_date: this.$refs.birthdate.value,
         sexe: this.$refs.sexe.value
       }
-      // console.log(this.modelInfo);
     },
     manageModelMeasurement() {
       this.modelMeasurement = {
@@ -118,7 +117,6 @@ export default {
         astrological: this.$refs.astrological.value,
         description: this.$refs.description.value
       }
-      // console.log(this.modelMeasurement);
     },
     manageModelNetwork() {
       this.modelNetwork = {
@@ -128,7 +126,6 @@ export default {
         tiktok: this.$refs.tiktok.value,
         twitter: this.$refs.twitter.value
       }
-      // console.log(this.modelNetwork);
     },
     manageModelMainPicture() {
       let picture = this.$refs.mainpicture.files[0];
@@ -138,8 +135,7 @@ export default {
       reader.onload = () => {
         dataPicture.push(reader.result);
       }
-      // console.log("main picture : ");
-      // console.log(dataPicture);
+      return dataPicture;
     },
     manageModelPictures() {
       let pictures = this.$refs.pictures.files;
@@ -151,14 +147,15 @@ export default {
           allDataPictures.push(reader.result);
         }
       }
-      // console.log("all picture :");
-      // console.log(allDataPictures);
+      return allDataPictures;
     },
     sendAllModelData() {
       let modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,
-        model_network: this.modelNetwork
+        model_network: this.modelNetwork,
+        main_picture: this.manageModelMainPicture(),
+        all_pictures: this.manageModelPictures()
       }
       console.log(modelData);
     }
