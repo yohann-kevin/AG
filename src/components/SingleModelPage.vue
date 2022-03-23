@@ -22,8 +22,15 @@
       </div>
     </div>
     <div class="single-model-image">
-      <img :src="mainPicture.picture_path" class="image-model" alt="">
+      <v-carousel cycle show-arrows-on-hover>
+        <v-carousel-item
+          v-for="(modelPicture ,i) in modelPictures"
+          :key="i"
+          :src="modelPicture.picture_path"
+        ></v-carousel-item>
+      </v-carousel>
     </div>
+    
   </div>
   
 </template>
@@ -35,7 +42,6 @@ export default {
     dataLoaded: false,
     model: null,
     modelInfo: null,
-    mainPicture: null,
     modelPictures: null
   }),
   beforeMount() {
@@ -53,7 +59,6 @@ export default {
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;
-        this.mainPicture = this.modelPictures[0];
         this.dataLoaded = true;
       });
     }
