@@ -5,22 +5,22 @@
     elevation="2"
   >
     <v-img
-      src="../../../assets/model-test.jpg"
+      :src="model.model_picture.picture_path"
       height="300px"
     ></v-img>
 
     <v-card-title>
-      Model name
+      {{ model.model.firstname }}
     </v-card-title>
 
     <v-card-subtitle>
-      little model description
+      {{ model.model_info.description }}
     </v-card-subtitle>
 
     <v-card-actions>
       <router-link to="/model" class="more-btn">
         <v-btn color="black lighten-2" text>
-          More
+          Voir plus
         </v-btn>
       </router-link>
     </v-card-actions>
@@ -31,6 +31,15 @@
 export default {
   data: () => ({
   }),
+  props: {
+    model: {
+      type: Object,
+      required: true
+    },
+  },
+  beforeMount() {
+    console.log(this.model);
+  },
 }
 </script>
 
