@@ -1,20 +1,20 @@
 <template>
-  <div class="single-model-page">
+  <div class="single-model-page" v-if="dataLoaded">
     <div class="single-model-info">
-      <h2>Lastname Firstname</h2>
+      <h2>{{ model.lastname }} {{ model.firstname }}</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur necessitatibus adipisci, assumenda veniam ab earum?
+        {{ modelInfo.description }}
       </p>
       <ul class="model-measurement">
-        <li><span class="measurement-name">Hauteur :</span> 168 cm</li>
-        <li><span class="measurement-name">Poids :</span> 60 kg</li>
-        <li><span class="measurement-name">Poitrine :</span> 79 cm</li>
-        <li><span class="measurement-name">Taille :</span> 61 cm</li>
-        <li><span class="measurement-name">Hanche :</span> 86 cm</li>
-        <li><span class="measurement-name">Pointure :</span> 36</li>
-        <li><span class="measurement-name">Cheveux :</span> Brun</li>
-        <li><span class="measurement-name">Yeux :</span> Bleu</li>
-        <li><span class="measurement-name">Signe astrologique :</span> Lion</li>
+        <li><span class="measurement-name">Hauteur :</span> {{ modelInfo.size }} cm</li>
+        <li><span class="measurement-name">Poids :</span> {{ modelInfo.weight }} kg</li>
+        <li><span class="measurement-name">Poitrine :</span> {{ modelInfo.chest }} cm</li>
+        <li><span class="measurement-name">Taille :</span> {{ modelInfo.waist }} cm</li>
+        <li><span class="measurement-name">Hanche :</span> {{ modelInfo.hips }} cm</li>
+        <li><span class="measurement-name">Pointure :</span> {{ modelInfo.shoe_size }}</li>
+        <li><span class="measurement-name">Cheveux :</span> {{ modelInfo.hair_color }}</li>
+        <li><span class="measurement-name">Yeux :</span> {{ modelInfo.eyes }}</li>
+        <li><span class="measurement-name">Signe astrologique :</span> {{ modelInfo.astrological }}</li>
       </ul>
       <div class="single-model-btn">
         <v-btn text><router-link to="/">Retour</router-link></v-btn>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="single-model-image">
-      <img src="../assets/model-test.jpg" class="image-model" alt="">
+      <img :src="mainPicture.picture_path" class="image-model" alt="">
     </div>
   </div>
   
@@ -30,7 +30,34 @@
 
 <script>
 export default {
-
+  data: () => ({
+    modelId: "",
+    dataLoaded: false,
+    model: null,
+    modelInfo: null,
+    mainPicture: null,
+    modelPictures: null
+  }),
+  beforeMount() {
+    this.modelId = this.$store.state.modelId;
+    if (this.modelId === null) {
+      this.$router.push({ path: "/" });
+    } else {
+      this.findModelData();
+    }
+  },
+  methods: {
+    findModelData() {
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
+        console.log(response.data);
+        this.model = response.data.model;
+        this.modelInfo = response.data.model_infos;
+        this.modelPictures = response.data.model_pictures;
+        this.mainPicture = this.modelPictures[0];
+        this.dataLoaded = true;
+      });
+    }
+  }
 }
 </script>
 

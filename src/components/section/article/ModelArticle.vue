@@ -18,11 +18,11 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <router-link to="/model" class="more-btn">
-        <v-btn color="black lighten-2" text>
+      <!-- <router-link to="/model" class="more-btn"> -->
+        <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
           Voir plus
         </v-btn>
-      </router-link>
+      <!-- </router-link> -->
     </v-card-actions>
   </v-card>
 </template>
@@ -37,9 +37,12 @@ export default {
       required: true
     },
   },
-  beforeMount() {
-    console.log(this.model);
-  },
+  methods: {
+    redirectToModel(modelId) {
+      this.$store.commit("modelId", modelId);
+      this.$router.push({ path: "/model" });
+    }
+  }
 }
 </script>
 

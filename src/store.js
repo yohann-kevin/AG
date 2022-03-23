@@ -8,7 +8,8 @@ export default new Vuex.Store({
     adminToken: null,
     adminConnected: false,
     adminData: null,
-    homeModelData: null
+    homeModelData: null,
+    modelId: null,
   },
   mutations: {
     adminToken: (state, token) => {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     homeModelData: (state, data) => {
       state.homeModelData = data;
+    },
+    modelId: (state, data) => {
+      state.modelId = data;
     }
   },
   actions: {
