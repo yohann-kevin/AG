@@ -71,6 +71,8 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
   margin-top: 25px;
   font-style: italic;
 }
@@ -114,5 +116,29 @@ export default {
 .single-model-btn a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  
+}
+
+@media only screen and (max-width: 480px) {
+  .single-model-page {
+    margin-top: 0;
+  }
+
+  .single-model-info {
+    width: 100%;
+  }
+
+  .single-model-image {
+    width: 100%;
+  }
+
+  .single-model-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 </style>

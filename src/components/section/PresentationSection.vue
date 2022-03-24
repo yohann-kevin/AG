@@ -41,8 +41,6 @@ export default {
   justify-content: space-around;
   flex-wrap: wrap;
   padding-top: 25px;
-  /* color: #ffffff;
-  background-color: #000; */
 }
 
 .presentation-section h2 {
