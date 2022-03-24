@@ -80,7 +80,8 @@ export default {
     modelInfo: null,
     modelMeasurement: null,
     modelNetwork: null,
-    dataMainPicture: null
+    dataMainPicture: [],
+    dataPictures: []
   }),
   methods: {
     // TODO: manage emprty value
@@ -88,9 +89,7 @@ export default {
       this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
-      // this.manageModelMainPicture();
-      // this.manageModelPictures();
-      this.sendAllModelData();
+      this.sendModelData();
     },
     manageModelInfo() {
       this.modelInfo = {
@@ -127,37 +126,57 @@ export default {
         twitter: this.$refs.twitter.value
       }
     },
-    manageModelMainPicture() {
+    async manageModelMainPicture() {
       let picture = this.$refs.mainpicture.files[0];
-      let reader = new FileReader();
-      let dataPicture = [];
-      reader.readAsDataURL(picture);
-      reader.onload = () => {
-        dataPicture.push(reader.result);
-      }
-      return dataPicture;
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+      this.dataMainPicture.push(await toBase64(picture));
     },
-    manageModelPictures() {
+    async manageModelPictures() {
       let pictures = this.$refs.pictures.files;
-      let allDataPictures = [];
+
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+
       for (let i = 0; i < pictures.length; i++) {
-        let reader = new FileReader();
-        reader.readAsDataURL(pictures[i]);
-        reader.onload = () => {
-          allDataPictures.push(reader.result);
-        }
+        this.dataPictures.push(await toBase64(pictures[i]));
       }
-      return allDataPictures;
     },
-    sendAllModelData() {
+    async sendModelData() {
+      await this.manageModelMainPicture();
+      await this.manageModelPictures();
+
       let modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork,
-        main_picture: this.manageModelMainPicture(),
-        all_pictures: this.manageModelPictures()
-      }
-      console.log(modelData);
+        main_picture: this.dataMainPicture,
+        all_pictures: this.dataPictures
+      };
+
+      let config = {
+        method: 'post',
+        url: process.env.VUE_APP_API_URL + 'create/model',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : modelData
+      };
+      console.log(config);
+
+      this.$axios(config).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 }
