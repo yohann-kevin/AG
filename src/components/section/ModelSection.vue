@@ -1,6 +1,6 @@
 <template>
   <div class="model-section">
-    <h2>Model section</h2>
+    <h2>Nos modèles</h2>
     <div class="all-model">
       <div v-for="(model, i) in models" :key="i">
         <ModelArticle :model="model"/>
