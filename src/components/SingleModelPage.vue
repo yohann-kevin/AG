@@ -137,24 +137,4 @@ export default {
     margin-top: 20px;
   }
 }
-
-/* @media only screen and (max-width: 480px) {
-  .single-model-page {
-    margin-top: 0;
-  }
-
-  .single-model-info {
-    width: 100%;
-  }
-
-  .single-model-image {
-    width: 100%;
-  }
-
-  .single-model-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-} */
 </style>
