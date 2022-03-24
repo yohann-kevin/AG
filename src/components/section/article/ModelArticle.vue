@@ -5,24 +5,24 @@
     elevation="2"
   >
     <v-img
-      src="../../../assets/model-test.jpg"
+      :src="model.model_picture.picture_path"
       height="300px"
     ></v-img>
 
     <v-card-title>
-      Model name
+      {{ model.model.firstname }}
     </v-card-title>
 
     <v-card-subtitle>
-      little model description
+      {{ model.model_info.description }}
     </v-card-subtitle>
 
     <v-card-actions>
-      <router-link to="/model" class="more-btn">
-        <v-btn color="black lighten-2" text>
-          More
+      <!-- <router-link to="/model" class="more-btn"> -->
+        <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
+          Voir plus
         </v-btn>
-      </router-link>
+      <!-- </router-link> -->
     </v-card-actions>
   </v-card>
 </template>
@@ -31,6 +31,18 @@
 export default {
   data: () => ({
   }),
+  props: {
+    model: {
+      type: Object,
+      required: true
+    },
+  },
+  methods: {
+    redirectToModel(modelId) {
+      this.$store.commit("modelId", modelId);
+      this.$router.push({ path: "/model" });
+    }
+  }
 }
 </script>
 

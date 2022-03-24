@@ -1,21 +1,10 @@
 <template>
   <div class="model-section">
-    <h2>Model section</h2>
+    <h2>Nos modèles</h2>
     <div class="all-model">
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
-      <ModelArticle/>
+      <div v-for="(model, i) in models" :key="i">
+        <ModelArticle :model="model"/>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +16,22 @@ export default {
   name: "ModelSection",
   components: {
     ModelArticle
+  },
+  data: () => ({
+    models: null
+  }),
+  beforeMount() {
+    let modelOnStore = this.$store.state.homeModelData;
+    // check if model is save on store
+    modelOnStore != null ? this.models = modelOnStore : this.findModel();
+  },
+  methods: {
+    findModel() {
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
+        this.models = response.data;
+        this.$store.commit("homeModelData", this.models);
+      })
+    }
   }
 }
 </script>
