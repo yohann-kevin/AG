@@ -71,7 +71,6 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  flex-direction: column-reverse;
   flex-wrap: wrap;
   margin-top: 25px;
   font-style: italic;
@@ -100,7 +99,7 @@ export default {
 }
 
 .single-model-image {
-  width: 50%;
+  width: 55%;
   display: flex;
 }
 
@@ -121,6 +120,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .single-model-page {
     margin-top: 0;
+    flex-direction: column-reverse;
   }
 
   .single-model-info {
