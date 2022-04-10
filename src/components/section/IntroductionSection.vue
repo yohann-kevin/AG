@@ -14,7 +14,7 @@
         <h4 class="text-h4">
           Un projet qui nécessite des modèles uniques ? <br/> Faites confiance à
         </h4>
-        <h1 class="text-h1 font-weight-thin mb-4">
+        <h1 class="mb-4 creattion ag-title">
           AG Scouting
         </h1>
       </v-col>
@@ -29,5 +29,9 @@ export default {
 </script>
 
 <style scoped>
-
+.ag-title {
+  margin-top: 35px;
+  font-size: 9rem;
+  font-weight: 400;
+}
 </style>
