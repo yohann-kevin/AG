@@ -59,16 +59,16 @@
       <label for="twitter">Twitter :</label>
       <input type="text" name="twitter" ref="twitter" :value="modelNetwork.twitter">
     </v-card>
-    <v-card class="model-form">
+    <!-- <v-card class="model-form">
       <h3>Model pictures</h3>
-      <!-- TODO: disable temporally manage main picture change -->
-      <!-- <label for="mainpicture">Main picture :</label>
-      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture"> -->
+      TODO: disable temporally manage main picture change
+      <label for="mainpicture">Main picture :</label>
+      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
       <label for="pictures">Pictures :</label>
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
-    </v-card>
+    </v-card> -->
     <div class="model-form-btn">
-      <v-btn text>Send</v-btn>
+      <v-btn text @click="sendModel()">Send</v-btn>
       <v-btn text>Reset</v-btn>
     </div>
   </div>
@@ -105,6 +105,72 @@ export default {
     },
     manageModelBirthDateFormat(birthDate) {
       return this.$moment(birthDate).format("YYYY-MM-DD");
+    },
+    sendModel() {
+      this.manageModelInfo();
+      this.manageModelMeasurement();
+      this.manageModelNetwork();
+      this.sendModelData();
+    },
+    manageModelInfo() {
+      this.modelInfo = {
+        firstname: this.$refs.firstname.value,
+        lastname: this.$refs.lastname.value,
+        email: this.$refs.email.value,
+        phone: this.$refs.phone.value,
+        address: this.$refs.address.value,
+        birth_date: this.$refs.birthdate.value,
+        sexe: this.$refs.sexe.value
+      }
+    },
+    manageModelMeasurement() {
+      this.modelMeasurement = {
+        size: this.$refs.size.value,
+        weight: this.$refs.weight.value,
+        chest: this.$refs.chest.value,
+        waist: this.$refs.waist.value,
+        hips: this.$refs.hips.value,
+        shoe_size: this.$refs.shoes.value,
+        color: this.$refs.color.value,
+        hair_color: this.$refs.haircolor.value,
+        eyes: this.$refs.eyes.value,
+        astrological: this.$refs.astrological.value,
+        description: this.$refs.description.value
+      }
+    },
+    manageModelNetwork() {
+      this.modelNetwork = {
+        instagram: this.$refs.instagram.value,
+        facebook: this.$refs.facebook.value,
+        snapchat: this.$refs.snapchat.value,
+        tiktok: this.$refs.tiktok.value,
+        twitter: this.$refs.twitter.value
+      }
+    },
+    sendModelData() {
+      let modelData = {
+        model_id: this.modelId,
+        model: this.modelInfo,
+        model_info: this.modelMeasurement,
+        model_network: this.modelNetwork
+      };
+      console.log(modelData);
+
+      // let config = {
+      //   method: 'post',
+      //   url: process.env.VUE_APP_API_URL + 'create/model',
+      //   headers: { 
+      //     'Content-Type': 'application/json'
+      //   },
+      //   data : modelData
+      // };
+      // console.log(config);
+
+      // this.$axios(config).then(response => {
+      //   console.log(response.data);
+      // }).catch(error => {
+      //   console.log(error);
+      // });
     }
   }
 }

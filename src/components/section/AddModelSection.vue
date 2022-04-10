@@ -84,7 +84,7 @@ export default {
     dataPictures: []
   }),
   methods: {
-    // TODO: manage emprty value
+    // TODO: manage empty value
     sendModel() {
       this.manageModelInfo();
       this.manageModelMeasurement();
