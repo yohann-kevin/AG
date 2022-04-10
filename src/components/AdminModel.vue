@@ -34,7 +34,6 @@ export default {
     findModel() {
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
         this.models = response.data;
-        console.log(this.models);
         this.$store.commit("homeModelData", this.models);
       });
     }

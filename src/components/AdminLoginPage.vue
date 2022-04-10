@@ -48,7 +48,6 @@ export default {
         password: this.password
       };
 
-      console.log(process.env.VUE_APP_API_URL);
       let config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'admin/auth',

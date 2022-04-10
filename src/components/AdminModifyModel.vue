@@ -95,7 +95,6 @@ export default {
   methods: {
     findModelData() {
       this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
-        console.log(response.data);
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;
@@ -154,23 +153,21 @@ export default {
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork
       };
-      console.log(modelData);
 
-      // let config = {
-      //   method: 'post',
-      //   url: process.env.VUE_APP_API_URL + 'create/model',
-      //   headers: { 
-      //     'Content-Type': 'application/json'
-      //   },
-      //   data : modelData
-      // };
-      // console.log(config);
+      let config = {
+        method: 'post',
+        url: process.env.VUE_APP_API_URL + 'modify/model',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : modelData
+      };
 
-      // this.$axios(config).then(response => {
-      //   console.log(response.data);
-      // }).catch(error => {
-      //   console.log(error);
-      // });
+      this.$axios(config).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 }
