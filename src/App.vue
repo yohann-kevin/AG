@@ -26,8 +26,16 @@ export default {
 };
 </script>
 
-<style scoped>
-.view {
-  /* min-height: 100vh; */
+<style>
+@font-face {
+  font-family: 'creattion';
+  src: url('./assets/fonts/creattion/creattion_demo-webfont.woff2') format('woff2'),
+        url('./assets/fonts/creattion/creattion_demo-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.creattion {
+  font-family: 'creattion';
 }
 </style>
