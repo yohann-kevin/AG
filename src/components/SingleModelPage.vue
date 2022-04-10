@@ -56,7 +56,6 @@ export default {
   methods: {
     findModelData() {
       this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
-        console.log(response.data);
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;

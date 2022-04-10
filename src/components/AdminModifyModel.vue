@@ -1,22 +1,22 @@
 <template>
-  <div class="add-model">
-    <h2>Add model</h2>
+  <div class="admin-update-model-page" v-if="dataLoaded">
+    <h2>Modify model</h2>
     <v-card class="model-form">
       <h3>Model information</h3>
       <label for="firstname">Firstname :</label>
-      <input type="text" name="firstname" ref="firstname">
+      <input type="text" name="firstname" ref="firstname" :value="model.firstname">
       <label for="lastname">Lastname :</label>
-      <input type="text" name="lastname" ref="lastname">
+      <input type="text" name="lastname" ref="lastname" :value="model.lastname">
       <label for="email">Email :</label>
-      <input type="email" name="email" ref="email">
+      <input type="email" name="email" ref="email" :value="model.email">
       <label for="phone">Phone number :</label>
-      <input type="number" name="phone" ref="phone">
+      <input type="number" name="phone" ref="phone" :value="model.phone">
       <label for="address">Address :</label>
-      <input type="text" name="address" ref="address">
+      <input type="text" name="address" ref="address" :value="model.address">
       <label for="birthdate">Birth date :</label>
-      <input type="date" name="birthdate" ref="birthdate">
+      <input type="date" name="birthdate" ref="birthdate" :value="manageModelBirthDateFormat(model.birth_date)">
       <label for="sexe">Sexe : </label>
-      <select name="sexe" ref="sexe">
+      <select name="sexe" ref="sexe" :value="model.sexe">
         <option value="men">Men</option>
         <option value="woman">Woman</option>
       </select>
@@ -24,48 +24,49 @@
     <v-card class="model-form">
       <h3>Model measurement</h3>
       <label for="size">Size :</label>
-      <input type="number" name="size" ref="size">
+      <input type="number" name="size" ref="size" :value="modelInfo.size">
       <label for="weight">Weight :</label>
-      <input type="number" name="weight" ref="weight">
+      <input type="number" name="weight" ref="weight" :value="modelInfo.weight">
       <label for="chest">Chest :</label>
-      <input type="number" name="chest" ref="chest">
+      <input type="number" name="chest" ref="chest" :value="modelInfo.chest">
       <label for="waist">Waist :</label>
-      <input type="number" name="waist" ref="waist">
+      <input type="number" name="waist" ref="waist" :value="modelInfo.waist">
       <label for="hips">Hips :</label>
-      <input type="number" name="hips" ref="hips">
+      <input type="number" name="hips" ref="hips" :value="modelInfo.hips">
       <label for="shoes">Shoe size :</label>
-      <input type="number" name="shoes" ref="shoes">
+      <input type="number" name="shoes" ref="shoes" :value="modelInfo.shoe_size">
       <label for="color">Color :</label>
-      <input type="text" name="color" ref="color">
+      <input type="text" name="color" ref="color" :value="modelInfo.color">
       <label for="haircolor">Hair color :</label>
-      <input type="text" name="haircolor" ref="haircolor">
+      <input type="text" name="haircolor" ref="haircolor" :value="modelInfo.hair_color">
       <label for="eyes">Eyes :</label>
-      <input type="text" name="eyes" ref="eyes">
+      <input type="text" name="eyes" ref="eyes" :value="modelInfo.eyes">
       <label for="atrological">Astrological :</label>
-      <input type="text" name="astrological" ref="astrological">
+      <input type="text" name="astrological" ref="astrological" :value="modelInfo.astrological">
       <label for="description">Description :</label>
-      <textarea name="description" ref="description"></textarea>
+      <textarea name="description" ref="description" :value="modelInfo.description"></textarea>
     </v-card>
     <v-card class="model-form">
       <h3>Model social network</h3>
       <label for="instagram">Instagram :</label>
-      <input type="text" name="instagram" ref="instagram">
+      <input type="text" name="instagram" ref="instagram" :value="modelNetwork.instagram">
       <label for="facebook">Facebook :</label>
-      <input type="text" name="facebook" ref="facebook">
+      <input type="text" name="facebook" ref="facebook" :value="modelNetwork.facebook">
       <label for="snapchat">Snapchat :</label>
-      <input type="text" name="snapchat" ref="snapchat">
+      <input type="text" name="snapchat" ref="snapchat" :value="modelNetwork.snapchat">
       <label for="tiktok">Tiktok :</label>
-      <input type="text" name="tiktok" ref="tiktok">
+      <input type="text" name="tiktok" ref="tiktok" :value="modelNetwork.tiktok">
       <label for="twitter">Twitter :</label>
-      <input type="text" name="twitter" ref="twitter">
+      <input type="text" name="twitter" ref="twitter" :value="modelNetwork.twitter">
     </v-card>
-    <v-card class="model-form">
+    <!-- <v-card class="model-form">
       <h3>Model pictures</h3>
+      TODO: disable temporally manage main picture change
       <label for="mainpicture">Main picture :</label>
       <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
       <label for="pictures">Pictures :</label>
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
-    </v-card>
+    </v-card> -->
     <div class="model-form-btn">
       <v-btn text @click="sendModel()">Send</v-btn>
       <v-btn text>Reset</v-btn>
@@ -75,16 +76,35 @@
 
 <script>
 export default {
-  name: 'AddModelSection',
   data: () => ({
+    modelId: "",
+    dataLoaded: false,
+    model: null,
     modelInfo: null,
-    modelMeasurement: null,
-    modelNetwork: null,
-    dataMainPicture: [],
-    dataPictures: []
+    modelPictures: null,
+    modelNetwork: null
   }),
+  beforeMount() {
+    this.modelId = this.$store.state.modelId;
+    if (this.modelId === null) {
+      this.$router.push({ path: "/administration/models" });
+    } else {
+      this.findModelData();
+    }
+  },
   methods: {
-    // TODO: manage empty value
+    findModelData() {
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
+        this.model = response.data.model;
+        this.modelInfo = response.data.model_infos;
+        this.modelPictures = response.data.model_pictures;
+        this.modelNetwork = response.data.model_networks;
+        this.dataLoaded = true;
+      });
+    },
+    manageModelBirthDateFormat(birthDate) {
+      return this.$moment(birthDate).format("YYYY-MM-DD");
+    },
     sendModel() {
       this.manageModelInfo();
       this.manageModelMeasurement();
@@ -126,51 +146,22 @@ export default {
         twitter: this.$refs.twitter.value
       }
     },
-    async manageModelMainPicture() {
-      let picture = this.$refs.mainpicture.files[0];
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
-      this.dataMainPicture.push(await toBase64(picture));
-    },
-    async manageModelPictures() {
-      let pictures = this.$refs.pictures.files;
-
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
-
-      for (let i = 0; i < pictures.length; i++) {
-        this.dataPictures.push(await toBase64(pictures[i]));
-      }
-    },
-    async sendModelData() {
-      await this.manageModelMainPicture();
-      await this.manageModelPictures();
-
+    sendModelData() {
       let modelData = {
+        model_id: this.modelId,
         model: this.modelInfo,
         model_info: this.modelMeasurement,
-        model_network: this.modelNetwork,
-        main_picture: this.dataMainPicture,
-        all_pictures: this.dataPictures
+        model_network: this.modelNetwork
       };
 
       let config = {
         method: 'post',
-        url: process.env.VUE_APP_API_URL + 'create/model',
+        url: process.env.VUE_APP_API_URL + 'modify/model',
         headers: { 
           'Content-Type': 'application/json'
         },
         data : modelData
       };
-      console.log(config);
 
       this.$axios(config).then(response => {
         console.log(response.data);
@@ -183,73 +174,15 @@ export default {
 </script>
 
 <style>
-.add-model {
+.admin-update-model-page {
   width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.add-model h2 {
-  width: 100%;
-  margin: 10px;
-  text-align: center;
-}
-
-.model-form {
-  width: 70%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 15px;
-  padding: 15px;
-}
-
-.model-form h3 {
+.admin-update-model-page h2 {
   width: 100%;
   text-align: center;
-}
-
-.model-form label {
-  width: 100%;
-  text-align: center;
-}
-
-.model-form input, .model-form select {
-  width: 40%;
-  height: 30px;
-  margin: 10px;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-  transition: 0.5s;
-}
-
-.model-form textarea {
-  width: 60%;
-  height: 70px;
-  margin: 10px;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-  transition: 0.5s;
-}
-
-.model-form option {
-  text-align: center;
-}
-
-.model-form input:hover, .model-form textarea:hover {
-  border-radius: 0px;
-  outline: none;
-}
-
-.model-form-btn {
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  padding: 15px;
 }
 </style>

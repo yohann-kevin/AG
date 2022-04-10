@@ -6,6 +6,9 @@ import VueRouter from 'vue-router';
 // axios
 import axios from 'axios'
 
+// momement for manage date
+import moment from 'moment' 
+
 // router
 import routes from './routes.js';
 
@@ -16,6 +19,7 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 Vue.prototype.$axios = axios;
+Vue.prototype.$moment = moment;
 
 const router = new VueRouter({ routes })
 

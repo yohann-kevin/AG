@@ -18,8 +18,8 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="black lighten-2" text>
-        Voir plus
+      <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
+        Modifier
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -36,10 +36,10 @@ export default {
     },
   },
   methods: {
-    // redirectToModel(modelId) {
-    //   this.$store.commit("modelId", modelId);
-    //   this.$router.push({ path: "/model" });
-    // }
+    redirectToModel(modelId) {
+      this.$store.commit("modelId", modelId);
+      this.$router.push({ path: "/administration/modify/model" });
+    }
   }
 }
 </script>
