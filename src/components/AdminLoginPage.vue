@@ -1,12 +1,12 @@
 <template>
   <div class="admin-login">
-    <h2 class="admin-login-title">Administration login</h2>
+    <h2 class="admin-login-title">Connexion Administration</h2>
     
     <v-card class="admin-login-container">
-      <label for="login">Email or Name :</label>
+      <label for="login">Email ou nom :</label>
       <input type="text" name="login" ref="loginInput">
 
-      <label for="password">Password : </label>
+      <label for="password">Mot de passe : </label>
       <input type="password" name="password" ref="passwordInput">
 
       <div class="login-admin-btn">
