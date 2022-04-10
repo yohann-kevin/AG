@@ -48,7 +48,7 @@ export default {
     },
     separateMenWoman() {
       for (let i = 0; i < this.models.length; i++) {
-        if (this.models[i].model_info.sexe === "men") {
+        if (this.models[i].model.sexe === "men") {
           this.modelsMen.push(this.models[i]);
         } else {
           this.modelsWoman.push(this.models[i]);
