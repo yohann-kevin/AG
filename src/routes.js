@@ -8,6 +8,7 @@ import SingleModelPage from './components/SingleModelPage.vue';
 import AdminHome from './components/AdminHome.vue';
 import AdminHomePage from './components/AdminHomePage.vue';
 import AdminModel from './components/AdminModel.vue';
+import AdminModifyModel from './components/AdminModifyModel.vue'
 
 // error component
 import Error404 from './components/404Page.vue';
@@ -56,6 +57,11 @@ var routes = [
         path: "/administration/models",
         name: "AdminModel",
         component: AdminModel
+      },
+      {
+        path: "/administration/modify/model",
+        name: "AdminModifyModel",
+        component: AdminModifyModel
       }
     ],
   },
