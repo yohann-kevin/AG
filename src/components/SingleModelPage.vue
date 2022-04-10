@@ -27,6 +27,7 @@
           v-for="(modelPicture ,i) in modelPictures"
           :key="i"
           :src="modelPicture.picture_path"
+          contain
         ></v-carousel-item>
       </v-carousel>
     </div>

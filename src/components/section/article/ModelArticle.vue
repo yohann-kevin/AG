@@ -6,7 +6,8 @@
   >
     <v-img
       :src="model.model_picture.picture_path"
-      height="300px"
+      max-height="300px"
+      contain
     ></v-img>
 
     <v-card-title>
