@@ -1,8 +1,8 @@
 // page component
 import HomePage from './components/HomePage.vue';
-import ContactPage from './components/ContactPage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
+import PricePage from './components/PricePage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
@@ -28,9 +28,9 @@ var routes = [
     component: SingleModelPage
   },
   {
-      path: "/contact",
-      name: "contact",
-      component: ContactPage
+    path: "/prices",
+    name: "prices",
+    component: PricePage
   },
   {
     path: "/adminlogin",
