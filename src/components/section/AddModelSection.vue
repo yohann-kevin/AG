@@ -67,6 +67,29 @@
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
     </v-card>
     <div class="model-form-btn">
+
+      <div class="add-model-alert">
+        <v-alert
+          ref="errorAddModel"
+          elevation="15"
+          shaped
+          type="error"
+          :value="false"
+        >
+          L'ajout du modèle n'a pas fonctionner !
+        </v-alert>
+
+        <v-alert
+          ref="successAddModel"
+          elevation="15"
+          shaped
+          type="success"
+          :value="false"
+        >
+          Le modèle à bien été ajouter !
+        </v-alert>
+      </div>
+
       <v-btn text @click="sendModel()">Ajouter</v-btn>
       <v-btn text>Annuler</v-btn>
     </div>
@@ -170,11 +193,12 @@ export default {
         },
         data : modelData
       };
-      console.log(config);
 
       this.$axios(config).then(response => {
         console.log(response.data);
+        this.$refs.successAddModel.value = true;
       }).catch(error => {
+        this.$refs.errorAddModel.value = true;
         console.log(error);
       });
     }
@@ -246,10 +270,15 @@ export default {
   outline: none;
 }
 
+.add-model-alert {
+  width: 100%;
+}
+
 .model-form-btn {
   width: 70%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 15px;
 }
 </style>

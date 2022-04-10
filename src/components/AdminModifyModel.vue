@@ -68,6 +68,28 @@
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
     </v-card> -->
     <div class="model-form-btn">
+      <div class="modify-model-alert">
+        <v-alert
+          ref="errorModifyModel"
+          elevation="15"
+          shaped
+          type="error"
+          :value="false"
+        >
+          La modification du modèle n'a pas fonctionner !
+        </v-alert>
+
+        <v-alert
+          ref="successModifyModel"
+          elevation="15"
+          shaped
+          type="success"
+          :value="false"
+        >
+          Le modèle à bien été modifier !
+        </v-alert>
+      </div>
+
       <v-btn text @click="sendModel()">Modifier</v-btn>
       <v-btn text>Annuler</v-btn>
     </div>
@@ -165,7 +187,9 @@ export default {
 
       this.$axios(config).then(response => {
         console.log(response.data);
+        this.$refs.successModifyModel.vamue = true;
       }).catch(error => {
+        this.$refs.errorModifyModel.vamue = true;
         console.log(error);
       });
     }
@@ -184,5 +208,17 @@ export default {
 .admin-update-model-page h2 {
   width: 100%;
   text-align: center;
+}
+
+.modify-model-alert {
+  width: 100%;
+}
+
+.model-form-btn {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 15px;
 }
 </style>
