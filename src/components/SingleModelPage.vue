@@ -18,7 +18,7 @@
       </ul>
       <div class="single-model-btn">
         <v-btn text><router-link to="/">Retour</router-link></v-btn>
-        <v-btn text><router-link to=/contact>Contacter</router-link></v-btn>
+        <v-btn text><router-link to=/prices>Contacter</router-link></v-btn>
       </div>
     </div>
     <div class="single-model-image">

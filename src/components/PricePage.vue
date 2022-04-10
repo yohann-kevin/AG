@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'ContactPage',
+    name: 'PricePage',
 
     data: () => ({
     }),

@@ -23,7 +23,7 @@
 
     <div id="nav">
       <router-link to="/">Accueil</router-link>
-      <router-link to="/contact">Contact</router-link>
+      <router-link to="/prices">Nos tarifs</router-link>
     </div>
 
     <v-spacer></v-spacer>
