@@ -1,9 +1,9 @@
 <template>
   <div class="all-model-admin">
-    <h2>Admin model</h2>
+    <h2>Modèles</h2>
     <div class="all-model-admin-nav">
       <v-btn color="black lighten-2" text>
-        <router-link to="/administration">Add model</router-link>
+        <router-link to="/administration">Ajout modèle</router-link>
       </v-btn>
     </div>
     <div class="all-model-admin-list">
