@@ -1,7 +1,8 @@
 <template>
   <v-parallax
     dark
-    src="../../assets/model-test.jpg"
+    src="../../assets/ag-team-three.jpg"
+    contain
   >
     <v-row
       align="center"
