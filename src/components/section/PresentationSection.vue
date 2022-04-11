@@ -22,7 +22,7 @@
       </p>
       <p>
         Un projet qui nécessite des <strong>Modèles Uniques</strong> ?
-        Faites confiance à <strong>AG SCOUTING !</strong>
+        Faites confiance à <strong>AG SCOUTING</strong>
       </p>
     </div>
   </div>
