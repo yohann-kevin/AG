@@ -1,13 +1,12 @@
 <template>
   <v-card
-    class="model-article"
+    class="model-article-admin"
     max-width="344"
     elevation="2"
   >
     <v-img
       :src="model.model_picture.picture_path"
-      max-height="300px"
-      contain
+      height="300px"
     ></v-img>
 
     <v-card-title>
@@ -19,11 +18,9 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <!-- <router-link to="/model" class="more-btn"> -->
-        <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
-          Voir plus
-        </v-btn>
-      <!-- </router-link> -->
+      <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
+        Modifier
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -41,14 +38,14 @@ export default {
   methods: {
     redirectToModel(modelId) {
       this.$store.commit("modelId", modelId);
-      this.$router.push({ path: "/model" });
+      this.$router.push({ path: "/administration/modify/model" });
     }
   }
 }
 </script>
 
 <style scoped>
-.model-article {
+.model-article-admin {
   margin-bottom: 25px;
   margin-top: 25px;
 }

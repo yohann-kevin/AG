@@ -1,53 +1,53 @@
 <template>
   <div class="add-model">
-    <h2>Add model</h2>
+    <h2>Ajout d'un modèle</h2>
     <v-card class="model-form">
-      <h3>Model information</h3>
-      <label for="firstname">Firstname :</label>
+      <h3>Information du modèle</h3>
+      <label for="firstname">Prénom :</label>
       <input type="text" name="firstname" ref="firstname">
-      <label for="lastname">Lastname :</label>
+      <label for="lastname">Nom :</label>
       <input type="text" name="lastname" ref="lastname">
       <label for="email">Email :</label>
       <input type="email" name="email" ref="email">
-      <label for="phone">Phone number :</label>
+      <label for="phone">Numéro de téléphone :</label>
       <input type="number" name="phone" ref="phone">
-      <label for="address">Address :</label>
+      <label for="address">Addresse :</label>
       <input type="text" name="address" ref="address">
-      <label for="birthdate">Birth date :</label>
+      <label for="birthdate">Date de naissance :</label>
       <input type="date" name="birthdate" ref="birthdate">
       <label for="sexe">Sexe : </label>
       <select name="sexe" ref="sexe">
-        <option value="men">Men</option>
-        <option value="woman">Woman</option>
+        <option value="men">Homme</option>
+        <option value="woman">Femme</option>
       </select>
     </v-card>
     <v-card class="model-form">
-      <h3>Model measurement</h3>
-      <label for="size">Size :</label>
+      <h3>Mensuration du modèle</h3>
+      <label for="size">Hauteur :</label>
       <input type="number" name="size" ref="size">
-      <label for="weight">Weight :</label>
+      <label for="weight">Poid :</label>
       <input type="number" name="weight" ref="weight">
-      <label for="chest">Chest :</label>
+      <label for="chest">Poitrine :</label>
       <input type="number" name="chest" ref="chest">
-      <label for="waist">Waist :</label>
+      <label for="waist">Taille :</label>
       <input type="number" name="waist" ref="waist">
-      <label for="hips">Hips :</label>
+      <label for="hips">Hanche :</label>
       <input type="number" name="hips" ref="hips">
-      <label for="shoes">Shoe size :</label>
+      <label for="shoes">Pointure :</label>
       <input type="number" name="shoes" ref="shoes">
-      <label for="color">Color :</label>
+      <label for="color">Couleur de peau :</label>
       <input type="text" name="color" ref="color">
-      <label for="haircolor">Hair color :</label>
+      <label for="haircolor">Couleur de cheveux :</label>
       <input type="text" name="haircolor" ref="haircolor">
-      <label for="eyes">Eyes :</label>
+      <label for="eyes">Yeux :</label>
       <input type="text" name="eyes" ref="eyes">
-      <label for="atrological">Astrological :</label>
+      <label for="atrological">Signe astrologique :</label>
       <input type="text" name="astrological" ref="astrological">
-      <label for="description">Description :</label>
+      <label for="description">Petite description :</label>
       <textarea name="description" ref="description"></textarea>
     </v-card>
     <v-card class="model-form">
-      <h3>Model social network</h3>
+      <h3>Réseaux sociaux du modèle</h3>
       <label for="instagram">Instagram :</label>
       <input type="text" name="instagram" ref="instagram">
       <label for="facebook">Facebook :</label>
@@ -60,15 +60,38 @@
       <input type="text" name="twitter" ref="twitter">
     </v-card>
     <v-card class="model-form">
-      <h3>Model pictures</h3>
-      <label for="mainpicture">Main picture :</label>
+      <h3>Photo du modèle</h3>
+      <label for="mainpicture">Photo principal :</label>
       <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
-      <label for="pictures">Pictures :</label>
+      <label for="pictures">Photos :</label>
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
     </v-card>
     <div class="model-form-btn">
-      <v-btn text @click="sendModel()">Send</v-btn>
-      <v-btn text>Reset</v-btn>
+
+      <div class="add-model-alert">
+        <v-alert
+          ref="errorAddModel"
+          elevation="15"
+          shaped
+          type="error"
+          :value="false"
+        >
+          L'ajout du modèle n'a pas fonctionner !
+        </v-alert>
+
+        <v-alert
+          ref="successAddModel"
+          elevation="15"
+          shaped
+          type="success"
+          :value="false"
+        >
+          Le modèle à bien été ajouter !
+        </v-alert>
+      </div>
+
+      <v-btn text @click="sendModel()">Ajouter</v-btn>
+      <v-btn text>Annuler</v-btn>
     </div>
   </div>
 </template>
@@ -84,7 +107,7 @@ export default {
     dataPictures: []
   }),
   methods: {
-    // TODO: manage emprty value
+    // TODO: manage empty value
     sendModel() {
       this.manageModelInfo();
       this.manageModelMeasurement();
@@ -170,11 +193,12 @@ export default {
         },
         data : modelData
       };
-      console.log(config);
 
       this.$axios(config).then(response => {
         console.log(response.data);
+        this.$refs.successAddModel.value = true;
       }).catch(error => {
+        this.$refs.errorAddModel.value = true;
         console.log(error);
       });
     }
@@ -246,10 +270,15 @@ export default {
   outline: none;
 }
 
+.add-model-alert {
+  width: 100%;
+}
+
 .model-form-btn {
   width: 70%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 15px;
 }
 </style>

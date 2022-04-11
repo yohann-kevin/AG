@@ -18,7 +18,7 @@
       </ul>
       <div class="single-model-btn">
         <v-btn text><router-link to="/">Retour</router-link></v-btn>
-        <v-btn text><router-link to=/contact>Contacter</router-link></v-btn>
+        <v-btn text><router-link to=/prices>Contacter</router-link></v-btn>
       </div>
     </div>
     <div class="single-model-image">
@@ -27,6 +27,7 @@
           v-for="(modelPicture ,i) in modelPictures"
           :key="i"
           :src="modelPicture.picture_path"
+          contain
         ></v-carousel-item>
       </v-carousel>
     </div>
@@ -55,7 +56,6 @@ export default {
   methods: {
     findModelData() {
       this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
-        console.log(response.data);
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;

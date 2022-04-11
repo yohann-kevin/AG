@@ -1,6 +1,9 @@
 <template>
   <div class="admin-page">
-    <h1>Welcome {{ this.name }} to administration workspace</h1>
+    <h1>Bienvenue {{ this.name }} sur votre espace administration</h1>
+    <div>
+      <router-link to="/administration/models">Voir modèle</router-link>
+    </div>
     <AddModelSection/>
   </div>
 </template>

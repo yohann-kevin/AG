@@ -10,20 +10,20 @@
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
-        src="../../assets/ag-logo.jpeg"
+        src="../../assets/logo-ag.png"
         transition="scale-transition"
         width="80px"
         height="78px"
       />
     </div>
 
-    <h1>AG Scouting</h1>
+    <h1 class="ag-title">AG Scouting</h1>
 
     <v-spacer></v-spacer>
 
     <div id="nav">
       <router-link to="/">Accueil</router-link>
-      <router-link to="/contact">Contact</router-link>
+      <router-link to="/prices">Nos tarifs</router-link>
     </div>
 
     <v-spacer></v-spacer>
@@ -78,6 +78,12 @@ export default {
 #nav > a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.ag-title {
+  font-family: 'creattion';
+  font-size: 2.8rem;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 768px) {

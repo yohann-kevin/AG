@@ -1,8 +1,14 @@
 <template>
   <div class="model-section">
-    <h2>Nos modèles</h2>
+    <h2>Nos modèles Femmes</h2>
     <div class="all-model">
-      <div v-for="(model, i) in models" :key="i">
+      <div v-for="(model, i) in modelsWoman" :key="i">
+        <ModelArticle :model="model"/>
+      </div>
+    </div>
+    <h2>Nos modèles Hommes</h2>
+    <div class="all-model">
+      <div v-for="(model, i) in modelsMen" :key="i">
         <ModelArticle :model="model"/>
       </div>
     </div>
@@ -18,19 +24,36 @@ export default {
     ModelArticle
   },
   data: () => ({
-    models: null
+    models: null,
+    modelsMen: [],
+    modelsWoman: []
   }),
   beforeMount() {
     let modelOnStore = this.$store.state.homeModelData;
     // check if model is save on store
-    modelOnStore != null ? this.models = modelOnStore : this.findModel();
+    if (modelOnStore != null) {
+      this.models = modelOnStore;
+      this.separateMenWoman();
+    } else {
+      this.findModel();
+    }
   },
   methods: {
     findModel() {
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
         this.models = response.data;
         this.$store.commit("homeModelData", this.models);
-      })
+        this.separateMenWoman();
+      });
+    },
+    separateMenWoman() {
+      for (let i = 0; i < this.models.length; i++) {
+        if (this.models[i].model.sexe === "men") {
+          this.modelsMen.push(this.models[i]);
+        } else {
+          this.modelsWoman.push(this.models[i]);
+        }
+      }
     }
   }
 }

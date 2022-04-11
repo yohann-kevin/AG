@@ -1,12 +1,33 @@
 <template>
   <div class="admin-login">
-    <h2 class="admin-login-title">Administration login</h2>
+    <h2 class="admin-login-title">Connexion Administration</h2>
     
     <v-card class="admin-login-container">
-      <label for="login">Email or Name :</label>
+      <v-alert
+        ref="errorLogin"
+        class="errorLogin"
+        elevation="15"
+        shaped
+        type="error"
+        :value="false"
+      >
+        Identifiant incorrect
+      </v-alert>
+
+      <v-alert
+        ref="successLogin"
+        elevation="15"
+        shaped
+        type="success"
+        :value="false"
+      >
+        Identification réussi
+      </v-alert>
+
+      <label for="login">Email ou nom :</label>
       <input type="text" name="login" ref="loginInput">
 
-      <label for="password">Password : </label>
+      <label for="password">Mot de passe : </label>
       <input type="password" name="password" ref="passwordInput">
 
       <div class="login-admin-btn">
@@ -36,7 +57,8 @@ export default {
         this.loginAdmin();
       } else {
         // TODO: manage the case of form is not complete
-        alert("Is not okay");
+        // alert("Is not okay");
+        this.$refs.errorLogin.value = true;
       }
     },
     checkEmptyValue(input) {
@@ -48,7 +70,6 @@ export default {
         password: this.password
       };
 
-      console.log(process.env.VUE_APP_API_URL);
       let config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'admin/auth',
@@ -59,8 +80,12 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        this.connectAdmin(response.data);
+        if (response.status === 200) {
+          // this.$refs.successLogin.value = true;
+          this.connectAdmin(response.data);
+        }
       }).catch(error => {
+        this.$refs.errorLogin.value = true;
         console.log(error);
       });
     },
@@ -92,6 +117,11 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.error-login {
+  margin-top: 25px;
+  width: 30%;
 }
 
 .admin-login-container label {
