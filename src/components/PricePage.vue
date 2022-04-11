@@ -82,10 +82,7 @@
   margin: 15px;
 }
 
-.pack-sample {
-  width: 35%;
-}
-
+.pack-sample,
 .pack-gold {
   width: 35%;
 }
@@ -96,5 +93,13 @@
 
 .pack-btn {
   margin: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .pack-sample,
+  .pack-gold {
+    width: 80%;
+    margin-bottom: 35px;
+  }
 }
 </style>
