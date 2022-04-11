@@ -17,9 +17,9 @@
         - Proposer des mannequins aux agences <br/>
         - Proposer des modèles aux clients
       </p>
-      <p>
-        Les secteurs concernés sont multiples. <strong>(Mode, Restauration, Luxe, Publicité...)</strong>
-      </p>
+      <!-- <p>
+        Les secteurs concernés sont multiples.
+      </p> -->
       <p>
         Un projet qui nécessite des <strong>Modèles Uniques</strong> ?
         Faites confiance à <strong>AG SCOUTING</strong>

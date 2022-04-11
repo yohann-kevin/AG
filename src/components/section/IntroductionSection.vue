@@ -35,4 +35,11 @@ export default {
   font-size: 9rem;
   font-weight: 400;
 }
+
+@media only screen and (max-width: 768px) {
+  .ag-title {
+    font-size: 5rem;
+    margin-top: 0;
+  }
+}
 </style>
