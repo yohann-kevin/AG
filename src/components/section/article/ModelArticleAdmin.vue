@@ -18,8 +18,29 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
-        Modifier
+      <v-btn
+        class="mx-2"
+        fab
+        dark
+        small
+        color="grey"
+        @click="redirectToModel(model.model.id)"
+      >
+        <v-icon dark>
+          mdi-pencil-outline
+        </v-icon>
+      </v-btn>
+      <v-btn
+        class="mx-2"
+        fab
+        dark
+        small
+        color="error"
+        @click="deleteModel(model.model.id)"
+      >
+        <v-icon dark>
+          mdi-trash-can-outline
+        </v-icon>
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -39,6 +60,22 @@ export default {
     redirectToModel(modelId) {
       this.$store.commit("modelId", modelId);
       this.$router.push({ path: "/administration/modify/model" });
+    },
+    deleteModel(modelId) {
+      let config = {
+        method: 'delete',
+        url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
+        headers: { 
+          'Content-Type': 'application/json'
+        }
+      };
+
+      this.$axios(config).then(response => {
+        if (response.status === 200) this.$emit('deleted', { isDelete: response.data.model_deleted, modelId });
+      }).catch(error => {
+        this.$emit('deleted', { isDelete: false, modelId });
+        console.log(error);
+      });
     }
   }
 }
