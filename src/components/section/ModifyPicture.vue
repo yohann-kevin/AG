@@ -20,12 +20,26 @@
         </v-icon>
       </v-btn>
       <v-btn
+        v-if="!picture.main_picture"
         class="ma-2"
         fab
         dark
         small
         color="error"
         @click="openModalDeletePicture(picture.id)"
+      >
+        <v-icon dark>
+          mdi-trash-can-outline
+        </v-icon>
+      </v-btn>
+      <v-btn
+        v-else
+        class="ma-2"
+        fab
+        dark
+        small
+        color="error"
+        @click="noDeleteMainPictureAlert = true"
       >
         <v-icon dark>
           mdi-trash-can-outline
@@ -59,6 +73,17 @@
       >
         La photo a bien été supprimer !
       </v-alert>
+
+      <v-alert
+        elevation="15"
+        dense
+        text
+        dismissible
+        type="error"
+        v-model="noDeleteMainPictureAlert"
+      >
+        Vous ne pouvez pas supprimer la photo principale d'un modèle !
+      </v-alert>
     </div>
   </div>
 </template>
@@ -76,6 +101,7 @@ export default {
     selectedPictureId: null,
     errorAlert: false,
     successAlert: false,
+    noDeleteMainPictureAlert: false,
   }),
   props: {
     pictures: {
