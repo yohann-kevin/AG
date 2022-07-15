@@ -70,21 +70,22 @@
     <div class="model-form-btn">
       <div class="modify-model-alert">
         <v-alert
-          ref="errorModifyModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="error"
-          :value="false"
+          v-model="errorAlert"
         >
           La modification du modèle n'a pas fonctionner !
         </v-alert>
-
         <v-alert
-          ref="successModifyModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="success"
-          :value="false"
+          v-model="successAlert"
         >
           Le modèle à bien été modifier !
         </v-alert>
@@ -107,7 +108,9 @@ export default {
     model: null,
     modelInfo: null,
     modelPictures: null,
-    modelNetwork: null
+    modelNetwork: null,
+    errorAlert: false,
+    successAlert: false
   }),
   components: {
     ModifyPicture,
@@ -193,9 +196,9 @@ export default {
 
       this.$axios(config).then(response => {
         console.log(response.data);
-        this.$refs.successModifyModel.vamue = true;
+        this.successAlert = true;
       }).catch(error => {
-        this.$refs.errorModifyModel.vamue = true;
+        this.errorAlert = true;
         console.log(error);
       });
     }

@@ -70,21 +70,22 @@
 
       <div class="add-model-alert">
         <v-alert
-          ref="errorAddModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="error"
-          :value="false"
+          v-model="errorAlert"
         >
           L'ajout du modèle n'a pas fonctionner !
         </v-alert>
-
         <v-alert
-          ref="successAddModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="success"
-          :value="false"
+          v-model="successAlert"
         >
           Le modèle à bien été ajouter !
         </v-alert>
@@ -106,7 +107,9 @@ export default {
     modelMeasurement: null,
     modelNetwork: null,
     dataMainPicture: [],
-    dataPictures: []
+    dataPictures: [],
+    errorAlert: true,
+    successAlert: false
   }),
   methods: {
     // TODO: manage empty value
@@ -210,9 +213,9 @@ export default {
 
       this.$axios(config).then(response => {
         console.log(response.data);
-        this.$refs.successAddModel.value = true;
+        this.successAlert = true;
       }).catch(error => {
-        this.$refs.errorAddModel.value = true;
+        this.errorAlert = true;
         console.log(error);
       });
     }
