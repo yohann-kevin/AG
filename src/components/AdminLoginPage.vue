@@ -4,24 +4,24 @@
     
     <v-card class="admin-login-container">
       <v-alert
-        ref="errorLogin"
-        class="errorLogin"
+        dense
+        text
+        dismissible
         elevation="15"
-        shaped
         type="error"
-        :value="false"
+        v-model="errorAlert"
       >
-        Identifiant incorrect
+        La connexion n'a pas fonctionner vérifier vos identifiants et mot de passe !
       </v-alert>
-
       <v-alert
-        ref="successLogin"
+        dense
+        text
+        dismissible
         elevation="15"
-        shaped
         type="success"
-        :value="false"
+        v-model="successAlert"
       >
-        Identification réussi
+        Connexion réussie !
       </v-alert>
 
       <label for="login">Email ou nom :</label>
@@ -43,7 +43,9 @@ export default {
   name: "AdminLoginPage",
   data: () => ({
     login: "",
-    password: ""
+    password: "",
+    errorAlert: false,
+    successAlert: false
   }),
   methods: {
     resetForm() {
@@ -56,9 +58,7 @@ export default {
         this.password = this.$refs.passwordInput.value;
         this.loginAdmin();
       } else {
-        // TODO: manage the case of form is not complete
-        // alert("Is not okay");
-        this.$refs.errorLogin.value = true;
+        this.errorAlert = true;
       }
     },
     checkEmptyValue(input) {
@@ -81,11 +81,11 @@ export default {
 
       this.$axios(config).then(response => {
         if (response.status === 200) {
-          // this.$refs.successLogin.value = true;
+          this.successAlert = true;
           this.connectAdmin(response.data);
         }
       }).catch(error => {
-        this.$refs.errorLogin.value = true;
+        this.errorAlert = true;
         console.log(error);
       });
     },

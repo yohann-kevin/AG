@@ -6,9 +6,31 @@
         <router-link to="/administration">Ajout modèle</router-link>
       </v-btn>
     </div>
+    <div class="admin-alert">
+      <v-alert
+        dense
+        text
+        dismissible
+        elevation="15"
+        type="error"
+        v-model="errorAlert"
+      >
+        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionner !
+      </v-alert>
+      <v-alert
+        dense
+        text
+        dismissible
+        elevation="15"
+        type="success"
+        v-model="successAlert"
+      >
+        Le modèle {{ modelDeletedId }} à bien été supprimer !
+      </v-alert>
+    </div>
     <div class="all-model-admin-list">
       <div v-for="(model, i) in models" :key="i">
-        <ModelArticleAdmin :model="model"/>
+        <ModelArticleAdmin :model="model" @deleted="manageDeletedMessage"/>
       </div>
     </div>
   </div>
@@ -20,7 +42,10 @@ import ModelArticleAdmin from "./section/article/ModelArticleAdmin.vue";
 
 export default {
   data: () => ({
-    models: null
+    models: null,
+    errorAlert: false,
+    successAlert: false,
+    modelDeletedId: null
   }),
   components: {
     ModelArticleAdmin
@@ -36,6 +61,15 @@ export default {
         this.models = response.data;
         this.$store.commit("homeModelData", this.models);
       });
+    },
+    manageDeletedMessage(deleteInfo) {
+      this.modelDeletedId = deleteInfo.modelId;
+      if (deleteInfo.isDelete) {
+        this.successAlert = true;
+        this.findModel();
+      } else {
+        this.errorAlert = true;
+      }
     }
   }
 }
@@ -64,6 +98,10 @@ export default {
 .all-model-admin-nav a {
   text-decoration: none;
   color: #000;
+}
+
+.admin-alert {
+  width: 80%;
 }
 
 .all-model-admin-list {
