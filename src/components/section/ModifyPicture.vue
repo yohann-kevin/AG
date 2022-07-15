@@ -7,15 +7,26 @@
         height="250px"
       ></v-img>
       <v-btn
+        v-if="picture.main_picture"
         class="ma-2"
         fab
         small
         :class="picture.main_picture ? 'gold-star' : ''"
+        @click="noChangeMainPictureAlert = true"
       >
-        <v-icon dark v-if="picture.main_picture">
+        <v-icon dark>
           mdi-star
         </v-icon>
-        <v-icon dark v-else>
+      </v-btn>
+      <v-btn
+        v-else
+        class="ma-2"
+        fab
+        small
+        :class="picture.main_picture ? 'gold-star' : ''"
+        @click="modifyMainPicture(picture.id)"
+      >
+        <v-icon dark>
           mdi-star-outline
         </v-icon>
       </v-btn>
@@ -79,10 +90,43 @@
         dense
         text
         dismissible
+        type="success"
+        v-model="mainPictureModifiedAlert"
+      >
+        L'image principale a bien été modifier
+      </v-alert>
+
+      <v-alert
+        elevation="15"
+        dense
+        text
+        dismissible
         type="error"
         v-model="noDeleteMainPictureAlert"
       >
         Vous ne pouvez pas supprimer la photo principale d'un modèle !
+      </v-alert>
+
+      <v-alert
+        elevation="15"
+        dense
+        text
+        dismissible
+        type="error"
+        v-model="noChangeMainPictureAlert"
+      >
+        Cette image est déjà l'image principale du modèle !
+      </v-alert>
+
+      <v-alert
+        elevation="15"
+        dense
+        text
+        dismissible
+        type="error"
+        v-model="errorModifiedMainPicture"
+      >
+        L'image principale du modèle n'a pas pus être modifier !
       </v-alert>
     </div>
   </div>
@@ -102,10 +146,17 @@ export default {
     errorAlert: false,
     successAlert: false,
     noDeleteMainPictureAlert: false,
+    mainPictureModifiedAlert: false,
+    noChangeMainPictureAlert: false,
+    errorModifiedMainPicture: false
   }),
   props: {
     pictures: {
       type: Array,
+      required: true
+    },
+    modelId: {
+      type: String,
       required: true
     }
   },
@@ -125,9 +176,10 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        if (response.status === 204) {
+        if (response.status === 200) {
           this.successAlert = true;
-          this.removeImageInUi(this.selectedPictureId);
+          // this.removeImageInUi(this.selectedPictureId);
+          this.modelPictures = response.data;
           this.selectedPictureId = null;
         }
       }).catch(error => {
@@ -135,9 +187,27 @@ export default {
         console.log(error);
       });
     },
-    removeImageInUi(pictureId) {
-      const pictureDeleteIndex = this.modelPictures.findIndex(picture => picture.id === pictureId);
-      this.modelPictures.splice(pictureDeleteIndex, 1);
+    // removeImageInUi(pictureId) {
+      // TODO: re fetch image instead disaply management in ui
+      // const pictureDeleteIndex = this.modelPictures.findIndex(picture => picture.id === pictureId);
+      // this.modelPictures.splice(pictureDeleteIndex, 1);
+    // },
+    modifyMainPicture(pictureId) {
+      var config = {
+        method: 'post',
+        url: process.env.VUE_APP_API_URL + '/model_pictures/modify/main_picture/?model_uuid=' + this.modelId + '&id=' + pictureId,
+        headers: { }
+      };
+
+      this.$axios(config).then(response => {
+        if (response.status === 200) {
+          this.modelPictures = response.data;
+          this.mainPictureModifiedAlert = true;
+        }
+      }).catch(error => {
+        this.errorModifiedMainPicture = true;
+        console.log(error);
+      });
     }
   }
 }

@@ -93,7 +93,7 @@
       <v-btn text @click="sendModel()">Modifier</v-btn>
       <v-btn text>Annuler</v-btn>
     </div>
-    <ModifyPicture :pictures="modelPictures"/>
+    <ModifyPicture :pictures="modelPictures" :modelId="modelId"/>
   </div>
 </template>
 
