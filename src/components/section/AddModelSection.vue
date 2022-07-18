@@ -106,7 +106,7 @@ export default {
     modelNetwork: null,
     dataMainPicture: [],
     dataPictures: [],
-    errorAlert: true,
+    errorAlert: false,
     successAlert: false
   }),
   methods: {
