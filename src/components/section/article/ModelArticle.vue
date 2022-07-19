@@ -8,7 +8,16 @@
       :src="model.model_picture.picture_path"
       max-height="300px"
       contain
+      @load="imageLoaded"
     ></v-img>
+
+    <v-progress-circular
+      :size="50"
+      color="black"
+      indeterminate
+      class="img-loader"
+      v-if="!imgIsLoaded"
+    ></v-progress-circular>
 
     <v-card-title>
       {{ model.model.firstname }}
@@ -31,6 +40,7 @@
 <script>
 export default {
   data: () => ({
+    imgIsLoaded: false
   }),
   props: {
     model: {
@@ -42,6 +52,9 @@ export default {
     redirectToModel(modelId) {
       this.$store.commit("modelId", modelId);
       this.$router.push({ path: "/model" });
+    },
+    imageLoaded() {
+      this.imgIsLoaded = true;
     }
   }
 }
@@ -51,6 +64,12 @@ export default {
 .model-article {
   margin-bottom: 25px;
   margin-top: 25px;
+}
+
+.img-loader {
+  width: 100% !important;
+  margin-top: 50px;
+  margin-bottom:50px;
 }
 
 .more-btn {

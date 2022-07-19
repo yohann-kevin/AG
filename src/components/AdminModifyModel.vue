@@ -94,10 +94,13 @@
       <v-btn text @click="sendModel()">Modifier</v-btn>
       <v-btn text>Annuler</v-btn>
     </div>
+    <ModifyPicture :pictures="modelPictures" :modelId="modelId"/>
   </div>
 </template>
 
 <script>
+import ModifyPicture from './section/ModifyPicture.vue';
+
 export default {
   data: () => ({
     modelId: "",
@@ -109,6 +112,9 @@ export default {
     errorAlert: false,
     successAlert: false
   }),
+  components: {
+    ModifyPicture,
+  },
   beforeMount() {
     this.modelId = this.$store.state.modelId;
     if (this.modelId === null) {

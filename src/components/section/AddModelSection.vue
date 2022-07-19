@@ -98,6 +98,8 @@
 </template>
 
 <script>
+import imageCompression from 'browser-image-compression';
+
 export default {
   name: 'AddModelSection',
   data: () => ({
@@ -152,35 +154,47 @@ export default {
         twitter: this.$refs.twitter.value
       }
     },
-    async manageModelMainPicture() {
-      let picture = this.$refs.mainpicture.files[0];
+    async convertPicturesToBase64(pictureData, isMainPicture) {
       const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
       });
-      this.dataMainPicture.push(await toBase64(picture));
+      if (isMainPicture) {
+        this.dataMainPicture.push(await toBase64(pictureData));
+      } else {
+        this.dataPictures.push(await toBase64(pictureData));
+      }
+    },
+    async compressImage(picture) {
+      const options = {
+        maxSizeMB: 4,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+
+      try {
+        return await imageCompression(picture, options);
+      } catch (error) {
+        this.$refs.errorAddModel.value = true;
+        console.log(error);
+      }
     },
     async manageModelPictures() {
-      let pictures = this.$refs.pictures.files;
-
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
-
-      for (let i = 0; i < pictures.length; i++) {
-        this.dataPictures.push(await toBase64(pictures[i]));
+      const mainPicture = this.$refs.mainpicture.files[0];
+      const mainPictureCompressed = await this.compressImage(mainPicture);
+      await this.convertPicturesToBase64(mainPictureCompressed, true);
+      const otherPictures = this.$refs.pictures.files;
+      for (let i = 0; i < otherPictures.length; i++) {
+        const pictureCompressed = await this.compressImage(otherPictures[i]);
+        await this.convertPicturesToBase64(pictureCompressed, false);
       }
     },
     async sendModelData() {
-      await this.manageModelMainPicture();
       await this.manageModelPictures();
-
-      let modelData = {
+      
+      const modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork,
@@ -188,7 +202,7 @@ export default {
         all_pictures: this.dataPictures
       };
 
-      let config = {
+      const config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'create/model',
         headers: { 

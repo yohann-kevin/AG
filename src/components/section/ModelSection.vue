@@ -3,13 +3,13 @@
     <h2>Nos modèles Femmes</h2>
     <div class="all-model">
       <div v-for="(model, i) in modelsWoman" :key="i">
-        <ModelArticle :model="model"/>
+        <ModelArticle :model="model" v-scroll-reveal.reset="{ delay: 250, origin: 'bottom', duration: 600, }"/>
       </div>
     </div>
     <h2>Nos modèles Hommes</h2>
     <div class="all-model">
       <div v-for="(model, i) in modelsMen" :key="i">
-        <ModelArticle :model="model"/>
+        <ModelArticle :model="model" v-scroll-reveal.reset="{ delay: 250, origin: 'bottom', duration: 600, }"/>
       </div>
     </div>
   </div>

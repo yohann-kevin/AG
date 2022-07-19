@@ -7,7 +7,7 @@
   >
     <div class="d-flex align-center">
       <v-img
-        alt="Vuetify Logo"
+        alt="AG Scouting"
         class="shrink mr-2"
         contain
         src="../../assets/logo-ag.png"
