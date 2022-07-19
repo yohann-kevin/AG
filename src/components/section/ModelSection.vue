@@ -21,7 +21,7 @@
     </v-parallax>
     <div class="all-model">
       <div v-for="(model, i) in modelsWoman" :key="i">
-        <ModelArticle :model="model"/>
+        <ModelArticle :model="model" v-scroll-reveal.reset="{ delay: 250, origin: 'bottom', duration: 600, }"/>
       </div>
     </div>
     <v-parallax
@@ -45,7 +45,7 @@
     </v-parallax>
     <div class="all-model">
       <div v-for="(model, i) in modelsMen" :key="i">
-        <ModelArticle :model="model"/>
+        <ModelArticle :model="model" v-scroll-reveal.reset="{ delay: 250, origin: 'bottom', duration: 600, }"/>
       </div>
     </div>
   </div>
