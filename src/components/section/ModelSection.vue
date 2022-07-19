@@ -1,12 +1,48 @@
 <template>
   <div class="model-section">
-    <h2>Nos modèles Femmes</h2>
+    <v-parallax
+      class="parallax-model mb-4"
+      height="450"
+      src="../../assets/ag-team-seven.jpg"
+    >
+      <v-row
+        align="center"
+        justify="center"
+      >
+        <v-col
+          class="text-center"
+          cols="12"
+        >
+          <h2 class="text-h2 mb-4 parallax-title">
+            Nos modèles Femmes
+          </h2>
+        </v-col>
+      </v-row>
+    </v-parallax>
     <div class="all-model">
       <div v-for="(model, i) in modelsWoman" :key="i">
         <ModelArticle :model="model" v-scroll-reveal.reset="{ delay: 250, origin: 'bottom', duration: 600, }"/>
       </div>
     </div>
-    <h2>Nos modèles Hommes</h2>
+    <v-parallax
+      class="parallax-model"
+      height="450"
+      src="../../assets/ag-team-nine.jpg"
+    >
+      <v-row
+        align="center"
+        justify="center"
+      >
+        <v-col
+          class="text-center"
+          cols="12"
+        >
+          <h2 class="text-h2 mb-4 parallax-title">
+            Nos modèles Hommes
+          </h2>
+        </v-col>
+      </v-row>
+    </v-parallax>
     <div class="all-model">
       <div v-for="(model, i) in modelsMen" :key="i">
         <ModelArticle :model="model" v-scroll-reveal.reset="{ delay: 250, origin: 'bottom', duration: 600, }"/>
@@ -78,5 +114,13 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.parallax-model {
+  width: 100%;
+}
+
+.parallax-title {
+  color: #fff;
 }
 </style>

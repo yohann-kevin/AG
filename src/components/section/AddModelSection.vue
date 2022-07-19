@@ -11,7 +11,7 @@
       <input type="email" name="email" ref="email">
       <label for="phone">Numéro de téléphone :</label>
       <input type="number" name="phone" ref="phone">
-      <label for="address">Addresse :</label>
+      <label for="address">Adresse :</label>
       <input type="text" name="address" ref="address">
       <label for="birthdate">Date de naissance :</label>
       <input type="date" name="birthdate" ref="birthdate">
@@ -25,7 +25,7 @@
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
       <input type="number" name="size" ref="size">
-      <label for="weight">Poid :</label>
+      <label for="weight">Poids :</label>
       <input type="number" name="weight" ref="weight">
       <label for="chest">Poitrine :</label>
       <input type="number" name="chest" ref="chest">
@@ -61,7 +61,7 @@
     </v-card>
     <v-card class="model-form">
       <h3>Photo du modèle</h3>
-      <label for="mainpicture">Photo principal :</label>
+      <label for="mainpicture">Photo principale :</label>
       <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
       <label for="pictures">Photos :</label>
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
@@ -108,7 +108,7 @@ export default {
     modelNetwork: null,
     dataMainPicture: [],
     dataPictures: [],
-    errorAlert: true,
+    errorAlert: false,
     successAlert: false
   }),
   methods: {
@@ -212,8 +212,9 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
-        this.successAlert = true;
+        if (response.data != 500) {
+          this.successAlert = true;
+        }
       }).catch(error => {
         this.errorAlert = true;
         console.log(error);

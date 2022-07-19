@@ -11,7 +11,7 @@
       <input type="email" name="email" ref="email" :value="model.email">
       <label for="phone">Numéro de téléphone :</label>
       <input type="number" name="phone" ref="phone" :value="model.phone">
-      <label for="address">Addresse :</label>
+      <label for="address">Adresse :</label>
       <input type="text" name="address" ref="address" :value="model.address">
       <label for="birthdate">Date de naissance :</label>
       <input type="date" name="birthdate" ref="birthdate" :value="manageModelBirthDateFormat(model.birth_date)">
@@ -25,7 +25,7 @@
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
       <input type="number" name="size" ref="size" :value="modelInfo.size">
-      <label for="weight">Poid :</label>
+      <label for="weight">Poids :</label>
       <input type="number" name="weight" ref="weight" :value="modelInfo.weight">
       <label for="chest">Poitrine :</label>
       <input type="number" name="chest" ref="chest" :value="modelInfo.chest">
@@ -195,8 +195,9 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
-        this.successAlert = true;
+        if (response.status != 500) {
+          this.successAlert = true;
+        }
       }).catch(error => {
         this.errorAlert = true;
         console.log(error);

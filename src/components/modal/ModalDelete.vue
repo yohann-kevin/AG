@@ -3,13 +3,13 @@
     <v-dialog v-model="show" max-width="500px" transition="dialog-bottom-transition">
       <v-card>
         <v-card-title class="text-h5 lighten-2">
-          Suppression d'une image
+          {{ modalInfo.modalTitle }}
         </v-card-title>
 
         <hr role="separator" aria-orientation="horizontal" class="mx-4 v-divider theme--light">
 
         <v-card-text class="mt-3">
-          Souhaitez vous réellement supprimer cette image ? Une fois cela fait il ne sera plus possible de la récupérer !
+          {{ modalInfo.modalText }}
         </v-card-text>
 
         <v-divider></v-divider>
@@ -42,7 +42,11 @@
 <script>
 export default {
   props: {
-     value: Boolean
+     value: Boolean,
+     modalInfo: {
+       type: Object,
+       required: true
+     }
   },
   methods: {
     deleteElement() {

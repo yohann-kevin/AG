@@ -59,7 +59,7 @@
     </v-card>
 
     <div>
-      <ModalDeletePicture v-model="showModal" v-on:accept="deletePicture"/>
+      <ModalDelete v-model="showModal" v-on:accept="deletePicture" :modalInfo="modalDeleteInfo"/>
     </div>
 
     <div class="delete-picture-alert">
@@ -133,11 +133,11 @@
 </template>
 
 <script>
-import ModalDeletePicture from '../modal/ModalDeletePicture'
+import ModalDelete from '../modal/ModalDelete'
 
 export default {
   components: {
-    ModalDeletePicture,
+    ModalDelete,
   },
   data: () => ({
     modelPictures: null,
@@ -148,7 +148,11 @@ export default {
     noDeleteMainPictureAlert: false,
     mainPictureModifiedAlert: false,
     noChangeMainPictureAlert: false,
-    errorModifiedMainPicture: false
+    errorModifiedMainPicture: false,
+    modalDeleteInfo: {
+      modalTitle: "Suppression d'une image",
+      modalText: 'Souhaitez vous réellement supprimer cette image ? Une fois cela fait il ne sera plus possible de la récupérer !'
+    }
   }),
   props: {
     pictures: {
@@ -178,7 +182,6 @@ export default {
       this.$axios(config).then(response => {
         if (response.status === 200) {
           this.successAlert = true;
-          // this.removeImageInUi(this.selectedPictureId);
           this.modelPictures = response.data;
           this.selectedPictureId = null;
         }
@@ -187,11 +190,6 @@ export default {
         console.log(error);
       });
     },
-    // removeImageInUi(pictureId) {
-      // TODO: re fetch image instead disaply management in ui
-      // const pictureDeleteIndex = this.modelPictures.findIndex(picture => picture.id === pictureId);
-      // this.modelPictures.splice(pictureDeleteIndex, 1);
-    // },
     modifyMainPicture(pictureId) {
       var config = {
         method: 'post',
