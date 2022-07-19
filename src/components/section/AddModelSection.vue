@@ -212,8 +212,9 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
-        this.successAlert = true;
+        if (response.data != 500) {
+          this.successAlert = true;
+        }
       }).catch(error => {
         this.errorAlert = true;
         console.log(error);
