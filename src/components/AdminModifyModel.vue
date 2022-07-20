@@ -11,7 +11,7 @@
       <input type="email" name="email" ref="email" :value="model.email">
       <label for="phone">Numéro de téléphone :</label>
       <input type="number" name="phone" ref="phone" :value="model.phone">
-      <label for="address">Addresse :</label>
+      <label for="address">Adresse :</label>
       <input type="text" name="address" ref="address" :value="model.address">
       <label for="birthdate">Date de naissance :</label>
       <input type="date" name="birthdate" ref="birthdate" :value="manageModelBirthDateFormat(model.birth_date)">
@@ -25,7 +25,7 @@
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
       <input type="number" name="size" ref="size" :value="modelInfo.size">
-      <label for="weight">Poid :</label>
+      <label for="weight">Poids :</label>
       <input type="number" name="weight" ref="weight" :value="modelInfo.weight">
       <label for="chest">Poitrine :</label>
       <input type="number" name="chest" ref="chest" :value="modelInfo.chest">
@@ -59,32 +59,25 @@
       <label for="twitter">Twitter :</label>
       <input type="text" name="twitter" ref="twitter" :value="modelNetwork.twitter">
     </v-card>
-    <!-- <v-card class="model-form">
-      <h3>Model pictures</h3>
-      TODO: disable temporally manage main picture change
-      <label for="mainpicture">Main picture :</label>
-      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
-      <label for="pictures">Pictures :</label>
-      <input type="file" name="pictures" multiple="multiple" ref="pictures">
-    </v-card> -->
     <div class="model-form-btn">
       <div class="modify-model-alert">
         <v-alert
-          ref="errorModifyModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="error"
-          :value="false"
+          v-model="errorAlert"
         >
           La modification du modèle n'a pas fonctionner !
         </v-alert>
-
         <v-alert
-          ref="successModifyModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="success"
-          :value="false"
+          v-model="successAlert"
         >
           Le modèle à bien été modifier !
         </v-alert>
@@ -93,10 +86,15 @@
       <v-btn text @click="sendModel()">Modifier</v-btn>
       <v-btn text>Annuler</v-btn>
     </div>
+    <ModifyPicture :pictures="modelPictures" :modelId="modelId"/>
+    <AddPicture :modelId="modelId" v-on:add:picture="modelPictures = $event"/>
   </div>
 </template>
 
 <script>
+import ModifyPicture from './section/ModifyPicture.vue';
+import AddPicture from './section/AddPicture.vue';
+
 export default {
   data: () => ({
     modelId: "",
@@ -104,8 +102,14 @@ export default {
     model: null,
     modelInfo: null,
     modelPictures: null,
-    modelNetwork: null
+    modelNetwork: null,
+    errorAlert: false,
+    successAlert: false
   }),
+  components: {
+    ModifyPicture,
+    AddPicture
+  },
   beforeMount() {
     this.modelId = this.$store.state.modelId;
     if (this.modelId === null) {
@@ -169,14 +173,14 @@ export default {
       }
     },
     sendModelData() {
-      let modelData = {
+      const modelData = {
         model_id: this.modelId,
         model: this.modelInfo,
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork
       };
 
-      let config = {
+      const config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'modify/model',
         headers: { 
@@ -186,10 +190,11 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
-        this.$refs.successModifyModel.vamue = true;
+        if (response.status != 500) {
+          this.successAlert = true;
+        }
       }).catch(error => {
-        this.$refs.errorModifyModel.vamue = true;
+        this.errorAlert = true;
         console.log(error);
       });
     }

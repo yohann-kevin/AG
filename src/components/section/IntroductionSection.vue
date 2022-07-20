@@ -1,26 +1,27 @@
 <template>
-  <v-parallax
+  <v-img
     dark
-    src="../../assets/ag-team-three.jpg"
-    contain
+    src="../../assets/ag-team-five.jpg"
+    class="pt-5"
+    height="700"
   >
     <v-row
       align="center"
       justify="center"
     >
       <v-col
-        class="text-center"
-        cols="12"
+        class="text-center text-container"
+        cols="8"
       >
-        <h4 class="text-h4">
-          Un projet qui nécessite des modèles uniques ? <br/> Faites confiance à
+        <h4 class="text-h4 intro-title">
+          <p>Un projet qui nécessite des modèles uniques ? <br/> Faites confiance à</p>
         </h4>
         <h1 class="mb-4 creattion ag-title">
           AG Scouting
         </h1>
       </v-col>
     </v-row>
-  </v-parallax>
+  </v-img>
 </template>
 
 <script>
@@ -30,10 +31,22 @@ export default {
 </script>
 
 <style scoped>
+.text-container {
+  margin-top: 200px;
+  padding-top: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
 .ag-title {
-  margin-top: 35px;
   font-size: 9rem;
   font-weight: 400;
+  margin-top: 35px;
+  margin-bottom: -10px;
+}
+
+.intro-title {
+  
 }
 
 @media only screen and (max-width: 768px) {

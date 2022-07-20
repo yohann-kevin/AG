@@ -11,7 +11,7 @@
       <input type="email" name="email" ref="email">
       <label for="phone">Numéro de téléphone :</label>
       <input type="number" name="phone" ref="phone">
-      <label for="address">Addresse :</label>
+      <label for="address">Adresse :</label>
       <input type="text" name="address" ref="address">
       <label for="birthdate">Date de naissance :</label>
       <input type="date" name="birthdate" ref="birthdate">
@@ -25,7 +25,7 @@
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
       <input type="number" name="size" ref="size">
-      <label for="weight">Poid :</label>
+      <label for="weight">Poids :</label>
       <input type="number" name="weight" ref="weight">
       <label for="chest">Poitrine :</label>
       <input type="number" name="chest" ref="chest">
@@ -61,7 +61,7 @@
     </v-card>
     <v-card class="model-form">
       <h3>Photo du modèle</h3>
-      <label for="mainpicture">Photo principal :</label>
+      <label for="mainpicture">Photo principale :</label>
       <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
       <label for="pictures">Photos :</label>
       <input type="file" name="pictures" multiple="multiple" ref="pictures">
@@ -70,21 +70,22 @@
 
       <div class="add-model-alert">
         <v-alert
-          ref="errorAddModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="error"
-          :value="false"
+          v-model="errorAlert"
         >
           L'ajout du modèle n'a pas fonctionner !
         </v-alert>
-
         <v-alert
-          ref="successAddModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="success"
-          :value="false"
+          v-model="successAlert"
         >
           Le modèle à bien été ajouter !
         </v-alert>
@@ -97,6 +98,8 @@
 </template>
 
 <script>
+import imageCompression from 'browser-image-compression';
+
 export default {
   name: 'AddModelSection',
   data: () => ({
@@ -104,7 +107,9 @@ export default {
     modelMeasurement: null,
     modelNetwork: null,
     dataMainPicture: [],
-    dataPictures: []
+    dataPictures: [],
+    errorAlert: false,
+    successAlert: false
   }),
   methods: {
     // TODO: manage empty value
@@ -149,35 +154,47 @@ export default {
         twitter: this.$refs.twitter.value
       }
     },
-    async manageModelMainPicture() {
-      let picture = this.$refs.mainpicture.files[0];
+    async convertPicturesToBase64(pictureData, isMainPicture) {
       const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
       });
-      this.dataMainPicture.push(await toBase64(picture));
+      if (isMainPicture) {
+        this.dataMainPicture.push(await toBase64(pictureData));
+      } else {
+        this.dataPictures.push(await toBase64(pictureData));
+      }
+    },
+    async compressImage(picture) {
+      const options = {
+        maxSizeMB: 4,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+
+      try {
+        return await imageCompression(picture, options);
+      } catch (error) {
+        this.$refs.errorAddModel.value = true;
+        console.log(error);
+      }
     },
     async manageModelPictures() {
-      let pictures = this.$refs.pictures.files;
-
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
-
-      for (let i = 0; i < pictures.length; i++) {
-        this.dataPictures.push(await toBase64(pictures[i]));
+      const mainPicture = this.$refs.mainpicture.files[0];
+      const mainPictureCompressed = await this.compressImage(mainPicture);
+      await this.convertPicturesToBase64(mainPictureCompressed, true);
+      const otherPictures = this.$refs.pictures.files;
+      for (let i = 0; i < otherPictures.length; i++) {
+        const pictureCompressed = await this.compressImage(otherPictures[i]);
+        await this.convertPicturesToBase64(pictureCompressed, false);
       }
     },
     async sendModelData() {
-      await this.manageModelMainPicture();
       await this.manageModelPictures();
-
-      let modelData = {
+      
+      const modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork,
@@ -185,7 +202,7 @@ export default {
         all_pictures: this.dataPictures
       };
 
-      let config = {
+      const config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'create/model',
         headers: { 
@@ -195,10 +212,11 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
-        this.$refs.successAddModel.value = true;
+        if (response.data != 500) {
+          this.successAlert = true;
+        }
       }).catch(error => {
-        this.$refs.errorAddModel.value = true;
+        this.errorAlert = true;
         console.log(error);
       });
     }
