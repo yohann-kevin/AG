@@ -59,14 +59,6 @@
       <label for="twitter">Twitter :</label>
       <input type="text" name="twitter" ref="twitter" :value="modelNetwork.twitter">
     </v-card>
-    <!-- <v-card class="model-form">
-      <h3>Model pictures</h3>
-      TODO: disable temporally manage main picture change
-      <label for="mainpicture">Main picture :</label>
-      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
-      <label for="pictures">Pictures :</label>
-      <input type="file" name="pictures" multiple="multiple" ref="pictures">
-    </v-card> -->
     <div class="model-form-btn">
       <div class="modify-model-alert">
         <v-alert
@@ -95,11 +87,13 @@
       <v-btn text>Annuler</v-btn>
     </div>
     <ModifyPicture :pictures="modelPictures" :modelId="modelId"/>
+    <AddPicture :modelId="modelId" v-on:add:picture="modelPictures = $event"/>
   </div>
 </template>
 
 <script>
 import ModifyPicture from './section/ModifyPicture.vue';
+import AddPicture from './section/AddPicture.vue';
 
 export default {
   data: () => ({
@@ -114,6 +108,7 @@ export default {
   }),
   components: {
     ModifyPicture,
+    AddPicture
   },
   beforeMount() {
     this.modelId = this.$store.state.modelId;
@@ -178,14 +173,14 @@ export default {
       }
     },
     sendModelData() {
-      let modelData = {
+      const modelData = {
         model_id: this.modelId,
         model: this.modelInfo,
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork
       };
 
-      let config = {
+      const config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'modify/model',
         headers: { 
