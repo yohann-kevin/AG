@@ -1,6 +1,6 @@
 <template>
   <div class="modify-picture-section">
-    <h2 class="mb-3">Modifier les images du modèles</h2>
+    <h2 class="mb-3">Modifier les images du modèle</h2>
     <v-card v-for="(picture, i) in modelPictures" :key="i" class="image-card">
       <v-img
         :src="picture.picture_path"
