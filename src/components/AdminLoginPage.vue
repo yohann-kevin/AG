@@ -92,6 +92,7 @@ export default {
     connectAdmin(adminData) {
       this.$store.commit("adminToken", adminData.token);
       this.$store.commit("adminData", adminData.admin_data);
+      sessionStorage.admtoken = this.$store.state.adminToken;
       this.$store.commit("adminConnected", true);
       this.$router.push("administration");
     }
