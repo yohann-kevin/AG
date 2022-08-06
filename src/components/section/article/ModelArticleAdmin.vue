@@ -84,7 +84,8 @@ export default {
         method: 'delete',
         url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
         }
       };
 

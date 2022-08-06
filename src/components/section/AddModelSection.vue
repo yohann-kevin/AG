@@ -206,13 +206,14 @@ export default {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'create/model',
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
         data : modelData
       };
 
       this.$axios(config).then(response => {
-        if (response.data != 500) {
+        if (response.status === 201) {
           this.successAlert = true;
         }
       }).catch(error => {

@@ -176,7 +176,9 @@ export default {
       const config = {
         method: 'delete',
         url: process.env.VUE_APP_API_URL +  '/model_pictures/' + this.selectedPictureId,
-        headers: { }
+        headers: {
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
+         }
       };
 
       this.$axios(config).then(response => {
@@ -194,7 +196,9 @@ export default {
       var config = {
         method: 'post',
         url: process.env.VUE_APP_API_URL + '/model_pictures/modify/main_picture/?model_uuid=' + this.modelId + '&id=' + pictureId,
-        headers: { }
+        headers: { 
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
+         }
       };
 
       this.$axios(config).then(response => {

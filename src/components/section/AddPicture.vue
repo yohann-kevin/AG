@@ -91,7 +91,8 @@ export default {
         method: 'post',
         url: process.env.VUE_APP_API_URL + 'model_pictures/',
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
         data : { picture_data: this.newPictureReady, model_id: this.modelId }
       };
