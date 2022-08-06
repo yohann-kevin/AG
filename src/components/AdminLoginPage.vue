@@ -1,6 +1,8 @@
 <template>
   <div class="admin-login">
-    <h2 class="admin-login-title">Connexion Administration</h2>
+    <h2 class="admin-login-title">
+      Connexion Administration
+    </h2>
     
     <v-card class="admin-login-container">
       <v-alert
@@ -25,14 +27,32 @@
       </v-alert>
 
       <label for="login">Email ou nom :</label>
-      <input type="text" name="login" ref="loginInput">
+      <input
+        type="text"
+        name="login"
+        ref="loginInput"
+      >
 
       <label for="password">Mot de passe : </label>
-      <input type="password" name="password" ref="passwordInput">
+      <input
+        type="password"
+        name="password"
+        ref="passwordInput"
+      >
 
       <div class="login-admin-btn">
-        <v-btn text @click="sendForm()"> Envoyer </v-btn>
-        <v-btn text @click="resetForm()"> Annuler</v-btn>
+        <v-btn
+          text
+          @click="sendForm()"
+        >
+          Envoyer
+        </v-btn>
+        <v-btn
+          text
+          @click="resetForm()"
+        >
+          Annuler
+        </v-btn>
       </div>
     </v-card>
   </div>

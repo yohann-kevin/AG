@@ -8,7 +8,7 @@
       <v-img
         :src="model.model_picture.picture_path"
         height="300px"
-      ></v-img>
+      />
 
       <v-card-title>
         {{ model.model.firstname }}
@@ -46,7 +46,11 @@
       </v-card-actions>
     </v-card>
     <div>
-      <ModalDelete v-model="showModal" v-on:accept="deleteModel(model.model.id)" :modalInfo="modalDeleteInfo"/>
+      <ModalDelete
+        v-model="showModal"
+        @accept="deleteModel(model.model.id)"
+        :modal-info="modalDeleteInfo"
+      />
     </div>
   </div>
 </template>

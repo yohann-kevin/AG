@@ -20,8 +20,11 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
-      <div v-for="(model, i) in modelsWoman" :key="i">
-        <ModelArticle :model="model"/>
+      <div
+        v-for="(model, i) in modelsWoman"
+        :key="i"
+      >
+        <ModelArticle :model="model" />
       </div>
     </div>
     <v-parallax
@@ -44,8 +47,11 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
-      <div v-for="(model, i) in modelsMen" :key="i">
-        <ModelArticle :model="model"/>
+      <div
+        v-for="(model, i) in modelsMen"
+        :key="i"
+      >
+        <ModelArticle :model="model" />
       </div>
     </div>
   </div>

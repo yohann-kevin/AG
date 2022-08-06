@@ -1,11 +1,17 @@
 <template>
   <div class="modify-picture-section">
-    <h2 class="mb-3">Modifier les images du modèle</h2>
-    <v-card v-for="(picture, i) in modelPictures" :key="i" class="image-card">
+    <h2 class="mb-3">
+      Modifier les images du modèle
+    </h2>
+    <v-card
+      v-for="(picture, i) in modelPictures"
+      :key="i"
+      class="image-card"
+    >
       <v-img
         :src="picture.picture_path"
         height="250px"
-      ></v-img>
+      />
       <v-btn
         v-if="picture.main_picture"
         class="ma-2"
@@ -59,7 +65,11 @@
     </v-card>
 
     <div>
-      <ModalDelete v-model="showModal" v-on:accept="deletePicture" :modalInfo="modalDeleteInfo"/>
+      <ModalDelete
+        v-model="showModal"
+        @accept="deletePicture"
+        :modal-info="modalDeleteInfo"
+      />
     </div>
 
     <div class="delete-picture-alert">

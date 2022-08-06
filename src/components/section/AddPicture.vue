@@ -1,6 +1,8 @@
 <template>
   <div class="add-new-picture">
-    <h2 class="mb-3">Ajouter une nouvelle image au modèle</h2>
+    <h2 class="mb-3">
+      Ajouter une nouvelle image au modèle
+    </h2>
     <v-card class="model-form">
       <div class="new-picture-alert">
         <v-alert
@@ -33,10 +35,18 @@
         v-model="newPicture"
         color="black"
         prepend-icon="mdi-camera"
-      ></v-file-input>
+      />
       <v-card-actions class="send-new-picture">
-        <v-btn text class="mr-4" @click="sendNewPicture()">Ajouter</v-btn>
-        <v-btn text>Annuler</v-btn>
+        <v-btn
+          text
+          class="mr-4"
+          @click="sendNewPicture()"
+        >
+          Ajouter
+        </v-btn>
+        <v-btn text>
+          Annuler
+        </v-btn>
       </v-card-actions>
     </v-card>
   </div>

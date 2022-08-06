@@ -4,70 +4,173 @@
     <v-card class="model-form">
       <h3>Information du modèle</h3>
       <label for="firstname">Prénom :</label>
-      <input type="text" name="firstname" ref="firstname">
+      <input
+        type="text"
+        name="firstname"
+        ref="firstname"
+      >
       <label for="lastname">Nom :</label>
-      <input type="text" name="lastname" ref="lastname">
+      <input
+        type="text"
+        name="lastname"
+        ref="lastname"
+      >
       <label for="email">Email :</label>
-      <input type="email" name="email" ref="email">
+      <input
+        type="email"
+        name="email"
+        ref="email"
+      >
       <label for="phone">Numéro de téléphone :</label>
-      <input type="number" name="phone" ref="phone">
+      <input
+        type="number"
+        name="phone"
+        ref="phone"
+      >
       <label for="address">Adresse :</label>
-      <input type="text" name="address" ref="address">
+      <input
+        type="text"
+        name="address"
+        ref="address"
+      >
       <label for="birthdate">Date de naissance :</label>
-      <input type="date" name="birthdate" ref="birthdate">
+      <input
+        type="date"
+        name="birthdate"
+        ref="birthdate"
+      >
       <label for="sexe">Sexe : </label>
-      <select name="sexe" ref="sexe">
-        <option value="men">Homme</option>
-        <option value="woman">Femme</option>
+      <select
+        name="sexe"
+        ref="sexe"
+      >
+        <option value="men">
+          Homme
+        </option>
+        <option value="woman">
+          Femme
+        </option>
       </select>
     </v-card>
     <v-card class="model-form">
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
-      <input type="number" name="size" ref="size">
+      <input
+        type="number"
+        name="size"
+        ref="size"
+      >
       <label for="weight">Poids :</label>
-      <input type="number" name="weight" ref="weight">
+      <input
+        type="number"
+        name="weight"
+        ref="weight"
+      >
       <label for="chest">Poitrine :</label>
-      <input type="number" name="chest" ref="chest">
+      <input
+        type="number"
+        name="chest"
+        ref="chest"
+      >
       <label for="waist">Taille :</label>
-      <input type="number" name="waist" ref="waist">
+      <input
+        type="number"
+        name="waist"
+        ref="waist"
+      >
       <label for="hips">Hanche :</label>
-      <input type="number" name="hips" ref="hips">
+      <input
+        type="number"
+        name="hips"
+        ref="hips"
+      >
       <label for="shoes">Pointure :</label>
-      <input type="number" name="shoes" ref="shoes">
+      <input
+        type="number"
+        name="shoes"
+        ref="shoes"
+      >
       <label for="color">Couleur de peau :</label>
-      <input type="text" name="color" ref="color">
+      <input
+        type="text"
+        name="color"
+        ref="color"
+      >
       <label for="haircolor">Couleur de cheveux :</label>
-      <input type="text" name="haircolor" ref="haircolor">
+      <input
+        type="text"
+        name="haircolor"
+        ref="haircolor"
+      >
       <label for="eyes">Yeux :</label>
-      <input type="text" name="eyes" ref="eyes">
+      <input
+        type="text"
+        name="eyes"
+        ref="eyes"
+      >
       <label for="atrological">Signe astrologique :</label>
-      <input type="text" name="astrological" ref="astrological">
+      <input
+        type="text"
+        name="astrological"
+        ref="astrological"
+      >
       <label for="description">Petite description :</label>
-      <textarea name="description" ref="description"></textarea>
+      <textarea
+        name="description"
+        ref="description"
+      />
     </v-card>
     <v-card class="model-form">
       <h3>Réseaux sociaux du modèle</h3>
       <label for="instagram">Instagram :</label>
-      <input type="text" name="instagram" ref="instagram">
+      <input
+        type="text"
+        name="instagram"
+        ref="instagram"
+      >
       <label for="facebook">Facebook :</label>
-      <input type="text" name="facebook" ref="facebook">
+      <input
+        type="text"
+        name="facebook"
+        ref="facebook"
+      >
       <label for="snapchat">Snapchat :</label>
-      <input type="text" name="snapchat" ref="snapchat">
+      <input
+        type="text"
+        name="snapchat"
+        ref="snapchat"
+      >
       <label for="tiktok">Tiktok :</label>
-      <input type="text" name="tiktok" ref="tiktok">
+      <input
+        type="text"
+        name="tiktok"
+        ref="tiktok"
+      >
       <label for="twitter">Twitter :</label>
-      <input type="text" name="twitter" ref="twitter">
+      <input
+        type="text"
+        name="twitter"
+        ref="twitter"
+      >
     </v-card>
     <v-card class="model-form">
       <h3>Photo du modèle</h3>
       <label for="mainpicture">Photo principale :</label>
-      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
+      <input
+        type="file"
+        name="mainpicture"
+        accept="image/*"
+        ref="mainpicture"
+      >
       <label for="pictures">Photos :</label>
-      <input type="file" name="pictures" multiple="multiple" ref="pictures">
+      <input
+        type="file"
+        name="pictures"
+        multiple="multiple"
+        ref="pictures"
+      >
     </v-card>
     <div class="model-form-btn">
-
       <div class="add-model-alert">
         <v-alert
           dense
@@ -91,8 +194,15 @@
         </v-alert>
       </div>
 
-      <v-btn text @click="sendModel()">Ajouter</v-btn>
-      <v-btn text>Annuler</v-btn>
+      <v-btn
+        text
+        @click="sendModel()"
+      >
+        Ajouter
+      </v-btn>
+      <v-btn text>
+        Annuler
+      </v-btn>
     </div>
   </div>
 </template>

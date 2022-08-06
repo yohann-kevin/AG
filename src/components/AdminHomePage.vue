@@ -2,9 +2,11 @@
   <div class="admin-page">
     <h1>Bienvenue {{ this.name }} sur votre espace administration</h1>
     <div>
-      <router-link to="/administration/models">Voir modèle</router-link>
+      <router-link to="/administration/models">
+        Voir modèle
+      </router-link>
     </div>
-    <AddModelSection/>
+    <AddModelSection />
   </div>
 </template>
 
