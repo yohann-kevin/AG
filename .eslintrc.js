@@ -1,9 +1,10 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   extends: [
     // add more generic rulesets here, such as:
-    // 'eslint:recommended',
+    'eslint:recommended',
+    // 'plugin:vue/recommended',
     'plugin:vue/strongly-recommended',
-    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
   ],
   rules: {
     // override/add rules settings here, such as:

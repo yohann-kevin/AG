@@ -86,6 +86,7 @@ export default {
     deleteModel(modelId) {
       let config = {
         method: 'delete',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
         headers: { 
           'Content-Type': 'application/json',

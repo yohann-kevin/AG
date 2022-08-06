@@ -68,6 +68,7 @@ export default {
   },
   methods: {
     findModel() {
+      // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
         this.models = response.data;
         this.$store.commit("homeModelData", this.models);
