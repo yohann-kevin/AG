@@ -20,7 +20,17 @@ import Error404 from './components/404Page.vue';
 // store
 import store from './store.js';
 
-var routes = [
+// api method
+import adminapi from './api/admin.js';
+
+async function manageAdmConnexion() {
+  store.commit("adminToken", sessionStorage.admtoken);
+  store.commit("adminConnected", true);
+  const adminData = await adminapi.findAdminData();
+  store.commit("adminData", adminData);
+}
+
+const routes = [
   { 
       path: "/", 
       name: "home",
@@ -40,7 +50,10 @@ var routes = [
     path: "/adminlogin",
     name: "administrationLogin",
     component: AdminLoginPage,
-    beforeEnter(to, from, next) {
+    async beforeEnter(to, from, next) {
+      if (sessionStorage.admtoken) {
+        await manageAdmConnexion();
+      }
       store.state.adminConnected ? next({ path: "/administration" }) : next();
     }
   },
@@ -48,7 +61,10 @@ var routes = [
     path: "/administration",
     name: "administration",
     component: AdminHome,
-    beforeEnter(to, from, next) {
+    async beforeEnter(to, from, next) {
+      if (sessionStorage.admtoken) {
+        await manageAdmConnexion();
+      }
       store.state.adminConnected ? next() : next({path: "/adminlogin"});
     },
     children: [

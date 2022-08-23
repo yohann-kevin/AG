@@ -23,7 +23,11 @@
         Vous pourrez prendre contact avec 5 modèles d'AG Scouting.
       </v-card-text>
 
-      <v-btn color="black lighten-2" text class="pack-btn">
+      <v-btn
+        color="black lighten-2"
+        text
+        class="pack-btn"
+      >
         Bientôt disponible
       </v-btn>
     </v-card>
@@ -52,7 +56,11 @@
         Vous pourrez prendre contact avec 25 modèles d'AG Scouting.
       </v-card-text>
 
-      <v-btn color="black lighten-2" text class="pack-btn">
+      <v-btn
+        color="black lighten-2"
+        text
+        class="pack-btn"
+      >
         Bientôt disponible
       </v-btn>
     </v-card>

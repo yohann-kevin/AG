@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <HeaderLayouts/>
+    <HeaderLayouts />
     <v-main>
-      <router-view class="view"></router-view>
+      <router-view class="view" />
     </v-main>
-    <FooterLayouts/>
+    <FooterLayouts />
   </v-app>
 </template>
 

@@ -1,21 +1,29 @@
 <template>
   <div>
-    <v-dialog v-model="show" max-width="500px" transition="dialog-bottom-transition">
+    <v-dialog
+      v-model="show"
+      max-width="500px"
+      transition="dialog-bottom-transition"
+    >
       <v-card>
         <v-card-title class="text-h5 lighten-2">
           {{ modalInfo.modalTitle }}
         </v-card-title>
 
-        <hr role="separator" aria-orientation="horizontal" class="mx-4 v-divider theme--light">
+        <hr
+          role="separator"
+          aria-orientation="horizontal"
+          class="mx-4 v-divider theme--light"
+        >
 
         <v-card-text class="mt-3">
           {{ modalInfo.modalText }}
         </v-card-text>
 
-        <v-divider></v-divider>
+        <v-divider />
 
         <v-card-actions>
-          <v-spacer></v-spacer>
+          <v-spacer />
           <v-btn
             text
             color="dark" 

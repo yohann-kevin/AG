@@ -1,8 +1,8 @@
 <template>
   <div>
-    <IntroductionSection/>
-    <PresentationSection/>
-    <ModelSection/>
+    <IntroductionSection />
+    <PresentationSection />
+    <ModelSection />
   </div>
 </template>
 

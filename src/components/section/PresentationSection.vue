@@ -2,7 +2,8 @@
   <div class="presentation-section">
     <h2>Présentation</h2>
     <div>
-      <p><strong>AG</strong> vient des initiales de la grand-mère maternelle de la créatrice. <br/>
+      <p>
+        <strong>AG</strong> vient des initiales de la grand-mère maternelle de la créatrice. <br>
         Un bel hommage à ses racines bretonnes, un projet rêvé depuis son enfance qui a pris forme sous le nom <strong>AG</strong> depuis 2019.
       </p>
       <p>
@@ -13,8 +14,8 @@
         AG scouting est une entreprise dont le but premier est de <span class="presentation-text-underline">satisfaire le client.</span>
       </p>
       <p>
-        L’activité se divise en deux parties distinctes : <br/>
-        - Proposer des mannequins aux agences <br/>
+        L’activité se divise en deux parties distinctes : <br>
+        - Proposer des mannequins aux agences <br>
         - Proposer des modèles aux clients
       </p>
       <!-- <p>

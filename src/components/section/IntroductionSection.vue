@@ -14,7 +14,7 @@
         cols="8"
       >
         <h4 class="text-h4 intro-title">
-          <p>Un projet qui nécessite des modèles uniques ? <br/> Faites confiance à</p>
+          <p>Un projet qui nécessite des modèles uniques ? <br> Faites confiance à</p>
         </h4>
         <h1 class="mb-4 creattion ag-title">
           AG Scouting
