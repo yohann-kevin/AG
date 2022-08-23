@@ -113,8 +113,9 @@ export default {
     connectAgent(agentData) {
       this.$store.commit("agentToken", agentData.token);
       this.$store.commit("agentData", agentData.admin_data);
+      sessionStorage.agttoken = this.$store.state.agentToken;
       this.$store.commit("agentConnected", true);
-      // TODO: push to page dashboard
+      this.$router.push({ path: '/agent' });
     }
   },
 }

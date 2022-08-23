@@ -30,10 +30,17 @@
       <router-link to="/prices">
         Nos tarifs
       </router-link>
+      <router-link 
+        to="/agent"
+        v-if="agentConnected"
+      >
+        Mon compte
+      </router-link>
       <v-menu 
         bottom
         origin="center center"
         transition="scale-transition"
+        v-else
       >
         <template #activator="{ on, attrs }">
           <v-btn
@@ -89,6 +96,11 @@ export default {
       { title: 'Connexion', link:'/login/agents' }
     ]
   }),
+  computed: {
+    agentConnected() {
+      return this.$store.state.agentConnected;
+    },
+  }
 }
 </script>
 

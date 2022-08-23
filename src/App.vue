@@ -23,6 +23,9 @@ export default {
   data: () => ({
     //
   }),
+  mounted() {
+    // TODO: manage reload agent connection here
+  }
 };
 </script>
 

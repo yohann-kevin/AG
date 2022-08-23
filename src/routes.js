@@ -13,6 +13,7 @@ import AdminModifyModel from './components/AdminModifyModel.vue'
 // agent component
 import RegisterAgent from './components/agents/RegisterAgent.vue';
 import LoginAgent from './components/agents/LoginAgent.vue';
+import DashboardAgent from './components/agents/DashboardAgent.vue';
 
 // error component
 import Error404 from './components/404Page.vue';
@@ -94,6 +95,14 @@ const routes = [
     path: "/login/agents",
     name: "LoginAgent",
     component: LoginAgent
+  },
+  {
+    path: '/agent',
+    name: 'agent',
+    component: DashboardAgent,
+    beforeEnter(to, from, next) {
+      store.state.agentConnected ? next() : next({path: '/login/agents'});
+    },
   },
   {
     path: "*",
