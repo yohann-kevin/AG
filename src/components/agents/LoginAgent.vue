@@ -25,8 +25,11 @@
         Connexion réussie !
       </v-alert>
     </div>
-    <v-form v-model="valid" class="login-agent-form" ref="login-agent-form">
-
+    <v-form
+      v-model="valid"
+      class="login-agent-form"
+      ref="login-agent-form"
+    >
       <v-text-field
         v-model="email"
         color="black"
@@ -35,7 +38,7 @@
         label="Courriel"
         class="login-agent-input"
         required
-      ></v-text-field>
+      />
 
       <v-text-field
         v-model="password"
@@ -45,11 +48,22 @@
         label="Mot de passe"
         class="login-agent-input"
         required
-      ></v-text-field>
+      />
 
       <div class="login-agent-btn">
-        <v-btn text :disabled="!valid" @click="loginAgent"> Envoyer </v-btn>
-        <v-btn text @click="resetForm"> Annuler</v-btn>
+        <v-btn
+          text
+          :disabled="!valid"
+          @click="loginAgent"
+        >
+          Envoyer
+        </v-btn>
+        <v-btn
+          text
+          @click="resetForm"
+        >
+          Annuler
+        </v-btn>
       </div>
     </v-form>
   </div>
@@ -78,6 +92,7 @@ export default {
 
       const config = {
         method: 'post',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'agent/auth',
         headers: { 
           'Content-Type': 'application/json'

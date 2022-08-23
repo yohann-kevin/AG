@@ -25,14 +25,18 @@
         Inscription réussie !
       </v-alert>
     </div>
-    <v-form v-model="valid" class="register-agent-form" ref="register-agent-form">
+    <v-form
+      v-model="valid"
+      class="register-agent-form"
+      ref="register-agent-form"
+    >
       <v-text-field
         v-model="firstname"
         color="black"
         label="Prénom"
         class="register-agent-input"
         required
-      ></v-text-field>
+      />
 
       <v-text-field
         v-model="lastname"
@@ -40,7 +44,7 @@
         label="Nom de famille"
         class="register-agent-input"
         required
-      ></v-text-field>
+      />
 
       <v-text-field
         v-model="email"
@@ -50,7 +54,7 @@
         label="Courriel"
         class="register-agent-input"
         required
-      ></v-text-field>
+      />
 
       <v-text-field
         v-model="password"
@@ -60,7 +64,7 @@
         label="Mot de passe"
         class="register-agent-input"
         required
-      ></v-text-field>
+      />
 
       <v-text-field
         v-model="confirmPassword"
@@ -70,7 +74,7 @@
         label="Confirmer le mot de passe"
         class="register-agent-input"
         required
-      ></v-text-field>
+      />
 
       <v-checkbox
         v-model="cgu"
@@ -80,11 +84,11 @@
         class="register-agent-input"
         required
       >
-        <template v-slot:label>
+        <template #label>
           <div>
             J'ai lu et j'accepte les 
             <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
+              <template #activator="{ on }">
                 <a
                   target="_blank"
                   href="#"
@@ -101,8 +105,19 @@
       </v-checkbox>
 
       <div class="register-agent-btn">
-        <v-btn text :disabled="!valid" @click="registerAgent"> Envoyer </v-btn>
-        <v-btn text @click="resetForm"> Annuler</v-btn>
+        <v-btn
+          text
+          :disabled="!valid"
+          @click="registerAgent"
+        >
+          Envoyer
+        </v-btn>
+        <v-btn
+          text
+          @click="resetForm"
+        >
+          Annuler
+        </v-btn>
       </div>
     </v-form>
   </div>
@@ -138,6 +153,7 @@ export default {
 
       const config = {
         method: 'post',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'agents',
         headers: { 
           'Content-Type': 'application/json'

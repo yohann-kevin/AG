@@ -24,14 +24,18 @@
     <v-spacer />
 
     <div id="nav">
-      <router-link to="/">Accueil</router-link>
-      <router-link to="/prices">Nos tarifs</router-link>
+      <router-link to="/">
+        Accueil
+      </router-link>
+      <router-link to="/prices">
+        Nos tarifs
+      </router-link>
       <v-menu 
         bottom
         origin="center center"
         transition="scale-transition"
       >
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <v-btn
             class="menu-button-dropdown"
             text
@@ -50,7 +54,12 @@
             :key="index"
           >
             <v-list-item-title>
-              <router-link class="dropdown-link" :to="link.link">{{ link.title }}</router-link>
+              <router-link
+                class="dropdown-link"
+                :to="link.link"
+              >
+                {{ link.title }}
+              </router-link>
             </v-list-item-title>
           </v-list-item>
         </v-list>
