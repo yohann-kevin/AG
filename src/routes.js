@@ -10,6 +10,10 @@ import AdminHomePage from './components/AdminHomePage.vue';
 import AdminModel from './components/AdminModel.vue';
 import AdminModifyModel from './components/AdminModifyModel.vue'
 
+// agent component
+import RegisterAgent from './components/agents/RegisterAgent.vue';
+import LoginAgent from './components/agents/LoginAgent.vue';
+
 // error component
 import Error404 from './components/404Page.vue';
 
@@ -64,6 +68,16 @@ var routes = [
         component: AdminModifyModel
       }
     ],
+  },
+  {
+    path: "/register/agents",
+    name: "RegisterAgent",
+    component: RegisterAgent
+  },
+  {
+    path: "/login/agents",
+    name: "LoginAgent",
+    component: LoginAgent
   },
   {
     path: "*",
