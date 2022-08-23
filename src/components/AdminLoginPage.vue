@@ -1,6 +1,8 @@
 <template>
   <div class="admin-login">
-    <h2 class="admin-login-title">Connexion Administration</h2>
+    <h2 class="admin-login-title">
+      Connexion Administration
+    </h2>
     
     <v-card class="admin-login-container">
       <v-alert
@@ -25,14 +27,32 @@
       </v-alert>
 
       <label for="login">Email ou nom :</label>
-      <input type="text" name="login" ref="loginInput">
+      <input
+        type="text"
+        name="login"
+        ref="loginInput"
+      >
 
       <label for="password">Mot de passe : </label>
-      <input type="password" name="password" ref="passwordInput">
+      <input
+        type="password"
+        name="password"
+        ref="passwordInput"
+      >
 
       <div class="login-admin-btn">
-        <v-btn text @click="sendForm()"> Envoyer </v-btn>
-        <v-btn text @click="resetForm()"> Annuler</v-btn>
+        <v-btn
+          text
+          @click="sendForm()"
+        >
+          Envoyer
+        </v-btn>
+        <v-btn
+          text
+          @click="resetForm()"
+        >
+          Annuler
+        </v-btn>
       </div>
     </v-card>
   </div>
@@ -72,6 +92,7 @@ export default {
 
       let config = {
         method: 'post',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'admin/auth',
         headers: { 
           'Content-Type': 'application/json'
@@ -92,6 +113,7 @@ export default {
     connectAdmin(adminData) {
       this.$store.commit("adminToken", adminData.token);
       this.$store.commit("adminData", adminData.admin_data);
+      sessionStorage.admtoken = this.$store.state.adminToken;
       this.$store.commit("adminConnected", true);
       this.$router.push("administration");
     }

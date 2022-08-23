@@ -1,5 +1,8 @@
 <template>
-  <div class="single-model-page" v-if="dataLoaded">
+  <div
+    class="single-model-page"
+    v-if="dataLoaded"
+  >
     <div class="single-model-info">
       <h2>{{ model.lastname }} {{ model.firstname }}</h2>
       <p>
@@ -17,23 +20,32 @@
         <li><span class="measurement-name">Signe astrologique :</span> {{ modelInfo.astrological }}</li>
       </ul>
       <div class="single-model-btn">
-        <v-btn text><router-link to="/">Retour</router-link></v-btn>
-        <v-btn text><router-link to=/prices>Contacter</router-link></v-btn>
+        <v-btn text>
+          <router-link to="/">
+            Retour
+          </router-link>
+        </v-btn>
+        <v-btn text>
+          <router-link to="/prices">
+            Contacter
+          </router-link>
+        </v-btn>
       </div>
     </div>
     <div class="single-model-image">
-      <v-carousel cycle show-arrows-on-hover>
+      <v-carousel
+        cycle
+        show-arrows-on-hover
+      >
         <v-carousel-item
           v-for="(modelPicture ,i) in modelPictures"
           :key="i"
           :src="modelPicture.picture_path"
           contain
-        ></v-carousel-item>
+        />
       </v-carousel>
     </div>
-    
   </div>
-  
 </template>
 
 <script>
@@ -55,6 +67,7 @@ export default {
   },
   methods: {
     findModelData() {
+      // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;

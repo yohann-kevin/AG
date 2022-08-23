@@ -1,63 +1,183 @@
 <template>
-  <div class="admin-update-model-page" v-if="dataLoaded">
+  <div
+    class="admin-update-model-page"
+    v-if="dataLoaded"
+  >
     <h2>Modifier le modèle</h2>
     <v-card class="model-form">
       <h3>information du modèle</h3>
       <label for="firstname">Prénom :</label>
-      <input type="text" name="firstname" ref="firstname" :value="model.firstname">
+      <input
+        type="text"
+        name="firstname"
+        ref="firstname"
+        :value="model.firstname"
+      >
       <label for="lastname">Nom :</label>
-      <input type="text" name="lastname" ref="lastname" :value="model.lastname">
+      <input
+        type="text"
+        name="lastname"
+        ref="lastname"
+        :value="model.lastname"
+      >
       <label for="email">Email :</label>
-      <input type="email" name="email" ref="email" :value="model.email">
+      <input
+        type="email"
+        name="email"
+        ref="email"
+        :value="model.email"
+      >
       <label for="phone">Numéro de téléphone :</label>
-      <input type="number" name="phone" ref="phone" :value="model.phone">
+      <input
+        type="number"
+        name="phone"
+        ref="phone"
+        :value="model.phone"
+      >
       <label for="address">Adresse :</label>
-      <input type="text" name="address" ref="address" :value="model.address">
+      <input
+        type="text"
+        name="address"
+        ref="address"
+        :value="model.address"
+      >
       <label for="birthdate">Date de naissance :</label>
-      <input type="date" name="birthdate" ref="birthdate" :value="manageModelBirthDateFormat(model.birth_date)">
+      <input
+        type="date"
+        name="birthdate"
+        ref="birthdate"
+        :value="manageModelBirthDateFormat(model.birth_date)"
+      >
       <label for="sexe">Sexe : </label>
-      <select name="sexe" ref="sexe" :value="model.sexe">
-        <option value="men">Homme</option>
-        <option value="woman">Femme</option>
+      <select
+        name="sexe"
+        ref="sexe"
+        :value="model.sexe"
+      >
+        <option value="men">
+          Homme
+        </option>
+        <option value="woman">
+          Femme
+        </option>
       </select>
     </v-card>
     <v-card class="model-form">
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
-      <input type="number" name="size" ref="size" :value="modelInfo.size">
+      <input
+        type="number"
+        name="size"
+        ref="size"
+        :value="modelInfo.size"
+      >
       <label for="weight">Poids :</label>
-      <input type="number" name="weight" ref="weight" :value="modelInfo.weight">
+      <input
+        type="number"
+        name="weight"
+        ref="weight"
+        :value="modelInfo.weight"
+      >
       <label for="chest">Poitrine :</label>
-      <input type="number" name="chest" ref="chest" :value="modelInfo.chest">
+      <input
+        type="number"
+        name="chest"
+        ref="chest"
+        :value="modelInfo.chest"
+      >
       <label for="waist">Taille :</label>
-      <input type="number" name="waist" ref="waist" :value="modelInfo.waist">
+      <input
+        type="number"
+        name="waist"
+        ref="waist"
+        :value="modelInfo.waist"
+      >
       <label for="hips">Hanche :</label>
-      <input type="number" name="hips" ref="hips" :value="modelInfo.hips">
+      <input
+        type="number"
+        name="hips"
+        ref="hips"
+        :value="modelInfo.hips"
+      >
       <label for="shoes">Pointure :</label>
-      <input type="number" name="shoes" ref="shoes" :value="modelInfo.shoe_size">
+      <input
+        type="number"
+        name="shoes"
+        ref="shoes"
+        :value="modelInfo.shoe_size"
+      >
       <label for="color">Couleur de peau :</label>
-      <input type="text" name="color" ref="color" :value="modelInfo.color">
+      <input
+        type="text"
+        name="color"
+        ref="color"
+        :value="modelInfo.color"
+      >
       <label for="haircolor">Couleur de cheuveux :</label>
-      <input type="text" name="haircolor" ref="haircolor" :value="modelInfo.hair_color">
+      <input
+        type="text"
+        name="haircolor"
+        ref="haircolor"
+        :value="modelInfo.hair_color"
+      >
       <label for="eyes">Yeux :</label>
-      <input type="text" name="eyes" ref="eyes" :value="modelInfo.eyes">
+      <input
+        type="text"
+        name="eyes"
+        ref="eyes"
+        :value="modelInfo.eyes"
+      >
       <label for="atrological">Signe astrologique :</label>
-      <input type="text" name="astrological" ref="astrological" :value="modelInfo.astrological">
+      <input
+        type="text"
+        name="astrological"
+        ref="astrological"
+        :value="modelInfo.astrological"
+      >
       <label for="description">Petite description :</label>
-      <textarea name="description" ref="description" :value="modelInfo.description"></textarea>
+      <textarea
+        name="description"
+        ref="description"
+        :value="modelInfo.description"
+      />
     </v-card>
     <v-card class="model-form">
       <h3>Réseaux sociaux du modèle</h3>
       <label for="instagram">Instagram :</label>
-      <input type="text" name="instagram" ref="instagram" :value="modelNetwork.instagram">
+      <input
+        type="text"
+        name="instagram"
+        ref="instagram"
+        :value="modelNetwork.instagram"
+      >
       <label for="facebook">Facebook :</label>
-      <input type="text" name="facebook" ref="facebook" :value="modelNetwork.facebook">
+      <input
+        type="text"
+        name="facebook"
+        ref="facebook"
+        :value="modelNetwork.facebook"
+      >
       <label for="snapchat">Snapchat :</label>
-      <input type="text" name="snapchat" ref="snapchat" :value="modelNetwork.snapchat">
+      <input
+        type="text"
+        name="snapchat"
+        ref="snapchat"
+        :value="modelNetwork.snapchat"
+      >
       <label for="tiktok">Tiktok :</label>
-      <input type="text" name="tiktok" ref="tiktok" :value="modelNetwork.tiktok">
+      <input
+        type="text"
+        name="tiktok"
+        ref="tiktok"
+        :value="modelNetwork.tiktok"
+      >
       <label for="twitter">Twitter :</label>
-      <input type="text" name="twitter" ref="twitter" :value="modelNetwork.twitter">
+      <input
+        type="text"
+        name="twitter"
+        ref="twitter"
+        :value="modelNetwork.twitter"
+      >
     </v-card>
     <div class="model-form-btn">
       <div class="modify-model-alert">
@@ -83,11 +203,24 @@
         </v-alert>
       </div>
 
-      <v-btn text @click="sendModel()">Modifier</v-btn>
-      <v-btn text>Annuler</v-btn>
+      <v-btn
+        text
+        @click="sendModel()"
+      >
+        Modifier
+      </v-btn>
+      <v-btn text>
+        Annuler
+      </v-btn>
     </div>
-    <ModifyPicture :pictures="modelPictures" :modelId="modelId"/>
-    <AddPicture :modelId="modelId" v-on:add:picture="modelPictures = $event"/>
+    <ModifyPicture
+      :pictures="modelPictures"
+      :model-id="modelId"
+    />
+    <AddPicture
+      :model-id="modelId"
+      @add:picture="modelPictures = $event"
+    />
   </div>
 </template>
 
@@ -120,6 +253,7 @@ export default {
   },
   methods: {
     findModelData() {
+      // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
@@ -182,6 +316,7 @@ export default {
 
       const config = {
         method: 'post',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'modify/model',
         headers: { 
           'Content-Type': 'application/json'

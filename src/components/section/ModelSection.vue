@@ -20,8 +20,11 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
-      <div v-for="(model, i) in modelsWoman" :key="i">
-        <ModelArticle :model="model"/>
+      <div
+        v-for="(model, i) in modelsWoman"
+        :key="i"
+      >
+        <ModelArticle :model="model" />
       </div>
     </div>
     <v-parallax
@@ -44,8 +47,11 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
-      <div v-for="(model, i) in modelsMen" :key="i">
-        <ModelArticle :model="model"/>
+      <div
+        v-for="(model, i) in modelsMen"
+        :key="i"
+      >
+        <ModelArticle :model="model" />
       </div>
     </div>
   </div>
@@ -76,6 +82,7 @@ export default {
   },
   methods: {
     findModel() {
+      // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
         this.models = response.data;
         this.$store.commit("homeModelData", this.models);

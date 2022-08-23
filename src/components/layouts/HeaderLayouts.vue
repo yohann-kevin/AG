@@ -17,16 +17,22 @@
       />
     </div>
 
-    <h1 class="ag-title">AG Scouting</h1>
+    <h1 class="ag-title">
+      AG Scouting
+    </h1>
 
-    <v-spacer></v-spacer>
+    <v-spacer />
 
     <div id="nav">
-      <router-link to="/">Accueil</router-link>
-      <router-link to="/prices">Nos tarifs</router-link>
+      <router-link to="/">
+        Accueil
+      </router-link>
+      <router-link to="/prices">
+        Nos tarifs
+      </router-link>
     </div>
 
-    <v-spacer></v-spacer>
+    <v-spacer />
 
     <v-btn
       href="https://www.instagram.com/ag.scouting/"
