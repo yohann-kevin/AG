@@ -4,15 +4,11 @@
 name: Vue app CI
 
 on:
+  pull_request
   push:
     branches:
       - master
       - develop
-  pull_request:
-    branches: 
-      - master
-      - develop
-      - epic/agent
 
 jobs:
   build:
