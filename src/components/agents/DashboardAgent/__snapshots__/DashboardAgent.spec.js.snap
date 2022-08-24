@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardAgent should test component render correctly 1`] = `
+<div class="agent-dashboard">
+  <h2>Dashboard</h2>
+</div>
+`;

@@ -11,9 +11,9 @@ import AdminModel from './components/AdminModel.vue';
 import AdminModifyModel from './components/AdminModifyModel.vue'
 
 // agent component
-import RegisterAgent from './components/agents/RegisterAgent.vue';
-import LoginAgent from './components/agents/LoginAgent.vue';
-import DashboardAgent from './components/agents/DashboardAgent.vue';
+import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
+import LoginAgent from './components/agents/LoginAgent/LoginAgent.vue';
+import DashboardAgent from './components/agents/DashboardAgent/DashboardAgent.vue';
 
 // error component
 import Error404 from './components/404Page.vue';
