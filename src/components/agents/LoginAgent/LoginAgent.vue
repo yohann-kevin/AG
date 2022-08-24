@@ -13,15 +13,7 @@
       >
         Quelque chose c'est mal passer réessayer de vous connecter plus tard !
       </v-alert>
-      <v-alert
-        dense
-        text
-        dismissible
-        elevation="15"
-        type="success"
-        v-model="successAlert"
-        class="login-agent-alert"
-      >
+      <v-alert dense text dismissible elevation="15" type="success" v-model="successAlert" class="login-agent-alert">
         Connexion réussie !
       </v-alert>
     </div>

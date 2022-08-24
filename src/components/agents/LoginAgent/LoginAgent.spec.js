@@ -17,7 +17,7 @@ describe('LoginAgent', () => {
     const wrapper = initWrapper();
 
     const title = wrapper.find('h2');
-    expect(title.text()).toContain('Connexion');
+    expect(title.text()).toContain('Connexionnnnn');
     expect(wrapper).toMatchSnapshot();
   });
 });
