@@ -64,6 +64,8 @@
         Bientôt disponible
       </v-btn>
     </v-card>
+
+    <p>Code here !!</p>
   </div>
 </template>
 
