@@ -11,6 +11,8 @@
 <script>
 import HeaderLayouts from "./components/layouts/HeaderLayouts.vue";
 import FooterLayouts from "./components/layouts/FooterLayouts.vue";
+// agent api
+import agentapi from "./api/agent.js";
 
 export default {
   name: 'App',
@@ -23,6 +25,15 @@ export default {
   data: () => ({
     //
   }),
+  beforeMount() {
+    if (sessionStorage.agttoken) {
+      const token = sessionStorage.agttoken;
+      const agentData = agentapi.findAgentData();
+      this.$store.commit("agentData", agentData);
+      this.$store.commit("agentToken", token);
+      this.$store.commit("agentConnected", true);
+    }
+  },
 };
 </script>
 

@@ -30,6 +30,47 @@
       <router-link to="/prices">
         Nos tarifs
       </router-link>
+      <router-link 
+        to="/agent"
+        v-if="agentConnected"
+      >
+        Mon compte
+      </router-link>
+      <v-menu 
+        bottom
+        origin="center center"
+        transition="scale-transition"
+        v-else
+      >
+        <template #activator="{ on, attrs }">
+          <v-btn
+            class="menu-button-dropdown"
+            text
+            v-bind="attrs"
+            v-on="on"
+          >
+            Mon compte
+            <v-icon large>
+              mdi-chevron-down
+            </v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(link, index) in links"
+            :key="index"
+          >
+            <v-list-item-title>
+              <router-link
+                class="dropdown-link"
+                :to="link.link"
+              >
+                {{ link.title }}
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </div>
 
     <v-spacer />
@@ -48,13 +89,24 @@
 
 <script>
 export default {
-  name: "HeaderLayouts"
+  name: "HeaderLayouts",
+  data: () => ({
+    links: [
+      { title: 'Inscription', link:'/register/agents' },
+      { title: 'Connexion', link:'/login/agents' }
+    ]
+  }),
+  computed: {
+    agentConnected() {
+      return this.$store.state.agentConnected;
+    },
+  }
 }
 </script>
 
 <style scoped>
 #nav {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -82,6 +134,39 @@ export default {
 }
 
 #nav > a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu-button-dropdown {
+  font-size: 16px;
+  margin-top: -2px;
+  color: #000;
+}
+
+.dropdown-link {
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-link:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2.5px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.dropdown-link:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }

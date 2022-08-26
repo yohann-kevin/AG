@@ -10,6 +10,9 @@ export default new Vuex.Store({
     adminData: null,
     homeModelData: null,
     modelId: null,
+    agentToken: null,
+    agentConnected: false,
+    agentData: null
   },
   mutations: {
     adminToken: (state, token) => {
@@ -26,6 +29,15 @@ export default new Vuex.Store({
     },
     modelId: (state, data) => {
       state.modelId = data;
+    },
+    agentToken: (state, token) => {
+      state.agentToken = token;
+    },
+    agentConnected: (state, isConnected) => {
+      state.agentConnected = isConnected;
+    },
+    agentData: (state, data) => {
+      state.agentData = data;
     }
   },
   actions: {
