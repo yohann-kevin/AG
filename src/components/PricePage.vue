@@ -132,7 +132,25 @@
           text
           class="pack-btn"
         >
-          Bientôt disponible
+          mdi-star-check
+          </v-icon>
+          <span class="text-h6 font-weight-light">Pack diamond</span>
+          </v-card-title>
+
+          <v-card-text class="font-weight-bold">
+            <div class="my-4 text-subtitle-1">
+              T10 : 188,65 € 
+            </div>
+            Mannequin reconnue qui ne bosse que avec des marque de luxe a l’international 
+          </v-card-text>
+
+          <v-btn
+            color="black lighten-2"
+            text
+            class="pack-btn"
+          >
+            Bientôt disponible
+          </v-btn>
         </v-btn>
       </v-card>
     </div>
