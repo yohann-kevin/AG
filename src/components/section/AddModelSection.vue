@@ -219,11 +219,13 @@ export default {
     dataMainPicture: [],
     dataPictures: [],
     errorAlert: false,
-    successAlert: false
+    successAlert: false,
+    isInLoad: false
   }),
   methods: {
     // TODO: manage empty value
     sendModel() {
+      this.isInLoad = true;
       this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
@@ -326,8 +328,10 @@ export default {
       this.$axios(config).then(response => {
         if (response.status === 201) {
           this.successAlert = true;
+          this.isInLoad = false;
         }
       }).catch(error => {
+        this.isInLoad = false;
         this.errorAlert = true;
         console.log(error);
       });

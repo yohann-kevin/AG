@@ -65,7 +65,7 @@
       </v-btn>
     </v-card>
 
-    <p>Code here !!</p>
+    <p>plop</p>
   </div>
 </template>
 
