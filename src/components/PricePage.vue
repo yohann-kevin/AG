@@ -21,7 +21,7 @@
         <div class="my-4 text-subtitle-1">
           T7 : 98,55 € 
         </div>
-        Tout les mannequins qui n’ont pas eu encore un job sur AG Scouting son des T7
+        Tous les mannequins qui n’ont pas eu encore un job sur AG Scouting sont des T7
       </v-card-text>
 
       <v-btn
@@ -55,7 +55,7 @@
         <div class="my-4 text-subtitle-1">
           T8 : 114,80 € 
         </div>
-        Un mannequin qui a déjà travailler contre rémunération avec AG Scouting pour un client 
+        Un mannequin qui a déjà travaillé contre rémunération avec AG Scouting pour un client 
       </v-card-text>
 
       <v-btn
@@ -141,7 +141,7 @@
             <div class="my-4 text-subtitle-1">
               T10 : 188,65 € 
             </div>
-            Mannequin reconnue qui ne bosse que avec des marque de luxe a l’international 
+            Mannequin reconnue qui ne travaille qu'avec des marques de luxe à l’international 
           </v-card-text>
 
           <v-btn
@@ -165,7 +165,7 @@
       type="warning"
       v-model="errorAlert"
     >
-      Les frais de déplacements et d'hébergements seront à votre charge si nécessaire.
+      Les frais de déplacement et d'hébergements seront à votre charge si nécessaire.
     </v-alert>
 
     <v-alert
