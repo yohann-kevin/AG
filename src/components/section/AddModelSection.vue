@@ -192,6 +192,36 @@
         >
           Le modèle à bien été ajouter !
         </v-alert>
+        <div class="text-center">
+          <v-progress-circular
+            :size="80"
+            :value="100"
+            color="blue-grey"
+          />
+          <v-progress-circular
+            :size="80"
+            :value="80"
+            color="deep-orange lighten-2"
+          />
+
+          <v-progress-circular
+            :size="80"
+            :value="60"
+            color="brown"
+          />
+
+          <v-progress-circular
+            :size="80"
+            :value="40"
+            color="lime"
+          />
+
+          <v-progress-circular
+            :size="80"
+            :value="20"
+            color="indigo darken-2"
+          />
+        </div>
       </div>
       <v-btn
         text
@@ -208,7 +238,6 @@
 
 <script>
 import imageCompression from 'browser-image-compression';
-
 export default {
   name: 'AddModelSection',
   data: () => ({
@@ -218,13 +247,13 @@ export default {
     dataMainPicture: [],
     dataPictures: [],
     errorAlert: false,
-    successAlert: false
-    
+    successAlert: false,
+    isInLoad: false
   }),
   methods: {
     // TODO: manage empty value
     sendModel() {
-      this.manageModelInfo();
+      this.manageModelInfo(false);
       this.manageModelMeasurement();
       this.manageModelNetwork();
       this.sendModelData();
@@ -283,7 +312,6 @@ export default {
         maxWidthOrHeight: 1920,
         useWebWorker: true
       };
-
       try {
         return await imageCompression(picture, options);
       } catch (error) {
@@ -311,7 +339,6 @@ export default {
         main_picture: this.dataMainPicture,
         all_pictures: this.dataPictures
       };
-
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
@@ -322,13 +349,12 @@ export default {
         },
         data : modelData
       };
-
       this.$axios(config).then(response => {
         if (response.data != 500) {
-          this.successAlert = true;
+          this.successAlert = false;
         }
       }).catch(error => {
-        this.errorAlert = true;
+        this.errorAlert = false;
         console.log(error);
       });
     }
@@ -343,13 +369,11 @@ export default {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-
 .add-model h2 {
   width: 100%;
   margin: 10px;
   text-align: center;
 }
-
 .model-form {
   width: 70%;
   display: flex;
@@ -358,17 +382,14 @@ export default {
   margin: 15px;
   padding: 15px;
 }
-
 .model-form h3 {
   width: 100%;
   text-align: center;
 }
-
 .model-form label {
   width: 100%;
   text-align: center;
 }
-
 .model-form input, .model-form select {
   width: 40%;
   height: 30px;
@@ -379,7 +400,6 @@ export default {
   padding: 5px;
   transition: 0.5s;
 }
-
 .model-form textarea {
   width: 60%;
   height: 70px;
@@ -390,20 +410,16 @@ export default {
   padding: 5px;
   transition: 0.5s;
 }
-
 .model-form option {
   text-align: center;
 }
-
 .model-form input:hover, .model-form textarea:hover {
   border-radius: 0px;
   outline: none;
 }
-
 .add-model-alert {
   width: 100%;
 }
-
 .model-form-btn {
   width: 70%;
   display: flex;
