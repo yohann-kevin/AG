@@ -192,43 +192,7 @@
         >
           Le modèle à bien été ajouter !
         </v-alert>
-
-        <div class="text-center">
-          <v-progress-circular
-            :size="80"
-            :value="100"
-
-            color="blue-grey"
-          />
-
-          <v-progress-circular
-            :size="80"
-            :value="80"
-            color="deep-orange lighten-2"
-          />
-
-          <v-progress-circular
-            :size="80"
-            :value="60"
-            color="brown"
-          />
-
-          <v-progress-circular
-            :size="80"
-            :value="40"
-            color="lime"
-          />
-
-          <v-progress-circular
-            :size="80"
-            :value="20"
-            color="indigo darken-2"
-          />
-        </div>
       </div>
-
-      
-
       <v-btn
         text
         @click="sendModel()"
@@ -254,13 +218,13 @@ export default {
     dataMainPicture: [],
     dataPictures: [],
     errorAlert: false,
-    successAlert: false,
-    isInLoad: false
+    successAlert: false
+    
   }),
   methods: {
     // TODO: manage empty value
     sendModel() {
-      this.manageModelInfo(false);
+      this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
       this.sendModelData();
@@ -361,10 +325,10 @@ export default {
 
       this.$axios(config).then(response => {
         if (response.data != 500) {
-          this.successAlert = false;
+          this.successAlert = true;
         }
       }).catch(error => {
-        this.errorAlert = false;
+        this.errorAlert = true;
         console.log(error);
       });
     }

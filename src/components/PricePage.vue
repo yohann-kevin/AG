@@ -101,9 +101,6 @@
           Bientôt disponible
         </v-btn>
       </v-card>
-
-
-
       <v-card
         elevation="8"
         shaped
@@ -124,33 +121,14 @@
           <div class="my-4 text-subtitle-1">
             T10 : 188,65 € 
           </div>
-          Mannequin reconnue qui ne boss que avec des marque de luxe a l’international 
+          Mannequin reconnue qui ne bosse que avec des marque de luxe a l’international 
         </v-card-text>
-
         <v-btn
           color="black lighten-2"
           text
           class="pack-btn"
         >
-          mdi-star-check
-          </v-icon>
-          <span class="text-h6 font-weight-light">Pack diamond</span>
-          </v-card-title>
-
-          <v-card-text class="font-weight-bold">
-            <div class="my-4 text-subtitle-1">
-              T10 : 188,65 € 
-            </div>
-            Mannequin reconnue qui ne travaille qu'avec des marques de luxe à l’international 
-          </v-card-text>
-
-          <v-btn
-            color="black lighten-2"
-            text
-            class="pack-btn"
-          >
-            Bientôt disponible
-          </v-btn>
+          Bientôt disponible
         </v-btn>
       </v-card>
     </div>
