@@ -178,7 +178,6 @@
           dismissible
           elevation="15"
           type="error"
-          v-model="errorAlert"
         >
           L'ajout du modèle n'a pas fonctionner !
         </v-alert>
@@ -188,41 +187,20 @@
           dismissible
           elevation="15"
           type="success"
-          v-model="successAlert"
         >
           Le modèle à bien été ajouter !
         </v-alert>
-        <div class="text-center">
-          <v-progress-circular
-            :size="80"
-            :value="100"
-            color="blue-grey"
-          />
-          <v-progress-circular
-            :size="80"
-            :value="80"
-            color="deep-orange lighten-2"
-          />
 
-          <v-progress-circular
-            :size="80"
-            :value="60"
-            color="brown"
-          />
-
-          <v-progress-circular
-            :size="80"
-            :value="40"
-            color="lime"
-          />
-
-          <v-progress-circular
-            :size="80"
-            :value="20"
-            color="indigo darken-2"
-          />
-        </div>
+        <v-progress-circular
+        
+          size="80"
+          color="black"
+          indeterminate
+          class="is-in-load"
+          v-if="isInLoad"
+        />
       </div>
+
       <v-btn
         text
         @click="sendModel()"
@@ -246,8 +224,8 @@ export default {
     modelNetwork: null,
     dataMainPicture: [],
     dataPictures: [],
-    errorAlert: false,
-    successAlert: false,
+    errorAlert: true,
+    successAlert: true,
     isInLoad: false
   }),
   methods: {
@@ -351,7 +329,7 @@ export default {
       };
       this.$axios(config).then(response => {
         if (response.data != 500) {
-          this.successAlert = false;
+          this.successAlert = true;
         }
       }).catch(error => {
         this.errorAlert = false;
