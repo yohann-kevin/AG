@@ -25,7 +25,7 @@ export default {
   data: () => ({
     //
   }),
-  beforeMount() {
+  beforeCreate() {
     if (sessionStorage.agttoken) {
       const token = sessionStorage.agttoken;
       const agentData = agentapi.findAgentData();

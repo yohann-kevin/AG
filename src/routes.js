@@ -101,7 +101,7 @@ const routes = [
     name: 'agent',
     component: DashboardAgent,
     beforeEnter(to, from, next) {
-      store.state.agentConnected ? next() : next({path: '/login/agents'});
+      sessionStorage.agttoken ? next() : next({path: '/login/agents'});
     },
   },
   {
