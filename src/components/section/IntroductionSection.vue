@@ -2,7 +2,7 @@
   <v-img
     dark
     src="../../assets/ag-team-five.jpg"
-    class="pt-5"
+    class="img-header"
     height="700"
   >
     <v-row
@@ -45,14 +45,15 @@ export default {
   margin-bottom: -10px;
 }
 
-.intro-title {
-  
-}
-
 @media only screen and (max-width: 768px) {
   .ag-title {
     font-size: 5rem;
     margin-top: 0;
+
+  }
+
+  .img-header {
+    display: none;
   }
 }
 </style>
