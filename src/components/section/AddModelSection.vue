@@ -178,6 +178,8 @@
           dismissible
           elevation="15"
           type="error"
+          v-model="errorAlert"
+          class="add-model-v-alert"
         >
           L'ajout du modèle n'a pas fonctionner !
         </v-alert>
@@ -187,17 +189,19 @@
           dismissible
           elevation="15"
           type="success"
+          v-model="successAlert"
+          class="add-model-v-alert"
         >
           Le modèle à bien été ajouter !
         </v-alert>
 
         <v-progress-circular
-        
-          size="80"
+          :size="90"
           color="black"
           indeterminate
           class="is-in-load"
           v-if="isInLoad"
+          :width="8"
         />
       </div>
 
@@ -224,14 +228,15 @@ export default {
     modelNetwork: null,
     dataMainPicture: [],
     dataPictures: [],
-    errorAlert: true,
-    successAlert: true,
+    errorAlert: false,
+    successAlert: false,
     isInLoad: false
   }),
   methods: {
     // TODO: manage empty value
     sendModel() {
-      this.manageModelInfo(false);
+      this.isInLoad = true;
+      this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
       this.sendModelData();
@@ -328,11 +333,13 @@ export default {
         data : modelData
       };
       this.$axios(config).then(response => {
-        if (response.data != 500) {
+        this.isInLoad = false;
+        if (response.status === 201) {
           this.successAlert = true;
         }
       }).catch(error => {
-        this.errorAlert = false;
+        this.isInLoad = false;
+        this.errorAlert = true;
         console.log(error);
       });
     }
@@ -347,11 +354,13 @@ export default {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .add-model h2 {
   width: 100%;
   margin: 10px;
   text-align: center;
 }
+
 .model-form {
   width: 70%;
   display: flex;
@@ -360,14 +369,17 @@ export default {
   margin: 15px;
   padding: 15px;
 }
+
 .model-form h3 {
   width: 100%;
   text-align: center;
 }
+
 .model-form label {
   width: 100%;
   text-align: center;
 }
+
 .model-form input, .model-form select {
   width: 40%;
   height: 30px;
@@ -378,6 +390,7 @@ export default {
   padding: 5px;
   transition: 0.5s;
 }
+
 .model-form textarea {
   width: 60%;
   height: 70px;
@@ -388,21 +401,35 @@ export default {
   padding: 5px;
   transition: 0.5s;
 }
+
 .model-form option {
   text-align: center;
 }
+
 .model-form input:hover, .model-form textarea:hover {
   border-radius: 0px;
   outline: none;
 }
+
 .add-model-alert {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
+.add-model-v-alert {
+  width: 100%;
+}
+
 .model-form-btn {
   width: 70%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 15px;
+}
+
+.is-in-load {
+  margin-bottom: 30px;
 }
 </style>
