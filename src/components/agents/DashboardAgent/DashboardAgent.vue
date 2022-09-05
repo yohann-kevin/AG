@@ -43,12 +43,12 @@
           Vos informations
         </v-card-title>
 
-        <!-- TODO: place component for modify informations -->
         <v-card-text>
           <v-form
-            v-model="valid"
+            v-model="updateFormValid"
             class="update-info-agent-form"
             ref="update-info-agent-form"
+            v-if="agents"
           >
             <v-text-field
               v-model="agentsUpdated.firstname"
@@ -75,7 +75,7 @@
             <div class="update-agent-btn">
               <v-btn
                 text
-                :disabled="!valid"
+                :disabled="!updateFormValid"
                 @click="updateAgent"
               >
                 Envoyer
@@ -91,19 +91,111 @@
           </v-form>
         </v-card-text>
       </v-card>
+
+      <v-card
+        elevation="8"
+        class="agent-card"
+      >
+        <v-card-title>
+          Votre mot de passe
+        </v-card-title>
+
+        <v-card-text>
+          <v-form
+            v-model="updatePasswordValid"
+            ref="update-agent-password"
+          >
+            <v-text-field
+              v-model="lastPassword"
+              color="black"
+              :rules="passwordRules"
+              type="password"
+              label="Entrer votre ancien mot de passe"
+              required
+            />
+
+            <v-text-field
+              v-model="newPassword"
+              color="black"
+              :rules="passwordRules"
+              type="password"
+              label="Nouveau mot de passe"
+              required
+            />
+
+            <v-text-field
+              v-model="confirmPassword"
+              color="black"
+              :rules="[(this.newPassword === this.confirmPassword) || 'Les mot de passe ne corresponde pas']"
+              type="password"
+              label="Confirmer le nouveau mot de passe"
+              required
+            />
+            <div class="update-agent-btn">
+              <v-btn
+                text
+                :disabled="!updatePasswordValid"
+                @click="updatePasswordAgent"
+              >
+                Envoyer
+              </v-btn>
+              <v-btn
+                text
+                @click="resetFormPasswordAgent"
+                class="ml-4"
+              >
+                Annuler
+              </v-btn>
+            </div>
+          </v-form>
+        </v-card-text>
+      </v-card>
+      <div>
+        <ModalDelete
+          v-model="showModal"
+          @accept="deleteAgent"
+          :modal-info="modalDeleteInfo"
+        />
+      </div>
+      <v-btn
+        class="ma-2"
+        dark
+        text
+        color="error"
+        @click="showModal = true"
+      >
+        Supprimer votre compte
+      </v-btn>
     </div>
   </div>
 </template>
 
 <script>
+import ModalDelete from '../../modal/ModalDelete.vue';
+
 export default {
   data: () => ({
     agents: null,
     agentsUpdated: null,
-    valid: false,
+    updateFormValid: false,
     emailRules: [ v => /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || 'Adresse email invalide' ],
+    passwordRules: [ v => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(v) || 'Mot de passe invalide' ],
+    newPassword: '',
+    lastPassword: '',
+    confirmPassword: '',
+    updatePasswordValid: false,
+    showModal: false,
+    modalDeleteInfo: {
+      modalTitle: "Suppression de votre compte",
+      modalText: 'Souhaitez vous réellement supprimer votre compte ? Une fois cela fait il ne sera plus possible de le récupérer !'
+    },
   }),
+  components: {
+    ModalDelete
+  },
   async beforeMount() {
+    this.firstname = this.$store.state.agentData.firstname;
+    console.log(this.firstname);
     this.agents = await this.formatAgentData();
     this.agentsUpdated = this.agents;
     console.log(this.agents);
@@ -128,6 +220,21 @@ export default {
       delete agentData.updated_at;
       delete agentData.cgu;
       return agentData;
+    },
+    updatePasswordAgent() {
+      const passwordData = {
+        new_password: this.newPassword,
+        last_password: this.lastPassword,
+      };
+      // TODO: send new password
+      console.log(passwordData);
+    },
+    resetFormPasswordAgent() {
+      this.$refs['update-agent-password'].reset();
+    },
+    deleteAgent() {
+      // TODO: delete agent
+      console.log('delete agent');
     }
   }
 }
@@ -174,9 +281,8 @@ export default {
 .update-info-agent-form {
   width: 100%;
 }
+
 .update-agent-btn {
   width: 100%;
 }
-
-
 </style>
