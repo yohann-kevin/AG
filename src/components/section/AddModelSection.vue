@@ -179,6 +179,7 @@
           elevation="15"
           type="error"
           v-model="errorAlert"
+          class="add-model-v-alert"
         >
           L'ajout du modèle n'a pas fonctionner !
         </v-alert>
@@ -189,9 +190,19 @@
           elevation="15"
           type="success"
           v-model="successAlert"
+          class="add-model-v-alert"
         >
           Le modèle à bien été ajouter !
         </v-alert>
+
+        <v-progress-circular
+          :size="90"
+          color="black"
+          indeterminate
+          class="is-in-load"
+          v-if="isInLoad"
+          :width="8"
+        />
       </div>
 
       <v-btn
@@ -209,7 +220,6 @@
 
 <script>
 import imageCompression from 'browser-image-compression';
-
 export default {
   name: 'AddModelSection',
   data: () => ({
@@ -219,11 +229,13 @@ export default {
     dataMainPicture: [],
     dataPictures: [],
     errorAlert: false,
-    successAlert: false
+    successAlert: false,
+    isInLoad: false
   }),
   methods: {
     // TODO: manage empty value
     sendModel() {
+      this.isInLoad = true;
       this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
@@ -283,7 +295,6 @@ export default {
         maxWidthOrHeight: 1920,
         useWebWorker: true
       };
-
       try {
         return await imageCompression(picture, options);
       } catch (error) {
@@ -311,7 +322,6 @@ export default {
         main_picture: this.dataMainPicture,
         all_pictures: this.dataPictures
       };
-
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
@@ -322,12 +332,13 @@ export default {
         },
         data : modelData
       };
-
       this.$axios(config).then(response => {
+        this.isInLoad = false;
         if (response.status === 201) {
           this.successAlert = true;
         }
       }).catch(error => {
+        this.isInLoad = false;
         this.errorAlert = true;
         console.log(error);
       });
@@ -402,6 +413,12 @@ export default {
 
 .add-model-alert {
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-model-v-alert {
+  width: 100%;
 }
 
 .model-form-btn {
@@ -410,5 +427,9 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   padding: 15px;
+}
+
+.is-in-load {
+  margin-bottom: 30px;
 }
 </style>
