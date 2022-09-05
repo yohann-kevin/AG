@@ -14,14 +14,14 @@
         >
           mdi-star-check
         </v-icon>
-        <span class="text-h6 font-weight-light">Pack bronze</span>
+        <span class="text-h6 font-weight-light">Modèle Bronze</span>
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
         <div class="my-4 text-subtitle-1">
           T7 : 98,55 € 
         </div>
-        Tous les mannequins qui n’ont pas eu encore un job sur AG Scouting sont des T7
+        Les modèles T7 sont tous les modèles qui n'ont encore jamais travaillé sur AG Scouting.
       </v-card-text>
 
       <v-btn
@@ -32,8 +32,6 @@
         Bientôt disponible
       </v-btn>
     </v-card>
-  
-
 
     <v-card
       elevation="8"
@@ -48,14 +46,14 @@
         >
           mdi-star-check
         </v-icon>
-        <span class="text-h6 font-weight-light">Pack silver</span>
+        <span class="text-h6 font-weight-light">Modèle Silver</span>
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
         <div class="my-4 text-subtitle-1">
           T8 : 114,80 € 
         </div>
-        Un mannequin qui a déjà travaillé contre rémunération avec AG Scouting pour un client 
+        Les modèles T8 ont déjà travaillé contre une rémunération avec AG Scouting pour un client.
       </v-card-text>
 
       <v-btn
@@ -67,8 +65,6 @@
       </v-btn>
     </v-card>
     
-
-
     <div class="page-prices-partie-2">
       <v-card
         elevation="8"
@@ -83,14 +79,14 @@
           >
             mdi-star-check
           </v-icon>
-          <span class="text-h6 font-weight-light">Pack gold</span>
+          <span class="text-h6 font-weight-light">Modèle Gold</span>
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
           <div class="my-4 text-subtitle-1">
             T9 : 151,15 € 
           </div>
-          Mannequin qui bosse en dehors de la France - International 
+          Les T9 sont des modèles qui ont déjà travailler à l'international pour des clients de AG Scouting.
         </v-card-text>
 
         <v-btn
@@ -114,14 +110,14 @@
           >
             mdi-star-check
           </v-icon>
-          <span class="text-h6 font-weight-light">Pack diamond</span>
+          <span class="text-h6 font-weight-light">Modèle Diamond</span>
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
           <div class="my-4 text-subtitle-1">
             T10 : 188,65 € 
           </div>
-          Mannequin reconnue qui ne bosse que avec des marque de luxe a l’international 
+          Les T10 sont des modèles reconnues et ayant déjà une forte expérience en France ou à l'international.
         </v-card-text>
         <v-btn
           color="black lighten-2"
@@ -133,15 +129,12 @@
       </v-card>
     </div>
 
-   
     <v-alert
       class="message-warning"
       dense
       text
-      dismissible
       elevation="15"
       type="warning"
-      v-model="errorAlert"
     >
       Les frais de déplacement et d'hébergements seront à votre charge si nécessaire.
     </v-alert>
@@ -150,10 +143,8 @@
       class="message-warning"
       dense
       text
-      dismissible
       elevation="15"
       type="warning"
-      v-model="errorAlert"
     >
       Afin de maintenir la qualité de notre offre des frais de service sont à prévoir.
     </v-alert>
@@ -163,18 +154,12 @@
 <script>
   export default {
     name: 'PricePage',
-
     data: () => ({
     }),
-
-    
-  }
- 
-
+}
 </script>
 
 <style scoped>
-
 .page-prices {
   width: 100%;
   display: flex;
@@ -197,7 +182,6 @@
   margin:20px;
 }
 
-
 .bronze-star {
   color: #b07504;
 }
@@ -211,8 +195,6 @@
   color: #00a0ff;
 }
 
-
-
 .pack-bronze,
 .pack-silver,
 .pack-gold,
@@ -221,29 +203,20 @@
   width: 41%;
 }
 
-
 .pack-btn {
   margin: 10px;
 }
-
 
 .page-prices-partie-2,
 .message-warning {
  margin-bottom: 40px;
 }
 
-
 .message-warning {
  width: 80%;
  margin: 15px;
  text-align: center;
-
- 
 }
-
-
-
-
 
 @media only screen and (max-width: 768px) {
   .pack-bronze,
