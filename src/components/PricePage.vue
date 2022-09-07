@@ -104,10 +104,32 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .pack-sample,
-  .pack-gold {
-    width: 80%;
-    margin-bottom: 35px;
-  }
+ 
+
+  .page-prices {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.page-prices h2 {
+  width: 100%;
+  text-align: center;
+  margin: 15px;
+}
+
+.pack-sample,
+.pack-gold {
+  width: 35%;
+}
+
+.gold-star {
+  color: #FFD700;
+}
+
+.pack-btn {
+  margin: 10px;
+}
 }
 </style>
