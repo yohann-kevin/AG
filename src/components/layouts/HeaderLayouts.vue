@@ -1,86 +1,112 @@
 <template>
-  <v-app-bar
-    app
-    color="white"
-    class="app-bar"
-    height="80px"
-  >
-    <div class="d-flex align-center">
-      <v-img
-        alt="AG Scouting"
-        class="shrink mr-2"
-        contain
-        src="../../assets/logo-ag.png"
-        transition="scale-transition"
-        width="80px"
-        height="78px"
-      />
-    </div>
+  <div>
+    <v-app-bar
+      app
+      color="white"
+      class="app-bar"
+      height="80px"
+      ref="header-bar"
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="AG Scouting"
+          class="shrink mr-2"
+          contain
+          src="../../assets/logo-ag.png"
+          transition="scale-transition"
+          width="80px"
+          height="78px"
+        />
+      </div>
 
-    <h1 class="ag-title">
-      AG Scouting
-    </h1>
+      <h1 class="ag-title">
+        AG Scouting
+      </h1>
 
-    <v-spacer />
+      <v-spacer />
 
-    <div id="nav">
-      <router-link to="/">
-        Accueil
-      </router-link>
-      <router-link to="/prices">
-        Nos tarifs
-      </router-link>
-      <router-link 
-        to="/agent"
-        v-if="agentConnected"
+      <div id="nav">
+        <router-link to="/">
+          Accueil
+        </router-link>
+        <router-link to="/prices">
+          Nos tarifs
+        </router-link>
+        <router-link 
+          to="/agent"
+          v-if="agentConnected"
+        >
+          Mon compte
+        </router-link>
+        <v-menu 
+          bottom
+          origin="center center"
+          transition="scale-transition"
+          v-else
+        >
+          <template #activator="{ on, attrs }">
+            <v-btn
+              class="menu-button-dropdown"
+              text
+              v-bind="attrs"
+              v-on="on"
+            >
+              Mon compte
+              <v-icon large>
+                mdi-chevron-down
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="(link, index) in links"
+              :key="index"
+            >
+              <v-list-item-title>
+                <router-link
+                  class="dropdown-link"
+                  :to="link.link"
+                >
+                  {{ link.title }}
+                </router-link>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+
+      <v-spacer />
+
+      <v-icon
+        large
+        class="menu-burger"
+        @click="openNavSmartphone"
       >
-        Mon compte
-      </router-link>
-      <v-menu 
-        bottom
-        origin="center center"
-        transition="scale-transition"
-        v-else
-      >
-        <template #activator="{ on, attrs }">
-          <v-btn
-            class="menu-button-dropdown"
-            text
-            v-bind="attrs"
-            v-on="on"
-          >
-            Mon compte
-            <v-icon large>
-              mdi-chevron-down
-            </v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item
-            v-for="(link, index) in links"
-            :key="index"
-          >
-            <v-list-item-title>
-              <router-link
-                class="dropdown-link"
-                :to="link.link"
-              >
-                {{ link.title }}
-              </router-link>
-            </v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </div>
+        mdi-menu
+      </v-icon>
 
+      <v-btn
+        href="https://www.instagram.com/ag.scouting/"
+        target="_blank"
+        text
+        class="instagram-header-btn"
+      >
+        <span class="mr-2">Notre instagram</span>
+        <v-icon>mdi-instagram</v-icon>
+      </v-btn>
+    </v-app-bar>
     <div
       id="nav-smartphone"
       class="nav-smartphone"
+      ref="nav-smartphone"
     >
-      <a
+      <v-icon
+        large
         class="bouton-fermer"
-        id="bouton-fermer"
-      >&times;</a>
+        @click="closeNavSmartphone"
+      >
+        mdi-close
+      </v-icon>
 
       <div class="nav-smartphone-liens">
         <li class="menu">
@@ -100,26 +126,7 @@
         </li>
       </div>
     </div>
-
-    <v-spacer />
-
-    <v-icon
-      large
-      class="menu-burger"
-    >
-      mdi-menu
-    </v-icon>
-
-    <v-btn
-      href="https://www.instagram.com/ag.scouting/"
-      target="_blank"
-      text
-      class="instagram-header-btn"
-    >
-      <span class="mr-2">Notre instagram</span>
-      <v-icon>mdi-instagram</v-icon>
-    </v-btn>
-  </v-app-bar>
+  </div>
 </template>
 
 <script>
@@ -133,17 +140,22 @@ export default {
       { title: 'Connexion', link:'/login/agents' }
     ]
   }),
+  methods: {
+    openNavSmartphone() {
+      this.$refs['header-bar'].isActive = false;
+      this.$refs['nav-smartphone'].style.width = '100%';
+    },
+    closeNavSmartphone() {
+      this.$refs['header-bar'].isActive = true;
+      this.$refs['nav-smartphone'].style.width = '0';
+    }
+  },
   computed: {
     agentConnected() {
       return this.$store.state.agentConnected;
     },
   }
 }
-
-
-
-
-
 
 </script>
 
@@ -184,9 +196,6 @@ export default {
 .menu-burger {
   display: none;
 }
-.nav-smartphone {
-  display: none;
-}
 
 .nav-smartphone {
    height: 100%;
@@ -202,13 +211,11 @@ export default {
    -moz-transition: 0.6s;
    -ms-transition: 0.6s;
    -o-transition: 0.6s;
-
 }
-
 
 .nav-smartphone-liens {
    position: relative;
-   top: 25%;
+   top: 15%;
    width: 100%;
    text-align: center;
 }
@@ -233,10 +240,9 @@ export default {
 
 .nav-smartphone .bouton-fermer {
    position: absolute;
-   top: 20px;
+   top: 45px;
    right: 45px;
-   font-size: 60px;
-
+   color: #f1f1f1;
 }
 
 .menu-button-dropdown {
