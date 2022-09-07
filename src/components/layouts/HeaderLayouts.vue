@@ -73,7 +73,42 @@
       </v-menu>
     </div>
 
+    <div
+      id="nav-smartphone"
+      class="nav-smartphone"
+    >
+      <a
+        class="bouton-fermer"
+        id="bouton-fermer"
+      >&times;</a>
+
+      <div class="nav-smartphone-liens">
+        <li class="menu">
+          <a href="#">Home</a>
+        </li>
+        <li class="menu">
+          <a href="#">About</a>
+        </li>
+        <li class="menu">
+          <a href="#">Shop</a>
+        </li>
+        <li class="menu">
+          <a href="#">Blog</a>
+        </li>
+        <li class="menu">
+          <a href="#">Contact</a>
+        </li>
+      </div>
+    </div>
+
     <v-spacer />
+
+    <v-icon
+      large
+      class="menu-burger"
+    >
+      mdi-menu
+    </v-icon>
 
     <v-btn
       href="https://www.instagram.com/ag.scouting/"
@@ -88,6 +123,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: "HeaderLayouts",
   data: () => ({
@@ -102,6 +139,12 @@ export default {
     },
   }
 }
+
+
+
+
+
+
 </script>
 
 <style scoped>
@@ -136,6 +179,64 @@ export default {
 #nav > a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.menu-burger {
+  display: none;
+}
+.nav-smartphone {
+  display: none;
+}
+
+.nav-smartphone {
+   height: 100%;
+   width: 0;
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   background-color: rgba(0, 0, 0, 0.9);
+   overflow-x: hidden;
+   transition: 0.6s;
+   -webkit-transition: 0.6s;
+   -moz-transition: 0.6s;
+   -ms-transition: 0.6s;
+   -o-transition: 0.6s;
+
+}
+
+
+.nav-smartphone-liens {
+   position: relative;
+   top: 25%;
+   width: 100%;
+   text-align: center;
+}
+
+.nav-smartphone a {
+   padding: 8px;
+   text-decoration: none;
+   font-size: 36px;
+   color: #818181;
+   display: block;
+   transition: 0.5s;
+   -webkit-transition: 0.5s;
+   -moz-transition: 0.5s;
+   -ms-transition: 0.5s;
+   -o-transition: 0.5s;
+}
+
+.nav-smartphone a:hover,
+.nav-smartphone a:focus {
+   color: #f1f1f1;
+}
+
+.nav-smartphone .bouton-fermer {
+   position: absolute;
+   top: 20px;
+   right: 45px;
+   font-size: 60px;
+
 }
 
 .menu-button-dropdown {
@@ -180,6 +281,10 @@ export default {
 @media only screen and (max-width: 768px) {
   #nav {
     display: none;
+  }
+
+  .menu-burger {
+    display: initial;
   }
 }
 
