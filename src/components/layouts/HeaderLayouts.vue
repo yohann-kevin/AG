@@ -110,19 +110,13 @@
 
       <div class="nav-smartphone-liens">
         <li class="menu">
-          <a href="#">Home</a>
+          <a href="#">Accueil</a>
         </li>
         <li class="menu">
-          <a href="#">About</a>
+          <a href="#">Nos Tarifs</a>
         </li>
         <li class="menu">
-          <a href="#">Shop</a>
-        </li>
-        <li class="menu">
-          <a href="#">Blog</a>
-        </li>
-        <li class="menu">
-          <a href="#">Contact</a>
+          <a href="#">Mon Compte</a>
         </li>
       </div>
     </div>
