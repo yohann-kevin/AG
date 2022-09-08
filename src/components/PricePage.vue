@@ -152,10 +152,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'PricePage',
-    data: () => ({
-    }),
+export default {
+  name: 'PricePage',
+  data: () => ({
+  }),
 }
 </script>
 
@@ -232,9 +232,14 @@
     margin: 15px;
   }
 
-  .pack-sample,
-  .pack-gold {
-    width: 35%;
+  .pack-bronze,
+  .pack-silver,
+  .pack-gold,
+  .pack-diamond,
+  .message-warning {
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .gold-star {
@@ -243,6 +248,10 @@
 
   .pack-btn {
     margin: 10px;
+  }
+
+  .page-prices-partie-2 {
+    margin: 0;
   }
 }
 </style>

@@ -2,12 +2,13 @@
   <footer class="footer">
     <h4>
       Powered and designed by 
-      <a
+      <!-- <a
         href="https://www.linkedin.com/in/yohann-perriguey-8a91351a0/"
         target="_blank"
         class="dev-link"
-      >
-        ©PERRIGUEY Yohann
+      > -->
+      <a class="dev-link">
+        ©hygitale
       </a>
     </h4>
   </footer>

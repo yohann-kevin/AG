@@ -78,7 +78,7 @@
       <v-spacer />
 
       <v-icon
-        large
+        x-large
         class="menu-burger"
         @click="openNavSmartphone"
       >
@@ -110,13 +110,19 @@
 
       <div class="nav-smartphone-liens">
         <li class="menu">
-          <a href="#">Accueil</a>
+          <router-link to="/">
+            Accueil
+          </router-link>
         </li>
         <li class="menu">
-          <a href="#">Nos Tarifs</a>
+          <router-link to="/prices">
+            Nos Tarifs
+          </router-link>
         </li>
         <li class="menu">
-          <a href="#">Mon Compte</a>
+          <router-link to="/">
+            Mon Compte
+          </router-link>
         </li>
       </div>
     </div>
@@ -132,8 +138,12 @@ export default {
     links: [
       { title: 'Inscription', link:'/register/agents' },
       { title: 'Connexion', link:'/login/agents' }
-    ]
+    ],
+    currentRoute: null
   }),
+  mounted() {
+    this.currentRoute = this.$route.name;
+  },
   methods: {
     openNavSmartphone() {
       this.$refs['header-bar'].isActive = false;
@@ -148,7 +158,12 @@ export default {
     agentConnected() {
       return this.$store.state.agentConnected;
     },
-  }
+  },
+  watch: {
+    $route() {
+      this.closeNavSmartphone();
+    }
+  },
 }
 
 </script>
