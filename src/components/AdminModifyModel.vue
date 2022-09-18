@@ -221,12 +221,14 @@
       :model-id="modelId"
       @add:picture="modelPictures = $event"
     />
+    <AddVideo :model-id="modelId" />
   </div>
 </template>
 
 <script>
 import ModifyPicture from './section/ModifyPicture.vue';
 import AddPicture from './section/AddPicture.vue';
+import AddVideo from './section/AddVideo.vue';
 
 export default {
   data: () => ({
@@ -241,7 +243,8 @@ export default {
   }),
   components: {
     ModifyPicture,
-    AddPicture
+    AddPicture,
+    AddVideo
   },
   beforeMount() {
     this.modelId = this.$store.state.modelId;
