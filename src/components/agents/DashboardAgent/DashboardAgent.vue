@@ -195,21 +195,26 @@ export default {
   },
   async beforeMount() {
     this.firstname = this.$store.state.agentData.firstname;
-    console.log(this.firstname);
     this.agents = await this.formatAgentData();
     this.agentsUpdated = this.agents;
-    console.log(this.agents);
-  },
-  updated() {
-    // TODO: test object equality here
-    // console.log(this.agentsUpdated == this.agents);
-    // const infoNotChanged = JSON.stringify(this.agents) == JSON.stringify(this.agentsUpdated);
-    // console.log(infoNotChanged);
   },
   methods: {
     updateAgent() {
-      // TODO: send agent data updated
-      console.log(this.agentsUpdated);
+      const config = {
+        method: 'put',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'agents/' + this.agentsUpdated.id,
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : this.agentsUpdated
+      };
+
+      this.$axios(config).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
     },
     async resetFormUpdateAgent() {
       this.$refs['update-info-agent-form'].reset();
@@ -226,15 +231,47 @@ export default {
         new_password: this.newPassword,
         last_password: this.lastPassword,
       };
-      // TODO: send new password
-      console.log(passwordData);
+      
+      const config = {
+        method: 'put',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'agent/update/password/' + this.agents.id,
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : passwordData
+      };
+
+      this.$axios(config).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
     },
     resetFormPasswordAgent() {
       this.$refs['update-agent-password'].reset();
     },
     deleteAgent() {
-      // TODO: delete agent
-      console.log('delete agent');
+      var config = {
+        method: 'delete',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'agents/' + this.agents.id,
+        headers: { }
+      };
+
+      this.$axios(config).then(response => {
+        console.log(response.data);
+        this.logoutAgent();
+      }).catch(error => {
+        console.log(error);
+      });
+    },
+    logoutAgent() {
+      this.$store.commit("agentData", null);
+      this.$store.commit("agentToken", null);
+      this.$store.commit("agentConnected", false);
+      delete sessionStorage.agttoken;
+      this.$router.push({ path: '/' });
     }
   }
 }
