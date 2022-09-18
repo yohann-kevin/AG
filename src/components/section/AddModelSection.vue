@@ -291,7 +291,7 @@ export default {
     },
     async compressImage(picture) {
       const options = {
-        maxSizeMB: 4,
+        maxSizeMB: 2,
         maxWidthOrHeight: 1920,
         useWebWorker: true
       };

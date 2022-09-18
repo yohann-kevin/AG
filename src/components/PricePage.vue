@@ -152,10 +152,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'PricePage',
-    data: () => ({
-    }),
+export default {
+  name: 'PricePage',
+  data: () => ({
+  }),
 }
 </script>
 
@@ -219,12 +219,39 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .page-prices {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .page-prices h2 {
+    width: 100%;
+    text-align: center;
+    margin: 15px;
+  }
+
   .pack-bronze,
   .pack-silver,
   .pack-gold,
-  .pack-diamond {
-    width: 80%;
-    margin-bottom: 35px;
+  .pack-diamond,
+  .message-warning {
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .gold-star {
+    color: #FFD700;
+  }
+
+  .pack-btn {
+    margin: 10px;
+  }
+
+  .page-prices-partie-2 {
+    margin: 0;
   }
 }
 </style>
