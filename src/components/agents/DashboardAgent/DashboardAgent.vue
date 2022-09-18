@@ -1,7 +1,10 @@
 <template>
   <div class="agent-dashboard">
     <h2>Tableau de bord</h2>
-    <div class="dashbord-agent-descritption">
+    <div 
+      class="dashbord-agent-descritption"
+      v-if="agents"
+    >
       <p>
         Bienvenue sur votre espace personnel {{ agents.firstname }} ici, vous pourrez modifier vos informations, 
         consulter l'avancement de votre demande de rendez-vous ave modèle et consulter les différentes factures que vous avez réglées.

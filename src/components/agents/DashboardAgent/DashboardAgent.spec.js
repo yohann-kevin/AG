@@ -16,9 +16,9 @@ describe("DashboardAgent", () => {
     const wrapper = initWrapper();
     const agents = {
       id: "f5552305-302b-4c6a-acc5-7b722225c54c",
-      firstname: "Yohann",
-      lastname: "Perriguey",
-      email: "Yo44prg@icloud.com",
+      firstname: "test",
+      lastname: "test",
+      email: "test@gmail.com",
     };
     await wrapper.setData({ agents: agents });
     const title = wrapper.find("h2");
