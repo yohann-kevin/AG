@@ -15,7 +15,7 @@
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vue-scroll-reveal": "^1.0.11",
-    "vuetify": "^2.6.7",
+    "vuetify": "^2.6.10",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
