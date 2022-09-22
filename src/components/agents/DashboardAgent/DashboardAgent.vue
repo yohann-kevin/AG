@@ -196,9 +196,8 @@ export default {
   components: {
     ModalDelete
   },
-  async beforeMount() {
-    this.firstname = this.$store.state.agentData.firstname;
-    this.agents = await this.formatAgentData();
+  mounted() {
+    this.agents = this.formatAgentData();
     this.agentsUpdated = this.agents;
   },
   methods: {
@@ -219,11 +218,11 @@ export default {
         console.log(error);
       });
     },
-    async resetFormUpdateAgent() {
+    resetFormUpdateAgent() {
       this.$refs['update-info-agent-form'].reset();
     },
-    async formatAgentData() {
-      const agentData = await this.$store.state.agentData;
+    formatAgentData() {
+      const agentData = this.$store.state.agentData;
       delete agentData.created_at;
       delete agentData.updated_at;
       delete agentData.cgu;

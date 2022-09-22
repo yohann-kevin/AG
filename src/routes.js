@@ -1,3 +1,6 @@
+// import vue router
+import VueRouter from 'vue-router';
+
 // page component
 import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
@@ -23,6 +26,7 @@ import store from './store.js';
 
 // api method
 import adminapi from './api/admin.js';
+import agentapi from './api/agent.js';
 
 async function manageAdmConnexion() {
   store.commit("adminToken", sessionStorage.admtoken);
@@ -110,5 +114,19 @@ const routes = [
     component: Error404
   },
 ];
+
+const router = new VueRouter({ routes });
+
+// manage agent connexion
+router.beforeEach(async (to, from, next) => {
+  if (sessionStorage.agttoken) {
+    const token = sessionStorage.agttoken;
+    const agentData = await agentapi.findAgentData();
+    store.commit("agentData", agentData);
+    store.commit("agentToken", token);
+    store.commit("agentConnected", true);
+  }
+  next();
+});
   
-export default routes;
+export default router;
