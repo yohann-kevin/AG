@@ -86,7 +86,7 @@
           <div class="my-4 text-subtitle-1">
             T9 : 151,15 € 
           </div>
-          Les T9 sont des modèles qui ont déjà travailler à l'international pour des clients de AG Scouting.
+          Les T9 sont des modèles qui ont déjà travaillé à l'international pour des clients de AG Scouting.
         </v-card-text>
 
         <v-btn
@@ -117,7 +117,7 @@
           <div class="my-4 text-subtitle-1">
             T10 : 188,65 € 
           </div>
-          Les T10 sont des modèles reconnues et ayant déjà une forte expérience en France ou à l'international.
+          Les T10 sont des modèles reconnus et ayant déjà une forte expérience en France ou à l'international.
         </v-card-text>
         <v-btn
           color="black lighten-2"
