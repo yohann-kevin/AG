@@ -2,7 +2,7 @@
   <v-img
     dark
     src="../../assets/ag-team-five.jpg"
-    class="pt-5"
+    class="img-header"
     height="700"
   >
     <v-row
@@ -14,7 +14,7 @@
         cols="8"
       >
         <h4 class="text-h4 intro-title">
-          <p>Un projet qui nécessite des modèles uniques ? <br/> Faites confiance à</p>
+          <p>Un projet qui nécessite des modèles uniques ?<br> Faites confiance à</p>
         </h4>
         <h1 class="mb-4 creattion ag-title">
           AG Scouting
@@ -45,14 +45,15 @@ export default {
   margin-bottom: -10px;
 }
 
-.intro-title {
-  
-}
-
 @media only screen and (max-width: 768px) {
   .ag-title {
     font-size: 5rem;
     margin-top: 0;
+
+  }
+
+  .img-header {
+    display: none;
   }
 }
 </style>

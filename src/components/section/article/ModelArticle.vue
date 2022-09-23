@@ -9,7 +9,7 @@
       max-height="300px"
       contain
       @load="imageLoaded"
-    ></v-img>
+    />
 
     <v-progress-circular
       :size="50"
@@ -17,7 +17,7 @@
       indeterminate
       class="img-loader"
       v-if="!imgIsLoaded"
-    ></v-progress-circular>
+    />
 
     <v-card-title>
       {{ model.model.firstname }}
@@ -29,9 +29,13 @@
 
     <v-card-actions>
       <!-- <router-link to="/model" class="more-btn"> -->
-        <v-btn color="black lighten-2" text @click="redirectToModel(model.model.id)">
-          Voir plus
-        </v-btn>
+      <v-btn
+        color="black lighten-2"
+        text
+        @click="redirectToModel(model.model.id)"
+      >
+        Voir plus
+      </v-btn>
       <!-- </router-link> -->
     </v-card-actions>
   </v-card>

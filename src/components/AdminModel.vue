@@ -2,8 +2,13 @@
   <div class="all-model-admin">
     <h2>Modèles</h2>
     <div class="all-model-admin-nav">
-      <v-btn color="black lighten-2" text>
-        <router-link to="/administration">Ajout modèle</router-link>
+      <v-btn
+        color="black lighten-2"
+        text
+      >
+        <router-link to="/administration">
+          Ajout modèle
+        </router-link>
       </v-btn>
     </div>
     <div class="admin-alert">
@@ -29,8 +34,14 @@
       </v-alert>
     </div>
     <div class="all-model-admin-list">
-      <div v-for="(model, i) in models" :key="i">
-        <ModelArticleAdmin :model="model" @deleted="manageDeletedMessage"/>
+      <div
+        v-for="(model, i) in models"
+        :key="i"
+      >
+        <ModelArticleAdmin
+          :model="model"
+          @deleted="manageDeletedMessage"
+        />
       </div>
     </div>
   </div>
@@ -57,6 +68,7 @@ export default {
   },
   methods: {
     findModel() {
+      // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
         this.models = response.data;
         this.$store.commit("homeModelData", this.models);

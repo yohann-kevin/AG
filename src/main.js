@@ -11,7 +11,7 @@ import axios from 'axios'
 import moment from 'moment' 
 
 // router
-import routes from './routes.js';
+import router from './routes.js';
 
 // store
 import store from './store.js';
@@ -22,8 +22,6 @@ Vue.use(VueScrollReveal);
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
-
-const router = new VueRouter({ routes })
 
 new Vue({
   vuetify,
