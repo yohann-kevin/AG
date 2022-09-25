@@ -25,7 +25,10 @@
       {{ model.model.firstname }}
     </v-card-title>
 
-    <v-card-subtitle class="model-description" v-if="model.model_info.description.length !== 0">
+    <v-card-subtitle
+      class="model-description"
+      v-if="model.model_info.description.length !== 0"
+    >
       {{ formatDescription(model.model_info.description) }}
     </v-card-subtitle>
 
