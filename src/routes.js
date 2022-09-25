@@ -42,7 +42,7 @@ const routes = [
       component: HomePage,
   },
   {
-    path: "/model",
+    path: "/model/:id",
     name: "model",
     component: SingleModelPage
   },
@@ -84,7 +84,7 @@ const routes = [
         component: AdminModel
       },
       {
-        path: "/administration/modify/model",
+        path: "/administration/modify/model/:id",
         name: "AdminModifyModel",
         component: AdminModifyModel
       }

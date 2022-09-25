@@ -55,7 +55,7 @@ export default {
   methods: {
     redirectToModel(modelId) {
       this.$store.commit("modelId", modelId);
-      this.$router.push({ path: "/model" });
+      this.$router.push({ name: 'model', params: { id: modelId } });
     },
     imageLoaded() {
       this.imgIsLoaded = true;

@@ -78,7 +78,7 @@ export default {
   methods: {
     redirectToModel(modelId) {
       this.$store.commit("modelId", modelId);
-      this.$router.push({ path: "/administration/modify/model" });
+      this.$router.push({ name: 'AdminModifyModel', params: { id: modelId } });
     },
     openModal() {
       this.showModal = true;
