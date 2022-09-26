@@ -67,7 +67,9 @@
       </div>
 
       <div class="login-not-acocunt">
-        <p class="mr-1">Pas de compte ? </p> 
+        <p class="mr-1">
+          Pas de compte ?
+        </p> 
         <v-tooltip bottom>
           <template #activator="{ on }">
             <a
@@ -81,7 +83,9 @@
           </template>
           Inscription
         </v-tooltip>
-        <p class="ml-1"> dès maintenant</p>
+        <p class="ml-1">
+          dès maintenant
+        </p>
       </div>
     </v-form>
   </div>
