@@ -32,6 +32,9 @@
         <router-link to="/prices">
           Nos tarifs
         </router-link>
+        <router-link to="/contact">
+          Contact
+        </router-link>
         <router-link 
           to="/agent"
           v-if="agentConnected"
@@ -176,7 +179,7 @@ export default {
 
 <style scoped>
 #nav {
-  width: 40%;
+  width: 50%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
