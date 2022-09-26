@@ -5,7 +5,8 @@ import VueRouter from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
-import PricePage from './components/PricePage.vue';
+import PricePage from './components/pages/price/PricePage.vue';
+import ContactPage from './components/pages/contact/ContactPage';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
@@ -35,6 +36,16 @@ async function manageAdmConnexion() {
   store.commit("adminData", adminData);
 }
 
+async function checkAgtConnexion() {
+  if (sessionStorage.agttoken) {
+    const token = sessionStorage.agttoken;
+    const agentData = await agentapi.findAgentData();
+    store.commit("agentData", agentData);
+    store.commit("agentToken", token);
+    store.commit("agentConnected", true);
+  }
+}
+
 const routes = [
   { 
       path: "/", 
@@ -50,6 +61,11 @@ const routes = [
     path: "/prices",
     name: "prices",
     component: PricePage
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactPage
   },
   {
     path: "/adminlogin",
@@ -119,13 +135,7 @@ const router = new VueRouter({ routes });
 
 // manage agent connexion
 router.beforeEach(async (to, from, next) => {
-  if (sessionStorage.agttoken) {
-    const token = sessionStorage.agttoken;
-    const agentData = await agentapi.findAgentData();
-    store.commit("agentData", agentData);
-    store.commit("agentToken", token);
-    store.commit("agentConnected", true);
-  }
+  await checkAgtConnexion();
   next();
 });
   
