@@ -324,4 +324,22 @@ export default {
 .update-agent-btn {
   width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+  .dashbord-agent-descritption p {
+    width: 90%;
+    text-align: justify;
+  }
+
+  .agent-options {
+    width: 90%;
+  }
+
+  .update-agent-btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 480px) {}
 </style>

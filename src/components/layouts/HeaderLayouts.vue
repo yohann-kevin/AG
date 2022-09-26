@@ -108,7 +108,7 @@
         mdi-close
       </v-icon>
 
-      <div class="nav-smartphone-liens">
+      <div class="nav-smartphone-link">
         <li class="menu">
           <router-link to="/">
             Accueil
@@ -120,7 +120,7 @@
           </router-link>
         </li>
         <li class="menu">
-          <router-link to="/">
+          <router-link :to="redirectAgent()">
             Mon Compte
           </router-link>
         </li>
@@ -152,6 +152,12 @@ export default {
     closeNavSmartphone() {
       this.$refs['header-bar'].isActive = true;
       this.$refs['nav-smartphone'].style.width = '0';
+    },
+    redirectAgent() {
+      if (this.$store.state.agentConnected) {
+        return '/agent';
+      }
+      return'/login/agents';
     }
   },
   computed: {
@@ -222,11 +228,16 @@ export default {
    -o-transition: 0.6s;
 }
 
-.nav-smartphone-liens {
+.nav-smartphone-link {
    position: relative;
    top: 15%;
    width: 100%;
    text-align: center;
+   list-style: none;
+}
+
+.menu {
+  margin-top: 25px;
 }
 
 .nav-smartphone a {
