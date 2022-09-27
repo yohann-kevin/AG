@@ -319,7 +319,8 @@ export default {
         // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'modify/model',
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
         data : modelData
       };
