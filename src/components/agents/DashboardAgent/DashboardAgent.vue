@@ -7,7 +7,7 @@
     >
       <p>
         Bienvenue sur votre espace personnel {{ agents.firstname }} ici, vous pourrez modifier vos informations, 
-        consulter l'avancement de votre demande de rendez-vous ave modèle et consulter les différentes factures que vous avez réglées.
+        consulter l'avancement de votre demande de rendez-vous avev un modèle et consulter les différentes factures que vous avez réglées.
       </p>
     </div>
 
@@ -21,8 +21,17 @@
         </v-card-title>
 
         <v-card-text>
-          Fonctionnalité indisponible pour le moment !
+          Vous n'avez encore fait aucune demande de contact avec l'un de nos modèles.
         </v-card-text>
+
+        <v-card-actions>
+          <v-btn
+            text
+            @click="redirectToContactRequest()"
+          >
+            Nouvelle demande de contact
+          </v-btn>
+        </v-card-actions>
       </v-card>
 
       <v-card
@@ -274,6 +283,9 @@ export default {
       this.$store.commit("agentConnected", false);
       delete sessionStorage.agttoken;
       this.$router.push({ path: '/' });
+    },
+    redirectToContactRequest() {
+      this.$router.push({ path: '/agent/contact-request' });
     }
   }
 }

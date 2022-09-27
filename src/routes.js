@@ -18,6 +18,7 @@ import AdminModifyModel from './components/AdminModifyModel.vue'
 import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
 import LoginAgent from './components/agents/LoginAgent/LoginAgent.vue';
 import DashboardAgent from './components/agents/DashboardAgent/DashboardAgent.vue';
+import ContactRequest from './components/agents/ContactRequest/ContactRequest.vue';
 
 // error component
 import Error404 from './components/404Page.vue';
@@ -120,6 +121,15 @@ const routes = [
     path: '/agent',
     name: 'agent',
     component: DashboardAgent,
+    beforeEnter(to, from, next) {
+      sessionStorage.agttoken ? next() : next({path: '/login/agents'});
+    },
+  },
+  // agent children component
+  {
+    path: '/agent/contact-request',
+    name: 'contactRequest',
+    component: ContactRequest,
     beforeEnter(to, from, next) {
       sessionStorage.agttoken ? next() : next({path: '/login/agents'});
     },
