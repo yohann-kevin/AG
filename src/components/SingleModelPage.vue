@@ -4,7 +4,7 @@
     v-if="dataLoaded"
   >
     <div class="single-model-info">
-      <h2>{{ model.lastname }} {{ model.firstname }}</h2>
+      <h2>{{ model.firstname }}</h2>
       <p>
         {{ modelInfo.description }}
       </p>
