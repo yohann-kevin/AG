@@ -19,7 +19,7 @@
 
       <v-card-text class="font-weight-bold">
         <div class="my-4 text-subtitle-1">
-          T7 : 98,55 € 
+          T7 : 98,55 € <strong>/h</strong>
         </div>
         Les T7 sont des modèles qui n'ont encore jamais travaillé avec AG Scouting.
       </v-card-text>
@@ -51,7 +51,7 @@
 
       <v-card-text class="font-weight-bold">
         <div class="my-4 text-subtitle-1">
-          T8 : 114,80 € 
+          T8 : 114,80 € <strong>/h</strong>
         </div>
         Les T8 sont des modèles qui ont déjà travaillé avec AG Scouting en France.
       </v-card-text>
@@ -84,7 +84,7 @@
 
         <v-card-text class="font-weight-bold">
           <div class="my-4 text-subtitle-1">
-            T9 : 151,15 € 
+            T9 : 151,15 € <strong>/h</strong>
           </div>
           Les T9 sont des modèles qui ont déjà travaillé avec AG Scouting à l’international.
         </v-card-text>
@@ -115,7 +115,7 @@
 
         <v-card-text class="font-weight-bold">
           <div class="my-4 text-subtitle-1">
-            T10 : 188,65 € 
+            T10 : 188,65 € <strong>/h</strong>
           </div>
           Les T10 sont des modèles reconnus et ayant déjà une forte expérience en France ou à l'international.
         </v-card-text>
