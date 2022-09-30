@@ -14,14 +14,14 @@
         >
           mdi-star-check
         </v-icon>
-        <span class="text-h6 font-weight-light">Modèle Bronze</span>
+        <span class="text-h6 font-weight-light">Modèle T7</span>
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
         <div class="my-4 text-subtitle-1">
-          T7 : 98,55 € 
+          T7 : 98,55 € <strong>/h</strong>
         </div>
-        Les modèles T7 sont tous les modèles qui n'ont encore jamais travaillé sur AG Scouting.
+        Les T7 sont des modèles qui n'ont encore jamais travaillé avec AG Scouting.
       </v-card-text>
 
       <v-btn
@@ -46,14 +46,14 @@
         >
           mdi-star-check
         </v-icon>
-        <span class="text-h6 font-weight-light">Modèle Silver</span>
+        <span class="text-h6 font-weight-light">Modèle T8</span>
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
         <div class="my-4 text-subtitle-1">
-          T8 : 114,80 € 
+          T8 : 114,80 € <strong>/h</strong>
         </div>
-        Les modèles T8 ont déjà travaillé contre une rémunération avec AG Scouting pour un client.
+        Les T8 sont des modèles qui ont déjà travaillé avec AG Scouting en France.
       </v-card-text>
 
       <v-btn
@@ -79,14 +79,14 @@
           >
             mdi-star-check
           </v-icon>
-          <span class="text-h6 font-weight-light">Modèle Gold</span>
+          <span class="text-h6 font-weight-light">Modèle T9</span>
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
           <div class="my-4 text-subtitle-1">
-            T9 : 151,15 € 
+            T9 : 151,15 € <strong>/h</strong>
           </div>
-          Les T9 sont des modèles qui ont déjà travaillé à l'international pour des clients de AG Scouting.
+          Les T9 sont des modèles qui ont déjà travaillé avec AG Scouting à l’international.
         </v-card-text>
 
         <v-btn
@@ -110,12 +110,12 @@
           >
             mdi-star-check
           </v-icon>
-          <span class="text-h6 font-weight-light">Modèle Diamond</span>
+          <span class="text-h6 font-weight-light">Modèle T10</span>
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
           <div class="my-4 text-subtitle-1">
-            T10 : 188,65 € 
+            T10 : 188,65 € <strong>/h</strong>
           </div>
           Les T10 sont des modèles reconnus et ayant déjà une forte expérience en France ou à l'international.
         </v-card-text>
