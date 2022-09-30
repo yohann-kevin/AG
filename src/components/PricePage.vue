@@ -14,7 +14,7 @@
         >
           mdi-star-check
         </v-icon>
-        <span class="text-h6 font-weight-light">Modèle Bronze</span>
+        <span class="text-h6 font-weight-light">Modèle T7</span>
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
@@ -46,7 +46,7 @@
         >
           mdi-star-check
         </v-icon>
-        <span class="text-h6 font-weight-light">Modèle Silver</span>
+        <span class="text-h6 font-weight-light">Modèle T8</span>
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
@@ -79,7 +79,7 @@
           >
             mdi-star-check
           </v-icon>
-          <span class="text-h6 font-weight-light">Modèle Gold</span>
+          <span class="text-h6 font-weight-light">Modèle T9</span>
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
@@ -110,7 +110,7 @@
           >
             mdi-star-check
           </v-icon>
-          <span class="text-h6 font-weight-light">Modèle Diamond</span>
+          <span class="text-h6 font-weight-light">Modèle T10</span>
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
