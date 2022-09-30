@@ -4,7 +4,8 @@
     v-if="dataLoaded"
   >
     <div class="single-model-info">
-      <h2>{{ model.firstname }}</h2>
+      <!-- TODO: replace by level in database -->
+      <h2><strong>T7: </strong> {{ model.firstname }}</h2>
       <p>
         {{ modelInfo.description }}
       </p>
