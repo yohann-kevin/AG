@@ -127,6 +127,18 @@
             Mon Compte
           </router-link>
         </li>
+
+        <li class="menu insta-link">
+          <a
+            href="https://www.instagram.com/ag.scouting/"
+            target="_blank"
+          >
+            <v-icon
+              color="#818181"
+              large
+            >mdi-instagram</v-icon> Instagram
+          </a>
+        </li>
       </div>
     </div>
   </div>
@@ -305,6 +317,10 @@ export default {
   font-family: 'creattion';
   font-size: 2.8rem;
   font-weight: 500;
+}
+
+.insta-link {
+  align-items: center;
 }
 
 @media only screen and (max-width: 768px) {

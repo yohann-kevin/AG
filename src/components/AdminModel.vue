@@ -1,16 +1,6 @@
 <template>
   <div class="all-model-admin">
     <h2>Modèles</h2>
-    <div class="all-model-admin-nav">
-      <v-btn
-        color="black lighten-2"
-        text
-      >
-        <router-link to="/administration">
-          Ajout modèle
-        </router-link>
-      </v-btn>
-    </div>
     <div class="admin-alert">
       <v-alert
         dense
@@ -99,17 +89,6 @@ export default {
 .all-model-admin h2 {
   width: 100%;
   text-align: center;
-}
-
-.all-model-admin-nav {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.all-model-admin-nav a {
-  text-decoration: none;
-  color: #000;
 }
 
 .admin-alert {
