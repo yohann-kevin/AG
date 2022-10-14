@@ -64,7 +64,6 @@ export default {
       this.imgIsLoaded = true;
     },
     formatDescription(description) {
-      console.log(description.length);
       return description.substring(0,180) + "...";
     }
   }

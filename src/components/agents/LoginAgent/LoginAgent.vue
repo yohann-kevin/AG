@@ -87,6 +87,28 @@
           dès maintenant
         </p>
       </div>
+
+      <div class="login-not-password">
+        <p class="mr-1">
+          Mot de passe oublier ?
+        </p> 
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <a
+              target="_blank"
+              @click="redirectToResetPassword()"
+              @click.stop
+              v-on="on"
+            >
+              Réinitialiser le
+            </a>
+          </template>
+          Réinitialiser le mot de passe
+        </v-tooltip>
+        <p class="ml-1">
+          dès maintenant
+        </p>
+      </div>
     </v-form>
   </div>
 </template>
@@ -141,6 +163,9 @@ export default {
     },
     redirectToRegister() {
       this.$router.push({ path: '/register/agents' });
+    },
+    redirectToResetPassword() {
+      this.$router.push({ path: '/reset/password' });
     }
   },
 }
@@ -188,6 +213,13 @@ export default {
 
 .login-not-acocunt {
   margin-top: 35px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.login-not-password {
   width: 100%;
   display: flex;
   justify-content: center;

@@ -19,6 +19,9 @@ import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
 import LoginAgent from './components/agents/LoginAgent/LoginAgent.vue';
 import DashboardAgent from './components/agents/DashboardAgent/DashboardAgent.vue';
 
+// renew password
+import ResetPassword from './components/agents/ResetPassword/ResetPassword.vue';
+
 // error component
 import Error404 from './components/404Page.vue';
 
@@ -123,6 +126,11 @@ const routes = [
     beforeEnter(to, from, next) {
       sessionStorage.agttoken ? next() : next({path: '/login/agents'});
     },
+  },
+  {
+    path: '/reset/password',
+    name: 'ResetPassword',
+    component: ResetPassword
   },
   {
     path: "*",
