@@ -3,7 +3,7 @@
     <h2>Contact</h2>
     <p>
       Une question ? Un problème ? Besoin de plus d'information ? N'hésitez pas
-      à nous contact via ce formulaire, nous nous engageons à vous répondre dans
+      à nous contacter via ce formulaire, nous nous engageons à vous répondre dans
       les plus brefs délais.
     </p>
 
