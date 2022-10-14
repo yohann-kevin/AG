@@ -33,6 +33,17 @@ exports[`LoginAgent should test component render correctly 1`] = `
         dès maintenant
       </p>
     </div>
+    <div class="login-not-password">
+      <p class="mr-1">
+        Mot de passe oublier ?
+      </p>
+      <v-tooltip bottom="">
+        Réinitialiser le mot de passe
+      </v-tooltip>
+      <p class="ml-1">
+        dès maintenant
+      </p>
+    </div>
   </v-form>
 </div>
 `;
