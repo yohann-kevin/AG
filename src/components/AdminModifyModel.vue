@@ -245,9 +245,13 @@ export default {
   },
   beforeMount() {
     this.modelId = this.$store.state.modelId;
-    if (this.modelId === null) {
+    if (this.modelId === null && this.$route.params.id === null) {
       this.$router.push({ path: "/administration/models" });
+    } else if (this.modelId !== null) {
+      this.findModelData();
     } else {
+      this.modelId = this.$route.params.id;
+      this.$store.commit("modelId", this.modelId);
       this.findModelData();
     }
   },

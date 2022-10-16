@@ -2,6 +2,8 @@
   <v-card
     class="model-article"
     max-width="344"
+    max-height="400"
+    min-height="400"
     elevation="2"
   >
     <v-img
@@ -23,12 +25,14 @@
       {{ model.model.firstname }}
     </v-card-title>
 
-    <v-card-subtitle>
-      {{ model.model_info.description }}
+    <v-card-subtitle
+      class="model-description"
+      v-if="model.model_info.description.length !== 0"
+    >
+      {{ formatDescription(model.model_info.description) }}
     </v-card-subtitle>
 
-    <v-card-actions>
-      <!-- <router-link to="/model" class="more-btn"> -->
+    <v-card-actions :class="model.model_info.description.length === 0 ? 'model-card-action-bottom' : ''">
       <v-btn
         color="black lighten-2"
         text
@@ -36,7 +40,6 @@
       >
         Voir plus
       </v-btn>
-      <!-- </router-link> -->
     </v-card-actions>
   </v-card>
 </template>
@@ -55,10 +58,13 @@ export default {
   methods: {
     redirectToModel(modelId) {
       this.$store.commit("modelId", modelId);
-      this.$router.push({ path: "/model" });
+      this.$router.push({ name: 'model', params: { id: modelId } });
     },
     imageLoaded() {
       this.imgIsLoaded = true;
+    },
+    formatDescription(description) {
+      return description.substring(0,180) + "...";
     }
   }
 }
@@ -74,6 +80,17 @@ export default {
   width: 100% !important;
   margin-top: 50px;
   margin-bottom:50px;
+}
+
+.model-description {
+  text-align: justify;
+}
+
+.model-card-action-bottom {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .more-btn {

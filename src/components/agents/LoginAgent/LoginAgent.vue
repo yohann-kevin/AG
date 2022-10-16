@@ -65,6 +65,50 @@
           Annuler
         </v-btn>
       </div>
+
+      <div class="login-not-acocunt">
+        <p class="mr-1">
+          Pas de compte ?
+        </p> 
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <a
+              target="_blank"
+              @click="redirectToRegister()"
+              @click.stop
+              v-on="on"
+            >
+              inscrivez-vous
+            </a>
+          </template>
+          Inscription
+        </v-tooltip>
+        <p class="ml-1">
+          dès maintenant
+        </p>
+      </div>
+
+      <div class="login-not-password">
+        <p class="mr-1">
+          Mot de passe oublier ?
+        </p> 
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <a
+              target="_blank"
+              @click="redirectToResetPassword()"
+              @click.stop
+              v-on="on"
+            >
+              Réinitialiser le
+            </a>
+          </template>
+          Réinitialiser le mot de passe
+        </v-tooltip>
+        <p class="ml-1">
+          dès maintenant
+        </p>
+      </div>
     </v-form>
   </div>
 </template>
@@ -116,6 +160,12 @@ export default {
       sessionStorage.agttoken = this.$store.state.agentToken;
       this.$store.commit("agentConnected", true);
       this.$router.push({ path: '/agent' });
+    },
+    redirectToRegister() {
+      this.$router.push({ path: '/register/agents' });
+    },
+    redirectToResetPassword() {
+      this.$router.push({ path: '/reset/password' });
     }
   },
 }
@@ -160,4 +210,31 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.login-not-acocunt {
+  margin-top: 35px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.login-not-password {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-agent-alert {
+    width: 80%;
+  }
+
+  .login-agent-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 480px) {}
 </style>

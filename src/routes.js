@@ -19,6 +19,10 @@ import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
 import LoginAgent from './components/agents/LoginAgent/LoginAgent.vue';
 import DashboardAgent from './components/agents/DashboardAgent/DashboardAgent.vue';
 
+// renew password
+import ResetPassword from './components/agents/ResetPassword/ResetPassword.vue';
+import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
+
 // error component
 import Error404 from './components/404Page.vue';
 
@@ -53,7 +57,7 @@ const routes = [
       component: HomePage,
   },
   {
-    path: "/model",
+    path: "/model/:id",
     name: "model",
     component: SingleModelPage
   },
@@ -100,7 +104,7 @@ const routes = [
         component: AdminModel
       },
       {
-        path: "/administration/modify/model",
+        path: "/administration/modify/model/:id",
         name: "AdminModifyModel",
         component: AdminModifyModel
       }
@@ -123,6 +127,16 @@ const routes = [
     beforeEnter(to, from, next) {
       sessionStorage.agttoken ? next() : next({path: '/login/agents'});
     },
+  },
+  {
+    path: '/reset/password',
+    name: 'ResetPassword',
+    component: ResetPassword
+  },
+  {
+    path: '/renew/password/:id',
+    name: 'RenewPassword',
+    component: RenewPassword
   },
   {
     path: "*",

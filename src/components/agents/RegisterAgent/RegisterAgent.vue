@@ -221,4 +221,16 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+@media only screen and (max-width: 768px) {
+  .register-agent-alert {
+    width: 80%;
+  }
+
+  .register-agent-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 480px) {}
 </style>
