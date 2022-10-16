@@ -21,6 +21,7 @@ import DashboardAgent from './components/agents/DashboardAgent/DashboardAgent.vu
 
 // renew password
 import ResetPassword from './components/agents/ResetPassword/ResetPassword.vue';
+import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 
 // error component
 import Error404 from './components/404Page.vue';
@@ -131,6 +132,11 @@ const routes = [
     path: '/reset/password',
     name: 'ResetPassword',
     component: ResetPassword
+  },
+  {
+    path: '/renew/password/:id',
+    name: 'RenewPassword',
+    component: RenewPassword
   },
   {
     path: "*",
