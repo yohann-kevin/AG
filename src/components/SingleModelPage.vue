@@ -4,8 +4,7 @@
     v-if="dataLoaded"
   >
     <div class="single-model-info">
-      <!-- TODO: replace by level in database -->
-      <h2><strong>T7: </strong> {{ model.firstname }}</h2>
+      <h2><strong>{{ modelLevel }}: </strong> {{ model.firstname }}</h2>
       <p>
         {{ modelInfo.description }}
       </p>
@@ -75,10 +74,16 @@ export default {
       // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
         this.model = response.data.model;
+        console.log(this.model);
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;
         this.dataLoaded = true;
       });
+    }
+  },
+  computed: {
+    modelLevel() {
+      return this.model.level !== null ? this.model.level : 'T7';
     }
   }
 }
