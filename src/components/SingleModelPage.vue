@@ -82,7 +82,7 @@ export default {
   },
   computed: {
     modelLevel() {
-      return this.model.level !== null ? this.model.level : 'T7';
+      return this.model.level === (null || undefined) ? 'T7' : this.model.level;
     }
   }
 }
