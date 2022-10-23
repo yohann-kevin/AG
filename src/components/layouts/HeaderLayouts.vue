@@ -29,8 +29,8 @@
         <router-link to="/">
           Accueil
         </router-link>
-        <router-link to="/prices">
-          Nos tarifs
+        <router-link to="/about">
+          A propos
         </router-link>
         <router-link to="/contact">
           Contact
@@ -118,8 +118,8 @@
           </router-link>
         </li>
         <li class="menu">
-          <router-link to="/prices">
-            Nos Tarifs
+          <router-link to="/about">
+            A propos
           </router-link>
         </li>
         <li class="menu">

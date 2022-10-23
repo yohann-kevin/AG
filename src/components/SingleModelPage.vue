@@ -26,7 +26,7 @@
           </router-link>
         </v-btn>
         <v-btn text>
-          <router-link to="/prices">
+          <router-link to="/contact">
             Contacter
           </router-link>
         </v-btn>

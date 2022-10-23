@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
-import PricePage from './components/pages/price/PricePage.vue';
+import AboutPage from './components/pages/about/AboutPage.vue';
 import ContactPage from './components/pages/contact/ContactPage';
 
 // admin component
@@ -62,9 +62,9 @@ const routes = [
     component: SingleModelPage
   },
   {
-    path: "/prices",
-    name: "prices",
-    component: PricePage
+    path: "/about",
+    name: "about",
+    component: AboutPage
   },
   {
     path: '/contact',
