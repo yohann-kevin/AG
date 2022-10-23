@@ -20,6 +20,14 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
+      <v-progress-circular
+        :size="90"
+        color="black"
+        indeterminate
+        class="is-in-load"
+        v-if="isInLoad"
+        :width="8"
+      />
       <div
         v-for="(model, i) in modelsWoman"
         :key="i"
@@ -47,6 +55,14 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
+      <v-progress-circular
+        :size="100"
+        color="black"
+        indeterminate
+        class="is-in-load"
+        v-if="isInLoad"
+        :width="8"
+      />
       <div
         v-for="(model, i) in modelsMen"
         :key="i"
@@ -66,6 +82,7 @@ export default {
     ModelArticle
   },
   data: () => ({
+    isInLoad: true,
     models: null,
     modelsMen: [],
     modelsWoman: []
@@ -97,6 +114,7 @@ export default {
           this.modelsWoman.push(this.models[i]);
         }
       }
+      this.isInLoad = false;
     }
   }
 }
@@ -129,5 +147,9 @@ export default {
 
 .parallax-title {
   color: #fff;
+}
+
+.is-in-load {
+  margin: 30px;
 }
 </style>
