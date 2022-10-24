@@ -116,7 +116,7 @@ export default {
       const config = {
         method: 'post',
          // eslint-disable-next-line no-undef
-         url: process.env.VUE_APP_API_URL + 'contacts',
+         url: process.env.VITE_APP_API_URL + 'contacts',
         headers: { 
           'Content-Type': 'application/json'
         },

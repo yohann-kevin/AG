@@ -1,7 +1,7 @@
 <template>
   <v-img
     dark
-    src="../../assets/ag-team-five.jpg"
+    src="src/assets/ag-team-five.jpg"
     class="img-header"
     height="700"
   >

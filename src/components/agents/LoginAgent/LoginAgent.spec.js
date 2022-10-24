@@ -10,6 +10,9 @@ describe('LoginAgent', () => {
     return shallowMount(LoginAgent, {
       localVue,
       vuetify
+      // global: {
+      //   plugins: [vuetify],
+      // },
     });
   };
 

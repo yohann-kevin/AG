@@ -70,7 +70,7 @@ export default {
       const config = {
         method: 'get',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + "renew_passwords/check/secure_id/" + this.secureId,
+        url: process.env.VITE_APP_API_URL + "renew_passwords/check/secure_id/" + this.secureId,
         headers: { }
       };
 
@@ -87,7 +87,7 @@ export default {
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + "renew_passwords/renew/password/" + this.secureId,
+        url: process.env.VITE_APP_API_URL + "renew_passwords/renew/password/" + this.secureId,
         headers: { 
           'Content-Type': 'application/json'
         },

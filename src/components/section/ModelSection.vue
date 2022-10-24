@@ -3,7 +3,7 @@
     <v-parallax
       class="parallax-model mb-4"
       height="450"
-      src="../../assets/ag-team-seven.jpg"
+      src="src/assets/ag-team-seven.jpg"
     >
       <v-row
         align="center"
@@ -30,7 +30,7 @@
     <v-parallax
       class="parallax-model"
       height="450"
-      src="../../assets/ag-team-nine.jpg"
+      src="src/assets/ag-team-nine.jpg"
     >
       <v-row
         align="center"
@@ -83,7 +83,7 @@ export default {
   methods: {
     findModel() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
+      this.$axios.get(process.env.VITE_APP_API_URL + "get/all/model").then(response => {
         this.models = response.data;
         this.$store.commit("homeModelData", this.models);
         this.separateMenWoman();

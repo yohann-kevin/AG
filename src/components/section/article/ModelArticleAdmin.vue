@@ -87,7 +87,7 @@ export default {
       let config = {
         method: 'delete',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
+        url: process.env.VITE_APP_API_URL + 'delete/model/?id=' + modelId,
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken

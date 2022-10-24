@@ -12,7 +12,7 @@
           alt="AG Scouting"
           class="shrink mr-2"
           contain
-          src="../../assets/logo-ag.png"
+          src="/src/assets/logo-ag.png"
           transition="scale-transition"
           width="80px"
           height="78px"

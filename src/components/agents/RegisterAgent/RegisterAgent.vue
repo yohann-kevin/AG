@@ -154,7 +154,7 @@ export default {
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'agents',
+        url: process.env.VITE_APP_API_URL + 'agents',
         headers: { 
           'Content-Type': 'application/json'
         },

@@ -258,7 +258,7 @@ export default {
   methods: {
     findModelData() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
+      this.$axios.get(process.env.VITE_APP_API_URL + "get/model/" + this.modelId).then(response => {
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;
@@ -321,7 +321,7 @@ export default {
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'modify/model',
+        url: process.env.VITE_APP_API_URL + 'modify/model',
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken

@@ -6,7 +6,7 @@ import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
 import PricePage from './components/pages/price/PricePage.vue';
-import ContactPage from './components/pages/contact/ContactPage';
+import ContactPage from './components/pages/contact/ContactPage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';

@@ -143,7 +143,7 @@
 </template>
 
 <script>
-import ModalDelete from '../modal/ModalDelete'
+import ModalDelete from '../modal/ModalDelete.vue'
 
 export default {
   components: {
@@ -186,7 +186,7 @@ export default {
       const config = {
         method: 'delete',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL +  '/model_pictures/' + this.selectedPictureId,
+        url: process.env.VITE_APP_API_URL +  '/model_pictures/' + this.selectedPictureId,
         headers: {
           'Authorization': 'Bearer ' + sessionStorage.admtoken
          }
@@ -207,7 +207,7 @@ export default {
       var config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + '/model_pictures/modify/main_picture/?model_uuid=' + this.modelId + '&id=' + pictureId,
+        url: process.env.VITE_APP_API_URL + '/model_pictures/modify/main_picture/?model_uuid=' + this.modelId + '&id=' + pictureId,
         headers: { 
           'Authorization': 'Bearer ' + sessionStorage.admtoken
          }

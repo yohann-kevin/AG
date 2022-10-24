@@ -73,7 +73,7 @@ export default {
   methods: {
     findModelData() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/model/" + this.modelId).then(response => {
+      this.$axios.get(process.env.VITE_APP_API_URL + "get/model/" + this.modelId).then(response => {
         this.model = response.data.model;
         this.modelInfo = response.data.model_infos;
         this.modelPictures = response.data.model_pictures;

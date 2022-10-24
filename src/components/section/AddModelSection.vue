@@ -325,7 +325,7 @@ export default {
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'create/model',
+        url: process.env.VITE_APP_API_URL + 'create/model',
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
