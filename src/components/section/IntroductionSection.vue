@@ -1,7 +1,7 @@
 <template>
   <v-img
     dark
-    src="/public/assets/ag-team-five.jpg"
+    :src="formatImageSource('/public/assets/ag-team-five.jpg')"
     class="img-header"
     height="700"
   >
@@ -25,8 +25,13 @@
 </template>
 
 <script>
+import formatImageSource from '../../utils/utils.js';
+
 export default {
-  name: "IntroductionSection"
+  name: "IntroductionSection",
+  data: () => ({
+    formatImageSource: formatImageSource
+  })
 }
 </script>
 
