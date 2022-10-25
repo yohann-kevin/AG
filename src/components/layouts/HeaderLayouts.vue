@@ -12,7 +12,7 @@
           alt="AG Scouting"
           class="shrink mr-2"
           contain
-          src="/src/assets/logo-ag.png"
+          src="/public/assets/logo-ag.png"
           transition="scale-transition"
           width="80px"
           height="78px"
@@ -145,8 +145,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: "HeaderLayouts",
   data: () => ({
@@ -154,7 +152,7 @@ export default {
       { title: 'Inscription', link:'/register/agents' },
       { title: 'Connexion', link:'/login/agents' }
     ],
-    currentRoute: null
+    currentRoute: null,
   }),
   mounted() {
     this.currentRoute = this.$route.name;

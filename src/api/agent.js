@@ -6,7 +6,7 @@ const agentapi = {
   findAgentData: async () => {
     const config = {
       method: 'get',
-      url: process.env.VITE_APP_API_URL + '/agents',
+      url: process.env.VUE_APP_API_URL + '/agents',
       headers: { 
         'Authorization': 'Bearer ' + sessionStorage.agttoken
       }

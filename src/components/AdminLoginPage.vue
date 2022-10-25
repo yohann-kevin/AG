@@ -92,7 +92,7 @@ export default {
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VITE_APP_API_URL + 'admin/auth',
+        url: process.env.VUE_APP_API_URL + 'admin/auth',
         headers: { 
           'Content-Type': 'application/json'
         },

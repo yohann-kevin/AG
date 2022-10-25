@@ -6,7 +6,7 @@ const adminapi = {
   findAdminData: async () => {
     const config = {
       method: 'get',
-      url: process.env.VITE_APP_API_URL + '/administrators',
+      url: process.env.VUE_APP_API_URL + '/administrators',
       headers: { 
         'Authorization': 'Bearer ' + sessionStorage.admtoken
       }

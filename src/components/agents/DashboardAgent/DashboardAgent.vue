@@ -205,7 +205,7 @@ export default {
       const config = {
         method: 'put',
         // eslint-disable-next-line no-undef
-        url: process.env.VITE_APP_API_URL + 'agents/' + this.agentsUpdated.id,
+        url: process.env.VUE_APP_API_URL + 'agents/' + this.agentsUpdated.id,
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -237,7 +237,7 @@ export default {
       const config = {
         method: 'put',
         // eslint-disable-next-line no-undef
-        url: process.env.VITE_APP_API_URL + 'agent/update/password/' + this.agents.id,
+        url: process.env.VUE_APP_API_URL + 'agent/update/password/' + this.agents.id,
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -257,7 +257,7 @@ export default {
       var config = {
         method: 'delete',
         // eslint-disable-next-line no-undef
-        url: process.env.VITE_APP_API_URL + 'agents/' + this.agents.id,
+        url: process.env.VUE_APP_API_URL + 'agents/' + this.agents.id,
         headers: { }
       };
 
