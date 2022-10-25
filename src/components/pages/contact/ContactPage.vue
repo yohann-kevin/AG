@@ -2,9 +2,10 @@
   <div class="contact-page">
     <h2>Contact</h2>
     <p>
-      Une question ? Un problème ? Besoin de plus d'information ? N'hésitez pas
-      à nous contacter via ce formulaire, nous nous engageons à vous répondre dans
-      les plus brefs délais.
+      Vous souhaitez obtenir plus d'informations sur nos prestations ? 
+      Décrivez-nous votre projet à l’aide du formulaire ci-dessous. 
+      Nous nous engageons à vous répondre dans les plus brefs délais
+      pour vous faire une proposition d’accompagnement. 
     </p>
 
     <v-card
@@ -206,11 +207,11 @@ export default {
       this.isInLoad = true;
       const data = {
         sender: this.email,
-        // phone: this.phoneNumber,
-        // company: this.companyName,
-        // activity: this.activity,
+        phone: this.phoneNumber,
+        company: this.companyName,
+        activity: this.activity,
         object: this.object,
-        // need: this.formatNeed(),
+        need: this.formatNeed(),
         content: this.content
       };
 
@@ -255,9 +256,7 @@ export default {
 }
 
 .contact-page > p {
-  width: 80%;
-  text-align: center;
-  margin: 15px;
+  width: 70%;
 }
 
 .contact-container-alert {
