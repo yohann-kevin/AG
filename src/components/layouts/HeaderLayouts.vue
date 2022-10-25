@@ -12,7 +12,7 @@
           alt="AG Scouting"
           class="shrink mr-2"
           contain
-          src="../../assets/logo-ag.png"
+          :src="formatImageSource('/public/assets/logo-ag.png')"
           transition="scale-transition"
           width="80px"
           height="78px"
@@ -145,7 +145,7 @@
 </template>
 
 <script>
-
+import formatImageSource from '../../utils/utils.js';
 
 export default {
   name: "HeaderLayouts",
@@ -154,7 +154,8 @@ export default {
       { title: 'Inscription', link:'/register/agents' },
       { title: 'Connexion', link:'/login/agents' }
     ],
-    currentRoute: null
+    currentRoute: null,
+    formatImageSource: formatImageSource
   }),
   mounted() {
     this.currentRoute = this.$route.name;
