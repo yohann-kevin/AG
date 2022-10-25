@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import { defineConfig } from 'vite';
-// import vue from '@vitejs/plugin-vue'
 import { createVuePlugin as vue } from "vite-plugin-vue2";
 import Components from 'unplugin-vue-components/vite'
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers'
@@ -20,5 +20,9 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    port: 8080
   }
 })
+
