@@ -28,7 +28,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     # install depedencies
-    - run: npm install
+    - run: npm i -D esbuild
     # build
     - run: npm run build --if-present
     # test app
