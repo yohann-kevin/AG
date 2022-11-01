@@ -143,7 +143,7 @@
 </template>
 
 <script>
-import ModalDelete from '../modal/ModalDelete'
+import ModalDelete from '../modal/ModalDelete.vue'
 
 export default {
   components: {

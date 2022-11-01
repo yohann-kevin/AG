@@ -29,8 +29,8 @@ export default {
 <style>
 @font-face {
   font-family: 'creattion';
-  src: url('./assets/fonts/creattion/creattion_demo-webfont.woff2') format('woff2'),
-        url('./assets/fonts/creattion/creattion_demo-webfont.woff') format('woff');
+  src: url('/public/assets/fonts/creattion/creattion_demo-webfont.woff2') format('woff2'),
+        url('/public/assets/fonts/creattion/creattion_demo-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

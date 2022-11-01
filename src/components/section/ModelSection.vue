@@ -3,7 +3,7 @@
     <v-parallax
       class="parallax-model mb-4"
       height="450"
-      src="../../assets/ag-team-seven.jpg"
+      :src="formatImageSource('/public/assets/ag-team-seven.jpg')"
     >
       <v-row
         align="center"
@@ -38,7 +38,7 @@
     <v-parallax
       class="parallax-model"
       height="450"
-      src="../../assets/ag-team-nine.jpg"
+      :src="formatImageSource('/public/assets/ag-team-nine.jpg')"
     >
       <v-row
         align="center"
@@ -75,6 +75,7 @@
 
 <script>
 import ModelArticle from "./article/ModelArticle.vue";
+import formatImageSource from '../../utils/utils.js';
 
 export default {
   name: "ModelSection",
@@ -85,7 +86,8 @@ export default {
     isInLoad: true,
     models: null,
     modelsMen: [],
-    modelsWoman: []
+    modelsWoman: [],
+    formatImageSource: formatImageSource
   }),
   beforeMount() {
     let modelOnStore = this.$store.state.homeModelData;
