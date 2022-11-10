@@ -8,8 +8,9 @@
         pour lancer votre campagne publicitaire et vous suivre jusqu’au bout de vos ambitions.
       </p>
       <p>
-        En reprenant les valeurs <span class="about-strong">votre identité de marque</span>, nous vous accompagnons dans vos projets de communications 
-        afin de renforcer votre empreinte, unique soit-elle.
+        En reprenant les valeurs de <span class="about-strong">votre identité de marque</span>, 
+        nous vous accompagnons dans vos projets de communication afin de 
+        renforcer votre empreinte, unique soit-elle.
       </p>
     </div>
     <!-- model -->
