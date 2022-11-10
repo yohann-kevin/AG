@@ -123,6 +123,11 @@
           </router-link>
         </li>
         <li class="menu">
+          <router-link to="/contact">
+            Contact
+          </router-link>
+        </li>
+        <li class="menu">
           <router-link :to="redirectAgent()">
             Mon Compte
           </router-link>
