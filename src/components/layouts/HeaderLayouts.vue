@@ -10,7 +10,7 @@
       <div class="d-flex align-center">
         <v-img
           alt="AG Scouting"
-          class="shrink mr-2"
+          class="shrink mr-2 ag-logo"
           contain
           :src="formatImageSource('/public/assets/logo-ag.png')"
           transition="scale-transition"
@@ -331,6 +331,10 @@ export default {
 
   .menu-burger {
     display: initial;
+  }
+
+  .ag-logo {
+    display: none;
   }
 }
 

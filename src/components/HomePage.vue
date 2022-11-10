@@ -1,6 +1,17 @@
 <template>
   <div>
     <IntroductionSection />
+    <div class="ag-logo-container">
+      <v-img
+        alt="AG Scouting"
+        class="ag-logo"
+        contain
+        :src="formatImageSource('/public/assets/logo-ag.png')"
+        transition="scale-transition"
+        width="400px"
+        height="400px"
+      />
+    </div>
     <div class="home-section">
       <p>
         Notre équipe vous propose des <span class="home-strong">Mannequins / Photographes / Studios</span> photos en région bretonne ainsi que  parisienne  
@@ -20,6 +31,8 @@
 import IntroductionSection from "./section/IntroductionSection.vue";
 import ModelSection from "./section/ModelSection.vue";
 
+import formatImageSource from '../utils/utils.js';
+
 export default {
   name: "HomePage",
   components: {
@@ -27,12 +40,15 @@ export default {
     ModelSection
   },
   data: () => ({
-   
+   formatImageSource: formatImageSource
   }),
 }
 </script>
 
 <style scoped>
+.ag-logo-container {
+  display: none;
+}
 
 .home-section {
   width: 100%;
@@ -51,5 +67,19 @@ export default {
 
 .home-strong {
   font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .home-section p {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .ag-logo-container {
+    display: initial;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>
