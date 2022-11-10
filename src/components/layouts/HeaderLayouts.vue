@@ -10,7 +10,7 @@
       <div class="d-flex align-center">
         <v-img
           alt="AG Scouting"
-          class="shrink mr-2"
+          class="shrink mr-2 ag-logo"
           contain
           :src="formatImageSource('/public/assets/logo-ag.png')"
           transition="scale-transition"
@@ -29,8 +29,8 @@
         <router-link to="/">
           Accueil
         </router-link>
-        <router-link to="/prices">
-          Nos tarifs
+        <router-link to="/about">
+          A propos
         </router-link>
         <router-link to="/contact">
           Contact
@@ -118,8 +118,13 @@
           </router-link>
         </li>
         <li class="menu">
-          <router-link to="/prices">
-            Nos Tarifs
+          <router-link to="/about">
+            A propos
+          </router-link>
+        </li>
+        <li class="menu">
+          <router-link to="/contact">
+            Contact
           </router-link>
         </li>
         <li class="menu">
@@ -232,7 +237,7 @@ export default {
    height: 100%;
    width: 0;
    position: fixed;
-   z-index: 1;
+   z-index: 100;
    left: 0;
    top: 0;
    background-color: rgba(0, 0, 0, 0.9);
@@ -331,6 +336,10 @@ export default {
 
   .menu-burger {
     display: initial;
+  }
+
+  .ag-logo {
+    display: none;
   }
 }
 

@@ -1,12 +1,12 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuetify from 'vuetify';
-import PricePage from './PricePage.vue';
+import AboutPage from './AboutPage.vue';
 
-describe('ResetPassword', () => {
+describe('AboutPage', () => {
   const initWrapper = () => {
     const localVue = createLocalVue();
     const vuetify = new Vuetify();
-    return shallowMount(PricePage, {
+    return shallowMount(AboutPage, {
       localVue,
       vuetify
     });
@@ -16,7 +16,7 @@ describe('ResetPassword', () => {
     const wrapper = initWrapper();
 
     const title = wrapper.find('h2');
-    expect(title.text()).toContain('Nos tarifs');
+    expect(title.text()).toContain('A propos');
     expect(wrapper).toMatchSnapshot();
   });
 });

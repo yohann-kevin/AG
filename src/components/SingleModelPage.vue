@@ -4,8 +4,7 @@
     v-if="dataLoaded"
   >
     <div class="single-model-info">
-      <!-- TODO: replace by level in database -->
-      <h2><strong>T7: </strong> {{ model.firstname }}</h2>
+      <h2><strong>{{ modelLevel }}: </strong> {{ model.firstname }}</h2>
       <p>
         {{ modelInfo.description }}
       </p>
@@ -27,7 +26,7 @@
           </router-link>
         </v-btn>
         <v-btn text>
-          <router-link to="/prices">
+          <router-link to="/contact">
             Contacter
           </router-link>
         </v-btn>
@@ -79,6 +78,11 @@ export default {
         this.modelPictures = response.data.model_pictures;
         this.dataLoaded = true;
       });
+    }
+  },
+  computed: {
+    modelLevel() {
+      return this.model.level === (null || undefined) ? 'T7' : this.model.level;
     }
   }
 }

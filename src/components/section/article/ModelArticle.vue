@@ -2,13 +2,13 @@
   <v-card
     class="model-article"
     max-width="344"
-    max-height="400"
-    min-height="400"
+    max-height="450"
+    min-height="450"
     elevation="2"
   >
     <v-img
       :src="model.model_picture.picture_path"
-      max-height="300px"
+      max-height="250px"
       contain
       @load="imageLoaded"
     />
@@ -64,7 +64,7 @@ export default {
       this.imgIsLoaded = true;
     },
     formatDescription(description) {
-      return description.substring(0,180) + "...";
+      return description.substring(0,160) + "...";
     }
   }
 }

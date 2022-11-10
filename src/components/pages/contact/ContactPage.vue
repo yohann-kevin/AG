@@ -214,6 +214,7 @@ export default {
         need: this.formatNeed(),
         content: this.content
       };
+      console.log(data);
 
       const config = {
         method: 'post',
@@ -283,5 +284,21 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-page > p {
+    width: 95%;
+  }
+
+  .contact-container-alert {
+    width: 95%;
+  }
+
+  .contact-card {
+    width: 95%;
+    margin: 15px;
+    padding: 20px;
+  }
 }
 </style>

@@ -1,6 +1,20 @@
 <template>
   <div class="page-prices">
-    <h2>Nos tarifs</h2>
+    <!-- about -->
+    <h2>A propos</h2>
+    <div class="about-section">
+      <p>
+        Notre équipe vous propose des <span class="about-strong">Mannequins / Photographes / Studios</span> photos en région bretonne ainsi que  parisienne  
+        pour lancer votre campagne publicitaire et vous suivre jusqu’au bout de vos ambitions.
+      </p>
+      <p>
+        En reprenant les valeurs de <span class="about-strong">votre identité de marque</span>, 
+        nous vous accompagnons dans vos projets de communication afin de 
+        renforcer votre empreinte, unique soit-elle.
+      </p>
+    </div>
+    <!-- model -->
+    <h2>Nos modèles</h2>
     <v-card
       elevation="8"
       shaped
@@ -18,9 +32,6 @@
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
-        <div class="my-4 text-subtitle-1">
-          T7 : 98,55 € <strong>/h</strong>
-        </div>
         Les T7 sont des modèles qui n'ont encore jamais travaillé avec AG Scouting.
       </v-card-text>
 
@@ -29,7 +40,9 @@
         text
         class="pack-btn"
       >
-        Bientôt disponible
+        <router-link to="/contact">
+          Contactez-nous
+        </router-link>
       </v-btn>
     </v-card>
 
@@ -50,9 +63,6 @@
       </v-card-title>
 
       <v-card-text class="font-weight-bold">
-        <div class="my-4 text-subtitle-1">
-          T8 : 114,80 € <strong>/h</strong>
-        </div>
         Les T8 sont des modèles qui ont déjà travaillé avec AG Scouting en France.
       </v-card-text>
 
@@ -61,11 +71,13 @@
         text
         class="pack-btn"
       >
-        Bientôt disponible
+        <router-link to="/contact">
+          Contactez-nous
+        </router-link>
       </v-btn>
     </v-card>
     
-    <div class="page-prices-partie-2">
+    <div class="page-prices-section">
       <v-card
         elevation="8"
         shaped
@@ -83,9 +95,6 @@
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
-          <div class="my-4 text-subtitle-1">
-            T9 : 151,15 € <strong>/h</strong>
-          </div>
           Les T9 sont des modèles qui ont déjà travaillé avec AG Scouting à l’international.
         </v-card-text>
 
@@ -94,7 +103,9 @@
           text
           class="pack-btn"
         >
-          Bientôt disponible
+          <router-link to="/contact">
+            Contactez-nous
+          </router-link>
         </v-btn>
       </v-card>
       <v-card
@@ -114,9 +125,6 @@
         </v-card-title>
 
         <v-card-text class="font-weight-bold">
-          <div class="my-4 text-subtitle-1">
-            T10 : 188,65 € <strong>/h</strong>
-          </div>
           Les T10 sont des modèles reconnus et ayant déjà une forte expérience en France ou à l'international.
         </v-card-text>
         <v-btn
@@ -124,42 +132,116 @@
           text
           class="pack-btn"
         >
-          Bientôt disponible
+          <router-link to="/contact">
+            Contactez-nous
+          </router-link>
         </v-btn>
       </v-card>
     </div>
-
-    <v-alert
-      class="message-warning"
-      dense
-      text
-      elevation="15"
-      type="warning"
+    <!-- service -->
+    <h2>Autre services</h2>
+    <v-card
+      elevation="8"
+      shaped
+      class="pack-bronze"
     >
-      Les frais de déplacement et d'hébergements seront à votre charge si nécessaire.
-    </v-alert>
+      <v-card-title>
+        <v-icon
+          large
+          left
+        >
+          mdi-camera
+        </v-icon>
+        <span class="text-h6 font-weight-light">Photographes</span>
+      </v-card-title>
 
-    <v-alert
-      class="message-warning"
-      dense
-      text
-      elevation="15"
-      type="warning"
+      <v-card-text class="font-weight-bold">
+        <div class="my-4 text-subtitle-1">
+          AG-Scouting propose aussi un service de shooting avec nos photographes expert dans le domaine.
+        </div>
+        - Nathan FRETUN <br>
+        - Alexis BOGROFF
+      </v-card-text>
+
+      <v-btn
+        color="black lighten-2"
+        text
+        class="pack-btn"
+      >
+        <router-link to="/contact">
+          Contactez-nous
+        </router-link>
+      </v-btn>
+    </v-card>
+    <v-card
+      elevation="8"
+      shaped
+      class="pack-bronze"
     >
-      Afin de maintenir la qualité de notre offre des frais de service sont à prévoir.
-    </v-alert>
+      <v-card-title>
+        <v-icon
+          large
+          left
+        >
+          mdi-camera-image
+        </v-icon>
+        <span class="text-h6 font-weight-light">Studios</span>
+      </v-card-title>
+
+      <v-card-text class="font-weight-bold">
+        <div class="my-4 text-subtitle-1">
+          AG-Scouting dispose aussi de plusieurs studio de shooting permettant de répondre à tous vos besoins. 
+        </div>
+        - En région parisienne <br>
+        - En région bretagne
+      </v-card-text>
+
+      <v-btn
+        color="black lighten-2"
+        text
+        class="pack-btn"
+      >
+        <router-link to="/contact">
+          Contactez-nous
+        </router-link>
+      </v-btn>
+    </v-card>
+    <!-- presentation -->
+    <PresentationSection />
   </div>
 </template>
 
 <script>
+import PresentationSection from '../../section/PresentationSection.vue';
+
 export default {
-  name: 'PricePage',
+  name: 'AboutPage',
   data: () => ({
   }),
+  components: {
+    PresentationSection
+  }
 }
 </script>
 
 <style scoped>
+.about-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-section p {
+  width: 80%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.about-strong {
+  font-weight: bold;
+}
+
 .page-prices {
   width: 100%;
   display: flex;
@@ -168,7 +250,7 @@ export default {
   
 }
 
-.page-prices-partie-2 {
+.page-prices-section {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -207,7 +289,12 @@ export default {
   margin: 10px;
 }
 
-.page-prices-partie-2,
+.pack-btn a {
+  color: #000;
+  text-decoration: none;
+}
+
+.page-prices-section,
 .message-warning {
  margin-bottom: 40px;
 }
@@ -250,7 +337,7 @@ export default {
     margin: 10px;
   }
 
-  .page-prices-partie-2 {
+  .page-prices-section {
     margin: 0;
   }
 }

@@ -51,6 +51,24 @@
           Femme
         </option>
       </select>
+      <label for="level">Niveau : </label>
+      <select
+        name="level"
+        ref="level"
+      >
+        <option value="T7">
+          T7
+        </option>
+        <option value="T8">
+          T8
+        </option>
+        <option value="T9">
+          T9
+        </option>
+        <option value="T10">
+          T10
+        </option>
+      </select>
     </v-card>
     <v-card class="model-form">
       <h3>Mensuration du modèle</h3>
@@ -249,7 +267,8 @@ export default {
         phone: this.$refs.phone.value,
         address: this.$refs.address.value,
         birth_date: this.$refs.birthdate.value,
-        sexe: this.$refs.sexe.value
+        sexe: this.$refs.sexe.value,
+        level: this.$refs.level.value
       }
     },
     manageModelMeasurement() {

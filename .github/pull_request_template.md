@@ -1,24 +1,23 @@
-# Pull Request Template
+# Release [VERSION]
 
 ## Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+List of epic in release :
 
-Fixes # (issue)
+- epic link
 
 ## Type of change
 
-Please delete options that are not relevant.
+This release contains :
 
 - [ ] Bug fix
 - [ ] New feature
-- [ ] Bug fix for fonctionnality
-- [ ] This change requires a documentation update
 - [ ] A continuous integration is updated
+- [ ] Env is updated
 
 ## How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+Link to the [beta](https://comfy-pothos-990c93.netlify.app/#/)
 
 - [ ] Tested
 
@@ -26,4 +25,3 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 - [ ] Auto test
 - [ ] Linter with eslint
-- [ ] Test in beta
