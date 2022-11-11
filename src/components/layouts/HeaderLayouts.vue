@@ -10,9 +10,9 @@
       <div class="d-flex align-center">
         <v-img
           alt="AG Scouting"
-          class="shrink mr-2"
+          class="shrink mr-2 ag-logo"
           contain
-          src="../../assets/logo-ag.png"
+          :src="formatImageSource('/public/assets/logo-ag.png')"
           transition="scale-transition"
           width="80px"
           height="78px"
@@ -29,8 +29,11 @@
         <router-link to="/">
           Accueil
         </router-link>
-        <router-link to="/prices">
-          Nos tarifs
+        <router-link to="/about">
+          A propos
+        </router-link>
+        <router-link to="/contact">
+          Contact
         </router-link>
         <router-link 
           to="/agent"
@@ -108,21 +111,38 @@
         mdi-close
       </v-icon>
 
-      <div class="nav-smartphone-liens">
+      <div class="nav-smartphone-link">
         <li class="menu">
           <router-link to="/">
             Accueil
           </router-link>
         </li>
         <li class="menu">
-          <router-link to="/prices">
-            Nos Tarifs
+          <router-link to="/about">
+            A propos
           </router-link>
         </li>
         <li class="menu">
-          <router-link to="/">
+          <router-link to="/contact">
+            Contact
+          </router-link>
+        </li>
+        <li class="menu">
+          <router-link :to="redirectAgent()">
             Mon Compte
           </router-link>
+        </li>
+
+        <li class="menu insta-link">
+          <a
+            href="https://www.instagram.com/ag.scouting/"
+            target="_blank"
+          >
+            <v-icon
+              color="#818181"
+              large
+            >mdi-instagram</v-icon> Instagram
+          </a>
         </li>
       </div>
     </div>
@@ -130,7 +150,7 @@
 </template>
 
 <script>
-
+import formatImageSource from '../../utils/utils.js';
 
 export default {
   name: "HeaderLayouts",
@@ -139,7 +159,8 @@ export default {
       { title: 'Inscription', link:'/register/agents' },
       { title: 'Connexion', link:'/login/agents' }
     ],
-    currentRoute: null
+    currentRoute: null,
+    formatImageSource: formatImageSource
   }),
   mounted() {
     this.currentRoute = this.$route.name;
@@ -152,6 +173,12 @@ export default {
     closeNavSmartphone() {
       this.$refs['header-bar'].isActive = true;
       this.$refs['nav-smartphone'].style.width = '0';
+    },
+    redirectAgent() {
+      if (this.$store.state.agentConnected) {
+        return '/agent';
+      }
+      return'/login/agents';
     }
   },
   computed: {
@@ -170,7 +197,7 @@ export default {
 
 <style scoped>
 #nav {
-  width: 40%;
+  width: 50%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -210,7 +237,7 @@ export default {
    height: 100%;
    width: 0;
    position: fixed;
-   z-index: 1;
+   z-index: 100;
    left: 0;
    top: 0;
    background-color: rgba(0, 0, 0, 0.9);
@@ -222,11 +249,16 @@ export default {
    -o-transition: 0.6s;
 }
 
-.nav-smartphone-liens {
+.nav-smartphone-link {
    position: relative;
    top: 15%;
    width: 100%;
    text-align: center;
+   list-style: none;
+}
+
+.menu {
+  margin-top: 25px;
 }
 
 .nav-smartphone a {
@@ -293,6 +325,10 @@ export default {
   font-weight: 500;
 }
 
+.insta-link {
+  align-items: center;
+}
+
 @media only screen and (max-width: 768px) {
   #nav {
     display: none;
@@ -300,6 +336,10 @@ export default {
 
   .menu-burger {
     display: initial;
+  }
+
+  .ag-logo {
+    display: none;
   }
 }
 

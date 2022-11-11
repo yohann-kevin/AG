@@ -3,7 +3,7 @@
     <v-parallax
       class="parallax-model mb-4"
       height="450"
-      src="../../assets/ag-team-seven.jpg"
+      :src="formatImageSource('/public/assets/ag-team-seven.jpg')"
     >
       <v-row
         align="center"
@@ -20,6 +20,14 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
+      <v-progress-circular
+        :size="90"
+        color="black"
+        indeterminate
+        class="is-in-load"
+        v-if="isInLoad"
+        :width="8"
+      />
       <div
         v-for="(model, i) in modelsWoman"
         :key="i"
@@ -30,7 +38,7 @@
     <v-parallax
       class="parallax-model"
       height="450"
-      src="../../assets/ag-team-nine.jpg"
+      :src="formatImageSource('/public/assets/ag-team-nine.jpg')"
     >
       <v-row
         align="center"
@@ -47,6 +55,14 @@
       </v-row>
     </v-parallax>
     <div class="all-model">
+      <v-progress-circular
+        :size="100"
+        color="black"
+        indeterminate
+        class="is-in-load"
+        v-if="isInLoad"
+        :width="8"
+      />
       <div
         v-for="(model, i) in modelsMen"
         :key="i"
@@ -59,6 +75,7 @@
 
 <script>
 import ModelArticle from "./article/ModelArticle.vue";
+import formatImageSource from '../../utils/utils.js';
 
 export default {
   name: "ModelSection",
@@ -66,9 +83,11 @@ export default {
     ModelArticle
   },
   data: () => ({
+    isInLoad: true,
     models: null,
     modelsMen: [],
-    modelsWoman: []
+    modelsWoman: [],
+    formatImageSource: formatImageSource
   }),
   beforeMount() {
     let modelOnStore = this.$store.state.homeModelData;
@@ -97,6 +116,7 @@ export default {
           this.modelsWoman.push(this.models[i]);
         }
       }
+      this.isInLoad = false;
     }
   }
 }
@@ -129,5 +149,9 @@ export default {
 
 .parallax-title {
   color: #fff;
+}
+
+.is-in-load {
+  margin: 30px;
 }
 </style>

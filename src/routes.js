@@ -5,7 +5,8 @@ import VueRouter from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
-import PricePage from './components/PricePage.vue';
+import AboutPage from './components/pages/about/AboutPage.vue';
+import ContactPage from './components/pages/contact/ContactPage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
@@ -17,6 +18,10 @@ import AdminModifyModel from './components/AdminModifyModel.vue'
 import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
 import LoginAgent from './components/agents/LoginAgent/LoginAgent.vue';
 import DashboardAgent from './components/agents/DashboardAgent/DashboardAgent.vue';
+
+// renew password
+import ResetPassword from './components/agents/ResetPassword/ResetPassword.vue';
+import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 
 // error component
 import Error404 from './components/404Page.vue';
@@ -35,6 +40,16 @@ async function manageAdmConnexion() {
   store.commit("adminData", adminData);
 }
 
+async function checkAgtConnexion() {
+  if (sessionStorage.agttoken) {
+    const token = sessionStorage.agttoken;
+    const agentData = await agentapi.findAgentData();
+    store.commit("agentData", agentData);
+    store.commit("agentToken", token);
+    store.commit("agentConnected", true);
+  }
+}
+
 const routes = [
   { 
       path: "/", 
@@ -42,14 +57,19 @@ const routes = [
       component: HomePage,
   },
   {
-    path: "/model",
+    path: "/model/:id",
     name: "model",
     component: SingleModelPage
   },
   {
-    path: "/prices",
-    name: "prices",
-    component: PricePage
+    path: "/about",
+    name: "about",
+    component: AboutPage
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactPage
   },
   {
     path: "/adminlogin",
@@ -84,7 +104,7 @@ const routes = [
         component: AdminModel
       },
       {
-        path: "/administration/modify/model",
+        path: "/administration/modify/model/:id",
         name: "AdminModifyModel",
         component: AdminModifyModel
       }
@@ -109,6 +129,16 @@ const routes = [
     },
   },
   {
+    path: '/reset/password',
+    name: 'ResetPassword',
+    component: ResetPassword
+  },
+  {
+    path: '/renew/password/:id',
+    name: 'RenewPassword',
+    component: RenewPassword
+  },
+  {
     path: "*",
     name: "Error404",
     component: Error404
@@ -119,13 +149,7 @@ const router = new VueRouter({ routes });
 
 // manage agent connexion
 router.beforeEach(async (to, from, next) => {
-  if (sessionStorage.agttoken) {
-    const token = sessionStorage.agttoken;
-    const agentData = await agentapi.findAgentData();
-    store.commit("agentData", agentData);
-    store.commit("agentToken", token);
-    store.commit("agentConnected", true);
-  }
+  await checkAgtConnexion();
   next();
 });
   
