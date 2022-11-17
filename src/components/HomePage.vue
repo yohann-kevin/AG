@@ -6,7 +6,7 @@
         alt="AG Scouting"
         class="ag-logo"
         contain
-        :src="formatImageSource('/public/assets/logo-ag.png')"
+        :src="formatImageSource('/public/assets/ag-big-logo.jpeg')"
         transition="scale-transition"
         width="400px"
         height="400px"
@@ -80,6 +80,10 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  .ag-logo {
+    margin-top: 10px;
   }
 }
 </style>
