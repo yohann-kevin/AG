@@ -157,7 +157,7 @@ const router = new VueRouter({ routes });
 // manage agent connexion
 router.beforeEach(async (to, from, next) => {
   const status = await statusapi.checkStatus();
-  if (status === 200  && to.path !== '/error') {
+  if (status !== 200  && to.path !== '/error') {
     next({ path: '/error' });
   }
   await checkAgtConnexion();
