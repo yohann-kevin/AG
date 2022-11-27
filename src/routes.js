@@ -25,6 +25,7 @@ import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 
 // error component
 import Error404 from './components/404Page.vue';
+import Error500 from './components/500Page.vue';
 
 // store
 import store from './store.js';
@@ -32,6 +33,7 @@ import store from './store.js';
 // api method
 import adminapi from './api/admin.js';
 import agentapi from './api/agent.js';
+import statusapi from './api/status';
 
 async function manageAdmConnexion() {
   store.commit("adminToken", sessionStorage.admtoken);
@@ -139,6 +141,11 @@ const routes = [
     component: RenewPassword
   },
   {
+    path: '/error',
+    name: 'Error500',
+    component: Error500
+  },
+  {
     path: "*",
     name: "Error404",
     component: Error404
@@ -149,6 +156,10 @@ const router = new VueRouter({ routes });
 
 // manage agent connexion
 router.beforeEach(async (to, from, next) => {
+  const status = await statusapi.checkStatus();
+  if (status === 200  && to.path !== '/error') {
+    next({ path: '/error' });
+  }
   await checkAgtConnexion();
   next();
 });
