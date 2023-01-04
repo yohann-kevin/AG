@@ -14,6 +14,7 @@ This release contains :
 - [ ] New feature
 - [ ] A continuous integration is updated
 - [ ] Env is updated
+- [ ] Update dependencies
 
 ## How Has This Been Tested?
 
