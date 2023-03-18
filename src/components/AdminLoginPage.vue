@@ -1,39 +1,71 @@
 <template>
   <div class="admin-login">
-    <h2 class="admin-login-title">Connexion Administration</h2>
+    <h2 class="admin-login-title">
+      Connexion Administration
+    </h2>
     
     <v-card class="admin-login-container">
       <v-alert
-        ref="errorLogin"
-        class="errorLogin"
+        dense
+        text
+        dismissible
         elevation="15"
-        shaped
         type="error"
-        :value="false"
+        v-model="errorAlert"
+        class="login-alert"
       >
-        Identifiant incorrect
+        La connexion n'a pas fonctionner vérifier vos identifiants et mot de passe !
       </v-alert>
-
       <v-alert
-        ref="successLogin"
+        dense
+        text
+        dismissible
         elevation="15"
-        shaped
         type="success"
-        :value="false"
+        v-model="successAlert"
+        class="login-alert"
       >
-        Identification réussi
+        Connexion réussie !
       </v-alert>
 
-      <label for="login">Email ou nom :</label>
-      <input type="text" name="login" ref="loginInput">
+      <v-form 
+        ref="login-admin-form"
+        class="login-admin-form"
+      >
+        <v-text-field
+          v-model="login"
+          color="black"
+          type="email"
+          label="Courriel ou Nom"
+          class="login-admin-input mt-5"
+          required
+        />
 
-      <label for="password">Mot de passe : </label>
-      <input type="password" name="password" ref="passwordInput">
+        <v-text-field
+          v-model="password"
+          color="black"
+          type="password"
+          label="Mot de passe"
+          class="login-admin-input"
+          required
+        />
 
-      <div class="login-admin-btn">
-        <v-btn text @click="sendForm()"> Envoyer </v-btn>
-        <v-btn text @click="resetForm()"> Annuler</v-btn>
-      </div>
+        <div class="login-admin-btn">
+          <v-btn
+            text
+            @click="loginAdmin()"
+            class="mr-5"
+          >
+            Envoyer
+          </v-btn>
+          <v-btn
+            text
+            @click="resetForm()"
+          >
+            Annuler
+          </v-btn>
+        </div>
+      </v-form>
     </v-card>
   </div>
 </template>
@@ -43,35 +75,23 @@ export default {
   name: "AdminLoginPage",
   data: () => ({
     login: "",
-    password: ""
+    password: "",
+    errorAlert: false,
+    successAlert: false
   }),
   methods: {
     resetForm() {
-      this.$refs.loginInput.value = "";
-      this.$refs.passwordInput.value = "";
-    },
-    sendForm() {
-      if (this.checkEmptyValue(this.$refs.loginInput) && this.checkEmptyValue(this.$refs.passwordInput)) {
-        this.login = this.$refs.loginInput.value;
-        this.password = this.$refs.passwordInput.value;
-        this.loginAdmin();
-      } else {
-        // TODO: manage the case of form is not complete
-        // alert("Is not okay");
-        this.$refs.errorLogin.value = true;
-      }
-    },
-    checkEmptyValue(input) {
-      return input.value === "" ? false : true;
+      this.$refs['login-admin-form'].reset();
     },
     loginAdmin() {
-      let data = {
+      const data = {
         login: this.login,
         password: this.password
       };
 
-      let config = {
+      const config = {
         method: 'post',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'admin/auth',
         headers: { 
           'Content-Type': 'application/json'
@@ -81,17 +101,18 @@ export default {
 
       this.$axios(config).then(response => {
         if (response.status === 200) {
-          // this.$refs.successLogin.value = true;
+          this.successAlert = true;
           this.connectAdmin(response.data);
         }
       }).catch(error => {
-        this.$refs.errorLogin.value = true;
+        this.errorAlert = true;
         console.log(error);
       });
     },
     connectAdmin(adminData) {
       this.$store.commit("adminToken", adminData.token);
       this.$store.commit("adminData", adminData.admin_data);
+      sessionStorage.admtoken = this.$store.state.adminToken;
       this.$store.commit("adminConnected", true);
       this.$router.push("administration");
     }
@@ -112,8 +133,20 @@ export default {
   text-align: center;
 }
 
+.login-alert {
+  width: 100%;
+  margin: 10px;
+}
+
 .admin-login-container {
-  width: 80%;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.login-admin-form {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -124,25 +157,10 @@ export default {
   width: 30%;
 }
 
-.admin-login-container label {
-  width: 100%;
-  text-align: center;
-}
-
-.admin-login-container input {
-  width: 30%;
-  height: 30px;
+.login-admin-input {
+  width: 55%;
+  margin-top: 10px;
   margin: 10px;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-  transition: 0.5s;
-}
-
-.admin-login-container:hover {
-  border-radius: 0px;
-  outline: none;
 }
 
 .login-admin-btn {

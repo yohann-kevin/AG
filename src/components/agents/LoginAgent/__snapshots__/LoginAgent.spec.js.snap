@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginAgent should test component render correctly 1`] = `
+<div class="login-agent">
+  <h2>Connexion</h2>
+  <div class="login-agent-container-alert">
+    <v-alert dense="" text="" dismissible="" elevation="15" type="error" class="login-agent-alert">
+      Quelque chose c'est mal passer réessayer de vous connecter plus tard !
+    </v-alert>
+    <v-alert dense="" text="" dismissible="" elevation="15" type="success" class="login-agent-alert">
+      Connexion réussie !
+    </v-alert>
+  </div>
+  <v-form class="login-agent-form">
+    <v-text-field color="black" rules="v => /^[\\w-\\\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/.test(v) || 'Adresse email invalide'" type="email" label="Courriel" required="" class="login-agent-input"></v-text-field>
+    <v-text-field color="black" rules="v => /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(v) || 'Mot de passe invalide'" type="password" label="Mot de passe" required="" class="login-agent-input"></v-text-field>
+    <div class="login-agent-btn">
+      <v-btn text="" disabled="true">
+        Envoyer
+      </v-btn>
+      <v-btn text="">
+        Annuler
+      </v-btn>
+    </div>
+    <div class="login-not-acocunt">
+      <p class="mr-1">
+        Pas de compte ?
+      </p>
+      <v-tooltip bottom="">
+        Inscription
+      </v-tooltip>
+      <p class="ml-1">
+        dès maintenant
+      </p>
+    </div>
+    <div class="login-not-password">
+      <p class="mr-1">
+        Mot de passe oublier ?
+      </p>
+      <v-tooltip bottom="">
+        Réinitialiser le mot de passe
+      </v-tooltip>
+      <p class="ml-1">
+        dès maintenant
+      </p>
+    </div>
+  </v-form>
+</div>
+`;

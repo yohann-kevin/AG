@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResetPassword should test component render correctly 1`] = `
+<div class="contact-page">
+  <h2>Contact</h2>
+  <p>
+    Vous souhaitez obtenir plus d'informations sur nos prestations ?
+    Décrivez-nous votre projet à l’aide du formulaire ci-dessous.
+    Nous nous engageons à vous répondre dans les plus brefs délais
+    pour vous faire une proposition d’accompagnement.
+  </p>
+  <v-card elevation="8" class="contact-card">
+    <v-form class="contact-form">
+      <v-text-field color="black" rules="v => /^[\\w-\\\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/.test(v) || &quot;Adresse email invalide&quot;" type="email" label="Courriel" prepend-icon="mdi-email" required="" class="contact-input"></v-text-field>
+      <v-text-field label="Votre numéro de téléphone" rules="v => /^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$/.test(v) || &quot;Numéro de téléphone invalide&quot;" color="black" prepend-icon="mdi-phone" class="contact-input"></v-text-field>
+      <v-text-field color="black" label="Nom de votre entreprise" prepend-icon="mdi-home-city" class="contact-input"></v-text-field>
+      <v-text-field color="black" label="Votre secteur d'activité" prepend-icon="mdi-briefcase" class="contact-input"></v-text-field>
+      <v-text-field color="black" label="Objet de votre demande" required="" prepend-icon="mdi-email-outline" class="contact-input"></v-text-field>
+      <v-select items="[object Object],[object Object],[object Object],[object Object]" label="Votre besoin" color="black" item-color="black" multiple="" chips="" required="" prepend-icon="mdi-magnify" class="contact-input"></v-select>
+      <v-textarea color="black" label="Votre message" filled="" required="" prepend-icon="mdi-message" class="contact-input"></v-textarea>
+    </v-form>
+    <div class="contact-btn">
+      <v-btn text="">
+        Envoyer
+      </v-btn>
+      <v-btn text="">
+        Annuler
+      </v-btn>
+    </div>
+  </v-card>
+  <div class="contact-container-alert">
+    <v-alert dense="" text="" dismissible="" elevation="15" type="error" class="contact-alert">
+      Quelque chose c'est mal passer réessayer de nous contactez plus tard !
+    </v-alert>
+    <v-alert dense="" text="" dismissible="" elevation="15" type="error" class="contact-alert">
+      Votre email, votre besoin, votre message et l'objet de celui-ci sont requis pour envoyer une demande de contact !
+    </v-alert>
+    <v-alert dense="" text="" dismissible="" elevation="15" type="success" class="contact-alert">
+      Votre demande de contact à bien été envoyer !
+    </v-alert>
+    <!---->
+  </div>
+</div>
+`;

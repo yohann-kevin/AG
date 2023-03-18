@@ -4,99 +4,240 @@
     <v-card class="model-form">
       <h3>Information du modèle</h3>
       <label for="firstname">Prénom :</label>
-      <input type="text" name="firstname" ref="firstname">
+      <input
+        type="text"
+        name="firstname"
+        ref="firstname"
+      >
       <label for="lastname">Nom :</label>
-      <input type="text" name="lastname" ref="lastname">
+      <input
+        type="text"
+        name="lastname"
+        ref="lastname"
+      >
       <label for="email">Email :</label>
-      <input type="email" name="email" ref="email">
+      <input
+        type="email"
+        name="email"
+        ref="email"
+      >
       <label for="phone">Numéro de téléphone :</label>
-      <input type="number" name="phone" ref="phone">
-      <label for="address">Addresse :</label>
-      <input type="text" name="address" ref="address">
+      <input
+        type="number"
+        name="phone"
+        ref="phone"
+      >
+      <label for="address">Adresse :</label>
+      <input
+        type="text"
+        name="address"
+        ref="address"
+      >
       <label for="birthdate">Date de naissance :</label>
-      <input type="date" name="birthdate" ref="birthdate">
+      <input
+        type="date"
+        name="birthdate"
+        ref="birthdate"
+      >
       <label for="sexe">Sexe : </label>
-      <select name="sexe" ref="sexe">
-        <option value="men">Homme</option>
-        <option value="woman">Femme</option>
+      <select
+        name="sexe"
+        ref="sexe"
+      >
+        <option value="men">
+          Homme
+        </option>
+        <option value="woman">
+          Femme
+        </option>
+      </select>
+      <label for="level">Niveau : </label>
+      <select
+        name="level"
+        ref="level"
+      >
+        <option value="T7">
+          T7
+        </option>
+        <option value="T8">
+          T8
+        </option>
+        <option value="T9">
+          T9
+        </option>
+        <option value="T10">
+          T10
+        </option>
       </select>
     </v-card>
     <v-card class="model-form">
       <h3>Mensuration du modèle</h3>
       <label for="size">Hauteur :</label>
-      <input type="number" name="size" ref="size">
-      <label for="weight">Poid :</label>
-      <input type="number" name="weight" ref="weight">
+      <input
+        type="number"
+        name="size"
+        ref="size"
+      >
+      <label for="weight">Poids :</label>
+      <input
+        type="number"
+        name="weight"
+        ref="weight"
+      >
       <label for="chest">Poitrine :</label>
-      <input type="number" name="chest" ref="chest">
+      <input
+        type="number"
+        name="chest"
+        ref="chest"
+      >
       <label for="waist">Taille :</label>
-      <input type="number" name="waist" ref="waist">
+      <input
+        type="number"
+        name="waist"
+        ref="waist"
+      >
       <label for="hips">Hanche :</label>
-      <input type="number" name="hips" ref="hips">
+      <input
+        type="number"
+        name="hips"
+        ref="hips"
+      >
       <label for="shoes">Pointure :</label>
-      <input type="number" name="shoes" ref="shoes">
+      <input
+        type="number"
+        name="shoes"
+        ref="shoes"
+      >
       <label for="color">Couleur de peau :</label>
-      <input type="text" name="color" ref="color">
+      <input
+        type="text"
+        name="color"
+        ref="color"
+      >
       <label for="haircolor">Couleur de cheveux :</label>
-      <input type="text" name="haircolor" ref="haircolor">
+      <input
+        type="text"
+        name="haircolor"
+        ref="haircolor"
+      >
       <label for="eyes">Yeux :</label>
-      <input type="text" name="eyes" ref="eyes">
+      <input
+        type="text"
+        name="eyes"
+        ref="eyes"
+      >
       <label for="atrological">Signe astrologique :</label>
-      <input type="text" name="astrological" ref="astrological">
+      <input
+        type="text"
+        name="astrological"
+        ref="astrological"
+      >
       <label for="description">Petite description :</label>
-      <textarea name="description" ref="description"></textarea>
+      <textarea
+        name="description"
+        ref="description"
+      />
     </v-card>
     <v-card class="model-form">
       <h3>Réseaux sociaux du modèle</h3>
       <label for="instagram">Instagram :</label>
-      <input type="text" name="instagram" ref="instagram">
+      <input
+        type="text"
+        name="instagram"
+        ref="instagram"
+      >
       <label for="facebook">Facebook :</label>
-      <input type="text" name="facebook" ref="facebook">
+      <input
+        type="text"
+        name="facebook"
+        ref="facebook"
+      >
       <label for="snapchat">Snapchat :</label>
-      <input type="text" name="snapchat" ref="snapchat">
+      <input
+        type="text"
+        name="snapchat"
+        ref="snapchat"
+      >
       <label for="tiktok">Tiktok :</label>
-      <input type="text" name="tiktok" ref="tiktok">
+      <input
+        type="text"
+        name="tiktok"
+        ref="tiktok"
+      >
       <label for="twitter">Twitter :</label>
-      <input type="text" name="twitter" ref="twitter">
+      <input
+        type="text"
+        name="twitter"
+        ref="twitter"
+      >
     </v-card>
     <v-card class="model-form">
       <h3>Photo du modèle</h3>
-      <label for="mainpicture">Photo principal :</label>
-      <input type="file" name="mainpicture" accept="image/*" ref="mainpicture">
+      <label for="mainpicture">Photo principale :</label>
+      <input
+        type="file"
+        name="mainpicture"
+        accept="image/*"
+        ref="mainpicture"
+      >
       <label for="pictures">Photos :</label>
-      <input type="file" name="pictures" multiple="multiple" ref="pictures">
+      <input
+        type="file"
+        name="pictures"
+        multiple="multiple"
+        ref="pictures"
+      >
     </v-card>
     <div class="model-form-btn">
-
       <div class="add-model-alert">
         <v-alert
-          ref="errorAddModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="error"
-          :value="false"
+          v-model="errorAlert"
+          class="add-model-v-alert"
         >
           L'ajout du modèle n'a pas fonctionner !
         </v-alert>
-
         <v-alert
-          ref="successAddModel"
+          dense
+          text
+          dismissible
           elevation="15"
-          shaped
           type="success"
-          :value="false"
+          v-model="successAlert"
+          class="add-model-v-alert"
         >
           Le modèle à bien été ajouter !
         </v-alert>
+
+        <v-progress-circular
+          :size="90"
+          color="black"
+          indeterminate
+          class="is-in-load"
+          v-if="isInLoad"
+          :width="8"
+        />
       </div>
 
-      <v-btn text @click="sendModel()">Ajouter</v-btn>
-      <v-btn text>Annuler</v-btn>
+      <v-btn
+        text
+        @click="sendModel()"
+      >
+        Ajouter
+      </v-btn>
+      <v-btn text>
+        Annuler
+      </v-btn>
     </div>
   </div>
 </template>
 
 <script>
+import imageCompression from 'browser-image-compression';
 export default {
   name: 'AddModelSection',
   data: () => ({
@@ -104,11 +245,15 @@ export default {
     modelMeasurement: null,
     modelNetwork: null,
     dataMainPicture: [],
-    dataPictures: []
+    dataPictures: [],
+    errorAlert: false,
+    successAlert: false,
+    isInLoad: false
   }),
   methods: {
     // TODO: manage empty value
     sendModel() {
+      this.isInLoad = true;
       this.manageModelInfo();
       this.manageModelMeasurement();
       this.manageModelNetwork();
@@ -122,7 +267,8 @@ export default {
         phone: this.$refs.phone.value,
         address: this.$refs.address.value,
         birth_date: this.$refs.birthdate.value,
-        sexe: this.$refs.sexe.value
+        sexe: this.$refs.sexe.value,
+        level: this.$refs.level.value
       }
     },
     manageModelMeasurement() {
@@ -149,56 +295,70 @@ export default {
         twitter: this.$refs.twitter.value
       }
     },
-    async manageModelMainPicture() {
-      let picture = this.$refs.mainpicture.files[0];
+    async convertPicturesToBase64(pictureData, isMainPicture) {
       const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
       });
-      this.dataMainPicture.push(await toBase64(picture));
+      if (isMainPicture) {
+        this.dataMainPicture.push(await toBase64(pictureData));
+      } else {
+        this.dataPictures.push(await toBase64(pictureData));
+      }
+    },
+    async compressImage(picture) {
+      const options = {
+        maxSizeMB: 2,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+      try {
+        return await imageCompression(picture, options);
+      } catch (error) {
+        this.$refs.errorAddModel.value = true;
+        console.log(error);
+      }
     },
     async manageModelPictures() {
-      let pictures = this.$refs.pictures.files;
-
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
-
-      for (let i = 0; i < pictures.length; i++) {
-        this.dataPictures.push(await toBase64(pictures[i]));
+      const mainPicture = this.$refs.mainpicture.files[0];
+      const mainPictureCompressed = await this.compressImage(mainPicture);
+      await this.convertPicturesToBase64(mainPictureCompressed, true);
+      const otherPictures = this.$refs.pictures.files;
+      for (let i = 0; i < otherPictures.length; i++) {
+        const pictureCompressed = await this.compressImage(otherPictures[i]);
+        await this.convertPicturesToBase64(pictureCompressed, false);
       }
     },
     async sendModelData() {
-      await this.manageModelMainPicture();
       await this.manageModelPictures();
-
-      let modelData = {
+      
+      const modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork,
         main_picture: this.dataMainPicture,
         all_pictures: this.dataPictures
       };
-
-      let config = {
+      const config = {
         method: 'post',
+        // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'create/model',
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
         data : modelData
       };
-
       this.$axios(config).then(response => {
-        console.log(response.data);
-        this.$refs.successAddModel.value = true;
+        this.isInLoad = false;
+        if (response.status === 201) {
+          this.successAlert = true;
+        }
       }).catch(error => {
-        this.$refs.errorAddModel.value = true;
+        this.isInLoad = false;
+        this.errorAlert = true;
         console.log(error);
       });
     }
@@ -272,6 +432,12 @@ export default {
 
 .add-model-alert {
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-model-v-alert {
+  width: 100%;
 }
 
 .model-form-btn {
@@ -280,5 +446,9 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   padding: 15px;
+}
+
+.is-in-load {
+  margin-bottom: 30px;
 }
 </style>
