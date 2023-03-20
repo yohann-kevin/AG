@@ -5,7 +5,7 @@ const statusapi = {
   checkStatus: async () => {
     const config = {
       method: 'get',
-      url: process.env.VUE_APP_API_URL + '/status',
+      url: process.env.VUE_APP_API_URL + '/hygie_back_runner/status',
     };
     
     return axios(config).then(response => {
