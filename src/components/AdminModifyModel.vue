@@ -46,7 +46,7 @@
         type="date"
         name="birthdate"
         ref="birthdate"
-        :value="manageModelBirthDateFormat(model.birth_date)"
+        :value="manageModelBirthDateFormat(model.birthdate)"
       >
       <label for="sexe">Sexe : </label>
       <select
@@ -300,7 +300,7 @@ export default {
         email: this.$refs.email.value,
         phone: this.$refs.phone.value,
         address: this.$refs.address.value,
-        birth_date: this.$refs.birthdate.value,
+        birthdate: this.$refs.birthdate.value,
         sexe: this.$refs.sexe.value,
         level: this.$refs.level.value
       }
