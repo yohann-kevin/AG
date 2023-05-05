@@ -284,6 +284,8 @@ export default {
     snapchat: "",
     tiktok: "",
     twitter: "",
+    mainpicture: "", 
+    pictures: "",
     modelInfo: null,
     modelMeasurement: null,
     modelNetwork: null,
@@ -291,10 +293,8 @@ export default {
     dataPictures: [],
     errorAlert: false,
     successAlert: false,
-    isInLoad: false,
-    mainpicture: "", 
-    pictures: ""
-  }),
+    isInLoad: false
+}),
   methods: {
     // TODO: manage empty value
     sendModel() {
@@ -311,7 +311,7 @@ export default {
         email: this.email,
         phone: this.phone,
         address: this.address,
-        birthdate: this.birthdate,
+        birth_date: this.birthdate,
         sexe: this.sexe,
         level: this.level
       }
@@ -325,7 +325,7 @@ export default {
         hips: this.hips,
         shoes: this.shoes,
         color: this.color,
-        haircolor: this.haircolor,
+        hair_color: this.haircolor,
         eyes: this.eyes,
         astrological: this.astrological,
         description: this.description
