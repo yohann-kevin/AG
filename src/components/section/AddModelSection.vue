@@ -42,6 +42,7 @@
       <v-text-field
         label="Date de naissance"
         color="black"
+        type="date"
         prepend-icon="mdi-cake-variant"
         v-model="birthdate"
       />
@@ -268,12 +269,12 @@ export default {
       { text: 'T9', value: 'T9' },
       { text: 'T10', value: 'T10' },
     ],
-    size: "",
-    weight: "",
-    chest: "",
-    waist: "",
-    hips: "",
-    shoes: "",
+    size: null,
+    weight: null,
+    chest: null,
+    waist: null,
+    hips: null,
+    shoes: null,
     color: "",
     haircolor: "",
     eyes: "",
@@ -284,8 +285,8 @@ export default {
     snapchat: "",
     tiktok: "",
     twitter: "",
-    mainpicture: "", 
-    pictures: "",
+    mainpicture: null, 
+    pictures: null,
     modelInfo: null,
     modelMeasurement: null,
     modelNetwork: null,
@@ -323,7 +324,7 @@ export default {
         chest: this.chest,
         waist: this.waist,
         hips: this.hips,
-        shoes: this.shoes,
+        shoe_size: this.shoes,
         color: this.color,
         hair_color: this.haircolor,
         eyes: this.eyes,
@@ -355,7 +356,7 @@ export default {
     },
     async compressImage(picture) {
       const options = {
-        maxSizeMB: 2,
+        maxSizeMB: 1,
         maxWidthOrHeight: 1920,
         useWebWorker: true
       };
@@ -367,20 +368,15 @@ export default {
       }
     },
     async manageModelPictures() {
-  if (this.mainpicture) {
-    const mainPicture = this.mainpicture.files[0];
-    const mainPictureCompressed = await this.compressImage(mainPicture);
-    await this.convertPicturesToBase64(mainPictureCompressed, true);
-  }
-
-  if (this.pictures) {
-    const otherPictures = this.pictures.files;
-    for (let i = 0; i < otherPictures.length; i++) {
-      const pictureCompressed = await this.compressImage(otherPictures[i]);
-      await this.convertPicturesToBase64(pictureCompressed, false);
-    }
-  }
-},
+      const mainPicture = this.mainpicture;
+      const mainPictureCompressed = await this.compressImage(mainPicture);
+      await this.convertPicturesToBase64(mainPictureCompressed, true);
+      const otherPictures = this.pictures;
+      for (let i = 0; i < otherPictures.length; i++) {
+        const pictureCompressed = await this.compressImage(otherPictures[i]);
+        await this.convertPicturesToBase64(pictureCompressed, false);
+      }
+    },
 
     async sendModelData() {
       await this.manageModelPictures();
@@ -402,6 +398,7 @@ export default {
         },
         data: modelData
       };
+
       this.$axios(config).then(response => {
         this.isInLoad = false;
         if (response.status === 201) {
