@@ -150,7 +150,7 @@
 </template>
 
 <script>
-import formatImageSource from '../../utils/utils.js';
+import utils from '../../utils/utils.js';
 
 export default {
   name: "HeaderLayouts",
@@ -160,7 +160,7 @@ export default {
       { title: 'Connexion', link:'/login/agents' }
     ],
     currentRoute: null,
-    formatImageSource: formatImageSource
+    formatImageSource: utils.formatImageSource
   }),
   mounted() {
     this.currentRoute = this.$route.name;

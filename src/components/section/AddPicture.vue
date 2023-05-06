@@ -53,10 +53,11 @@
 </template>
 
 <script>
-import imageCompression from 'browser-image-compression';
+import utils from '../../utils/utils';
 
 export default {
   data: () => ({
+    compressImage: utils.compressImage,
     newPicture: null,
     newPictureReady: null,
     errorAlert: false,
@@ -79,23 +80,14 @@ export default {
 
       this.newPictureReady = await toBase64(pictureData);
     },
-    async compressImage(picture) {
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true
-      };
-
+    async sendNewPicture() {
       try {
-        return await imageCompression(picture, options);
+        const newPictureCompressed = await this.compressImage(this.newPicture);
+        await this.convertPicturesToBase64(newPictureCompressed); 
       } catch (error) {
         this.errorAlert = true;
         console.log(error);
       }
-    },
-    async sendNewPicture() {
-      const newPictureCompressed = await this.compressImage(this.newPicture);
-      await this.convertPicturesToBase64(newPictureCompressed);
       
       const config = {
         method: 'post',

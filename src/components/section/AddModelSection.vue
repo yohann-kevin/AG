@@ -247,10 +247,12 @@
 </template>
 
 <script>
-import imageCompression from 'browser-image-compression';
+import utils from '../../utils/utils';
+
 export default {
   name: 'AddModelSection',
   data: () => ({
+    compressImage: utils.compressImage,
     firstname: "",
     lastname: "",
     email: "",
@@ -354,32 +356,31 @@ export default {
         this.dataPictures.push(await toBase64(pictureData));
       }
     },
-    async compressImage(picture) {
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true
-      };
+    async manageModelPictures() {
+      const mainPicture = this.mainpicture;
       try {
-        return await imageCompression(picture, options);
+        const mainPictureCompressed = await this.compressImage(mainPicture);  
+        await this.convertPicturesToBase64(mainPictureCompressed, true);
       } catch (error) {
         this.errorAddModel = true;
         console.log(error);
       }
-    },
-    async manageModelPictures() {
-      const mainPicture = this.mainpicture;
-      const mainPictureCompressed = await this.compressImage(mainPicture);
-      await this.convertPicturesToBase64(mainPictureCompressed, true);
+
       const otherPictures = this.pictures;
       for (let i = 0; i < otherPictures.length; i++) {
-        const pictureCompressed = await this.compressImage(otherPictures[i]);
-        await this.convertPicturesToBase64(pictureCompressed, false);
+        try {
+          const pictureCompressed = await this.compressImage(otherPictures[i]);
+          await this.convertPicturesToBase64(pictureCompressed, false);
+        } catch (error) {
+          this.errorAddModel = true;
+          console.log(error);
+        }
       }
     },
 
     async sendModelData() {
       await this.manageModelPictures();
+      console.log(this.dataMainPicture);
 
       const modelData = {
         model: this.modelInfo,

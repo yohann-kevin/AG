@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import formatImageSource from '../../utils/utils.js';
+import utils from '../../utils/utils.js';
 
 export default {
   name: "IntroductionSection",
   data: () => ({
-    formatImageSource: formatImageSource
+    formatImageSource: utils.formatImageSource
   })
 }
 </script>

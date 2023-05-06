@@ -31,7 +31,7 @@
 import IntroductionSection from "./section/IntroductionSection.vue";
 import ModelSection from "./section/ModelSection.vue";
 
-import formatImageSource from '../utils/utils.js';
+import utils from '../utils/utils.js';
 
 export default {
   name: "HomePage",
@@ -40,7 +40,7 @@ export default {
     ModelSection
   },
   data: () => ({
-   formatImageSource: formatImageSource
+   formatImageSource: utils.formatImageSource
   }),
 }
 </script>
