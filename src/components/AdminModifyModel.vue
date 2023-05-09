@@ -6,196 +6,197 @@
     <h2>Modifier le modèle</h2>
     <v-card class="model-form">
       <h3>information du modèle</h3>
-      <label for="firstname">Prénom :</label>
-      <input
-        type="text"
-        name="firstname"
-        ref="firstname"
-        :value="model.firstname"
-      >
-      <label for="lastname">Nom :</label>
-      <input
-        type="text"
-        name="lastname"
-        ref="lastname"
-        :value="model.lastname"
-      >
-      <label for="email">Email :</label>
-      <input
-        type="email"
-        name="email"
-        ref="email"
-        :value="model.email"
-      >
-      <label for="phone">Numéro de téléphone :</label>
-      <input
-        type="number"
-        name="phone"
-        ref="phone"
-        :value="model.phone"
-      >
-      <label for="address">Adresse :</label>
-      <input
-        type="text"
-        name="address"
-        ref="address"
-        :value="model.address"
-      >
-      <label for="birthdate">Date de naissance :</label>
-      <input
+      <v-text-field
+        label="Prénom"
+        color="black"
+        prepend-icon="mdi-account"
+        v-model="model.firstname"
+      />
+
+      <v-text-field
+        label="Nom"
+        color="black"
+        prepend-icon="mdi-account"
+        v-model="model.lastname"
+      />
+
+      <v-text-field
+        label="Email"
+        color="black"
+        prepend-icon="mdi-email"
+        v-model="model.email"
+      />
+
+      <v-text-field
+        label="Numéro de téléphone"
+        color="black"
+        prepend-icon="mdi-phone"
+        v-model="model.phone"
+      />
+
+      <v-text-field
+        label="Adresse"
+        color="black"
+        prepend-icon="mdi-home-account"
+        v-model="model.address"
+      />
+
+      <v-text-field
+        label="Date de naissance"
+        color="black"
         type="date"
-        name="birthdate"
-        ref="birthdate"
-        :value="manageModelBirthDateFormat(model.birthdate)"
-      >
-      <label for="sexe">Sexe : </label>
-      <select
-        name="sexe"
-        ref="sexe"
-        :value="model.sexe"
-      >
-        <option value="men">
-          Homme
-        </option>
-        <option value="woman">
-          Femme
-        </option>
-      </select>
-      <label for="level">Niveau : </label>
-      <select
-        name="level"
-        ref="level"
-      >
-        <option value="T7">
-          T7
-        </option>
-        <option value="T8">
-          T8
-        </option>
-        <option value="T9">
-          T9
-        </option>
-        <option value="T10">
-          T10
-        </option>
-      </select>
-    </v-card>
-    <v-card class="model-form">
-      <h3>Mensuration du modèle</h3>
-      <label for="size">Hauteur :</label>
-      <input
-        type="number"
-        name="size"
-        ref="size"
-        :value="modelInfo.size"
-      >
-      <label for="weight">Poids :</label>
-      <input
-        type="number"
-        name="weight"
-        ref="weight"
-        :value="modelInfo.weight"
-      >
-      <label for="chest">Poitrine :</label>
-      <input
-        type="number"
-        name="chest"
-        ref="chest"
-        :value="modelInfo.chest"
-      >
-      <label for="waist">Taille :</label>
-      <input
-        type="number"
-        name="waist"
-        ref="waist"
-        :value="modelInfo.waist"
-      >
-      <label for="hips">Hanche :</label>
-      <input
-        type="number"
-        name="hips"
-        ref="hips"
-        :value="modelInfo.hips"
-      >
-      <label for="shoes">Pointure :</label>
-      <input
-        type="number"
-        name="shoes"
-        ref="shoes"
-        :value="modelInfo.shoe_size"
-      >
-      <label for="color">Couleur de peau :</label>
-      <input
-        type="text"
-        name="color"
-        ref="color"
-        :value="modelInfo.color"
-      >
-      <label for="haircolor">Couleur de cheuveux :</label>
-      <input
-        type="text"
-        name="haircolor"
-        ref="haircolor"
-        :value="modelInfo.hair_color"
-      >
-      <label for="eyes">Yeux :</label>
-      <input
-        type="text"
-        name="eyes"
-        ref="eyes"
-        :value="modelInfo.eyes"
-      >
-      <label for="atrological">Signe astrologique :</label>
-      <input
-        type="text"
-        name="astrological"
-        ref="astrological"
-        :value="modelInfo.astrological"
-      >
-      <label for="description">Petite description :</label>
-      <textarea
-        name="description"
-        ref="description"
-        :value="modelInfo.description"
+        prepend-icon="mdi-cake-variant"
+        v-model="model.birthdate"
+      />
+      <v-select
+        label="Sexe"
+        color="black"
+        prepend-icon="mdi-gender-male-female"
+        v-model="model.sexe"
+        :items="sexes"
+        item-text="text"
+        item-value="value"
+      />
+      <v-select
+        label="Niveau"
+        color="black"
+        prepend-icon="mdi-star"
+        v-model="model.level"
+        :items="levels"
+        item-text="text"
+        item-value="value"
       />
     </v-card>
+
+
+    <v-card class="model-form">
+      <h3>Mensuration du modèle</h3>
+      <v-text-field
+        label="Hauteur :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-ruler"
+        v-model="modelInfo.size"
+      />
+
+      <v-text-field
+        label="Poids :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-weight-kilogram"
+        v-model="modelInfo.weight"
+      />
+
+
+      <v-text-field
+        label="Poitrine :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-tape-measure"
+        v-model="modelInfo.chest"
+      />
+
+      <v-text-field
+        label="Taille :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-tape-measure"
+        v-model="modelInfo.waist"
+      />
+
+      <v-text-field
+        label="Hanche :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-tape-measure"
+        v-model="modelInfo.hips"
+      />
+
+      <v-text-field
+        label="Pointure :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-shoe-print"
+        v-model="modelInfo.shoes"
+      />
+
+      <v-text-field
+        label="Couleur de peau :"
+        color="black"
+        prepend-icon="mdi-palette"
+        v-model="modelInfo.color"
+      />
+
+      <v-text-field
+        label="Couleur de cheveux :"
+        color="black"
+        prepend-icon="mdi-palette"
+        v-model="modelInfo.haircolor"
+      />
+
+      <v-text-field
+        label="Couleur des yeux :"
+        color="black"
+        prepend-icon="mdi-eye"
+        v-model="modelInfo.eyes"
+      />
+
+      <v-text-field
+        label="Signe astrologique :"
+        color="black"
+        prepend-icon="mdi-star"
+        v-model="modelInfo.astrological"
+      />
+
+      <v-textarea
+        label="Petite description :"
+        color="black"
+        prepend-icon="mdi-pencil"
+        v-model="modelInfo.description"
+      />
+    </v-card>
+
     <v-card class="model-form">
       <h3>Réseaux sociaux du modèle</h3>
-      <label for="instagram">Instagram :</label>
-      <input
-        type="text"
-        name="instagram"
+      <v-text-field
+        label="Instagram :"
+        color="black"
+        prepend-icon="mdi-instagram"
         ref="instagram"
-        :value="modelNetwork.instagram"
-      >
-      <label for="facebook">Facebook :</label>
-      <input
-        type="text"
-        name="facebook"
+        v-model="modelNetwork.instagram"
+      />
+
+      <v-text-field
+        label="Facebook :"
+        color="black"
+        prepend-icon="mdi-facebook"
         ref="facebook"
-        :value="modelNetwork.facebook"
-      >
-      <label for="snapchat">Snapchat :</label>
-      <input
-        type="text"
-        name="snapchat"
+        v-model="modelNetwork.facebook"
+      />
+
+      <v-text-field
+        label="Snapchat :"
+        color="black"
+        prepend-icon="mdi-snapchat"
         ref="snapchat"
-        :value="modelNetwork.snapchat"
-      >
-      <label for="tiktok">Tiktok :</label>
-      <input
-        type="text"
-        name="tiktok"
+        v-model="modelNetwork.snapchat"
+      />
+
+      <v-text-field
+        label="Tiktok :"
+        color="black"
+        prepend-icon="mdi-video"
         ref="tiktok"
-        :value="modelNetwork.tiktok"
-      >
-      <label for="twitter">Twitter :</label>
-      <input
-        type="text"
-        name="twitter"
+        v-model="modelNetwork.tiktok"
+      />
+
+      <v-text-field
+        label="Twitter :"
         ref="twitter"
-        :value="modelNetwork.twitter"
-      >
+        color="black"
+        prepend-icon="mdi-twitter"
+        v-model="modelNetwork.twitter"
+      />
     </v-card>
     <div class="model-form-btn">
       <div class="modify-model-alert">
@@ -248,15 +249,51 @@ import AddPicture from './section/AddPicture.vue';
 
 export default {
   data: () => ({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    birthdate: "",
+    sexe: "",
+    sexes: [
+      { text: 'Homme', value: 'men' },
+      { text: 'Femme', value: 'woman' },
+    ],
+    level: "",
+    levels: [
+      { text: 'T7', value: 'T7' },
+      { text: 'T8', value: 'T8' },
+      { text: 'T9', value: 'T9' },
+      { text: 'T10', value: 'T10' },
+    ],
+    size: null,
+    weight: null,
+    chest: null,
+    waist: null,
+    hips: null,
+    shoes: null,
+    color: "",
+    haircolor: "",
+    eyes: "",
+    astrological: "",
+    description: "",
+    instagram: "",
+    facebook: "",
+    snapchat: "",
+    tiktok: "",
+    twitter: "",
     modelId: "",
-    dataLoaded: false,
-    model: null,
-    modelInfo: null,
-    modelPictures: null,
-    modelNetwork: null,
-    errorAlert: false,
-    successAlert: false
-  }),
+  dataLoaded: false,
+  model:null,
+  modelInfo: null,
+  modelMeasurement: null,
+  modelPictures: null,
+  modelNetwork:null,
+  errorAlert: false,
+  successAlert: false
+}),
+
   components: {
     ModifyPicture,
     AddPicture
@@ -294,41 +331,45 @@ export default {
       this.sendModelData();
     },
     manageModelInfo() {
-      this.modelInfo = {
-        firstname: this.$refs.firstname.value,
-        lastname: this.$refs.lastname.value,
-        email: this.$refs.email.value,
-        phone: this.$refs.phone.value,
-        address: this.$refs.address.value,
-        birth_date: this.$refs.birthdate.value,
-        sexe: this.$refs.sexe.value,
-        level: this.$refs.level.value
-      }
-    },
-    manageModelMeasurement() {
-      this.modelMeasurement = {
-        size: this.$refs.size.value,
-        weight: this.$refs.weight.value,
-        chest: this.$refs.chest.value,
-        waist: this.$refs.waist.value,
-        hips: this.$refs.hips.value,
-        shoe_size: this.$refs.shoes.value,
-        color: this.$refs.color.value,
-        hair_color: this.$refs.haircolor.value,
-        eyes: this.$refs.eyes.value,
-        astrological: this.$refs.astrological.value,
-        description: this.$refs.description.value
-      }
-    },
-    manageModelNetwork() {
-      this.modelNetwork = {
-        instagram: this.$refs.instagram.value,
-        facebook: this.$refs.facebook.value,
-        snapchat: this.$refs.snapchat.value,
-        tiktok: this.$refs.tiktok.value,
-        twitter: this.$refs.twitter.value
-      }
-    },
+  this.model = {
+    firstname: this.model.firstname,
+    lastname: this.model.lastname,
+    email: this.model.email,
+    phone: this.model.phone,
+    address: this.model.address,
+    birth_date: this.model.birthdate,
+    sexe: this.model.sexe,
+    level: this.model.level
+  }
+ 
+},
+manageModelMeasurement() {
+  this.modelMeasurement = {
+    size: this.modelInfo.size,
+    weight: this.modelInfo.weight,
+    chest: this.modelInfo.chest,
+    waist: this.modelInfo.waist,
+    hips: this.modelInfo.hips,
+    shoe_size: this.modelInfo.shoes,
+    color: this.modelInfo.color,
+    hair_color: this.modelInfo.haircolor,
+    eyes: this.modelInfo.eyes,
+    astrological: this.modelInfo.astrological,
+    description: this.modelInfo.description
+  }
+  
+},
+manageModelNetwork() {
+  this.modelNetwork = {
+    instagram: this.modelNetwork.instagram,
+    facebook: this.modelNetwork.facebook,
+    snapchat: this.modelNetwork.snapchat,
+    tiktok: this.modelNetwork.tiktok,
+    twitter: this.modelNetwork.twitter
+  }
+  
+},
+
     sendModelData() {
       const modelData = {
         model_id: this.modelId,
@@ -336,6 +377,8 @@ export default {
         model_info: this.modelMeasurement,
         model_network: this.modelNetwork
       };
+
+
 
       const config = {
         method: 'post',
