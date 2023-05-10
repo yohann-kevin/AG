@@ -27,6 +27,10 @@ import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 import Error404 from './components/404Page.vue';
 import Error500 from './components/500Page.vue';
 
+// mentions-legales rgpd
+import MentionsLegales from './components/legals/mentions-legales.vue';
+
+
 // store
 import store from './store.js';
 
@@ -34,6 +38,8 @@ import store from './store.js';
 import adminapi from './api/admin.js';
 import agentapi from './api/agent.js';
 import statusapi from './api/status';
+
+
 
 async function manageAdmConnexion() {
   store.commit("adminToken", sessionStorage.admtoken);
@@ -68,6 +74,12 @@ const routes = [
     name: "about",
     component: AboutPage
   },
+  {
+    path: "/mentions-legales",
+    name: "mentions-legales",
+    component: MentionsLegales
+  },
+ 
   {
     path: '/contact',
     name: 'contact',
