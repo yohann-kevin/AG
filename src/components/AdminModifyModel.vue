@@ -46,7 +46,7 @@
         color="black"
         type="date"
         prepend-icon="mdi-cake-variant"
-        v-model="model.birthdate"
+        v-model="model.birth_date"
       />
       <v-select
         label="Sexe"
@@ -117,7 +117,7 @@
         type="number"
         color="black"
         prepend-icon="mdi-shoe-print"
-        v-model="modelInfo.shoes"
+        v-model="modelInfo.shoe_size"
       />
 
       <v-text-field
@@ -131,7 +131,7 @@
         label="Couleur de cheveux :"
         color="black"
         prepend-icon="mdi-palette"
-        v-model="modelInfo.haircolor"
+        v-model="modelInfo.hair_color"
       />
 
       <v-text-field
@@ -249,50 +249,53 @@ import AddPicture from './section/AddPicture.vue';
 
 export default {
   data: () => ({
-    firstname: "",
-    lastname: "",
-    email: "",
-    phone: "",
-    address: "",
-    birthdate: "",
-    sexe: "",
     sexes: [
-      { text: 'Homme', value: 'men' },
-      { text: 'Femme', value: 'woman' },
+        { text: 'Homme', value: 'men' },
+        { text: 'Femme', value: 'woman' },
     ],
-    level: "",
     levels: [
-      { text: 'T7', value: 'T7' },
-      { text: 'T8', value: 'T8' },
-      { text: 'T9', value: 'T9' },
-      { text: 'T10', value: 'T10' },
+        { text: 'T7', value: 'T7' },
+        { text: 'T8', value: 'T8' },
+        { text: 'T9', value: 'T9' },
+        { text: 'T10', value: 'T10' },
     ],
-    size: null,
-    weight: null,
-    chest: null,
-    waist: null,
-    hips: null,
-    shoes: null,
-    color: "",
-    haircolor: "",
-    eyes: "",
-    astrological: "",
-    description: "",
-    instagram: "",
-    facebook: "",
-    snapchat: "",
-    tiktok: "",
-    twitter: "",
     modelId: "",
-  dataLoaded: false,
-  model:null,
-  modelInfo: null,
-  modelMeasurement: null,
-  modelPictures: null,
-  modelNetwork:null,
-  errorAlert: false,
-  successAlert: false
+    dataLoaded: false,
+    errorAlert: false,
+    successAlert: false,
+    model: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone: "",
+        address: "",
+        birth_date: "",
+        sexe: "",
+        level: "",
+    },
+    modelInfo: {
+        size: null,
+        weight: null,
+        chest: null,
+        waist: null,
+        hips: null,
+        shoe_size: null,
+        color: "",
+        hair_color: "",
+        eyes: "",
+        astrological: "",
+        description: "",
+    },
+    modelPictures: null,
+    modelNetwork: {
+        instagram: "",
+        facebook: "",
+        snapchat: "",
+        tiktok: "",
+        twitter: "",
+    },
 }),
+
 
   components: {
     ModifyPicture,
@@ -331,17 +334,20 @@ export default {
       this.sendModelData();
     },
     manageModelInfo() {
-  this.model = {
+  this.modelInfo = {
     firstname: this.model.firstname,
     lastname: this.model.lastname,
     email: this.model.email,
     phone: this.model.phone,
     address: this.model.address,
-    birth_date: this.model.birthdate,
+    birth_date: this.model.birth_date,
     sexe: this.model.sexe,
     level: this.model.level
   }
- 
+  console.log('Model Info:', this.modelInfo);
+
+
+  
 },
 manageModelMeasurement() {
   this.modelMeasurement = {
@@ -350,14 +356,13 @@ manageModelMeasurement() {
     chest: this.modelInfo.chest,
     waist: this.modelInfo.waist,
     hips: this.modelInfo.hips,
-    shoe_size: this.modelInfo.shoes,
+    shoe_size: this.modelInfo.shoe_size,
     color: this.modelInfo.color,
-    hair_color: this.modelInfo.haircolor,
+    hair_color: this.modelInfo.hair_color,
     eyes: this.modelInfo.eyes,
     astrological: this.modelInfo.astrological,
     description: this.modelInfo.description
   }
-  
 },
 manageModelNetwork() {
   this.modelNetwork = {
@@ -367,7 +372,6 @@ manageModelNetwork() {
     tiktok: this.modelNetwork.tiktok,
     twitter: this.modelNetwork.twitter
   }
-  
 },
 
     sendModelData() {
