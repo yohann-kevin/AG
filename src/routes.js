@@ -28,7 +28,8 @@ import Error404 from './components/404Page.vue';
 import Error500 from './components/500Page.vue';
 
 // mentions-legales rgpd
-import MentionsLegales from './components/legals/mentions-legales.vue';
+import MentionsLegales from './components/legals/Mentions-legales.vue';
+import Rgpd from './components/legals/Rgpd.vue';
 
 
 // store
@@ -75,9 +76,14 @@ const routes = [
     component: AboutPage
   },
   {
-    path: "/mentions-legales",
-    name: "mentions-legales",
+    path: "/Mentions-legales",
+    name: "Mentions-legales",
     component: MentionsLegales
+  },
+  {
+    path:"/Rgpd",
+    name: "Rgpd",
+    component:Rgpd
   },
  
   {

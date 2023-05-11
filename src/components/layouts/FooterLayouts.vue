@@ -22,13 +22,13 @@
     <div class="footer-btns">
       <v-btn
         text
-        to="/mentions-legales"
+        to="/Mentions-legales"
       >
         Mentions légales
       </v-btn>
       <v-btn
         text
-        to="/rgpd"
+        to="/Rgpd"
       >
         RGPD
       </v-btn>
