@@ -10,7 +10,7 @@
         type="error"
         v-model="errorAlert"
       >
-        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionner !
+        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionné !
       </v-alert>
       <v-alert
         dense
@@ -20,29 +20,35 @@
         type="success"
         v-model="successAlert"
       >
-        Le modèle {{ modelDeletedId }} à bien été supprimer !
+        Le modèle {{ modelDeletedId }} a bien été supprimé !
       </v-alert>
     </div>
     <div class="all-model-admin-list">
-      <div
-        v-for="(model, i) in models"
-        :key="i"
+      <v-data-table
+        :headers="headers"
+        :items="models"
+        class="elevation-1"
       >
-        <ModelArticleAdmin
-          :model="model"
-          @deleted="manageDeletedMessage"
-        />
-      </div>
+        <template #item="{ item }">
+          <ModelArticleAdmin
+            :model="item"
+            @deleted="manageDeletedMessage"
+          />
+        </template>
+      </v-data-table>
     </div>
   </div>
 </template>
-
 <script>
 import ModelArticleAdmin from "./section/article/ModelArticleAdmin.vue";
 
 
 export default {
   data: () => ({
+    headers: [
+        { text: "Homme/Femme", value: "model_picture", sortable: false },
+        
+      ],
     models: null,
     errorAlert: false,
     successAlert: false,
@@ -81,7 +87,7 @@ export default {
 .all-model-admin {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 25px;
 }
@@ -98,7 +104,7 @@ export default {
 .all-model-admin-list {
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
 </style>

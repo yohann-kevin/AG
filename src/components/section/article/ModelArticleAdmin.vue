@@ -2,22 +2,15 @@
   <div>
     <v-card
       class="model-article-admin"
-      max-width="344"
+      max-width="800"
       elevation="2"
     >
-      <v-img
-        :src="model.model_picture.picture_path"
-        height="300px"
-      />
-
       <v-card-title>
-        {{ model.model.firstname }}
+        <div class="titleModel">
+          {{ model.model.firstname }}
+        </div>
       </v-card-title>
-
-      <v-card-subtitle>
-        {{ model.model_info.description }}
-      </v-card-subtitle>
-
+      
       <v-card-actions>
         <v-btn
           class="mx-2"
@@ -114,5 +107,9 @@ export default {
 .more-btn {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
+}
+.titleModel {
+  margin: auto;
+  text-transform: uppercase;
 }
 </style>
