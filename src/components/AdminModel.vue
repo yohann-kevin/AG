@@ -29,7 +29,18 @@
         :items="models"
         class="elevation-1"
       >
-        <template #item="{ item }">
+        <template
+          slot="header.model_picture"
+          slot-scope="{ header }"
+        >
+          <div class="custom-title-table">
+            {{ header.text }}
+          </div>
+        </template>
+        <template
+          slot="item"
+          slot-scope="{ item }"
+        >
           <ModelArticleAdmin
             :model="item"
             @deleted="manageDeletedMessage"
@@ -46,7 +57,7 @@ import ModelArticleAdmin from "./section/article/ModelArticleAdmin.vue";
 export default {
   data: () => ({
     headers: [
-        { text: "Homme/Femme", value: "model_picture", sortable: false },
+        { text: "Homme/Femme", value: "model_picture", sortable: false, },
         
       ],
     models: null,
@@ -95,6 +106,13 @@ export default {
 .all-model-admin h2 {
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.custom-title-table {
+  text-align: center;
+    font-size: 1.5rem;
+    color: black;
 }
 
 .admin-alert {
