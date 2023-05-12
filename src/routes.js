@@ -12,7 +12,10 @@ import ContactPage from './components/pages/contact/ContactPage.vue';
 import AdminHome from './components/AdminHome.vue';
 import AdminHomePage from './components/AdminHomePage.vue';
 import AdminModel from './components/AdminModel.vue';
-import AdminModifyModel from './components/AdminModifyModel.vue'
+import AdminModifyModel from './components/AdminModifyModel.vue';
+import AdminAddArticlePage from './components/AdminAddArticlePage.vue';
+import AdminViewArticlePage from './components/AdminViewArticlePage.vue';
+import AdminModifyArticle from './components/AdminModifyArticle.vue';
 
 // agent component
 import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
@@ -109,7 +112,24 @@ const routes = [
         path: "/administration/modify/model/:id",
         name: "AdminModifyModel",
         component: AdminModifyModel
+      },
+
+      {
+        path: "/administration/add-article",
+        name: "AdminAddArticle",
+        component: AdminAddArticlePage
+      },
+      {
+        path: "/administration/article",
+        name: "AdminArticle",
+        component: AdminViewArticlePage
+      },
+      {
+        path: "/administration/modify/article/:id",
+        name: "AdminModifyArticle",
+        component: AdminModifyArticle
       }
+     
     ],
   },
   {
@@ -145,6 +165,7 @@ const routes = [
     name: 'Error500',
     component: Error500
   },
+ 
   {
     path: "*",
     name: "Error404",

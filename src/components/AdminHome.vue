@@ -23,6 +23,16 @@
             Voir modèle
           </router-link>
         </li>
+        <li>
+          <router-link to="/administration/add-article">
+            Ajout article
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/administration/article">
+            Voir article
+          </router-link>
+        </li>
       </ul>
     </aside>
     <v-btn 
