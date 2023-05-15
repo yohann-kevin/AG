@@ -88,18 +88,22 @@
   
   <style>
 .legal-container {
-  max-width: 800px;
   margin: auto;
   padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .legal-title {
+  width: 100%;
   text-align: center;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 .legal-card {
+  width: 32%;
   margin-bottom: 40px;
   padding: 30px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);

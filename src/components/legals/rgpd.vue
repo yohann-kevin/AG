@@ -170,52 +170,52 @@
   </v-container>
 </template>
     
-    <script>
-    export default {
-    
-    }
-    </script>
-    
-    <style>
-  .privacy-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-  }
+<script>
+export default {
+
+}
+</script>
+
+<style>
+.privacy-container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.privacy-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.privacy-card {
+  margin-bottom: 40px;
+  padding: 30px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.privacy-subtitle {
   
-  .privacy-title {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.privacy-card p {
   
-  .privacy-card {
-    margin-bottom: 40px;
-    padding: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  }
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.privacy-card ul {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.privacy-card li {
   
-  .privacy-subtitle {
-    
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .privacy-card p {
-   
-    line-height: 1.5;
-    margin-bottom: 15px;
-  }
-  
-  .privacy-card ul {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 20px;
-  }
-  
-  .privacy-card li {
-    
-    line-height: 1.5;
-    margin-bottom: 5px;
-  }
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
   </style>

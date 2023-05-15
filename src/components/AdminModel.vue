@@ -27,61 +27,90 @@
       <v-data-table
         :headers="headers"
         :items="models"
-        class="elevation-1"
+        :items-per-page="100"
+        class="elevation-5 all-model-table"
       >
-        <template
-          slot="header.model_picture"
-          slot-scope="{ header }"
-        >
-          <div class="custom-title-table">
-            {{ header.text }}
-          </div>
-        </template>
-        <template
-          slot="item"
-          slot-scope="{ item }"
-        >
-          <ModelArticleAdmin
-            :model="item"
-            @deleted="manageDeletedMessage"
-          />
-        </template>
+        <template #item.actions="{ item }">
+          <v-icon
+            small
+            class="mr-2"
+            @click="redirectToModel(item.model.id)"
+          >
+            mdi-pencil
+          </v-icon>
+          <v-icon
+            small
+            @click="openModal(item.model.id)"
+          >
+            mdi-delete
+          </v-icon>
+        </template>  
       </v-data-table>
     </div>
+    <ModalDelete
+      v-model="showModal"
+      @accept="deleteModel(modelIdSelectedForDelete)"
+      :modal-info="modalDeleteInfo"
+    />
   </div>
 </template>
 <script>
-import ModelArticleAdmin from "./section/article/ModelArticleAdmin.vue";
-
+import ModalDelete from './modal/ModalDelete.vue';
 
 export default {
   data: () => ({
+    itemsPerPage: 5,
     headers: [
-        { text: "Homme/Femme", value: "model_picture", sortable: false, },
-        
-      ],
-    models: null,
+      {
+        text: 'Nom du modèle',
+        align: 'start',
+        sortable: false,
+        value: 'model.firstname',
+      },
+      { 
+        text: 'Actions', 
+        value: 'actions', 
+        sortable: false, 
+        align: 'end' 
+      },
+    ],
+    models: [],
     errorAlert: false,
     successAlert: false,
-    modelDeletedId: null
+    modelDeletedId: null,
+    modalDeleteInfo: {
+      modalTitle: "Suppression d'un modèle",
+      modalText: 'Souhaitez vous réellement supprimer ce modèle ? Une fois cela fait il ne sera plus possible de la récupérer !'
+    },
+    showModal: false,
+    modelIdSelectedForDelete: null,
   }),
   components: {
-    ModelArticleAdmin
+    ModalDelete,
   },
   beforeMount() {
     let modelOnStore = this.$store.state.homeModelData;
     // check if model is save on store
-    modelOnStore != null ? this.models = modelOnStore : this.findModel();
+    modelOnStore != null ? this.models.push(...modelOnStore) : this.findModel();
   },
   methods: {
     findModel() {
       // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
-        this.models = response.data;
+        this.models = [];
+        this.models.push(...response.data);
         this.$store.commit("homeModelData", this.models);
       });
     },
-    manageDeletedMessage(deleteInfo) {
+    redirectToModel(modelId) {
+      this.$store.commit("modelId", modelId);
+      this.$router.push({ name: 'AdminModifyModel', params: { id: modelId } });
+    },
+    openModal(modelId) {
+      this.modelIdSelectedForDelete = modelId;
+      this.showModal = true;
+    },
+    manageDeletedModel(deleteInfo) {
       this.modelDeletedId = deleteInfo.modelId;
       if (deleteInfo.isDelete) {
         this.successAlert = true;
@@ -89,6 +118,24 @@ export default {
       } else {
         this.errorAlert = true;
       }
+    },
+    deleteModel(modelId) {
+      let config = {
+        method: 'delete',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
+        }
+      };
+
+      this.$axios(config).then(response => {
+        if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.model_deleted, modelId });
+      }).catch(error => {
+        this.$emit('deleted', { isDelete: false, modelId });
+        console.log(error);
+      });
     }
   }
 }
@@ -124,5 +171,10 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.all-model-table {
+  width: 100%;
 }
 </style>

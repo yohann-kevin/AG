@@ -328,67 +328,18 @@ export default {
       return this.$moment(birthDate).format("YYYY-MM-DD");
     },
     sendModel() {
-      this.manageModelInfo();
-      this.manageModelMeasurement();
-      this.manageModelNetwork();
-      this.sendModelData();
-    },
-    manageModelInfo() {
-  this.modelInfo = {
-    firstname: this.model.firstname,
-    lastname: this.model.lastname,
-    email: this.model.email,
-    phone: this.model.phone,
-    address: this.model.address,
-    birth_date: this.model.birth_date,
-    sexe: this.model.sexe,
-    level: this.model.level
-  }
-  console.log('Model Info:', this.modelInfo);
-
-
-  
-},
-manageModelMeasurement() {
-  this.modelMeasurement = {
-    size: this.modelInfo.size,
-    weight: this.modelInfo.weight,
-    chest: this.modelInfo.chest,
-    waist: this.modelInfo.waist,
-    hips: this.modelInfo.hips,
-    shoe_size: this.modelInfo.shoe_size,
-    color: this.modelInfo.color,
-    hair_color: this.modelInfo.hair_color,
-    eyes: this.modelInfo.eyes,
-    astrological: this.modelInfo.astrological,
-    description: this.modelInfo.description
-  }
-},
-manageModelNetwork() {
-  this.modelNetwork = {
-    instagram: this.modelNetwork.instagram,
-    facebook: this.modelNetwork.facebook,
-    snapchat: this.modelNetwork.snapchat,
-    tiktok: this.modelNetwork.tiktok,
-    twitter: this.modelNetwork.twitter
-  }
-},
-
-    sendModelData() {
       const modelData = {
         model_id: this.modelId,
-        model: this.modelInfo,
-        model_info: this.modelMeasurement,
+        model: this.model,
+        model_info: this.modelInfo,
         model_network: this.modelNetwork
       };
-
-
 
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'modify/model',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
