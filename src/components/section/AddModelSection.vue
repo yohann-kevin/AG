@@ -237,6 +237,7 @@
 </template>
 
 <script>
+
 import imageCompression from 'browser-image-compression';
 export default {
   name: 'AddModelSection',

@@ -49,9 +49,9 @@
           elevation="15"
           type="error"
           v-model="errorAlert"
-          class="add-model-v-alert"
+          class="add-article-v-alert"
         >
-          L'ajout du modèle n'a pas fonctionner !
+          L'ajout de l'article n'a pas fonctionner !
         </v-alert>
         <v-alert
           dense
@@ -60,9 +60,9 @@
           elevation="15"
           type="success"
           v-model="successAlert"
-          class="add-model-v-alert"
+          class="add-article-v-alert"
         >
-          Le modèle à bien été ajouter !
+          L'article à bien été ajouter !
         </v-alert>
 
         <v-progress-circular
@@ -89,10 +89,12 @@
 </template>
 
 <script>
+import imageCompression from 'browser-image-compression';
 export default {
   name: 'AdminAddArticlePage',
 //   data = données du composant 
   data: () => ({
+   
     titre: "",
     description: "",
     date: "",
@@ -101,7 +103,9 @@ export default {
     articleInfo: null,
     errorAlert: false,
     successAlert: false,
-    isInLoad: false
+    isInLoad: false,
+    dataMainPicture: [],
+    dataPictures: []
   }),
   methods: {
     sendModel() {
@@ -129,6 +133,19 @@ export default {
         this.dataMainPicture.push(await toBase64(pictureData));
       } else {
         this.dataPictures.push(await toBase64(pictureData));
+      }
+    },
+    async compressImage(picture) {
+      const options = {
+        maxSizeMB: 2,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+      try {
+        return await imageCompression(picture, options);
+      } catch (error) {
+        this.$refs.errorAddModel.value = true;
+        console.log(error);
       }
     },
     async manageModelPictures() {
@@ -187,9 +204,6 @@ export default {
   }
 };
 </script>
-
-
-
 
 <style>
 .add-article {
