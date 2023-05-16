@@ -12,7 +12,10 @@
       <p>
         Nous accordons une grande importance à la protection et la confidentialité de vos données personnelles qui représentent pour nous un gage de sérieux et de confiance.
 
-        La politique de confidentialité des données témoigne précisément de la volonté du groupe Adforall de faire respecter les règles applicables en matière de protection des données et, notamment, celles du Règlement général sur la protection des Données (« RGPD ») à l’ensemble des membres de son groupe. 
+        La politique de confidentialité des données témoigne précisément de la volonté du groupe <a
+          href="https://www.ag-scouting.com/"
+          target="_blank"
+        >AG Scouting</a> de faire respecter les règles applicables en matière de protection des données et, notamment, celles du Règlement général sur la protection des Données (« RGPD ») à l’ensemble des membres de son groupe. 
 
         En particulier, la politique de confidentialité vise à vous informer sur la manière et les raisons pour lesquelles nous traitons vos données dans le cadre des services que nous fournissons. 
       </p>
@@ -24,12 +27,11 @@
       </h3>
     
       <p>
-        La politique s’applique à vous, dès lors que vous avez plus de 15 ans, quel que soit votre lieu de domiciliation, que vous soyez un client, un potentiel client (“prospect”) ou encore un simple visiteur du site www.adforall.fr.  
-
-        Si vous êtes candidat à un poste au sein d’Adforall, vous pouvez consulter la politique « candidat » qui est accessible sur la page dédiée au recrutement de notre site internet www.adforall.fr.
-
-        Si vous avez moins de 15 ans, vous n’êtes pas autorisé à utiliser nos services sans le consentement préalable et explicite de l’un de vos parents qui doit être adressé par écrit à l’adresse rgpd@adforall.fr. Si vous pensez que nous pourrions détenir des informations concernant un de vos enfants âgés de moins de 15 ans sans y avoir consenti, vous pouvez nous demander que nous les supprimions à l’adresse service rgpd@adforall.fr. 
-
+        La politique s’applique à vous, dès lors que vous avez plus de 15 ans, quel que soit votre lieu de domiciliation, que vous soyez un client, un potentiel client (“prospect”) ou encore un simple visiteur du site <a
+          href="https://www.ag-scouting.com/"
+          target="_blank"
+        >AG Scouting</a>.  
+        Si vous avez moins de 15 ans, vous n’êtes pas autorisé à utiliser nos services sans le consentement préalable et explicite de l’un de vos parents qui doit être adressé par écrit à l’adresse <a href="mailto:agscouting.app@gmail.com">agscouting.app@gmail.com</a> Si vous pensez que nous pourrions détenir des informations concernant un de vos enfants âgés de moins de 15 ans sans y avoir consenti, vous pouvez nous demander que nous les supprimions à l’adresse <a href="mailto:agscouting.app@gmail.com">agscouting.app@gmail.com</a>. 
         La politique ne s’adresse qu’aux traitements que nous effectuons nous-même et non aux traitements qui pourraient être effectués à l’aide de nos services par nos clients. Si vous souhaitez obtenir des informations sur les données traitées par nos clients à l’aide de nos services, nous vous invitons à les contacter directement.
       </p>
     </v-card>
@@ -39,12 +41,11 @@
         Pourquoi traitons-nous vos données ?
       </h3>
       <ul>
-        <li>Pour que vous puissiez bénéficier de nos services (ex : services SEA / SEO, agence SMA, conseils, formations, création de sites internet, etc.) et pour répondre à vos demandes (ex : demandes d’information, réclamations, etc.) sur la base de nos conditions générales de vente, de nos conditions générales d’utilisation, et de notre intérêt légitime à vous fournir le meilleur service possible. </li>
+        <li>Pour que vous puissiez bénéficier de nos services (ex : services SEA / SEO ) de nos conditions générales d’utilisation, et de notre intérêt légitime à vous fournir le meilleur service possible. </li>
         <li>Pour que vous restiez informés de nos dernières offres promotionnelles et événements par email, et par voie téléphonique, sur la base de notre intérêt légitime à fidéliser notre clientèle et à vous contacter. </li>
         <li>Pour que vous puissiez nous suivre sur les réseaux sociaux et partager vos opinions sur la base des conditions générales d’utilisation de la plateforme utilisée (ex : Facebook, LinkedIn…) et de notre intérêt légitime à bénéficier d’une page dédiée sur les réseaux sociaux.</li>
         <li>Pour que vous puissiez vous inscrire et recevoir notre newsletter qui vous informera de toutes les actualités concernant nos services sur la base de votre consentement.  </li>
         <li>Pour garantir et renforcer la sécurité et la qualité de nos services au quotidien (ex : statistiques, sécurité des données, etc.) sur la base des obligations légales pesant sur nous, de nos conditions générales de vente et de notre intérêt légitime à assurer le bon fonctionnement de nos services. </li>
-        <li>Enfin, nous pouvons également installer des “Cookies” sur votre terminal. Pour obtenir plus d’informations sur l’utilisation des “Cookies”, nous vous invitons à consulter notre Politique Cookies. </li>
       </ul>
 
     
@@ -61,7 +62,7 @@
     
       <p>
         Nous avons résumé les catégories de données personnelles que nous collectons directement auprès de vous ou via des bases de données de potentiels clients, ainsi que leurs durées respectives de conservation. 
-        Si vous souhaitez obtenir encore plus de détails sur les durées de conservation, vous pouvez nous contacter à l’adresse : rgpd@adforall.fr. 
+        Si vous souhaitez obtenir encore plus de détails sur les durées de conservation, vous pouvez nous contacter à l’adresse : <a href="mailto:agscouting.app@gmail.com">agscouting.app@gmail.com</a>. 
       </p>
     
       <ul>
@@ -102,7 +103,7 @@
         <li>Droit de donner des directives sur le sort de vos données en cas de décès soit par votre intermédiaire, soit l’intermédiaire d’un tiers de confiance ou d’un ayant-droit. </li>
       </ul>
       <p>
-        Pour qu’une demande soit prise en compte, il est impératif qu’elle soit effectuée directement par vous à l’adresse rgpd@adforall.fr. Toute demande qui n’est pas effectuée de cette manière ne peut pas être traitée. 
+        Pour qu’une demande soit prise en compte, il est impératif qu’elle soit effectuée directement par vous à l’adresse <a href="mailto:agscouting.app@gmail.com">agscouting.app@gmail.com</a>. Toute demande qui n’est pas effectuée de cette manière ne peut pas être traitée. 
 
         Les demandes ne peuvent pas émaner d’une autre personne que vous. Nous pouvons, uniquement dans ce cas précis, vous demander la communication d’une preuve d’identité en cas de doute sur l’identité du demandeur.  
 
@@ -145,7 +146,7 @@
       <h3 class="privacy-subtitle">
         Qui pouvez-vous contacter pour obtenir plus d’informations ?
       </h3>
-      <p>Notre Délégué à la protection des données (“DPO”) est toujours à votre disposition pour vous expliquer plus en détail la manière dont nous traitons vos données et pour répondre à vos questions sur le sujet à l’adresse rgpd@adforall.fr.  </p>
+      <p>Notre Délégué à la protection des données (“DPO”) est toujours à votre disposition pour vous expliquer plus en détail la manière dont nous traitons vos données et pour répondre à vos questions sur le sujet à l’adresse <a href="mailto:agscouting.app@gmail.com">agscouting.app@gmail.com</a>.  </p>
     </v-card>
  
     <v-card class="privacy-card">
@@ -161,9 +162,6 @@
       </h3>
       <p>
         Nous sommes susceptibles de modifier notre politique de confidentialité à tout moment pour l’adapter aux nouvelles exigences légales ainsi qu’aux nouveaux traitements que nous pourrions mettre en œuvre dans le futur. Vous serez évidemment informés de toute modification de cette politique. 
-
-        Publié le 14/04/2022
-
         Certifiée conforme par Dipeeo ®
       </p>
     </v-card>
@@ -206,6 +204,15 @@ export default {
   line-height: 1.5;
   margin-bottom: 15px;
 }
+.privacy-card a {
+  text-decoration: none;
+  color: aqua;
+  transition: color 0.5s;
+}
+.privacy-card a:hover {
+  color: #00008b;
+}
+
 
 .privacy-card ul {
   margin: 0;

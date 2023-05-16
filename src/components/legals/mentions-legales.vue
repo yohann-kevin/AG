@@ -3,21 +3,35 @@
     <h2 class="legal-title">
       MENTIONS LÉGALES
     </h2>
-  
+    <v-card class="legal-card">
+      <h3 class="legal-subtitle">
+        Informations importante
+      </h3>
+      <p>
+        Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, il est précisé aux utilisateurs du site <a
+          href="https://www.ag-scouting.com/"
+          target="_blank"
+        >AG Scouting</a> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.
+      </p>
+    </v-card>
+
     <v-card class="legal-card">
       <h3 class="legal-subtitle">
         Edition du site
       </h3>
   
       <p>
-        Le présent site, accessible à l’URL AG-SCOUTING (le « Site »), est édité par :
+        Le présent site, accessible à l’URL <a
+          href="https://www.ag-scouting.com/"
+          target="_blank"
+        >AG Scouting</a> , est édité par :
       </p>
   
       <ul>
         <li>Nom : Morgane Cordier</li>
-        <li>56000 Vannes, France</li>
         <li>Nationalité : Française (France)</li>
         <li>Date de naissance : 27/02/1997</li>
+        <li>Résidant : 88 Rue Irene Joliot Curie 56000 VANNES</li>
       </ul>
     </v-card>
   
@@ -35,7 +49,7 @@
       </p>
   
       <ul>
-        <li>Téléphone : +14156911573</li>
+        <li>Téléphone :  <a href="tel:+14156911573">+1 415 691 1573</a></li>
       </ul>
     </v-card>
   
@@ -55,7 +69,7 @@
       </h3>
   
       <p>
-        Vous pouvez nous contacter par email à l'adresse suivante : agscouting.app@gmail.com
+        Vous pouvez nous contacter par email à l'adresse suivante : <a href="mailto:agscouting.app@gmail.com">agscouting.app@gmail.com</a>
       </p>
   
       <p>
@@ -68,7 +82,10 @@
       </ul>
     </v-card>
   
-    <v-card class="legal-card">
+    <v-card
+      class="
+          legal-card"
+    >
       <h3 class="legal-subtitle">
         Données personnelles
       </h3>
@@ -76,7 +93,10 @@
       <p>
         Le traitement de vos données à caractère personnel est régi par notre Charte du respect de la vie privée, disponible depuis la section "Charte de Protection des Données Personnelles", conformément au Règlement Général sur la Protection des Données 2016/679 du 27 avril 2016 («RGPD»).
       </p>
+      </a>
+      </p>
     </v-card>
+    </v-card-class="legal-card">
   </v-container>
 </template>
   
@@ -126,6 +146,15 @@
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
+}
+.legal-card a {
+  text-decoration: none;
+  color: aqua;
+  transition: color 0.5s;
+ 
+}
+.legal-card a:hover {
+  color: #00008b;
 }
 
 .legal-card li {
