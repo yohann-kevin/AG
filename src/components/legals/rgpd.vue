@@ -200,7 +200,6 @@ export default {
 }
 
 .privacy-card p {
-  
   line-height: 1.5;
   margin-bottom: 15px;
 }
@@ -212,8 +211,6 @@ export default {
 .privacy-card a:hover {
   color: #00008b;
 }
-
-
 .privacy-card ul {
   margin: 0;
   padding: 0;
