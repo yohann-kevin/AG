@@ -29,7 +29,7 @@ import Error500 from './components/500Page.vue';
 
 // mentions-legales rgpd
 import MentionsLegales from './components/legals/mentions-legales.vue';
-import Rgpd from './components/legals/rgpd.vue';
+import Rgpd from './components/legals/rgpdManagement.vue';
 
 
 // store
