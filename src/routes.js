@@ -182,6 +182,11 @@ router.beforeEach(async (to, from, next) => {
     next({ path: '/error' });
   }
   await checkAgtConnexion();
+  // Scroll vers le haut de la page
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
   next();
 });
   

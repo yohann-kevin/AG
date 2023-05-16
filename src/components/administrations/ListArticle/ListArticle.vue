@@ -10,7 +10,7 @@
         type="error"
         v-model="errorAlert"
       >
-        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionner !
+        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionné !
       </v-alert>
       <v-alert
         dense
@@ -20,7 +20,7 @@
         type="success"
         v-model="successAlert"
       >
-        Le modèle {{ modelDeletedId }} à bien été supprimer !
+        Le modèle {{ modelDeletedId }} a bien été supprimé !
       </v-alert>
     </div>
     <div class="all-article-admin-list">
@@ -30,21 +30,27 @@
         :items-per-page="5"
         class="elevation-5 all-article-table"
       >
-        <template item.actions="{ item }">
+        <template #item.name="{ item }">
+          <span>{{ item.name }}</span>
+        </template>
+        <template #item.date="{ item }">
+          <span class="date">{{ item.date }}</span>
+        </template>
+        <template #item.actions="{ item }">
           <v-icon
             small
             class="mr-2"
-            @click="redirectToModel(item.model.id)"
+            @click="redirectToModel(item.article.id)"
           >
             mdi-pencil
           </v-icon>
           <v-icon
             small
-            @click="openModal(item.model.id)"
+            @click="openModal(item.article.id)"
           >
             mdi-delete
           </v-icon>
-        </template>  
+        </template>
       </v-data-table>
     </div>
     <ModalDelete
@@ -55,104 +61,111 @@
   </div>
 </template>
 
-<script>
-import ModalDelete from '../../modal/ModalDelete.vue';
+
+    <script>
+      import ModalDelete from '../../modal/ModalDelete.vue';
 
 
 
-export default {
-  data: () => ({
-    itemsPerPage: 5,
-    headers: [
-          {
-            text: "Nom de l'article",
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Date de sortie', value: 'date' },
+      export default {
+      data: () => ({
+      itemsPerPage: 5,
+      headers: [
+      {
+      text: "Nom de l'article",
+      align: 'start',
+      sortable: false,
+      value: 'name',
+      },
+      { 
+      text: 'Date de sortie', 
+      value: 'date',
+      sortable: false,
+      align:'center' 
+      },
+
+      {
+      text: 'Modifier/Supprimer',
+      value:'actions',
+      sortable:false,
+      align:'end'
+      },
           
-        ],
-        articles: [
-          {
-            name: 'Haloween',
-            date: '01/10/23',
-           
-          },
-          {
-            name: 'Saint silvestre',
-            date: '11/10/23',
-           
-          },
-          {
-            name: 'Paques',
-            date: '21/10/23',
-           
-          },
-          {
-            name: 'Noel',
-            date: '12/10/23',
-           
-          },
-          {
-            name: "Jour de l'an",
-            date: '05/10/23',
+      ],
+      articles: [
+      {
+      name: 'Haloween',
+      date: '01/10/23'
             
-          }
+           
+      },
+      {
+      name: 'Saint silvestre',
+      date: '11/10/23',
+           
+      },
+      {
+      name: 'Paques',
+      date: '21/10/23',
+           
+      },
+      {
+      name: 'Noel',
+      date: '12/10/23',
+           
+      },
+      {
+      name: "Jour de l'an",
+      date: '05/10/23',
+            
+      }
          
          
-        ],
+      ],
      
       errorAlert: false,
-    successAlert: false,
-    modelDeletedId: null,
-    modalDeleteInfo: {
+      successAlert: false,
+      modelDeletedId: null,
+      modalDeleteInfo: {
       modalTitle: "Suppression d'un modèle",
       modalText: 'Souhaitez vous réellement supprimer ce modèle ? Une fois cela fait il ne sera plus possible de la récupérer !'
-    },
-  }),
+      },
+      }),
    
-    components: {
+      components: {
       ModalDelete,
    
-  }
-}
-  
+      }
+      }
+    </script>
+
+    <style>
+      .all-article-admin {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      }
+
+      .all-article-admin h2 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      }
+      .admin-alert {
+      width: 80%;
+      }
+
+      .all-article-admin-list {
+      width: 80%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: auto;
+      }
+      .all-article-table {
  
- 
-</script>
-
-<style>
-.all-article-admin {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 25px;
-}
-
-.all-article-admin h2 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.custom-title-table {
-  text-align: center;
-    font-size: 1.5rem;
-    color: black;
-}
-
-.admin-alert {
-  width: 80%;
-}
-
-.all-article-admin-list {
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.all-article-table {
-  width: 100%;
-}
-</style>
+      width: 100%;
+      }
+    </style>
