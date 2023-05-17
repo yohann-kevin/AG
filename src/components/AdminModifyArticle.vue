@@ -88,8 +88,8 @@
   </div>
 </template>
 <script>
-import ModifyPicture from './section/ModifyPicture.vue';
-import AddPicture from './section/AddPicture.vue';
+// import ModifyPicture from './section/ModifyPicture.vue';
+// import AddPicture from './section/AddPicture.vue';
 export default {
     data: () => ({
    
@@ -105,3 +105,4 @@ export default {
    dataMainPicture: [],
    dataPictures: []
  }),
+}
