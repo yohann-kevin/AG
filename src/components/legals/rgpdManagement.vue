@@ -8,6 +8,7 @@
       <h3 class="privacy-subtitle">
         Quelle est l’utilité de cette politique ?
       </h3>
+     
     
       <p>
         Nous accordons une grande importance à la protection et la confidentialité de vos données personnelles qui représentent pour nous un gage de sérieux et de confiance.
