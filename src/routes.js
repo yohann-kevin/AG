@@ -77,12 +77,12 @@ const routes = [
   },
   {
     path: "/legal",
-    name: "LegalNotice",
+    name: "legal",
     component: LegalNotice
   },
   {
     path:"/rgpd",
-    name: "RgpdManagement",
+    name: "rgpd",
     component:RgpdManagement
   },
  
