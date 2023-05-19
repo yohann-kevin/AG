@@ -61,111 +61,98 @@
   </div>
 </template>
 
+<script>
+import ModalDelete from '../../modal/ModalDelete.vue';
 
-    <script>
-      import ModalDelete from '../../modal/ModalDelete.vue';
-
-
-
-      export default {
-      data: () => ({
-      itemsPerPage: 5,
-      headers: [
+export default {
+  data: () => ({
+    itemsPerPage: 5,
+    headers: [
       {
-      text: "Nom de l'article",
-      align: 'start',
-      sortable: false,
-      value: 'name',
+        text: "Nom de l'article",
+        align: 'start',
+        sortable: false,
+        value: 'name',
       },
       { 
-      text: 'Date de sortie', 
-      value: 'date',
-      sortable: false,
-      align:'center' 
-      },
-
-      {
-      text: 'Modifier/Supprimer',
-      value:'actions',
-      sortable:false,
-      align:'end'
-      },
-          
-      ],
-      articles: [
-      {
-      name: 'Haloween',
-      date: '01/10/23'
-            
-           
+        text: 'Date de sortie', 
+        value: 'date',
+        sortable: false,
+        align: 'center' 
       },
       {
-      name: 'Saint silvestre',
-      date: '11/10/23',
-           
+        text: 'Modifier/Supprimer',
+        value: 'actions',
+        sortable: false,
+        align: 'end'
+      },
+    ],
+    articles: [
+      {
+        name: 'Haloween',
+        date: '01/10/23'
       },
       {
-      name: 'Paques',
-      date: '21/10/23',
-           
+        name: 'Saint silvestre',
+        date: '11/10/23',
       },
       {
-      name: 'Noel',
-      date: '12/10/23',
-           
+        name: 'Paques',
+        date: '21/10/23',
       },
       {
-      name: "Jour de l'an",
-      date: '05/10/23',
-            
+        name: 'Noel',
+        date: '12/10/23',
+      },
+      {
+        name: "Jour de l'an",
+        date: '05/10/23',
       }
-         
-         
-      ],
-     
-      errorAlert: false,
-      successAlert: false,
-      modelDeletedId: null,
-      modalDeleteInfo: {
+    ],
+    errorAlert: false,
+    successAlert: false,
+    modelDeletedId: null,
+    modalDeleteInfo: {
       modalTitle: "Suppression d'un modèle",
-      modalText: 'Souhaitez vous réellement supprimer ce modèle ? Une fois cela fait il ne sera plus possible de la récupérer !'
-      },
-      }),
-   
-      components: {
-      ModalDelete,
-   
-      }
-      }
-    </script>
+      modalText: 'Souhaitez-vous réellement supprimer ce modèle ? Une fois cela fait, il ne sera plus possible de le récupérer !'
+    },
+  }),
+  components: {
+    ModalDelete,
+  }
+}
+</script>
 
-    <style>
-      .all-article-admin {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 25px;
-      }
 
-      .all-article-admin h2 {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-      }
-      .admin-alert {
-      width: 80%;
-      }
+<style>
+.all-article-admin {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
 
-      .all-article-admin-list {
-      width: 80%;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin: auto;
-      }
-      .all-article-table {
- 
-      width: 100%;
-      }
-    </style>
+.all-article-admin h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-alert {
+  width: 80%;
+}
+
+.all-article-admin-list {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.all-article-table {
+  width: 100%;
+}
+</style>
+

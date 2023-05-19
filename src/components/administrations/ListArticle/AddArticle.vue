@@ -90,11 +90,10 @@
 
 <script>
 import imageCompression from 'browser-image-compression';
+
 export default {
   name: 'AdminAddArticlePage',
-//   data = données du composant 
   data: () => ({
-   
     titre: "",
     description: "",
     date: "",
@@ -108,21 +107,20 @@ export default {
     dataPictures: []
   }),
   methods: {
-    sendModel() {
-        // utilisé lorsqu'un admin clique sur ajouter
+    sendModel: () => {
+      // utilisé lorsqu'un admin clique sur ajouter
       this.manageArticleInfo();
       this.sendModelData();
     },
-    
-    // valeurs saisie par l'admin
-    manageArticleInfo() {
+    // valeurs saisies par l'admin
+    manageArticleInfo: () => {
       this.articleInfo = {
         titre: this.titre,
         description: this.description,
         date: this.date
-      }
+      };
     },
-    async convertPicturesToBase64(pictureData, isMainPicture) {
+    convertPicturesToBase64: async (pictureData, isMainPicture) => {
       const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -135,7 +133,7 @@ export default {
         this.dataPictures.push(await toBase64(pictureData));
       }
     },
-    async compressImage(picture) {
+    compressImage: async (picture) => {
       const options = {
         maxSizeMB: 2,
         maxWidthOrHeight: 1920,
@@ -148,7 +146,7 @@ export default {
         console.log(error);
       }
     },
-    async manageModelPictures() {
+    manageModelPictures: async () => {
       const mainPicture = this.mainpicture;
       try {
         const mainPictureCompressed = await this.compressImage(mainPicture);  
@@ -169,8 +167,7 @@ export default {
         }
       }
     },
-
-    async sendModelData() {
+    sendModelData: async () => {
       await this.manageModelPictures();
       console.log(this.dataMainPicture);
 
@@ -204,6 +201,7 @@ export default {
   }
 };
 </script>
+
 
 <style>
 .add-article {
