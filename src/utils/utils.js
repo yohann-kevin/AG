@@ -16,7 +16,7 @@ const utils = {
     try {
       return await imageCompression(picture, options);
     } catch (error) {
-      // this.errorAddModel = true;
+      
       console.log(error);
       throw error;
     }

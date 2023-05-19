@@ -1,20 +1,25 @@
 <template>
   <footer class="footer">
     <div class="footer-law">
-      <v-img
-        alt="AG Scouting"
-        class="ag-logo"
-        contain
-        :src="('/public/assets/logo-ag.png')"
-      />
+      <router-link to="/">
+        <v-img
+          alt="AG Scouting"
+          class="ag-logo"
+          contain
+          :src="formatImageSource('/public/assets/logo-ag.png')"
+          width="80"
+          height="78"
+        />
+      </router-link>
     </div>
     <h4>
       Powered and designed by 
-      <a
+      <!-- <a
         href="https://www.linkedin.com/in/yohann-perriguey-8a91351a0/"
         target="_blank"
         class="dev-link"
-      >
+      > -->
+      <a class="dev-link">
         ©hygitale
       </a>
     </h4>
@@ -22,13 +27,13 @@
     <div class="footer-btns">
       <v-btn
         text
-        to="/Mentions-legales"
+        to="/legal"
       >
         Mentions légales
       </v-btn>
       <v-btn
         text
-        to="/Rgpd"
+        to="/rgpd"
       >
         RGPD
       </v-btn>
@@ -39,10 +44,16 @@
 
 
 <script>
-export default {
+import utils from '../../utils/utils.js';
 
-}
+export default {
+  data: () => ({
+    formatImageSource: utils.formatImageSource,
+  }),
+};
 </script>
+
+
 
 <style>
 .footer {
@@ -61,9 +72,8 @@ export default {
 
 .ag-logo {
   margin-right: 20px;
-  transition: scale-transition;
-  width:80px;
-  height:78px;
+  transition: scale;
+  
 }
 
 .footer h4 {

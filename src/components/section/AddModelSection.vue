@@ -299,7 +299,7 @@ export default {
     isInLoad: false
 }),
   methods: {
-    // TODO: manage empty value
+    
     sendModel() {
       this.isInLoad = true;
       this.manageModelInfo();
@@ -380,8 +380,6 @@ export default {
 
     async sendModelData() {
       await this.manageModelPictures();
-      console.log(this.dataMainPicture);
-
       const modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,

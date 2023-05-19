@@ -8,15 +8,17 @@
       ref="header-bar"
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="AG Scouting"
-          class="shrink mr-2 ag-logo"
-          contain
-          :src="formatImageSource('/public/assets/logo-ag.png')"
-          transition="scale-transition"
-          width="80px"
-          height="78px"
-        />
+        <router-link to="/">
+          <v-img
+            alt="AG Scouting"
+            class="shrink mr-2 ag-logo"
+            contain
+            :src="formatImageSource('/public/assets/logo-ag.png')"
+            transition="scale-transition"
+            width="80px"
+            height="78px"
+          />
+        </router-link>
       </div>
 
       <h1 class="ag-title">
