@@ -27,7 +27,7 @@ import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 import Error404 from './components/404Page.vue';
 import Error500 from './components/500Page.vue';
 
-// mentions-legales rgpd
+// LegalNotice & RgpdManagement
 import LegalNotice from './components/legals/LegalNotice.vue';
 import RgpdManagement from './components/legals/RgpdManagement.vue';
 
