@@ -116,9 +116,56 @@ export default {
       modalTitle: "Suppression d'un modèle",
       modalText: 'Souhaitez-vous réellement supprimer ce modèle ? Une fois cela fait, il ne sera plus possible de le récupérer !'
     },
+    showModal: false,
+    modelIdSelectedForDelete: null,
   }),
   components: {
     ModalDelete,
+  },
+  methods: {
+    findModel() {
+      // eslint-disable-next-line no-undef
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
+        this.models = [];
+        this.models.push(...response.data);
+        this.$store.commit("homeModelData", this.models);
+      });
+    },
+    redirectToModel(articleId) {
+      this.$store.commit("articleId", articleId);
+      this.$router.push({ name: 'ModifyArticle', params: { id: articleId } });
+    },
+    openModal(modelId) {
+      this.modelIdSelectedForDelete = modelId;
+      this.showModal = true;
+    },
+    manageDeletedModel(deleteInfo) {
+      this.modelDeletedId = deleteInfo.modelId;
+      if (deleteInfo.isDelete) {
+        this.successAlert = true;
+        this.findModel();
+      } else {
+        this.errorAlert = true;
+      }
+    },
+    deleteModel(modelId) {
+      let config = {
+        method: 'delete',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
+        }
+      };
+
+      this.$axios(config).then(response => {
+        if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.model_deleted, modelId });
+      }).catch(error => {
+        this.$emit('deleted', { isDelete: false, modelId });
+        console.log(error);
+      });
+    }
   }
 }
 </script>

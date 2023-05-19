@@ -91,18 +91,17 @@
 // import ModifyPicture from './section/ModifyPicture.vue';
 // import AddPicture from './section/AddPicture.vue';
 export default {
-    data: () => ({
-   
-   titre: "",
-   description: "",
-   date: "",
-   mainpicture: null,
-   pictures: null,
-   articleInfo: null,
-   errorAlert: false,
-   successAlert: false,
-   isInLoad: false,
-   dataMainPicture: [],
-   dataPictures: []
+ data: () => ({
+  titre: "",
+  description: "",
+  date: "",
+  mainpicture: null,
+  pictures: null,
+  articleInfo: null,
+  errorAlert: false,
+  successAlert: false,
+  isInLoad: false,
+  dataMainPicture: [],
+  dataPictures: []
  }),
 }

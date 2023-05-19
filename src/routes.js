@@ -13,9 +13,9 @@ import AdminHome from './components/AdminHome.vue';
 import AdminHomePage from './components/AdminHomePage.vue';
 import AdminModel from './components/AdminModel.vue';
 import AdminModifyModel from './components/AdminModifyModel.vue';
-import AddArticle from './components/administrations/ListArticle/AddArticle.vue';
+import AddArticle from './components/administrations/AddArticle/AddArticle.vue';
 import ListArticle from './components/administrations/ListArticle/ListArticle.vue';
-import AdminModifyArticle from './components/AdminModifyArticle.vue';
+import ModifyArticle from './components/administrations/ModifyArticle/ModifyArticle.vue';
 
 // agent component
 import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
@@ -126,8 +126,8 @@ const routes = [
       },
       {
         path: "/administration/modify/article/:id",
-        name: "AdminModifyArticle",
-        component: AdminModifyArticle
+        name: "ModifyArticle",
+        component: ModifyArticle
       }
      
     ],
