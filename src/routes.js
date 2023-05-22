@@ -120,7 +120,7 @@ const routes = [
         component: AddArticle
       },
       {
-        path: "/administration/article",
+        path: "/article",
         name: "ListArticle",
         component: ListArticle
       },

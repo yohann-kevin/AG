@@ -35,6 +35,9 @@
         <router-link to="/contact">
           Contact
         </router-link>
+        <router-link to="/article">
+          Actualités
+        </router-link>
         <router-link 
           to="/agent"
           v-if="agentConnected"

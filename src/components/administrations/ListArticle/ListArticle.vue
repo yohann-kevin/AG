@@ -118,6 +118,8 @@ export default {
     },
     showModal: false,
     modelIdSelectedForDelete: null,
+    options: {},
+    pagination: {},
   }),
   components: {
     ModalDelete,
@@ -201,5 +203,6 @@ export default {
 .all-article-table {
   width: 100%;
 }
+
 </style>
 

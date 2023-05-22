@@ -29,7 +29,7 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/administration/article">
+          <router-link to="/article">
             Voir article
           </router-link>
         </li>
