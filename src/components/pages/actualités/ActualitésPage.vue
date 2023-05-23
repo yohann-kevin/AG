@@ -1,0 +1,125 @@
+<template>
+  <div class="list-articles">
+    <h2>Nos actualités</h2>
+    <div class="card-container">
+      <v-card
+        class="mx-auto mt-4"
+        :max-width="$vuetify.breakpoint.xs ? '320' : '400'"
+      >
+        <v-img
+          src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+          height="200px"
+        />
+        <v-card-title>
+          Halloween
+        </v-card-title>
+  
+        <v-card-subtitle>
+          Plus de 1000 personnes
+        </v-card-subtitle>
+  
+        <v-card-actions>
+          <v-btn
+            color="orange lighten-2"
+            text
+          >
+            Voir plus
+          </v-btn>
+  
+          <v-spacer />
+  
+          <v-btn
+            icon
+            @click="show = !show"
+          >
+            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+  
+        <v-expand-transition>
+          <div v-show="show">
+            <v-divider />
+  
+            <v-card-text>
+              AG Scouting
+            </v-card-text>
+          </div>
+        </v-expand-transition>
+      </v-card>
+
+      <v-card
+        class="mx-auto mt-4"
+        :max-width="$vuetify.breakpoint.xs ? '320' : '400'"
+      >
+        <v-img
+          src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+          height="200px"
+        />
+        <v-card-title>
+          Paques
+        </v-card-title>
+  
+        <v-card-subtitle>
+          Plus de 5000 personnes
+        </v-card-subtitle>
+  
+        <v-card-actions>
+          <v-btn
+            color="orange lighten-2"
+            text
+          >
+            Voir plus
+          </v-btn>
+  
+          <v-spacer />
+  
+          <v-btn
+            icon
+            @click="show = !show"
+          >
+            <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+  
+        <v-expand-transition>
+          <div v-show="show">
+            <v-divider />
+  
+            <v-card-text>
+              AG Scouting
+            </v-card-text>
+          </div>
+        </v-expand-transition>
+      </v-card>
+    </div>
+  </div>
+</template>
+  
+  <script>
+  import formatImageSource from '../../../utils/utils.js';
+  export default {
+    data: () => ({
+      show: false,
+      formatImageSource:formatImageSource
+    }),
+  }
+</script>
+  
+<style>
+h2 {
+ text-align: center;
+ margin-top: 20px;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-container > v-card {
+  margin: 10px;
+}
+
+
+
+</style>
+  

@@ -7,6 +7,7 @@ import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
 import AboutPage from './components/pages/about/AboutPage.vue';
 import ContactPage from './components/pages/contact/ContactPage.vue';
+import ActualitésPage from './components/pages/actualités/ActualitésPage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
@@ -77,6 +78,11 @@ const routes = [
     component: ContactPage
   },
   {
+    path: '/actualités',
+    name:'actualités',
+    component: ActualitésPage
+  },
+  {
     path: "/adminlogin",
     name: "administrationLogin",
     component: AdminLoginPage,
@@ -120,7 +126,7 @@ const routes = [
         component: AddArticle
       },
       {
-        path: "/article",
+        path: "/administration/article",
         name: "ListArticle",
         component: ListArticle
       },
