@@ -169,8 +169,6 @@ export default {
     },
     sendModelData: async () => {
       await this.manageModelPictures();
-      console.log(this.dataMainPicture);
-
       const modelData = {
         model: this.articleInfo,
         main_picture: this.dataMainPicture,

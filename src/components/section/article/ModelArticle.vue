@@ -7,6 +7,7 @@
     elevation="2"
   >
     <v-img
+      class="model-photo"
       :src="model.model_picture.picture_path"
       max-height="250px"
       contain
@@ -97,4 +98,7 @@ export default {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
 }
+
+ 
+
 </style>

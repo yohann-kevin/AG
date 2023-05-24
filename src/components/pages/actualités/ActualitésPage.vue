@@ -3,8 +3,7 @@
     <h2>Nos actualités</h2>
     <div class="card-container">
       <v-card
-        class="mx-auto mt-4"
-        :max-width="$vuetify.breakpoint.xs ? '320' : '400'"
+        class="cards"
       >
         <v-img
           src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
@@ -48,8 +47,7 @@
       </v-card>
 
       <v-card
-        class="mx-auto mt-4"
-        :max-width="$vuetify.breakpoint.xs ? '320' : '400'"
+        class="cards"
       >
         <v-img
           src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
@@ -100,7 +98,7 @@
   export default {
     data: () => ({
       show: false,
-      formatImageSource:formatImageSource
+      formatImageSource: formatImageSource
     }),
   }
 </script>
@@ -115,10 +113,17 @@ h2 {
   flex-wrap: wrap;
   justify-content: center;
 }
-.card-container > v-card {
-  margin: 10px;
+.cards {
+  width: 400px;
+  margin: auto;
+  margin-top: 20px;
 }
 
+@media (max-width: 768px) {
+  .cards {
+    width: 300px;
+  }
+}
 
 
 </style>
