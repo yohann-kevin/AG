@@ -9,8 +9,11 @@
 </template>
 
 <script>
+
 import HeaderLayouts from "./components/layouts/HeaderLayouts.vue";
 import FooterLayouts from "./components/layouts/FooterLayouts.vue";
+
+
 
 export default {
   name: 'App',
@@ -20,10 +23,13 @@ export default {
     FooterLayouts
   },
 
+
   data: () => ({
     //
   }),
 };
+
+
 </script>
 
 <style>

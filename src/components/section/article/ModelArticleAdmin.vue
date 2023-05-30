@@ -91,7 +91,7 @@ export default {
         if (response.status === 200) this.$emit('deleted', { isDelete: response.data.model_deleted, modelId });
       }).catch(error => {
         this.$emit('deleted', { isDelete: false, modelId });
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }
@@ -109,7 +109,6 @@ export default {
   color: rgba(0, 0, 0, 0.87);
 }
 .titleModel {
-  margin: auto;
   text-transform: uppercase;
 }
 </style>

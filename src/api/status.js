@@ -13,7 +13,7 @@ const statusapi = {
         return response.status;
       }
     }).catch(error => {
-      console.log(error);
+      this.$hygie.logger.error(error);
       return 500;
     });
   }

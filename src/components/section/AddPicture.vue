@@ -86,7 +86,7 @@ export default {
         await this.convertPicturesToBase64(newPictureCompressed); 
       } catch (error) {
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       }
       
       const config = {
@@ -107,7 +107,7 @@ export default {
         }
       }).catch(error => {
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }

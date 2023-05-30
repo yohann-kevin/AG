@@ -349,10 +349,11 @@ export default {
       this.$axios(config).then(response => {
         if (response.status != 500) {
           this.successAlert = true;
+          
         }
       }).catch(error => {
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }

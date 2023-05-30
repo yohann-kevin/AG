@@ -134,7 +134,7 @@ export default {
         if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.model_deleted, modelId });
       }).catch(error => {
         this.$emit('deleted', { isDelete: false, modelId });
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }

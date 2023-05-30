@@ -17,7 +17,7 @@ const utils = {
       return await imageCompression(picture, options);
     } catch (error) {
       
-      console.log(error);
+      this.$hygie.logger.error(error);
       throw error;
     }
   }
