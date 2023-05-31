@@ -27,12 +27,6 @@ Vue.use(HygieVuePlugins);
 Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
 
-// Test de la disponibilité de hygie-vue-plugins
-if (Vue.prototype.$hygie) {
-  console.log('hygie-vue-plugins est correctement installé et disponible dans votre application.');
-} else {
-  console.log('hygie-vue-plugins n\'est pas installé ou n\'est pas correctement configuré.');
-}
 
 new Vue({
   vuetify,
