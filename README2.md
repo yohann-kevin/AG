@@ -1,6 +1,6 @@
 # ag-front
 
-## How to install the plugin :
+## How to install the plugin (https://www.npmjs.com/package/hygie-vue-plugins) :
 ```
 npm i hygie-vue-plugins
 ```
