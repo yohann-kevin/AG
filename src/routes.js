@@ -27,6 +27,11 @@ import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 import Error404 from './components/404Page.vue';
 import Error500 from './components/500Page.vue';
 
+// LegalNotice & RgpdManagement
+import LegalNotice from './components/legals/LegalNotice.vue';
+import RgpdManagement from './components/legals/RgpdManagement.vue';
+
+
 // store
 import store from './store.js';
 
@@ -34,6 +39,8 @@ import store from './store.js';
 import adminapi from './api/admin.js';
 import agentapi from './api/agent.js';
 import statusapi from './api/status';
+
+
 
 async function manageAdmConnexion() {
   store.commit("adminToken", sessionStorage.admtoken);
@@ -68,6 +75,17 @@ const routes = [
     name: "about",
     component: AboutPage
   },
+  {
+    path: "/legal",
+    name: "legal",
+    component: LegalNotice
+  },
+  {
+    path:"/rgpd",
+    name: "rgpd",
+    component:RgpdManagement
+  },
+ 
   {
     path: '/contact',
     name: 'contact',
@@ -161,6 +179,12 @@ router.beforeEach(async (to, from, next) => {
     next({ path: '/error' });
   }
   await checkAgtConnexion();
+   // Scroll vers le haut de la page
+   window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+  
   next();
 });
   

@@ -16,7 +16,7 @@ const agentapi = {
         return response.data;
       }
     }).catch(error => {
-      console.log(error);
+      this.$hygie.logger.error(error);
       throw error;
     });
   }
