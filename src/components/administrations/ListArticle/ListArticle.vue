@@ -10,7 +10,7 @@
         type="error"
         v-model="errorAlert"
       >
-        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionné !
+        La suppression du modèle {{ articleDeletedId }} n'a pas fonctionné !
       </v-alert>
       <v-alert
         dense
@@ -20,7 +20,7 @@
         type="success"
         v-model="successAlert"
       >
-        Le modèle {{ modelDeletedId }} a bien été supprimé !
+        Le modèle {{ articleDeletedId }} a bien été supprimé !
       </v-alert>
     </div>
     <div class="all-article-admin-list">
@@ -127,22 +127,22 @@ export default {
   methods: {
     findModel() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/articles").then(response => {
         this.models = [];
         this.models.push(...response.data);
-        this.$store.commit("homeModelData", this.models);
+        this.$store.commit("homeArticleData", this.article);
       });
     },
     redirectToModel(articleId) {
       this.$store.commit("articleId", articleId);
       this.$router.push({ name: 'ModifyArticle', params: { id: articleId } });
     },
-    openModal(modelId) {
-      this.modelIdSelectedForDelete = modelId;
+    openModal(articleId) {
+      this.modelIdSelectedForDelete = articleId;
       this.showModal = true;
     },
     manageDeletedModel(deleteInfo) {
-      this.modelDeletedId = deleteInfo.modelId;
+      this.modelDeletedId = deleteInfo.articleId;
       if (deleteInfo.isDelete) {
         this.successAlert = true;
         this.findModel();
@@ -150,11 +150,11 @@ export default {
         this.errorAlert = true;
       }
     },
-    deleteModel(modelId) {
+    deleteModel(articleId) {
       let config = {
         method: 'delete',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
+        url: process.env.VUE_APP_API_URL + 'delete/articles/?id=' + articleId,
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
@@ -162,9 +162,9 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.model_deleted, modelId });
+        if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.article_deleted, articleId });
       }).catch(error => {
-        this.$emit('deleted', { isDelete: false, modelId });
+        this.$emit('deleted', { isDelete: false, articleId });
         console.log(error);
       });
     }

@@ -92,15 +92,35 @@
     </div>
   </div>
 </template>
-  
   <script>
-  import formatImageSource from '../../../utils/utils.js';
-  export default {
-    data: () => ({
-      show: false,
-      formatImageSource: formatImageSource
-    }),
+import formatImageSource from '../../../utils/utils.js';
+
+export default {
+  data: () => ({
+    show: false,
+    formatImageSource: formatImageSource,
+    models: [],
+    modelIdSelectedForDelete: null,
+    showModal: false
+  }),
+  methods: {
+    findModel() {
+      // eslint-disable-next-line no-undef
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/articles")
+        .then(response => {
+          this.models = response.data;
+          this.$store.commit("homeArticleData", this.article);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    openModal(articleId) {
+      this.modelIdSelectedForDelete = articleId;
+      this.showModal = true;
+    }
   }
+};
 </script>
   
 <style>

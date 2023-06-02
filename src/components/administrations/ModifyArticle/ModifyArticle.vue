@@ -88,6 +88,7 @@
   </div>
 </template>
 <script>
+import imageCompression from 'browser-image-compression';
 
 export default {
  data: () => ({
@@ -103,4 +104,95 @@ export default {
   dataMainPicture: [],
   dataPictures: []
  }),
-}
+ methods: {
+    sendModel: () => {
+      // utilisé lorsqu'un admin clique sur ajouter
+      this.manageArticleInfo();
+      this.sendModelData();
+    },
+    // valeurs saisies par l'admin
+    manageArticleInfo: () => {
+      this.articleInfo = {
+        title: this.titre,
+        description: this.description,
+        event_at: this.date
+      };
+    },
+    convertPicturesToBase64: async (pictureData, isMainPicture) => {
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+      if (isMainPicture) {
+        this.dataMainPicture.push(await toBase64(pictureData));
+      } else {
+        this.dataPictures.push(await toBase64(pictureData));
+      }
+    },
+    compressImage: async (picture) => {
+      const options = {
+        maxSizeMB: 2,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+      try {
+        return await imageCompression(picture, options);
+      } catch (error) {
+        this.$refs.errorAddModel.value = true;
+        console.log(error);
+      }
+    },
+    manageModelPictures: async () => {
+      const mainPicture = this.mainpicture;
+      try {
+        const mainPictureCompressed = await this.compressImage(mainPicture);  
+        await this.convertPicturesToBase64(mainPictureCompressed, true);
+      } catch (error) {
+        this.errorAddModel = true;
+        console.log(error);
+      }
+
+      const otherPictures = this.pictures;
+      for (let i = 0; i < otherPictures.length; i++) {
+        try {
+          const pictureCompressed = await this.compressImage(otherPictures[i]);
+          await this.convertPicturesToBase64(pictureCompressed, false);
+        } catch (error) {
+          this.errorAddModel = true;
+          console.log(error);
+        }
+      }
+    },
+    sendModelData: async () => {
+      await this.manageModelPictures();
+      const articleData = {
+        article: this.articleInfo,
+        main_picture: this.dataMainPicture,
+        all_pictures: this.dataPictures
+      };
+      const config = {
+        method: 'put',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'articles',
+        headers: {
+          'Content-Type': 'application/json',
+         },
+        data: articleData
+      };
+
+      this.$axios(config).then(response => {
+        this.isInLoad = false;
+        if (response.status === 201) {
+          this.successAlert = true;
+        }
+      }).catch(error => {
+        this.isInLoad = false;
+        this.errorAlert = true;
+        console.log(error);
+      });
+    }
+  }
+};
+</script>

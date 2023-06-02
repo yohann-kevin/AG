@@ -115,9 +115,9 @@ export default {
     // valeurs saisies par l'admin
     manageArticleInfo: () => {
       this.articleInfo = {
-        titre: this.titre,
+        title: this.titre,
         description: this.description,
-        date: this.date
+        event_at: this.date
       };
     },
     convertPicturesToBase64: async (pictureData, isMainPicture) => {
@@ -169,20 +169,20 @@ export default {
     },
     sendModelData: async () => {
       await this.manageModelPictures();
-      const modelData = {
-        model: this.articleInfo,
+      const articleData = {
+        article: this.articleInfo,
         main_picture: this.dataMainPicture,
         all_pictures: this.dataPictures
       };
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'create/model',
+        url: process.env.VUE_APP_API_URL + 'articles',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
-        data: modelData
+        data: articleData
       };
 
       this.$axios(config).then(response => {
