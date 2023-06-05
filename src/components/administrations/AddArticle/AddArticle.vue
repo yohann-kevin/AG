@@ -77,7 +77,7 @@
 
       <v-btn
         text
-        @click="sendModel()"
+        @click="sendArticle()"
       >
         Ajouter
       </v-btn>
@@ -107,20 +107,21 @@ export default {
     dataPictures: []
   }),
   methods: {
-    sendModel: () => {
+    sendArticle() {
+      this.isInLoad = true;
       // utilisé lorsqu'un admin clique sur ajouter
       this.manageArticleInfo();
-      this.sendModelData();
+      this.sendArticleData();
     },
     // valeurs saisies par l'admin
-    manageArticleInfo: () => {
+    manageArticleInfo() {
       this.articleInfo = {
         title: this.titre,
         description: this.description,
         event_at: this.date
       };
     },
-    convertPicturesToBase64: async (pictureData, isMainPicture) => {
+    async convertPicturesToBase64(pictureData, isMainPicture) {
       const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -133,7 +134,7 @@ export default {
         this.dataPictures.push(await toBase64(pictureData));
       }
     },
-    compressImage: async (picture) => {
+    async compressImage(picture) {
       const options = {
         maxSizeMB: 2,
         maxWidthOrHeight: 1920,
@@ -146,7 +147,7 @@ export default {
         console.log(error);
       }
     },
-    manageModelPictures: async () => {
+    async manageModelPictures() {
       const mainPicture = this.mainpicture;
       try {
         const mainPictureCompressed = await this.compressImage(mainPicture);  
@@ -167,13 +168,14 @@ export default {
         }
       }
     },
-    sendModelData: async () => {
+    async sendArticleData() {
       await this.manageModelPictures();
       const articleData = {
         article: this.articleInfo,
         main_picture: this.dataMainPicture,
         all_pictures: this.dataPictures
       };
+
       const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
@@ -187,7 +189,7 @@ export default {
 
       this.$axios(config).then(response => {
         this.isInLoad = false;
-        if (response.status === 201) {
+        if (response.status === 200) {
           this.successAlert = true;
         }
       }).catch(error => {

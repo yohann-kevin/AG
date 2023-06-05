@@ -35,7 +35,7 @@
         <router-link to="/contact">
           Contact
         </router-link>
-        <router-link to="/actualités">
+        <router-link to="/actuality">
           Actualités
         </router-link>
         <router-link 
@@ -131,7 +131,7 @@
           </router-link>
         </li>
         <li class="menu">
-          <router-link to="/actualités">
+          <router-link to="/actuality">
             Actualités
           </router-link>
         </li>

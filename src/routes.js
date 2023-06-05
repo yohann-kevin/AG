@@ -78,8 +78,8 @@ const routes = [
     component: ContactPage
   },
   {
-    path: '/actualités',
-    name:'actualités',
+    path: '/actuality',
+    name:'actuality',
     component: ActualitésPage
   },
   {

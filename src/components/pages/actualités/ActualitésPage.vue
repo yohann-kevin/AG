@@ -103,13 +103,17 @@ export default {
     modelIdSelectedForDelete: null,
     showModal: false
   }),
+  mounted() {
+    this.findArticle();
+  },
   methods: {
-    findModel() {
+    findArticle() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/articles")
+      this.$axios.get(process.env.VUE_APP_API_URL + "articles")
         .then(response => {
-          this.models = response.data;
-          this.$store.commit("homeArticleData", this.article);
+          console.log(response.data);
+          this.articles = response.data;
+          // this.$store.commit("homeArticleData", this.article);
         })
         .catch(error => {
           console.error(error);
