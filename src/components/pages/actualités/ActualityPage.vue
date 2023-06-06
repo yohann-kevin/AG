@@ -8,12 +8,14 @@
         :key="article.id"
       >
         <v-img
-          :src="article.pictures[0].picture_path"
+          v-for="picture in article.article_pictures"
+          :src="picture.picture_path"
           height="200px"
+          :key="picture.id"
         >
           <v-card-title>{{ article.title }}</v-card-title>
-          <v-card-subtitle>{{ article.description }}</v-card-subtitle>
-  
+          <v-card-subtitle>{{ article.event_at }}</v-card-subtitle>
+
           <v-card-actions>
             <v-btn
               color="orange lighten-2"
@@ -22,7 +24,7 @@
               Voir plus
             </v-btn>
           </v-card-actions>
-  
+
           <v-expand-transition>
             <div v-show="show">
               <v-divider />
@@ -38,45 +40,37 @@
 </template>
 
 
+
 <script>
 import formatImageSource from '../../../utils/utils.js';
 
 export default {
-  data() {
-    return {
+  data: () => ({
       show: false,
       formatImageSource: formatImageSource,
-      articles: [],
+      article: [],
       articleIdSelectedForDelete: null,
       showModal: false,
       errorAlert: false
-    }
-  },
-  mounted() {
-    const config = {
-      method: 'get',
-      // eslint-disable-next-line no-undef
-      url: process.env.VUE_APP_API_URL + "articles",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.admtoken
-      }
-    };
-
-    this.$axios(config)
-      .then(response => {
-        this.articles = response.data; // Corrected variable name
-        console.log(response.data);
-        // this.$store.commit("homeArticleData", this.articles);
-      })
-      .catch(error => {
-        this.errorAlert = true;
-        console.error(error);
-      });
+    }),
+    mounted() {
+    this.findArticle();
   },
   methods: {
+    findArticle() {
+      // eslint-disable-next-line no-undef
+      this.$axios.get(process.env.VUE_APP_API_URL + "articles"),{ params: { include: 'article_pictures' } }
+        .then(response => {
+          console.log(response.data);
+          this.articles = response.data;
+          // this.$store.commit("homeArticleData", this.article);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
     openModal(articleId) {
-      this.articleIdSelectedForDelete = articleId;
+      this.modelIdSelectedForDelete = articleId;
       this.showModal = true;
     }
   }

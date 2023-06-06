@@ -40,7 +40,7 @@
         v-model="pictures"
       />
     </v-card>
-    <div class="article-form-btn">
+    <div class="add-form-btn">
       <div class="add-model-alert">
         <v-alert
           dense
@@ -147,7 +147,7 @@ export default {
         console.log(error);
       }
     },
-    async manageAddArticlePictures() {
+    async manageArticlePictures() {
       const mainPicture = this.mainpicture;
       try {
         const mainPictureCompressed = await this.compressImage(mainPicture);  
@@ -169,7 +169,7 @@ export default {
       }
     },
     async sendArticleData() {
-      await this.manageAddArticlePictures();
+      await this.manageArticlePictures();
       const articleData = {
         article: this.articleInfo,
         main_picture: this.dataMainPicture,
@@ -252,5 +252,12 @@ export default {
 
 .is-in-load {
   margin-bottom: 30px;
+}
+.add-form-btn {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 15px;
 }
 </style>
