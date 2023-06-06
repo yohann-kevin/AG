@@ -27,20 +27,14 @@
       <v-data-table
         :headers="headers"
         :items="articles"
-        :items-per-page="5"
+        :items-per-page="100"
         class="elevation-5 all-article-table"
       >
-        <template #item.name="{ item }">
-          <span>{{ item.name }}</span>
-        </template>
-        <template #item.date="{ item }">
-          <span class="date">{{ item.date }}</span>
-        </template>
         <template #item.actions="{ item }">
           <v-icon
             small
             class="mr-2"
-            @click="redirectToModel(item.article.id)"
+            @click="redirectToArticle(item.article.id)"
           >
             mdi-pencil
           </v-icon>
@@ -50,19 +44,19 @@
           >
             mdi-delete
           </v-icon>
-        </template>
+        </template>  
       </v-data-table>
     </div>
-    <ModalDelete
+    <ArticleDelete
       v-model="showModal"
-      @accept="deleteModel(modelIdSelectedForDelete)"
-      :modal-info="modalDeleteInfo"
+      @accept="deleteArticle(articleIdSelectedForDelete)"
+      :article-info="articleDeleteInfo"
     />
   </div>
 </template>
 
 <script>
-import ModalDelete from '../../modal/ModalDelete.vue';
+import ArticleDelete from '../../modal/ModalDelete.vue';
 
 export default {
   data: () => ({
@@ -72,11 +66,11 @@ export default {
         text: "Nom de l'article",
         align: 'start',
         sortable: false,
-        value: 'name',
+        value: 'article.title',
       },
       { 
         text: 'Date de sortie', 
-        value: 'date',
+        value: 'article.event_at',
         sortable: false,
         align: 'center' 
       },
@@ -87,65 +81,48 @@ export default {
         align: 'end'
       },
     ],
-    articles: [
-      {
-        name: 'Haloween',
-        date: '01/10/23'
-      },
-      {
-        name: 'Saint silvestre',
-        date: '11/10/23',
-      },
-      {
-        name: 'Paques',
-        date: '21/10/23',
-      },
-      {
-        name: 'Noel',
-        date: '12/10/23',
-      },
-      {
-        name: "Jour de l'an",
-        date: '05/10/23',
-      }
-    ],
+    articles: [],
     errorAlert: false,
     successAlert: false,
-    modelDeletedId: null,
-    modalDeleteInfo: {
-      modalTitle: "Suppression d'un modèle",
-      modalText: 'Souhaitez-vous réellement supprimer ce modèle ? Une fois cela fait, il ne sera plus possible de le récupérer !'
+    articleDeletedId: null,
+    articleDeleteInfo: {
+      articleTitle: "Suppression d'un article",
+      articleText: 'Souhaitez-vous réellement supprimer cette article ? Une fois cela fait, il ne sera plus possible de le récupérer !'
     },
     showModal: false,
-    modelIdSelectedForDelete: null,
-    options: {},
-    pagination: {},
+    articleIdSelectedForDelete: null,
+    
   }),
   components: {
-    ModalDelete,
+    ArticleDelete,
+  },
+  beforeMount() {
+    let ArticleOnStore = this.$store.state.homeArticleData;
+    // check if model is save on store
+    ArticleOnStore != null ? this.articles.push(...ArticleOnStore) : this.findArticle();
   },
   methods: {
-    findModel() {
+    findArticle() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/articles").then(response => {
-        this.models = [];
-        this.models.push(...response.data);
-        this.$store.commit("homeArticleData", this.article);
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/article").then(response => {
+        this.article = [];
+        this.article.push(...response.data);
+        this.$store.commit("homeArticleData", this.articles);
       });
     },
-    redirectToModel(articleId) {
+    redirectToArticle(articleId) {
       this.$store.commit("articleId", articleId);
       this.$router.push({ name: 'ModifyArticle', params: { id: articleId } });
     },
     openModal(articleId) {
-      this.modelIdSelectedForDelete = articleId;
+      this.articleIdSelectedForDelete = articleId;
       this.showModal = true;
     },
-    manageDeletedModel(deleteInfo) {
-      this.modelDeletedId = deleteInfo.articleId;
+    manageDeletedArticle(deleteInfo) {
+      this.articleDeletedId = deleteInfo.articleId;
       if (deleteInfo.isDelete) {
         this.successAlert = true;
-        this.findModel();
+        this.findArticle();
       } else {
         this.errorAlert = true;
       }
@@ -162,7 +139,7 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.article_deleted, articleId });
+        if (response.status === 200) this.manageDeletedArticle({ isDelete: response.data.article_deleted, articleId });
       }).catch(error => {
         this.$emit('deleted', { isDelete: false, articleId });
         console.log(error);

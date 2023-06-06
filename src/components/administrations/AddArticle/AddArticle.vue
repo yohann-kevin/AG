@@ -40,7 +40,7 @@
         v-model="pictures"
       />
     </v-card>
-    <div class="model-form-btn">
+    <div class="article-form-btn">
       <div class="add-model-alert">
         <v-alert
           dense
@@ -147,7 +147,7 @@ export default {
         console.log(error);
       }
     },
-    async manageModelPictures() {
+    async manageAddArticlePictures() {
       const mainPicture = this.mainpicture;
       try {
         const mainPictureCompressed = await this.compressImage(mainPicture);  
@@ -169,7 +169,7 @@ export default {
       }
     },
     async sendArticleData() {
-      await this.manageModelPictures();
+      await this.manageAddArticlePictures();
       const articleData = {
         article: this.articleInfo,
         main_picture: this.dataMainPicture,

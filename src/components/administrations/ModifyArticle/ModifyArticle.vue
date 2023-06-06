@@ -1,7 +1,7 @@
 <template>
-  <div class="add-article">
-    <h2>Modifier un article</h2>
-    <v-card class="add-article-form">
+  <div class="modify-article">
+    <h2>Modifier l'article</h2>
+    <v-card class="modify-article-form">
       <h3>Information sur l'article</h3>
       <v-text-field
         label="Titre"
@@ -40,8 +40,8 @@
         v-model="pictures"
       />
     </v-card>
-    <div class="model-form-btn">
-      <div class="add-model-alert">
+    <div class="modify-article-form-btn">
+      <div class="modify-article-alert">
         <v-alert
           dense
           text
@@ -49,9 +49,9 @@
           elevation="15"
           type="error"
           v-model="errorAlert"
-          class="add-article-v-alert"
+          class="modify-article-v-alert"
         >
-          L'ajout de l'article n'a pas fonctionner !
+          La modification de l'article n'a pas fonctionner !
         </v-alert>
         <v-alert
           dense
@@ -60,9 +60,9 @@
           elevation="15"
           type="success"
           v-model="successAlert"
-          class="add-article-v-alert"
+          class="modify-article-v-alert"
         >
-          L'article à bien été ajouter !
+          L'article à bien été modifié !
         </v-alert>
   
         <v-progress-circular
@@ -77,122 +77,160 @@
   
       <v-btn
         text
-        @click="sendModel()"
+        @click="sendModifyArticle()"
       >
-        Ajouter
+        Modifier
       </v-btn>
       <v-btn text>
         Annuler
       </v-btn>
     </div>
+    <ModifyPicture
+      :pictures="articlePictures"
+      :article-id="articleId"
+    />
+    <AddPicture
+      :article-id="articleId"
+      @add:picture="articlePictures = $event"
+    />
   </div>
 </template>
+
 <script>
-import imageCompression from 'browser-image-compression';
+import ModifyPicture from '../../section/ModifyPicture.vue';
+import AddPicture from '../../section/AddPicture.vue';
 
 export default {
- data: () => ({
-  titre: "",
-  description: "",
-  date: "",
-  mainpicture: null,
-  pictures: null,
-  articleInfo: null,
-  errorAlert: false,
-  successAlert: false,
-  isInLoad: false,
-  dataMainPicture: [],
-  dataPictures: []
- }),
- methods: {
-    sendModel: () => {
-      // utilisé lorsqu'un admin clique sur ajouter
-      this.manageArticleInfo();
-      this.sendModelData();
+  data() {
+    return {
+      titre: "",
+      description: "",
+      date: "",
+      mainpicture: null,
+      pictures: null,
+      article: null,
+      errorAlert: false,
+      successAlert: false,
+      isInLoad: false,
+      articleId: null
+    };
+  },
+  components: {
+    ModifyPicture,
+    AddPicture
+  },
+  beforeMount() {
+    this.articleId = this.$store.state.articleId;
+    if (!this.articleId && !this.$route.params.id) {
+      this.$router.push({ path: "/administration/article" });
+    } else if (this.articleId) {
+      this.findArticleData();
+    } else {
+      this.articleId = this.$route.params.id;
+      this.$store.commit("articleId", this.articleId);
+      this.findArticleData();
+    }
+  },
+  methods: {
+    findArticleData() {
+      this.$axios
+      // eslint-disable-next-line no-undef
+        .get(process.env.VUE_APP_API_URL + "get/article/" + this.articleId)
+        .then(response => {
+          this.article = response.data.article;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
-    // valeurs saisies par l'admin
-    manageArticleInfo: () => {
-      this.articleInfo = {
+    sendArticle() {
+        this.isInLoad = true;
+        this.manageArticleInfo();
+        this.sendArticleData();
+      },
+      // Envoyer les données de l'article modifié au serveur
+    },
+    manageArticleInfo() {
+      const articleData = {
         title: this.titre,
         description: this.description,
         event_at: this.date
       };
-    },
-    convertPicturesToBase64: async (pictureData, isMainPicture) => {
-      const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-      });
-      if (isMainPicture) {
-        this.dataMainPicture.push(await toBase64(pictureData));
-      } else {
-        this.dataPictures.push(await toBase64(pictureData));
-      }
-    },
-    compressImage: async (picture) => {
-      const options = {
-        maxSizeMB: 2,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true
-      };
-      try {
-        return await imageCompression(picture, options);
-      } catch (error) {
-        this.$refs.errorAddModel.value = true;
-        console.log(error);
-      }
-    },
-    manageModelPictures: async () => {
-      const mainPicture = this.mainpicture;
-      try {
-        const mainPictureCompressed = await this.compressImage(mainPicture);  
-        await this.convertPicturesToBase64(mainPictureCompressed, true);
-      } catch (error) {
-        this.errorAddModel = true;
-        console.log(error);
-      }
-
-      const otherPictures = this.pictures;
-      for (let i = 0; i < otherPictures.length; i++) {
-        try {
-          const pictureCompressed = await this.compressImage(otherPictures[i]);
-          await this.convertPicturesToBase64(pictureCompressed, false);
-        } catch (error) {
-          this.errorAddModel = true;
-          console.log(error);
-        }
-      }
-    },
-    sendModelData: async () => {
-      await this.manageModelPictures();
-      const articleData = {
-        article: this.articleInfo,
-        main_picture: this.dataMainPicture,
-        all_pictures: this.dataPictures
-      };
       const config = {
-        method: 'put',
+        method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'articles',
+        url: process.env.VUE_APP_API_URL + 'modify/article',
         headers: {
           'Content-Type': 'application/json',
-         },
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
+        },
         data: articleData
       };
-
-      this.$axios(config).then(response => {
-        this.isInLoad = false;
-        if (response.status === 201) {
-          this.successAlert = true;
-        }
-      }).catch(error => {
-        this.isInLoad = false;
-        this.errorAlert = true;
-        console.log(error);
-      });
+      this.$axios(config)
+        .then(response => {
+          if (response.status !== 500) {
+            this.successAlert = true;
+          }
+        })
+        .catch(error => {
+          this.errorAlert = true;
+          console.log(error);
+        });
     }
-  }
-};
+  };
 </script>
+
+
+
+
+<style>
+.modify-article {
+  width: 100%;
+  display: flex;
+  
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.modify-article h2 {
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+
+.modify-article-form h3 {
+  width: 100%;
+  text-align: center;
+}
+
+.modify-article-form {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 15px;
+  padding: 15px;
+}
+.modify-article-alert {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.modify-article-v-alert {
+  width: 100%;
+}
+
+.modify-article-form-btn {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.is-in-load {
+  margin-bottom: 30px;
+}
+</style>

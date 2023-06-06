@@ -1,27 +1,15 @@
 <template>
-  <v-img
-    dark
-    :src="formatImageSource('/public/assets/ag-team-five.jpg')"
-    class="img-header"
-    height="700"
-  >
-    <v-row
-      align="center"
-      justify="center"
+  <v-carousel hide-delimiters>
+    <v-carousel-item
+      v-for="(article, i) in articles"
+      :key="i"
     >
-      <v-col
-        class="text-center text-container"
-        cols="8"
+      <img
+        :src="article.src"
+        alt="Image"
       >
-        <h4 class="text-h4 intro-title">
-          <p>Un projet qui nécessite des modèles uniques ?<br> Faites confiance à</p>
-        </h4>
-        <h1 class="mb-4 creattion ag-title">
-          AG Scouting
-        </h1>
-      </v-col>
-    </v-row>
-  </v-img>
+    </v-carousel-item>
+  </v-carousel>
 </template>
 
 <script>
@@ -29,11 +17,25 @@ import formatImageSource from '../../utils/utils.js';
 
 export default {
   name: "IntroductionSection",
-  data: () => ({
-    formatImageSource: formatImageSource
-  })
+  data() {
+    return {
+      formatImageSource: formatImageSource,
+      articles: [
+        {
+          src: formatImageSource('/public/assets/ag-team.jpg')
+        },
+        {
+          src: formatImageSource('/public/assets/ag-team-five.jpg')
+        },
+        {
+          src: formatImageSource('/public/assets/logo-ag.png')
+        }
+      ]
+    };
+  }
 }
 </script>
+
 
 <style scoped>
 .text-container {
