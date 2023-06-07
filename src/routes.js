@@ -8,7 +8,7 @@ import SingleModelPage from './components/SingleModelPage.vue';
 import SingleArticlePage from './components/SingleArticlePage.vue';
 import AboutPage from './components/pages/about/AboutPage.vue';
 import ContactPage from './components/pages/contact/ContactPage.vue';
-import ActualityPage from './components/pages/actualités/ActualityPage.vue';
+import ActualityPage from './components/pages/actuality/ActualityPage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
