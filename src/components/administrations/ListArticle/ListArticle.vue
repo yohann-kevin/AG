@@ -104,7 +104,7 @@ export default {
   methods: {
     findArticle() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/all/article").then(response => {
+      this.$axios.get(process.env.VUE_APP_API_URL + "articles").then(response => {
         this.article = [];
         this.article.push(...response.data);
         this.$store.commit("homeArticleData", this.articles);

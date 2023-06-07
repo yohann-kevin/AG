@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
+import SingleArticlePage from './components/SingleArticlePage.vue';
 import AboutPage from './components/pages/about/AboutPage.vue';
 import ContactPage from './components/pages/contact/ContactPage.vue';
 import ActualityPage from './components/pages/actualités/ActualityPage.vue';
@@ -66,6 +67,11 @@ const routes = [
     path: "/model/:id",
     name: "model",
     component: SingleModelPage
+  },
+  {
+    path: "/article/:id",
+    name: "article",
+    component: SingleArticlePage
   },
   {
     path: "/about",
