@@ -10,7 +10,7 @@
         type="error"
         v-model="errorAlert"
       >
-        La suppression du modèle {{ articleDeletedId }} n'a pas fonctionné !
+        La suppression de l'article {{ articleDeletedId }} n'a pas fonctionné !
       </v-alert>
       <v-alert
         dense
@@ -20,7 +20,7 @@
         type="success"
         v-model="successAlert"
       >
-        Le modèle {{ articleDeletedId }} a bien été supprimé !
+        L'article {{ articleDeletedId }} a bien été supprimé !
       </v-alert>
     </div>
     <div class="all-article-admin-list">
@@ -50,7 +50,7 @@
     <ArticleDelete
       v-model="showModal"
       @accept="deleteArticle(articleIdSelectedForDelete)"
-      :article-info="articleDeleteInfo"
+      :modal-info="articleDeleteInfo"
     />
   </div>
 </template>
@@ -86,8 +86,8 @@ export default {
     successAlert: false,
     articleDeletedId: null,
     articleDeleteInfo: {
-      articleTitle: "Suppression d'un article",
-      articleText: 'Souhaitez-vous réellement supprimer cette article ? Une fois cela fait, il ne sera plus possible de le récupérer !'
+      modalTitle: "Suppression d'un article",
+      modalText: 'Souhaitez-vous réellement supprimer cette article ? Une fois cela fait, il ne sera plus possible de le récupérer !'
     },
     showModal: false,
     articleIdSelectedForDelete: null,
@@ -96,18 +96,14 @@ export default {
   components: {
     ArticleDelete,
   },
-  beforeMount() {
-    let ArticleOnStore = this.$store.state.homeArticleData;
-    // check if model is save on store
-    ArticleOnStore != null ? this.articles.push(...ArticleOnStore) : this.findArticle();
+  mounted() {
+    this.findArticle();
   },
   methods: {
     findArticle() {
       // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "articles").then(response => {
-        this.article = [];
-        this.article.push(...response.data);
-        this.$store.commit("homeArticleData", this.articles);
+        this.articles = response.data; 
       });
     },
     redirectToArticle(articleId) {
@@ -118,20 +114,15 @@ export default {
       this.articleIdSelectedForDelete = articleId;
       this.showModal = true;
     },
-    manageDeletedArticle(deleteInfo) {
-      this.articleDeletedId = deleteInfo.articleId;
-      if (deleteInfo.isDelete) {
-        this.successAlert = true;
-        this.findArticle();
-      } else {
-        this.errorAlert = true;
-      }
+    manageDeletedArticle() {
+      this.successAlert = true;
+      this.findArticle();
     },
-    deleteModel(articleId) {
+    deleteArticle(articleId) {
       let config = {
         method: 'delete',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'delete/articles/?id=' + articleId,
+        url: process.env.VUE_APP_API_URL + 'articles/' + articleId,
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
@@ -139,10 +130,11 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        if (response.status === 200) this.manageDeletedArticle({ isDelete: response.data.article_deleted, articleId });
+        console.log(response.status);
+        if (response.status === 204) this.manageDeletedArticle();
       }).catch(error => {
-        this.$emit('deleted', { isDelete: false, articleId });
         console.log(error);
+        this.errorAlert = true;
       });
     }
   }
