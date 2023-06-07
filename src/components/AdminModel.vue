@@ -10,7 +10,7 @@
         type="error"
         v-model="errorAlert"
       >
-        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionner !
+        La suppression du modèle {{ modelDeletedId }} n'a pas fonctionné !
       </v-alert>
       <v-alert
         dense
@@ -20,51 +20,97 @@
         type="success"
         v-model="successAlert"
       >
-        Le modèle {{ modelDeletedId }} à bien été supprimer !
+        Le modèle {{ modelDeletedId }} a bien été supprimé !
       </v-alert>
     </div>
     <div class="all-model-admin-list">
-      <div
-        v-for="(model, i) in models"
-        :key="i"
+      <v-data-table
+        :headers="headers"
+        :items="models"
+        :items-per-page="100"
+        class="elevation-5 all-model-table"
       >
-        <ModelArticleAdmin
-          :model="model"
-          @deleted="manageDeletedMessage"
-        />
-      </div>
+        <template #item.actions="{ item }">
+          <v-icon
+            small
+            class="mr-2"
+            @click="redirectToModel(item.model.id)"
+          >
+            mdi-pencil
+          </v-icon>
+          <v-icon
+            small
+            @click="openModal(item.model.id)"
+          >
+            mdi-delete
+          </v-icon>
+        </template>  
+      </v-data-table>
     </div>
+    <ModalDelete
+      v-model="showModal"
+      @accept="deleteModel(modelIdSelectedForDelete)"
+      :modal-info="modalDeleteInfo"
+    />
   </div>
 </template>
-
 <script>
-import ModelArticleAdmin from "./section/article/ModelArticleAdmin.vue";
-
+import ModalDelete from './modal/ModalDelete.vue';
 
 export default {
   data: () => ({
-    models: null,
+    itemsPerPage: 5,
+    headers: [
+      {
+        text: 'Nom du modèle',
+        align: 'start',
+        sortable: false,
+        value: 'model.firstname',
+      },
+      { 
+        text: 'Actions', 
+        value: 'actions', 
+        sortable: false, 
+        align: 'end' 
+      },
+    ],
+    models: [],
     errorAlert: false,
     successAlert: false,
-    modelDeletedId: null
+    modelDeletedId: null,
+    modalDeleteInfo: {
+      modalTitle: "Suppression d'un modèle",
+      modalText: 'Souhaitez vous réellement supprimer ce modèle ? Une fois cela fait il ne sera plus possible de la récupérer !'
+    },
+    showModal: false,
+    modelIdSelectedForDelete: null,
   }),
   components: {
-    ModelArticleAdmin
+    ModalDelete,
   },
   beforeMount() {
     let modelOnStore = this.$store.state.homeModelData;
     // check if model is save on store
-    modelOnStore != null ? this.models = modelOnStore : this.findModel();
+    modelOnStore != null ? this.models.push(...modelOnStore) : this.findModel();
   },
   methods: {
     findModel() {
       // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "get/all/model").then(response => {
-        this.models = response.data;
+        this.models = [];
+        this.models.push(...response.data);
         this.$store.commit("homeModelData", this.models);
       });
     },
-    manageDeletedMessage(deleteInfo) {
+    redirectToModel(modelId) {
+      this.$store.commit("modelId", modelId);
+      this.$router.push({ name: 'AdminModifyModel', params: { id: modelId } });
+    },
+    openModal(modelId) {
+      this.modelIdSelectedForDelete = modelId;
+      this.showModal = true;
+    },
+    manageDeletedModel(deleteInfo) {
       this.modelDeletedId = deleteInfo.modelId;
       if (deleteInfo.isDelete) {
         this.successAlert = true;
@@ -72,6 +118,24 @@ export default {
       } else {
         this.errorAlert = true;
       }
+    },
+    deleteModel(modelId) {
+      let config = {
+        method: 'delete',
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + 'delete/model/?id=' + modelId,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.admtoken
+        }
+      };
+
+      this.$axios(config).then(response => {
+        if (response.status === 200) this.manageDeletedModel({ isDelete: response.data.model_deleted, modelId });
+      }).catch(error => {
+        this.$emit('deleted', { isDelete: false, modelId });
+        this.$hygie.logger.error(error);
+      });
     }
   }
 }
@@ -81,7 +145,7 @@ export default {
 .all-model-admin {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 25px;
 }
@@ -89,6 +153,13 @@ export default {
 .all-model-admin h2 {
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.custom-title-table {
+  text-align: center;
+    font-size: 1.5rem;
+    color: black;
 }
 
 .admin-alert {
@@ -98,7 +169,12 @@ export default {
 .all-model-admin-list {
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.all-model-table {
+  width: 100%;
 }
 </style>

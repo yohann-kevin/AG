@@ -10,7 +10,7 @@
           {{ model.model.firstname }}
         </div>
       </v-card-title>
-
+      
       <v-card-actions>
         <v-btn
           class="mx-2"
@@ -91,7 +91,7 @@ export default {
         if (response.status === 200) this.$emit('deleted', { isDelete: response.data.model_deleted, modelId });
       }).catch(error => {
         this.$emit('deleted', { isDelete: false, modelId });
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }
@@ -107,5 +107,8 @@ export default {
 .more-btn {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
+}
+.titleModel {
+  text-transform: uppercase;
 }
 </style>

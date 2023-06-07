@@ -75,7 +75,7 @@
 
 <script>
 import ModelArticle from "./article/ModelArticle.vue";
-import formatImageSource from '../../utils/utils.js';
+import utils from '../../utils/utils.js';
 
 export default {
   name: "ModelSection",
@@ -87,7 +87,7 @@ export default {
     models: null,
     modelsMen: [],
     modelsWoman: [],
-    formatImageSource: formatImageSource
+    formatImageSource: utils.formatImageSource
   }),
   beforeMount() {
     let modelOnStore = this.$store.state.homeModelData;

@@ -200,7 +200,7 @@ export default {
         }
       }).catch(error => {
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     },
     modifyMainPicture(pictureId) {
@@ -220,7 +220,7 @@ export default {
         }
       }).catch(error => {
         this.errorModifiedMainPicture = true;
-        console.log(error);
+       this.$hygie.logger.error(error);
       });
     }
   }

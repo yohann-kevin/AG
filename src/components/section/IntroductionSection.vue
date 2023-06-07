@@ -13,22 +13,21 @@
 </template>
 
 <script>
-import formatImageSource from '../../utils/utils.js';
+import utils from '../../utils/utils.js';
 
 export default {
   name: "IntroductionSection",
   data() {
     return {
-      formatImageSource: formatImageSource,
       articles: [
         {
-          src: formatImageSource('/public/assets/ag-team.jpg')
+          src: utils.formatImageSource('/public/assets/ag-team.jpg')
         },
         {
-          src: formatImageSource('/public/assets/ag-team-five.jpg')
+          src: utils.formatImageSource('/public/assets/ag-team-five.jpg')
         },
         {
-          src: formatImageSource('/public/assets/logo-ag.png')
+          src: utils.formatImageSource('/public/assets/logo-ag.png')
         }
       ]
     };

@@ -151,7 +151,7 @@ export default {
         }
       }).catch(error => {
         this.errorAlert = true;
-        console.log(error);
+         this.$hygie.logger.error(error);
       });
     },
     connectAgent(agentData) {
