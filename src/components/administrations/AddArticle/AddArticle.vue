@@ -144,7 +144,7 @@ export default {
         return await imageCompression(picture, options);
       } catch (error) {
         this.$refs.errorAddModel.value = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       }
     },
     async manageArticlePictures() {
@@ -154,7 +154,7 @@ export default {
         await this.convertPicturesToBase64(mainPictureCompressed, true);
       } catch (error) {
         this.errorAddModel = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       }
 
       const otherPictures = this.pictures;
@@ -164,7 +164,7 @@ export default {
           await this.convertPicturesToBase64(pictureCompressed, false);
         } catch (error) {
           this.errorAddModel = true;
-          console.log(error);
+          this.$hygie.logger.error(error);
         }
       }
     },
@@ -195,7 +195,7 @@ export default {
       }).catch(error => {
         this.isInLoad = false;
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }

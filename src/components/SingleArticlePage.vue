@@ -5,17 +5,14 @@
   >
     <div class="single-article-info">
       <h2> {{ article.title }}</h2>
-      <p>{{ article.description }}</p>
-      <p>{{ article.event_at }}</p>
+      <p class="article-description">
+        {{ article.description }}
+      </p>
+      <p>Cet événement a eu lieu le <strong>{{ formatEventDate(article.event_at) }}</strong></p>
       <div class="single-article-btn">
         <v-btn text>
-          <router-link to="/">
+          <router-link to="/actuality">
             Retour
-          </router-link>
-        </v-btn>
-        <v-btn text>
-          <router-link to="/contact">
-            Contacter
           </router-link>
         </v-btn>
       </div>
@@ -44,7 +41,8 @@ export default {
       articles: null,
       dataLoaded: false,
       article: null,
-      articlePictures: null
+      articlePictures: null,
+      date:""
     };
   },
   beforeMount() {
@@ -75,8 +73,10 @@ export default {
         article.main_picture = article.article_pictures.find((picture) => picture.main_picture === true);
         const articleData = { ...article.article };
         delete article.article;
+        
         return { ...article, ...articleData };
       });
+    
 
       this.$store.commit("articles", this.articles);
       [this.article] = this.articles.filter((article) => article.id === this.articleId);
@@ -88,11 +88,14 @@ export default {
       this.articlePictures = this.article.article_pictures;
       this.dataLoaded = true;
     },
+    formatEventDate(date) {
+      return this.$moment(date).locale("fr").format("L");
+    }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .single-article-page {
     width: 100%;
     display: flex;
@@ -104,6 +107,9 @@ export default {
 
 .single-article-info {
     width: 30%;
+}
+.article-description {
+  white-space: pre-line;
 }
 
 .single-article-info h2 {
@@ -133,6 +139,9 @@ export default {
 .single-article-btn a {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.87);
+}
+strong {
+  font-weight: 800;
 }
 
 @media only screen and (max-width: 768px) {

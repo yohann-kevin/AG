@@ -108,7 +108,7 @@ h2 {
   margin-top: 20px;
 }
 .card-container {
-  width: 100%;
+
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -116,6 +116,7 @@ h2 {
 }
 
 .cards {
+  width: 30%;
   margin-bottom: 25px;
   margin-top: 25px;
 }

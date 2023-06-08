@@ -30,6 +30,14 @@
         :items-per-page="100"
         class="elevation-5 all-article-table"
       >
+        <template #item.title="{ item }">
+          {{ item.article.title }}
+        </template>
+        <template
+          #item.date="{ item }"
+        >
+          <strong>{{ formatEventDate(item.article.event_at) }}</strong> 
+        </template>
         <template #item.actions="{ item }">
           <v-icon
             small
@@ -44,7 +52,7 @@
           >
             mdi-delete
           </v-icon>
-        </template>  
+        </template>
       </v-data-table>
     </div>
     <ArticleDelete
@@ -54,45 +62,45 @@
     />
   </div>
 </template>
-
 <script>
 import ArticleDelete from '../../modal/ModalDelete.vue';
 
 export default {
-  data: () => ({
-    itemsPerPage: 5,
-    headers: [
-      {
-        text: "Nom de l'article",
-        align: 'start',
-        sortable: false,
-        value: 'article.title',
+  data() {
+    return {
+      itemsPerPage: 5,
+      headers: [
+        {
+          text: "Nom de l'article",
+          align: 'start',
+          sortable: false,
+          value: 'article.title',
+        },
+        { 
+          text: 'Date de sortie', 
+          sortable: false,
+          align: 'center' ,
+          value: 'article.event_at',
+        },
+        {
+          text: 'Modifier/Supprimer',
+          value: 'actions',
+          sortable: false,
+          align: 'end'
+        },
+      ],
+      articles: [],
+      errorAlert: false,
+      successAlert: false,
+      articleDeletedId: null,
+      articleDeleteInfo: {
+        modalTitle: "Suppression d'un article",
+        modalText: 'Souhaitez-vous réellement supprimer cet article ? Une fois cela fait, il ne sera plus possible de le récupérer !'
       },
-      { 
-        text: 'Date de sortie', 
-        value: 'article.event_at',
-        sortable: false,
-        align: 'center' 
-      },
-      {
-        text: 'Modifier/Supprimer',
-        value: 'actions',
-        sortable: false,
-        align: 'end'
-      },
-    ],
-    articles: [],
-    errorAlert: false,
-    successAlert: false,
-    articleDeletedId: null,
-    articleDeleteInfo: {
-      modalTitle: "Suppression d'un article",
-      modalText: 'Souhaitez-vous réellement supprimer cette article ? Une fois cela fait, il ne sera plus possible de le récupérer !'
-    },
-    showModal: false,
-    articleIdSelectedForDelete: null,
-    
-  }),
+      showModal: false,
+      articleIdSelectedForDelete: null,
+    };
+  },
   components: {
     ArticleDelete,
   },
@@ -103,7 +111,13 @@ export default {
     findArticle() {
       // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "articles").then(response => {
-        this.articles = response.data; 
+        this.articles = response.data.map(article => ({
+          ...article,
+          article: {
+            ...article.article,
+            event_at: this.formatEventDate(article.article.event_at),
+          }
+        }));
       });
     },
     redirectToArticle(articleId) {
@@ -118,6 +132,9 @@ export default {
       this.successAlert = true;
       this.findArticle();
     },
+    formatEventDate(date) {
+      return this.$moment(date).locale("fr").format("L");
+    },
     deleteArticle(articleId) {
       let config = {
         method: 'delete',
@@ -130,10 +147,11 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.status);
-        if (response.status === 204) this.manageDeletedArticle();
+        if (response.status === 204) {
+          this.manageDeletedArticle();
+        }
       }).catch(error => {
-        console.log(error);
+        this.$hygie.logger.error(error);
         this.errorAlert = true;
       });
     }
@@ -141,8 +159,7 @@ export default {
 }
 </script>
 
-
-<style>
+<style scoped>
 .all-article-admin {
   width: 100%;
   display: flex;
@@ -160,7 +177,6 @@ export default {
 .admin-alert {
   width: 80%;
 }
-
 .all-article-admin-list {
   width: 80%;
   display: flex;
@@ -171,6 +187,7 @@ export default {
 
 .all-article-table {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 </style>

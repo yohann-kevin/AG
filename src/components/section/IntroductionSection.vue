@@ -3,36 +3,64 @@
     <v-carousel-item
       v-for="(article, i) in articles"
       :key="i"
+      class="carousel-item"
     >
       <img
-        :src="article.src"
+        :src="article.main_picture.picture_path"
         alt="Image"
+        class="carousel-image"
       >
     </v-carousel-item>
   </v-carousel>
 </template>
 
-<script>
-import utils from '../../utils/utils.js';
 
+
+<script>
 export default {
   name: "IntroductionSection",
   data() {
     return {
-      articles: [
-        {
-          src: utils.formatImageSource('/public/assets/ag-team.jpg')
-        },
-        {
-          src: utils.formatImageSource('/public/assets/ag-team-five.jpg')
-        },
-        {
-          src: utils.formatImageSource('/public/assets/logo-ag.png')
-        }
-      ]
+      articles: null,
+      articlePictures: null,
     };
+  },
+  mounted() {
+    this.findArticle();
+  },
+  methods: {
+    findArticle() {
+      // eslint-disable-next-line no-undef
+      this.$axios.get(process.env.VUE_APP_API_URL + "articles")
+        .then(response => {
+          this.sortArticles(response.data);
+          this.dataLoaded = true;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    sortArticles(articles) {
+      this.articles = articles.map((article) => {
+        article.main_picture = article.article_pictures.find((picture) => picture.main_picture === true);
+        const articleData = { ...article.article };
+        delete article.article;
+        return { ...article, ...articleData };
+      });
+
+      this.$store.commit("articles", this.articles);
+    },
+    redirectToArticle(articleId) {
+      this.$store.commit("articleId", articleId);
+      this.$router.push({ name: 'article', params: { id: articleId } });
+    },
+    imageLoaded() {
+      this.imgIsLoaded = true;
+    },
+  
   }
-}
+};
+
 </script>
 
 
@@ -43,12 +71,21 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
+.carousel-image {
+  display: block;
+  margin: 0 auto; 
+  max-height: 600px;
+
+}
 
 .ag-title {
   font-size: 9rem;
   font-weight: 400;
   margin-top: 35px;
   margin-bottom: -10px;
+}
+.carousel-item {
+  width: 100%;
 }
 
 @media only screen and (max-width: 768px) {

@@ -7,7 +7,7 @@
         label="Titre"
         color="black"
         prepend-icon="mdi-star"
-        v-model="titre"
+        v-model="article.title"
       />
   
       <v-textarea
@@ -15,14 +15,14 @@
         color="black"
         prepend-icon="mdi-pencil"
         no-resize
-        v-model="description"
+        v-model="article.description"
       />
       <v-text-field
         label="Date de l'évenement"
         color="black"
         type="date"
         prepend-icon="mdi-calendar"
-        v-model="date"
+        v-model="article.event_at"
       />
       <v-file-input
         label="Photo principale :"
@@ -85,39 +85,27 @@
         Annuler
       </v-btn>
     </div>
-    <ModifyPicture
-      :pictures="articlePictures"
-      :article-id="articleId"
-    />
-    <AddPicture
-      :article-id="articleId"
-      @add:picture="articlePictures = $event"
-    />
   </div>
 </template>
 
 <script>
-import ModifyPicture from '../../section/ModifyPicture.vue';
-import AddPicture from '../../section/AddPicture.vue';
-
 export default {
   data() {
     return {
-      titre: "",
+      article: {
+      title: "",
       description: "",
-      date: "",
+      event_at: "",
+      },
       mainpicture: null,
-      pictures: null,
-      article: null,
+      articlePictures: null,
       errorAlert: false,
       successAlert: false,
       isInLoad: false,
-      articleId: null
+      isDataLoaded: false,
+      pictures:[]
+      
     };
-  },
-  components: {
-    ModifyPicture,
-    AddPicture
   },
   beforeMount() {
     this.articleId = this.$store.state.articleId;
@@ -133,33 +121,27 @@ export default {
   },
   methods: {
     findArticleData() {
-      this.$axios
       // eslint-disable-next-line no-undef
-        .get(process.env.VUE_APP_API_URL + "get/article/" + this.articleId)
-        .then(response => {
+      this.$axios.get(process.env.VUE_APP_API_URL + "get/articles/" + this.articleId).then(response => {
           this.article = response.data.article;
+          this.articlePictures = response.data.article
+          this.isDataLoaded = true;
         })
         .catch(error => {
           console.log(error);
         });
     },
     sendArticle() {
-        this.isInLoad = true;
-        this.manageArticleInfo();
-        this.sendArticleData();
-      },
-      // Envoyer les données de l'article modifié au serveur
-    },
-    manageArticleInfo() {
-      const articleData = {
+        const articleData = {
         title: this.titre,
         description: this.description,
         event_at: this.date
-      };
-      const config = {
+        };
+        
+        const config = {
         method: 'post',
         // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'modify/article',
+        url: process.env.VUE_APP_API_URL + 'articles' + articleId,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
@@ -168,6 +150,7 @@ export default {
       };
       this.$axios(config)
         .then(response => {
+         
           if (response.status !== 500) {
             this.successAlert = true;
           }
@@ -177,6 +160,7 @@ export default {
           console.log(error);
         });
     }
+  }
   };
 </script>
 
