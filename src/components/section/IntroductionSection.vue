@@ -33,14 +33,14 @@ export default {
       // eslint-disable-next-line no-undef
       this.$axios.get(process.env.VUE_APP_API_URL + "articles")
         .then(response => {
-          this.sortArticles(response.data);
+          this.carouselArticles(response.data);
           this.dataLoaded = true;
         })
         .catch(error => {
-          console.error(error);
+          this.$hygie.logger.error(error);
         });
     },
-    sortArticles(articles) {
+    carouselArticles(articles) {
       this.articles = articles.map((article) => {
         article.main_picture = article.article_pictures.find((picture) => picture.main_picture === true);
         const articleData = { ...article.article };

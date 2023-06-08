@@ -77,7 +77,7 @@
   
       <v-btn
         text
-        @click="sendModifyArticle()"
+        @click="sendUpdateArticle()"
       >
         Modifier
       </v-btn>
@@ -93,76 +93,88 @@ export default {
   data() {
     return {
       article: {
-      title: "",
-      description: "",
-      event_at: "",
+        title: "",
+        description: "",
+        event_at: "",
       },
       mainpicture: null,
-      articlePictures: null,
+      pictures: [],
       errorAlert: false,
       successAlert: false,
       isInLoad: false,
-      isDataLoaded: false,
-      pictures:[]
-      
+      articleId: null
     };
   },
-  beforeMount() {
-    this.articleId = this.$store.state.articleId;
-    if (!this.articleId && !this.$route.params.id) {
-      this.$router.push({ path: "/administration/article" });
-    } else if (this.articleId) {
-      this.findArticleData();
-    } else {
-      this.articleId = this.$route.params.id;
-      this.$store.commit("articleId", this.articleId);
-      this.findArticleData();
-    }
+  mounted() {
+    this.findArticleData();
   },
   methods: {
     findArticleData() {
-      // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/articles/" + this.articleId).then(response => {
-          this.article = response.data.article;
-          this.articlePictures = response.data.article
-          this.isDataLoaded = true;
+      const articleId = this.$store.state.articleId || this.$route.params.id;
+      if (!articleId) {
+        this.$router.push({ path: "/administration/article" });
+        return;
+      }
+
+      this.$axios
+        // eslint-disable-next-line no-undef
+        .get(process.env.VUE_APP_API_URL + "articles/" + articleId)
+        .then((response) => {
+          const article = response.data;
+          this.article = {
+            title: article.title,
+            description: article.description,
+            event_at: article.event_at,
+          };
+          this.mainpicture = article.mainpicture;
+          this.pictures = article.pictures;
         })
-        .catch(error => {
-          console.log(error);
+        .catch((error) => {
+          this.$hygie.logger.error(error);
         });
     },
-    sendArticle() {
-        const articleData = {
-        title: this.titre,
-        description: this.description,
-        event_at: this.date
-        };
-        
-        const config = {
-        method: 'post',
-        // eslint-disable-next-line no-undef
-        url: process.env.VUE_APP_API_URL + 'articles' + articleId,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + sessionStorage.admtoken
-        },
-        data: articleData
+    sendUpdateArticle() {
+      const articleData = {
+        title: this.article.title,
+        description: this.article.description,
+        event_at: this.article.event_at,
+        mainpicture: this.mainpicture,
+        pictures: this.pictures,
       };
+
+      const config = {
+        method: "post",
+        // eslint-disable-next-line no-undef
+        url: process.env.VUE_APP_API_URL + "articles/" + this.articleId,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.admtoken,
+        },
+        data: articleData,
+      };
+
+      this.isInLoad = true;
+
       this.$axios(config)
-        .then(response => {
-         
-          if (response.status !== 500) {
+        .then((response) => {
+          this.isInLoad = false;
+          if (response.status === 200) {
             this.successAlert = true;
+          } else {
+            this.errorAlert = true;
           }
         })
-        .catch(error => {
+        .catch((error) => {
+          this.isInLoad = false;
           this.errorAlert = true;
-          console.log(error);
+          this.$hygie.logger.error(error);
         });
-    }
-  }
-  };
+    },
+  },
+};
 </script>
+
+
 
 
 
