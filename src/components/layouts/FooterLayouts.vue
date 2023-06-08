@@ -1,5 +1,17 @@
 <template>
   <footer class="footer">
+    <div class="footer-law">
+      <router-link to="/">
+        <v-img
+          alt="AG Scouting"
+          class="ag-logo"
+          contain
+          :src="formatImageSource('/public/assets/logo-ag.png')"
+          width="80"
+          height="78"
+        />
+      </router-link>
+    </div>
     <h4>
       Powered and designed by 
       <!-- <a
@@ -11,27 +23,64 @@
         ©hygitale
       </a>
     </h4>
+   
+    <div class="footer-btns">
+      <v-btn
+        text
+        to="/legal"
+      >
+        Mentions légales
+      </v-btn>
+      <v-btn
+        text
+        to="/rgpd"
+      >
+        RGPD
+      </v-btn>
+    </div>
   </footer>
 </template>
 
-<script>
-export default {
 
-}
+
+<script>
+import utils from '../../utils/utils.js';
+
+export default {
+  data: () => ({
+    formatImageSource: utils.formatImageSource,
+  }),
+};
 </script>
+
+
 
 <style>
 .footer {
-  margin-top: 30px;
   background-color: #fff;
-  text-align: center;
-  padding: 15px;
   box-shadow: 0px 1px 10px 10px rgb(0 0 0 / 20%);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-law {
+  display: flex;
+  align-items: center;
+}
+
+.ag-logo {
+  margin-right: 20px;
+  transition: scale;
+  
 }
 
 .footer h4 {
   font-style: italic;
   font-weight: 300;
+ text-align: center;
+  
 }
 
 .dev-link {
@@ -39,4 +88,33 @@ export default {
   color: rgba(0, 0, 0, 0.87) !important;
   text-decoration: none;
 }
+
+.footer-btns {
+  display: flex;
+}
+
+/* footer tablette */
+@media only screen and (max-width: 768px)
+{
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.ag-logo {
+  margin: 10px auto;
+}
+.footer-btns {
+  display: flex;
+  flex-direction: column;
+}
+}
+
+/* footer telephone */
+@media only screen and (max-width: 480px) {
+  .footer h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  }
 </style>

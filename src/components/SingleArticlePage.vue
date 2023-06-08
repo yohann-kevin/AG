@@ -40,34 +40,54 @@
 export default {
   data() {
     return {
-      articleId: "",
+      articleId: null,
+      articles: null,
       dataLoaded: false,
       article: null,
       articlePictures: null
-      
     };
   },
   beforeMount() {
     this.articleId = this.$store.state.articleId;
-    if (this.articleId === null && this.$route.params.id === null) {
-      this.$router.push({ path: "/" });
-    } else if (this.articleId !== null) {
-      this.findArticleData();
+    if (this.articleId === null && !!this.$route.params.id) {
+      this.articleId = parseInt(this.$route.params.id);
+      this.findArticle();
     } else {
-      this.articleId = this.$route.params.id;
-      this.$store.commit("articleId", this.articleId);
-      this.findArticleData();
+      this.articles = this.$store.state.articles;
+      [this.article] = this.articles.filter((article) => article.id === this.articleId);
+      this.articlePictures = this.article.article_pictures;
+      this.dataLoaded = true;
     }
   },
   methods: {
-    findArticleData() {
+    findArticle() {
       // eslint-disable-next-line no-undef
-      this.$axios.get(process.env.VUE_APP_API_URL + "get/articles/" + this.articleId).then(response => {
-        this.article = response.data.article;
-        this.articlePictures = response.data.article_pictures;
-        this.dataLoaded = true;
+      this.$axios.get(process.env.VUE_APP_API_URL + "articles")
+        .then(response => {
+          this.sortArticles(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    sortArticles(articles) {
+      this.articles = articles.map((article) => {
+        article.main_picture = article.article_pictures.find((picture) => picture.main_picture === true);
+        const articleData = { ...article.article };
+        delete article.article;
+        return { ...article, ...articleData };
       });
-    }
+
+      this.$store.commit("articles", this.articles);
+      [this.article] = this.articles.filter((article) => article.id === this.articleId);
+
+      if (!this.article) {
+        this.$router.push({ name: 'Error404' });     
+      }
+
+      this.articlePictures = this.article.article_pictures;
+      this.dataLoaded = true;
+    },
   }
 };
 </script>

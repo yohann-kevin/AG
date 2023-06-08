@@ -16,12 +16,17 @@ import router from './routes.js';
 // store
 import store from './store.js';
 
+// HygieVuePlugins
+import HygieVuePlugins from 'hygie-vue-plugins';
+
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(VueScrollReveal);
+Vue.use(HygieVuePlugins);
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
+
 
 new Vue({
   vuetify,

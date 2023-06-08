@@ -8,7 +8,7 @@ import SingleModelPage from './components/SingleModelPage.vue';
 import SingleArticlePage from './components/SingleArticlePage.vue';
 import AboutPage from './components/pages/about/AboutPage.vue';
 import ContactPage from './components/pages/contact/ContactPage.vue';
-import ActualityPage from './components/pages/actualités/ActualityPage.vue';
+import ActualityPage from './components/pages/actuality/ActualityPage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
@@ -31,6 +31,10 @@ import RenewPassword from './components/agents/RenewPassword/RenewPassword.vue';
 // error component
 import Error404 from './components/404Page.vue';
 import Error500 from './components/500Page.vue';
+
+// LegalNotice & RgpdManagement
+import LegalNotice from './components/legals/LegalNotice.vue';
+import RgpdManagement from './components/legals/RgpdManagement.vue';
 
 // store
 import store from './store.js';
@@ -78,6 +82,17 @@ const routes = [
     name: "about",
     component: AboutPage
   },
+  {
+    path: "/legal",
+    name: "legal",
+    component: LegalNotice
+  },
+  {
+    path:"/rgpd",
+    name: "rgpd",
+    component:RgpdManagement
+  },
+ 
   {
     path: '/contact',
     name: 'contact',
@@ -194,7 +209,7 @@ router.beforeEach(async (to, from, next) => {
     next({ path: '/error' });
   }
   await checkAgtConnexion();
-  // Scroll vers le haut de la page
+  // Scroll to the top
   window.scrollTo({
     top: 0,
     behavior: 'smooth',

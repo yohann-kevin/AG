@@ -213,9 +213,9 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
+        this.$hygie.logger.info(response.data);
       }).catch(error => {
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     },
     resetFormUpdateAgent() {
@@ -245,9 +245,9 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
+        this.$hygie.logger.info(response.data);
       }).catch(error => {
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     },
     resetFormPasswordAgent() {
@@ -262,10 +262,10 @@ export default {
       };
 
       this.$axios(config).then(response => {
-        console.log(response.data);
+        this.$hygie.logger.info(response.data);
         this.logoutAgent();
       }).catch(error => {
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     },
     logoutAgent() {
