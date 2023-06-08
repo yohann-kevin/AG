@@ -48,8 +48,7 @@
 export default {
   data() {
     return {
-      articles: [],
-      article: null,
+      articles: null,
       articlePictures: null,
       dataLoaded: false
     };
