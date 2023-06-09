@@ -5,14 +5,19 @@ import VueRouter from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import AdminLoginPage from './components/AdminLoginPage.vue';
 import SingleModelPage from './components/SingleModelPage.vue';
+import SingleArticlePage from './components/SingleArticlePage.vue';
 import AboutPage from './components/pages/about/AboutPage.vue';
 import ContactPage from './components/pages/contact/ContactPage.vue';
+import ActualityPage from './components/pages/actuality/ActualityPage.vue';
 
 // admin component
 import AdminHome from './components/AdminHome.vue';
 import AdminHomePage from './components/AdminHomePage.vue';
 import AdminModel from './components/AdminModel.vue';
-import AdminModifyModel from './components/AdminModifyModel.vue'
+import AdminModifyModel from './components/AdminModifyModel.vue';
+import AddArticle from './components/administrations/AddArticle/AddArticle.vue';
+import ListArticle from './components/administrations/ListArticle/ListArticle.vue';
+import ModifyArticle from './components/administrations/ModifyArticle/ModifyArticle.vue';
 
 // agent component
 import RegisterAgent from './components/agents/RegisterAgent/RegisterAgent.vue';
@@ -31,7 +36,6 @@ import Error500 from './components/500Page.vue';
 import LegalNotice from './components/legals/LegalNotice.vue';
 import RgpdManagement from './components/legals/RgpdManagement.vue';
 
-
 // store
 import store from './store.js';
 
@@ -39,8 +43,6 @@ import store from './store.js';
 import adminapi from './api/admin.js';
 import agentapi from './api/agent.js';
 import statusapi from './api/status';
-
-
 
 async function manageAdmConnexion() {
   store.commit("adminToken", sessionStorage.admtoken);
@@ -71,6 +73,11 @@ const routes = [
     component: SingleModelPage
   },
   {
+    path: "/article/:id",
+    name: "article",
+    component: SingleArticlePage
+  },
+  {
     path: "/about",
     name: "about",
     component: AboutPage
@@ -90,6 +97,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: ContactPage
+  },
+  {
+    path: '/actuality',
+    name:'actuality',
+    component: ActualityPage
   },
   {
     path: "/adminlogin",
@@ -127,7 +139,24 @@ const routes = [
         path: "/administration/modify/model/:id",
         name: "AdminModifyModel",
         component: AdminModifyModel
+      },
+
+      {
+        path: "/administration/add-article",
+        name: "AddArticle",
+        component: AddArticle
+      },
+      {
+        path: "/administration/article",
+        name: "ListArticle",
+        component: ListArticle
+      },
+      {
+        path: "/administration/modify/article/:id",
+        name: "ModifyArticle",
+        component: ModifyArticle
       }
+     
     ],
   },
   {
@@ -163,6 +192,7 @@ const routes = [
     name: 'Error500',
     component: Error500
   },
+ 
   {
     path: "*",
     name: "Error404",
@@ -179,12 +209,11 @@ router.beforeEach(async (to, from, next) => {
     next({ path: '/error' });
   }
   await checkAgtConnexion();
-   // Scroll vers le haut de la page
-   window.scrollTo({
+  // Scroll to the top
+  window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
-  
   next();
 });
   

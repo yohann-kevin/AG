@@ -12,6 +12,18 @@
         height="400px"
       />
     </div>
+    <div class="news-article">
+      <p>
+        Retrouvez nos
+        <router-link
+          to="/actuality"
+          class="news-link"
+        >
+          <strong>Actualités</strong>
+        </router-link>
+        sur notre nouvelle page
+      </p>
+    </div>
     <div class="home-section">
       <p>
         Notre équipe vous propose des <span class="home-strong">Mannequins / Photographes / Studios</span> photos en région bretonne ainsi que  parisienne  
@@ -41,6 +53,7 @@ export default {
   },
   data: () => ({
    formatImageSource: utils.formatImageSource
+   
   }),
 }
 </script>
@@ -49,6 +62,27 @@ export default {
 .ag-logo-container {
   display: none;
 }
+span .news {
+  color:red;
+}
+.news-article p {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 15px;
+  padding: 15px;
+}
+.news-link {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: black;
+}
+
+.news-link:hover {
+  color: blue; 
+  text-decoration: underline;
+}
+
 
 .home-section {
   width: 100%;
@@ -64,6 +98,7 @@ export default {
   margin: 15px;
   padding: 15px;
 }
+
 
 .home-strong {
   font-weight: bold;

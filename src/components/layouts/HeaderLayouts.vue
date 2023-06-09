@@ -37,6 +37,9 @@
         <router-link to="/contact">
           Contact
         </router-link>
+        <router-link to="/actuality">
+          Actualités
+        </router-link>
         <router-link 
           to="/agent"
           v-if="agentConnected"
@@ -127,6 +130,11 @@
         <li class="menu">
           <router-link to="/contact">
             Contact
+          </router-link>
+        </li>
+        <li class="menu">
+          <router-link to="/actuality">
+            Actualités
           </router-link>
         </li>
         <li class="menu">
@@ -330,7 +338,21 @@ export default {
 .insta-link {
   align-items: center;
 }
-
+/* Styles for Nexus 10 */
+@media only screen and (min-width:800px) and (max-width:1000px) {
+  #nav {
+    display: none;
+  }
+  .instagram-header-btn {
+    display: none;
+  }
+  .menu-burger {
+    display: initial;
+  }
+  .ag-logo {
+    display: none;
+  }
+}
 @media only screen and (max-width: 768px) {
   #nav {
     display: none;
@@ -341,6 +363,9 @@ export default {
   }
 
   .ag-logo {
+    display: none;
+  }
+  .instagram-header-btn {
     display: none;
   }
 }
