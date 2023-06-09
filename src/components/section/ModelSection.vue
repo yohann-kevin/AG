@@ -154,6 +154,4 @@ export default {
 .is-in-load {
   margin: 30px;
 }
-
-
 </style>

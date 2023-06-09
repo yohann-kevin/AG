@@ -20,7 +20,6 @@
           contain
           @load="imageLoaded"
         />
-
         <v-progress-circular
           :size="90"
           color="black"
@@ -28,7 +27,6 @@
           class="img-loader"
           v-if="!imgIsLoaded"
         />
-
         <v-card-title>
           {{ article.title }}
         </v-card-title>
@@ -85,7 +83,6 @@ export default {
         delete article.article;
         return { ...article, ...articleData };
       });
-
       this.$store.commit("articles", this.articles);
     },
     redirectToArticle(articleId) {
@@ -102,44 +99,37 @@ export default {
 };
 </script>
 
-
 <style scoped>
 h2 {
   text-align: center;
   margin-top: 20px;
 }
 .card-container {
-
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 25px;
 }
-
 .cards {
   width: 30%;
   margin-bottom: 25px;
   margin-top: 25px;
 }
-
 .img-loader {
   width: 100% !important;
   margin-top: 50px;
   margin-bottom:50px;
 }
-
 .article-card-action-bottom {
   width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
 }
-
 .article-description {
   margin-top: 15px;
   text-align: justify;
 }
-
 @media (max-width: 768px) {
   .cards {
     width: 300px;

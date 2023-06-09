@@ -14,8 +14,6 @@
   </v-carousel>
 </template>
 
-
-
 <script>
 export default {
   name: "IntroductionSection",
@@ -48,7 +46,6 @@ export default {
         delete article.article;
         return { ...article, ...articleData };
       });
-
       this.$store.commit("articles", this.articles);
     },
     redirectToArticle(articleId) {
@@ -58,12 +55,9 @@ export default {
     imageLoaded() {
       this.imgIsLoaded = true;
     },
-  
   }
 };
-
 </script>
-
 
 <style scoped>
 .text-container {
@@ -76,9 +70,7 @@ export default {
   display: block;
   margin: 0 auto; 
   max-height: 600px;
-
 }
-
 .ag-title {
   font-size: 9rem;
   font-weight: 400;
@@ -93,9 +85,7 @@ export default {
   .ag-title {
     font-size: 5rem;
     margin-top: 0;
-
-  }
-
+ }
   .img-header {
     display: none;
   }
