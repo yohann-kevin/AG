@@ -135,6 +135,7 @@ export default {
         },
         data: articleData,
       };
+      this.isInLoad = true;
       this.$axios(config)
         .then((response) => {
           this.isInLoad = false;
