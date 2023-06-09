@@ -7,7 +7,10 @@
       height="80px"
       ref="header-bar"
     >
-      <div class="d-flex align-center">
+      <div
+        class="d-flex align-center logo-link"
+        @click="redirectToHome"
+      >
         <v-img
           alt="AG Scouting"
           class="shrink mr-2 ag-logo"
@@ -17,11 +20,11 @@
           width="80px"
           height="78px"
         />
-      </div>
 
-      <h1 class="ag-title">
-        AG Scouting
-      </h1>
+        <h1 class="ag-title">
+          AG Scouting
+        </h1>
+      </div>
 
       <v-spacer />
 
@@ -34,6 +37,9 @@
         </router-link>
         <router-link to="/contact">
           Contact
+        </router-link>
+        <router-link to="/actuality">
+          Actualités
         </router-link>
         <router-link 
           to="/agent"
@@ -128,6 +134,11 @@
           </router-link>
         </li>
         <li class="menu">
+          <router-link to="/actuality">
+            Actualités
+          </router-link>
+        </li>
+        <li class="menu">
           <router-link :to="redirectAgent()">
             Mon Compte
           </router-link>
@@ -150,7 +161,7 @@
 </template>
 
 <script>
-import formatImageSource from '../../utils/utils.js';
+import utils from '../../utils/utils.js';
 
 export default {
   name: "HeaderLayouts",
@@ -160,7 +171,7 @@ export default {
       { title: 'Connexion', link:'/login/agents' }
     ],
     currentRoute: null,
-    formatImageSource: formatImageSource
+    formatImageSource: utils.formatImageSource
   }),
   mounted() {
     this.currentRoute = this.$route.name;
@@ -179,6 +190,9 @@ export default {
         return '/agent';
       }
       return'/login/agents';
+    },
+    redirectToHome() {
+      this.$router.push('/');
     }
   },
   computed: {
@@ -196,6 +210,10 @@ export default {
 </script>
 
 <style scoped>
+.logo-link:hover {
+  cursor: pointer;
+}
+
 #nav {
   width: 50%;
   display: flex;
@@ -328,7 +346,21 @@ export default {
 .insta-link {
   align-items: center;
 }
-
+/* Styles for Nexus 10 */
+@media only screen and (min-width:800px) and (max-width:1000px) {
+  #nav {
+    display: none;
+  }
+  .instagram-header-btn {
+    display: none;
+  }
+  .menu-burger {
+    display: initial;
+  }
+  .ag-logo {
+    display: none;
+  }
+}
 @media only screen and (max-width: 768px) {
   #nav {
     display: none;
@@ -339,6 +371,9 @@ export default {
   }
 
   .ag-logo {
+    display: none;
+  }
+  .instagram-header-btn {
     display: none;
   }
 }

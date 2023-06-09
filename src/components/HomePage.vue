@@ -1,6 +1,5 @@
 <template>
   <div>
-    <IntroductionSection />
     <div class="ag-logo-container">
       <v-img
         alt="AG Scouting"
@@ -11,6 +10,31 @@
         width="400px"
         height="400px"
       />
+    </div>
+    <div class="news-article news-article-mobile">
+      <p>
+        Retrouvez nos
+        <router-link
+          to="/actuality"
+          class="news-link"
+        >
+          <strong>Actualités</strong>
+        </router-link>
+        sur notre nouvelle page
+      </p>
+    </div>
+    <IntroductionSection />
+    <div class="news-article news-article-laptop">
+      <p>
+        Retrouvez nos
+        <router-link
+          to="/actuality"
+          class="news-link"
+        >
+          <strong>Actualités</strong>
+        </router-link>
+        sur notre nouvelle page
+      </p>
     </div>
     <div class="home-section">
       <p>
@@ -31,7 +55,7 @@
 import IntroductionSection from "./section/IntroductionSection.vue";
 import ModelSection from "./section/ModelSection.vue";
 
-import formatImageSource from '../utils/utils.js';
+import utils from '../utils/utils.js';
 
 export default {
   name: "HomePage",
@@ -40,7 +64,8 @@ export default {
     ModelSection
   },
   data: () => ({
-   formatImageSource: formatImageSource
+   formatImageSource: utils.formatImageSource
+   
   }),
 }
 </script>
@@ -49,6 +74,27 @@ export default {
 .ag-logo-container {
   display: none;
 }
+span .news {
+  color:red;
+}
+.news-article p {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 15px;
+  padding: 15px;
+}
+.news-link {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: black;
+}
+
+.news-link:hover {
+  color: blue; 
+  text-decoration: underline;
+}
+
 
 .home-section {
   width: 100%;
@@ -63,6 +109,10 @@ export default {
   font-size: 1.5rem;
   margin: 15px;
   padding: 15px;
+}
+
+.news-article-mobile {
+  display: none;
 }
 
 .home-strong {
@@ -84,6 +134,14 @@ export default {
 
   .ag-logo {
     margin-top: 10px;
+  }
+
+  .news-article-mobile {
+    display: initial;
+  }
+
+  .news-article-laptop {
+    display: none;
   }
 }
 </style>

@@ -3,191 +3,201 @@
     <h2>Ajout d'un modèle</h2>
     <v-card class="model-form">
       <h3>Information du modèle</h3>
-      <label for="firstname">Prénom :</label>
-      <input
-        type="text"
-        name="firstname"
-        ref="firstname"
-      >
-      <label for="lastname">Nom :</label>
-      <input
-        type="text"
-        name="lastname"
-        ref="lastname"
-      >
-      <label for="email">Email :</label>
-      <input
-        type="email"
-        name="email"
-        ref="email"
-      >
-      <label for="phone">Numéro de téléphone :</label>
-      <input
-        type="number"
-        name="phone"
-        ref="phone"
-      >
-      <label for="address">Adresse :</label>
-      <input
-        type="text"
-        name="address"
-        ref="address"
-      >
-      <label for="birthdate">Date de naissance :</label>
-      <input
+
+      <v-text-field
+        label="Prénom"
+        color="black"
+        prepend-icon="mdi-account"
+        v-model="firstname"
+      />
+
+      <v-text-field
+        label="Nom"
+        color="black"
+        prepend-icon="mdi-account"
+        v-model="lastname"
+      />
+
+      <v-text-field
+        label="Email"
+        color="black"
+        prepend-icon="mdi-email"
+        v-model="email"
+      />
+
+      <v-text-field
+        label="Numéro de téléphone"
+        color="black"
+        prepend-icon="mdi-phone"
+        v-model="phone"
+      />
+
+      <v-text-field
+        label="Adresse"
+        color="black"
+        prepend-icon="mdi-home-account"
+        v-model="address"
+      />
+
+      <v-text-field
+        label="Date de naissance"
+        color="black"
         type="date"
-        name="birthdate"
-        ref="birthdate"
-      >
-      <label for="sexe">Sexe : </label>
-      <select
-        name="sexe"
-        ref="sexe"
-      >
-        <option value="men">
-          Homme
-        </option>
-        <option value="woman">
-          Femme
-        </option>
-      </select>
-      <label for="level">Niveau : </label>
-      <select
-        name="level"
-        ref="level"
-      >
-        <option value="T7">
-          T7
-        </option>
-        <option value="T8">
-          T8
-        </option>
-        <option value="T9">
-          T9
-        </option>
-        <option value="T10">
-          T10
-        </option>
-      </select>
-    </v-card>
-    <v-card class="model-form">
-      <h3>Mensuration du modèle</h3>
-      <label for="size">Hauteur :</label>
-      <input
-        type="number"
-        name="size"
-        ref="size"
-      >
-      <label for="weight">Poids :</label>
-      <input
-        type="number"
-        name="weight"
-        ref="weight"
-      >
-      <label for="chest">Poitrine :</label>
-      <input
-        type="number"
-        name="chest"
-        ref="chest"
-      >
-      <label for="waist">Taille :</label>
-      <input
-        type="number"
-        name="waist"
-        ref="waist"
-      >
-      <label for="hips">Hanche :</label>
-      <input
-        type="number"
-        name="hips"
-        ref="hips"
-      >
-      <label for="shoes">Pointure :</label>
-      <input
-        type="number"
-        name="shoes"
-        ref="shoes"
-      >
-      <label for="color">Couleur de peau :</label>
-      <input
-        type="text"
-        name="color"
-        ref="color"
-      >
-      <label for="haircolor">Couleur de cheveux :</label>
-      <input
-        type="text"
-        name="haircolor"
-        ref="haircolor"
-      >
-      <label for="eyes">Yeux :</label>
-      <input
-        type="text"
-        name="eyes"
-        ref="eyes"
-      >
-      <label for="atrological">Signe astrologique :</label>
-      <input
-        type="text"
-        name="astrological"
-        ref="astrological"
-      >
-      <label for="description">Petite description :</label>
-      <textarea
-        name="description"
-        ref="description"
+        prepend-icon="mdi-cake-variant"
+        v-model="birthdate"
+      />
+
+      <v-select
+        label="Sexe"
+        color="black"
+        prepend-icon="mdi-gender-male-female"
+        v-model="sexe"
+        :items="sexes"
+        item-text="text"
+        item-value="value"
+      />
+
+      <v-select
+        label="Niveau"
+        color="black"
+        prepend-icon="mdi-star"
+        v-model="level"
+        :items="levels"
+        item-text="text"
+        item-value="value"
       />
     </v-card>
+
+    <v-card class="model-form">
+      <h3>Mensuration du modèle</h3>
+      <v-text-field
+        label="Hauteur :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-ruler"
+        v-model="size"
+      />
+      <v-text-field
+        label="Poids :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-weight-kilogram"
+        v-model="weight"
+      />
+      <v-text-field
+        label="Poitrine :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-tape-measure"
+        v-model="chest"
+      />
+      <v-text-field
+        label="Taille :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-tape-measure"
+        v-model="waist"
+      />
+      <v-text-field
+        label="Hanche :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-tape-measure"
+        v-model="hips"
+      />
+      <v-text-field
+        label="Pointure :"
+        type="number"
+        color="black"
+        prepend-icon="mdi-shoe-print"
+        v-model="shoes"
+      />
+      <v-text-field
+        label="Couleur de peau :"
+        color="black"
+        prepend-icon="mdi-palette"
+        v-model="color"
+      />
+      <v-text-field
+        label="Couleur de cheveux :"
+        color="black"
+        prepend-icon="mdi-palette"
+        v-model="haircolor"
+      />
+      <v-text-field
+        label="Couleur des yeux :"
+        color="black"
+        prepend-icon="mdi-eye"
+        v-model="eyes"
+      />
+      <v-text-field
+        label="Signe astrologique :"
+        color="black"
+        prepend-icon="mdi-star"
+        v-model="astrological"
+      />
+      <v-textarea
+        label="Petite description :"
+        color="black"
+        prepend-icon="mdi-pencil"
+        v-model="description"
+      />
+    </v-card>
+
     <v-card class="model-form">
       <h3>Réseaux sociaux du modèle</h3>
-      <label for="instagram">Instagram :</label>
-      <input
-        type="text"
-        name="instagram"
+      <v-text-field
+        label="Instagram :"
+        color="black"
+        prepend-icon="mdi-instagram"
         ref="instagram"
-      >
-      <label for="facebook">Facebook :</label>
-      <input
-        type="text"
-        name="facebook"
+        v-model="instagram"
+      />
+      <v-text-field
+        label="Facebook :"
+        color="black"
+        prepend-icon="mdi-facebook"
         ref="facebook"
-      >
-      <label for="snapchat">Snapchat :</label>
-      <input
-        type="text"
-        name="snapchat"
+        v-model="facebook"
+      />
+      <v-text-field
+        label="Snapchat :"
+        color="black"
+        prepend-icon="mdi-snapchat"
         ref="snapchat"
-      >
-      <label for="tiktok">Tiktok :</label>
-      <input
-        type="text"
-        name="tiktok"
+        v-model="snapchat"
+      />
+      <v-text-field
+        label="Tiktok :"
+        color="black"
+        prepend-icon="mdi-video"
         ref="tiktok"
-      >
-      <label for="twitter">Twitter :</label>
-      <input
-        type="text"
-        name="twitter"
+        v-model="tiktok"
+      />
+      <v-text-field
+        label="Twitter :"
         ref="twitter"
-      >
-    </v-card>
-    <v-card class="model-form">
-      <h3>Photo du modèle</h3>
-      <label for="mainpicture">Photo principale :</label>
-      <input
-        type="file"
-        name="mainpicture"
+        color="black"
+        prepend-icon="mdi-twitter"
+        v-model="twitter"
+      />
+      <v-file-input
+        label="Photo principale :"
+        color="black"
+        prepend-icon="mdi-camera-image"
         accept="image/*"
-        ref="mainpicture"
-      >
-      <label for="pictures">Photos :</label>
-      <input
-        type="file"
-        name="pictures"
-        multiple="multiple"
-        ref="pictures"
-      >
+        v-model="mainpicture"
+      />
+      <v-file-input
+        label="Photos :"
+        color="black"
+        prepend-icon="mdi-image-multiple"
+        multiple
+        accept="image/*"
+        v-model="pictures"
+      />
     </v-card>
+
     <div class="model-form-btn">
       <div class="add-model-alert">
         <v-alert
@@ -237,10 +247,48 @@
 </template>
 
 <script>
-import imageCompression from 'browser-image-compression';
+import utils from '../../utils/utils';
+
 export default {
   name: 'AddModelSection',
   data: () => ({
+    compressImage: utils.compressImage,
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    birthdate: "",
+    sexe: "",
+    sexes: [
+      { text: 'Homme', value: 'men' },
+      { text: 'Femme', value: 'woman' },
+    ],
+    level: "",
+    levels: [
+      { text: 'T7', value: 'T7' },
+      { text: 'T8', value: 'T8' },
+      { text: 'T9', value: 'T9' },
+      { text: 'T10', value: 'T10' },
+    ],
+    size: null,
+    weight: null,
+    chest: null,
+    waist: null,
+    hips: null,
+    shoes: null,
+    color: "",
+    haircolor: "",
+    eyes: "",
+    astrological: "",
+    description: "",
+    instagram: "",
+    facebook: "",
+    snapchat: "",
+    tiktok: "",
+    twitter: "",
+    mainpicture: null, 
+    pictures: null,
     modelInfo: null,
     modelMeasurement: null,
     modelNetwork: null,
@@ -249,9 +297,9 @@ export default {
     errorAlert: false,
     successAlert: false,
     isInLoad: false
-  }),
+}),
   methods: {
-    // TODO: manage empty value
+    
     sendModel() {
       this.isInLoad = true;
       this.manageModelInfo();
@@ -261,38 +309,38 @@ export default {
     },
     manageModelInfo() {
       this.modelInfo = {
-        firstname: this.$refs.firstname.value,
-        lastname: this.$refs.lastname.value,
-        email: this.$refs.email.value,
-        phone: this.$refs.phone.value,
-        address: this.$refs.address.value,
-        birth_date: this.$refs.birthdate.value,
-        sexe: this.$refs.sexe.value,
-        level: this.$refs.level.value
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        phone: this.phone,
+        address: this.address,
+        birth_date: this.birthdate,
+        sexe: this.sexe,
+        level: this.level
       }
     },
     manageModelMeasurement() {
       this.modelMeasurement = {
-        size: this.$refs.size.value,
-        weight: this.$refs.weight.value,
-        chest: this.$refs.chest.value,
-        waist: this.$refs.waist.value,
-        hips: this.$refs.hips.value,
-        shoe_size: this.$refs.shoes.value,
-        color: this.$refs.color.value,
-        hair_color: this.$refs.haircolor.value,
-        eyes: this.$refs.eyes.value,
-        astrological: this.$refs.astrological.value,
-        description: this.$refs.description.value
+        size: this.size,
+        weight: this.weight,
+        chest: this.chest,
+        waist: this.waist,
+        hips: this.hips,
+        shoe_size: this.shoes,
+        color: this.color,
+        hair_color: this.haircolor,
+        eyes: this.eyes,
+        astrological: this.astrological,
+        description: this.description
       }
     },
     manageModelNetwork() {
       this.modelNetwork = {
-        instagram: this.$refs.instagram.value,
-        facebook: this.$refs.facebook.value,
-        snapchat: this.$refs.snapchat.value,
-        tiktok: this.$refs.tiktok.value,
-        twitter: this.$refs.twitter.value
+        instagram: this.instagram,
+        facebook: this.facebook,
+        snapchat: this.snapchat,
+        tiktok: this.tiktok,
+        twitter: this.twitter
       }
     },
     async convertPicturesToBase64(pictureData, isMainPicture) {
@@ -308,32 +356,30 @@ export default {
         this.dataPictures.push(await toBase64(pictureData));
       }
     },
-    async compressImage(picture) {
-      const options = {
-        maxSizeMB: 2,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true
-      };
-      try {
-        return await imageCompression(picture, options);
-      } catch (error) {
-        this.$refs.errorAddModel.value = true;
-        console.log(error);
-      }
-    },
     async manageModelPictures() {
-      const mainPicture = this.$refs.mainpicture.files[0];
-      const mainPictureCompressed = await this.compressImage(mainPicture);
-      await this.convertPicturesToBase64(mainPictureCompressed, true);
-      const otherPictures = this.$refs.pictures.files;
+      const mainPicture = this.mainpicture;
+      try {
+        const mainPictureCompressed = await this.compressImage(mainPicture);  
+        await this.convertPicturesToBase64(mainPictureCompressed, true);
+      } catch (error) {
+        this.errorAddModel = true;
+        this.$hygie.logger.error(error);
+      }
+
+      const otherPictures = this.pictures;
       for (let i = 0; i < otherPictures.length; i++) {
-        const pictureCompressed = await this.compressImage(otherPictures[i]);
-        await this.convertPicturesToBase64(pictureCompressed, false);
+        try {
+          const pictureCompressed = await this.compressImage(otherPictures[i]);
+          await this.convertPicturesToBase64(pictureCompressed, false);
+        } catch (error) {
+          this.errorAddModel = true;
+          this.$hygie.logger.error(error);
+        }
       }
     },
+
     async sendModelData() {
       await this.manageModelPictures();
-      
       const modelData = {
         model: this.modelInfo,
         model_info: this.modelMeasurement,
@@ -345,12 +391,13 @@ export default {
         method: 'post',
         // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + 'create/model',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + sessionStorage.admtoken
         },
-        data : modelData
+        data: modelData
       };
+
       this.$axios(config).then(response => {
         this.isInLoad = false;
         if (response.status === 201) {
@@ -359,11 +406,11 @@ export default {
       }).catch(error => {
         this.isInLoad = false;
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }
-}
+};
 </script>
 
 <style>
@@ -381,9 +428,9 @@ export default {
 }
 
 .model-form {
-  width: 70%;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   flex-wrap: wrap;
   margin: 15px;
   padding: 15px;
@@ -394,41 +441,6 @@ export default {
   text-align: center;
 }
 
-.model-form label {
-  width: 100%;
-  text-align: center;
-}
-
-.model-form input, .model-form select {
-  width: 40%;
-  height: 30px;
-  margin: 10px;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-  transition: 0.5s;
-}
-
-.model-form textarea {
-  width: 60%;
-  height: 70px;
-  margin: 10px;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-  transition: 0.5s;
-}
-
-.model-form option {
-  text-align: center;
-}
-
-.model-form input:hover, .model-form textarea:hover {
-  border-radius: 0px;
-  outline: none;
-}
 
 .add-model-alert {
   width: 100%;
