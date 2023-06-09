@@ -80,7 +80,7 @@ export default {
         }
       }).catch(error => {
         this.$router.push({ path: "/" });
-        console.log(error);
+         this.$hygie.logger.error(error);
       });
     },
     registerPassword() {
@@ -100,7 +100,7 @@ export default {
         }
       }).catch(error => {
         this.$router.push({ path: "/" });
-        console.log(error);
+         this.$hygie.logger.error(error);
       });
     }
   }

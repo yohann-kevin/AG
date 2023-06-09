@@ -10,6 +10,8 @@ export default new Vuex.Store({
     adminData: null,
     homeModelData: null,
     modelId: null,
+    articles: null,
+    articleId:null,
     agentToken: null,
     agentConnected: false,
     agentData: null
@@ -29,6 +31,12 @@ export default new Vuex.Store({
     },
     modelId: (state, data) => {
       state.modelId = data;
+    },
+    articles: (state, data) => {
+      state.articles = data;
+    },
+    articleId: (state, data) => {
+      state.articleId = data;
     },
     agentToken: (state, token) => {
       state.agentToken = token;

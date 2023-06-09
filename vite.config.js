@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { defineConfig } from 'vite';
 import { createVuePlugin as vue } from "vite-plugin-vue2";
 import Components from 'unplugin-vue-components/vite'
@@ -14,7 +13,7 @@ export default defineConfig({
     Components({
       resolvers: [VuetifyResolver()],
    }),
-   EnvironmentPlugin("all")
+   EnvironmentPlugin ('all', { prefix: 'VUE_APP_' })
   ],
   resolve: {
     alias: {
@@ -25,4 +24,5 @@ export default defineConfig({
     port: 8080
   }
 })
+
 

@@ -214,7 +214,7 @@ export default {
         need: this.formatNeed(),
         content: this.content
       };
-      console.log(data);
+      
 
       const config = {
         method: 'post',
@@ -235,7 +235,7 @@ export default {
       }).catch(error => {
         this.isInLoad = false;
         this.errorAlert = true;
-        console.log(error);
+        this.$hygie.logger.error(error);
       });
     }
   }
