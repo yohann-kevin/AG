@@ -85,7 +85,8 @@ export default {
       errorAlert: false,
       successAlert: false,
       dataLoaded: false,
-      articleId: ""
+      articleId: "",
+      isInLoad:false
     };
   },
   beforeMount() {
