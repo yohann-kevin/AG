@@ -1,6 +1,5 @@
 <template>
   <div>
-    <IntroductionSection />
     <div class="ag-logo-container">
       <v-img
         alt="AG Scouting"
@@ -12,7 +11,20 @@
         height="400px"
       />
     </div>
-    <div class="news-article">
+    <div class="news-article news-article-mobile">
+      <p>
+        Retrouvez nos
+        <router-link
+          to="/actuality"
+          class="news-link"
+        >
+          <strong>Actualités</strong>
+        </router-link>
+        sur notre nouvelle page
+      </p>
+    </div>
+    <IntroductionSection />
+    <div class="news-article news-article-laptop">
       <p>
         Retrouvez nos
         <router-link
@@ -99,6 +111,9 @@ span .news {
   padding: 15px;
 }
 
+.news-article-mobile {
+  display: none;
+}
 
 .home-strong {
   font-weight: bold;
@@ -119,6 +134,14 @@ span .news {
 
   .ag-logo {
     margin-top: 10px;
+  }
+
+  .news-article-mobile {
+    display: initial;
+  }
+
+  .news-article-laptop {
+    display: none;
   }
 }
 </style>

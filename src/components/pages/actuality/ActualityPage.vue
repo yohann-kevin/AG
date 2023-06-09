@@ -5,16 +5,16 @@
     <div class="card-container">
       <v-card
         class="cards"
+        elevation="2"
         max-width="344"
         max-height="450"
         min-height="450"
-        elevation="2"
         v-for="(article, i) in articles"
         :key="i"
       >
         <v-img
           v-if="article.main_picture"
-          class="article-photo"
+          class="article-photo bw"
           :src="article.main_picture.picture_path"
           max-height="200px"
           contain
@@ -105,31 +105,37 @@ h2 {
   margin-top: 20px;
 }
 .card-container {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 25px;
 }
+
 .cards {
-  width: 30%;
+  width: 33%;
   margin-bottom: 25px;
   margin-top: 25px;
 }
+
 .img-loader {
   width: 100% !important;
   margin-top: 50px;
   margin-bottom:50px;
 }
+
 .article-card-action-bottom {
   width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
 }
+
 .article-description {
   margin-top: 15px;
   text-align: justify;
 }
+
 @media (max-width: 768px) {
   .cards {
     width: 300px;

@@ -7,7 +7,7 @@
     elevation="2"
   >
     <v-img
-      class="model-photo"
+      class="model-photo bw"
       :src="model.model_picture.picture_path"
       max-height="250px"
       contain

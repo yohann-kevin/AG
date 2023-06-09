@@ -5,10 +5,19 @@
       :key="i"
       class="carousel-item"
     >
+      <div class="title">
+        <v-btn
+          large
+          class="carousel-button lighten-2"
+          @click="redirectToArticle(article.id)"
+        >
+          Voir plus...
+        </v-btn>
+      </div>
       <img
         :src="article.main_picture.picture_path "
         alt="Image"
-        class="carousel-image"
+        class="carousel-image bw"
       >
     </v-carousel-item>
   </v-carousel>
@@ -52,9 +61,6 @@ export default {
       this.$store.commit("articleId", articleId);
       this.$router.push({ name: 'article', params: { id: articleId } });
     },
-    imageLoaded() {
-      this.imgIsLoaded = true;
-    },
   }
 };
 </script>
@@ -66,28 +72,50 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
+
 .carousel-image {
   display: block;
   margin: 0 auto; 
   max-height: 600px;
 }
+
 .ag-title {
   font-size: 9rem;
   font-weight: 400;
   margin-top: 35px;
   margin-bottom: -10px;
 }
+
 .carousel-item {
   width: 100%;
+}
+
+.carousel-button {
+  position: absolute;
+  right: 45%;
+  bottom: 10%;
+  z-index: 10000;
+  font-style: bold;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.carousel-button:hover {
+  opacity: 0.9;
 }
 
 @media only screen and (max-width: 768px) {
   .ag-title {
     font-size: 5rem;
     margin-top: 0;
- }
+  }
+
   .img-header {
     display: none;
+  }
+
+  .carousel-button {
+    right: 32%;
   }
 }
 </style>

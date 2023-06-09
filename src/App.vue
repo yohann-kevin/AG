@@ -35,4 +35,8 @@ export default {
 .creattion {
   font-family: 'creattion';
 }
+
+.bw {
+  filter: grayscale(100%);
+}
 </style>

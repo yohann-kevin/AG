@@ -7,23 +7,24 @@
       height="80px"
       ref="header-bar"
     >
-      <div class="d-flex align-center">
-        <router-link to="/">
-          <v-img
-            alt="AG Scouting"
-            class="shrink mr-2 ag-logo"
-            contain
-            :src="formatImageSource('/public/assets/logo-ag.png')"
-            transition="scale-transition"
-            width="80px"
-            height="78px"
-          />
-        </router-link>
-      </div>
+      <div
+        class="d-flex align-center logo-link"
+        @click="redirectToHome"
+      >
+        <v-img
+          alt="AG Scouting"
+          class="shrink mr-2 ag-logo"
+          contain
+          :src="formatImageSource('/public/assets/logo-ag.png')"
+          transition="scale-transition"
+          width="80px"
+          height="78px"
+        />
 
-      <h1 class="ag-title">
-        AG Scouting
-      </h1>
+        <h1 class="ag-title">
+          AG Scouting
+        </h1>
+      </div>
 
       <v-spacer />
 
@@ -189,6 +190,9 @@ export default {
         return '/agent';
       }
       return'/login/agents';
+    },
+    redirectToHome() {
+      this.$router.push('/');
     }
   },
   computed: {
@@ -206,6 +210,10 @@ export default {
 </script>
 
 <style scoped>
+.logo-link:hover {
+  cursor: pointer;
+}
+
 #nav {
   width: 50%;
   display: flex;
