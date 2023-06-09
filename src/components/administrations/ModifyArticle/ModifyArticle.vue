@@ -24,21 +24,6 @@
         prepend-icon="mdi-calendar"
         v-model="article.event_at"
       />
-      <v-file-input
-        label="Photo principale :"
-        color="black"
-        prepend-icon="mdi-camera-image"
-        accept="image/*"
-        v-model="mainpicture"
-      />
-      <v-file-input
-        label="Photos :"
-        color="black"
-        prepend-icon="mdi-image-multiple"
-        multiple
-        accept="image/*"
-        v-model="pictures"
-      />
     </v-card>
     <div class="modify-article-form-btn">
       <div class="modify-article-alert">
@@ -97,15 +82,13 @@ export default {
         description: "",
         event_at: "",
       },
-      mainpicture: null,
-      pictures: [],
       errorAlert: false,
       successAlert: false,
-      isInLoad: false,
-      articleId: null
+      dataLoaded: false,
+      articleId: ""
     };
   },
-  mounted() {
+  beforeMount() {
     this.findArticleData();
   },
   methods: {
@@ -115,6 +98,7 @@ export default {
         this.$router.push({ path: "/administration/article" });
         return;
       }
+      this.articleId = articleId;
 
       this.$axios
         // eslint-disable-next-line no-undef
@@ -126,8 +110,7 @@ export default {
             description: article.description,
             event_at: article.event_at,
           };
-          this.mainpicture = article.mainpicture;
-          this.pictures = article.pictures;
+          
         })
         .catch((error) => {
           this.$hygie.logger.error(error);
@@ -138,12 +121,11 @@ export default {
         title: this.article.title,
         description: this.article.description,
         event_at: this.article.event_at,
-        mainpicture: this.mainpicture,
-        pictures: this.pictures,
+        
       };
 
       const config = {
-        method: "post",
+        method: "put",
         // eslint-disable-next-line no-undef
         url: process.env.VUE_APP_API_URL + "articles/" + this.articleId,
         headers: {
@@ -152,9 +134,6 @@ export default {
         },
         data: articleData,
       };
-
-      this.isInLoad = true;
-
       this.$axios(config)
         .then((response) => {
           this.isInLoad = false;
@@ -173,11 +152,6 @@ export default {
   },
 };
 </script>
-
-
-
-
-
 
 <style>
 .modify-article {

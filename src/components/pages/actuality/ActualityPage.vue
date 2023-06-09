@@ -13,6 +13,7 @@
         :key="i"
       >
         <v-img
+          v-if="article.main_picture"
           class="article-photo"
           :src="article.main_picture.picture_path"
           max-height="200px"
@@ -34,7 +35,7 @@
 
         <v-card-subtitle
           class="article-description"
-          v-if="article.description.length !== 0"
+          v-if="article.description && article.description.length !== 0"
         >
           {{ formatDescription(article.description) }}
         </v-card-subtitle>

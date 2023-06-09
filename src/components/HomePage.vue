@@ -53,6 +53,7 @@ export default {
   },
   data: () => ({
    formatImageSource: utils.formatImageSource
+   
   }),
 }
 </script>
@@ -60,6 +61,9 @@ export default {
 <style scoped>
 .ag-logo-container {
   display: none;
+}
+span .news {
+  color:red;
 }
 .news-article p {
   width: 100%;

@@ -6,7 +6,7 @@
       class="carousel-item"
     >
       <img
-        :src="article.main_picture.picture_path"
+        :src="article.main_picture.picture_path "
         alt="Image"
         class="carousel-image"
       >
@@ -23,6 +23,7 @@ export default {
     return {
       articles: null,
       articlePictures: null,
+      imgIsLoaded: false,
     };
   },
   mounted() {
