@@ -1,5 +1,8 @@
 <template>
-  <v-carousel hide-delimiters>
+  <v-carousel
+    hide-delimiters
+    v-if="articles.length > 0"
+  >
     <v-carousel-item
       v-for="(article, i) in articles"
       :key="i"
