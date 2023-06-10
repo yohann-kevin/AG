@@ -38,7 +38,7 @@
         show-arrows-on-hover
       >
         <v-carousel-item
-          v-for="(modelPicture ,i) in modelPictures"
+          v-for="(modelPicture, i) in modelPictures"
           :key="i"
           :src="modelPicture.picture_path"
           contain
