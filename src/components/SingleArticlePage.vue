@@ -65,7 +65,7 @@ export default {
           this.sortArticles(response.data);
         })
         .catch(error => {
-          console.error(error);
+          this.$hygie.error(error);
         });
     },
     sortArticles(articles) {
