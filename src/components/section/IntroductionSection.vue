@@ -95,8 +95,9 @@ export default {
 
 .carousel-button {
   position: absolute;
-  right: 45%;
+  right: 50%;
   bottom: 10%;
+  transform: translateX(50%);
   z-index: 10000;
   font-style: bold;
   opacity: 0.5;
@@ -117,8 +118,6 @@ export default {
     display: none;
   }
 
-  .carousel-button {
-    right: 32%;
-  }
+  
 }
 </style>

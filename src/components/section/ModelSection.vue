@@ -38,7 +38,7 @@
     <v-parallax
       class="parallax-model"
       height="450"
-      :src="formatImageSource('/public/assets/ag-team-nine.jpg')"
+      :src="formatImageSource('/public/assets/ag-parralax-men.jpg')"
     >
       <v-row
         align="center"

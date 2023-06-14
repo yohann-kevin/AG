@@ -24,8 +24,10 @@ Vue.use(VueRouter);
 Vue.use(VueScrollReveal);
 Vue.use(HygieVuePlugins);
 
+
 Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
+
 
 
 new Vue({
@@ -34,3 +36,4 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+

@@ -8,7 +8,7 @@
       <p class="article-description">
         {{ article.description }}
       </p>
-      <p>Cet événement a eu lieu le <strong>{{ formatEventDate(article.event_at) }}</strong></p>
+      <p>L'événement a été présenté par AG SCOUTING le : <strong>{{ formatEventDate(article.event_at) }}</strong></p>
       <div class="single-article-btn">
         <v-btn text>
           <router-link to="/actuality">

@@ -89,7 +89,7 @@
       <h3 class="legal-subtitle">
         Données personnelles
       </h3>
-  
+      
       <p>
         Le traitement de vos données à caractère personnel est régi par notre Charte du respect de la vie privée, disponible depuis la section "Charte de Protection des Données Personnelles", conformément au Règlement Général sur la Protection des Données 2016/679 du 27 avril 2016 («RGPD»).
       </p>
@@ -103,7 +103,7 @@
   }
   </script>
   
-  <style>
+<style>
 .legal-container {
   margin: auto;
   padding: 20px;
@@ -111,33 +111,28 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
-
 .legal-title {
   width: 100%;
   text-align: center;
   font-weight: bold;
   margin-bottom: 20px;
 }
-
 .legal-card {
-  width: 32%;
+  width: 42%;
   margin-bottom: 40px;
   padding: 30px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .legal-subtitle {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
-
 .legal-card p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 15px;
 }
-
 .legal-card ul {
   list-style: none;
   margin: 0;
@@ -148,15 +143,23 @@
   text-decoration: none;
   color: aqua;
   transition: color 0.5s;
- 
 }
 .legal-card a:hover {
   color: #00008b;
 }
-
 .legal-card li {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 5px;
+}
+@media only screen and (max-width:780px) {
+  .legal-card {
+    width: 80%;
+  }
+}
+@media only screen and (max-width:480px) {
+  .legal-card {
+    width: 100%;
+  }
 }
 </style>
