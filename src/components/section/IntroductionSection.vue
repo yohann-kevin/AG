@@ -2,6 +2,7 @@
   <v-carousel
     hide-delimiters
     v-if="articles.length > 0"
+    v-model="currentIndex"
   >
     <v-carousel-item
       v-for="(article, i) in articles"
@@ -31,13 +32,15 @@ export default {
   name: "IntroductionSection",
   data() {
     return {
-      articles: null,
+      articles: [],
       articlePictures: null,
       imgIsLoaded: false,
+      currentIndex: 0,
     };
   },
   mounted() {
     this.findArticle();
+    this.startCarouselInterval();
   },
   methods: {
     findArticle() {
@@ -51,6 +54,15 @@ export default {
           this.$hygie.logger.error(error);
         });
     },
+    startCarouselInterval() {
+    setInterval(() => {
+      this.changeCarouselItem();
+    }, 6000);
+  },
+
+  changeCarouselItem() {
+    this.currentIndex = (this.currentIndex + 1) % this.articles.length;
+  },
     carouselArticles(articles) {
       this.articles = articles.map((article) => {
         article.main_picture = article.article_pictures.find((picture) => picture.main_picture === true);
@@ -95,8 +107,9 @@ export default {
 
 .carousel-button {
   position: absolute;
-  right: 45%;
+  right: 50%;
   bottom: 10%;
+  transform: translateX(50%);
   z-index: 10000;
   font-style: bold;
   opacity: 0.5;
@@ -117,8 +130,6 @@ export default {
     display: none;
   }
 
-  .carousel-button {
-    right: 32%;
-  }
+  
 }
 </style>

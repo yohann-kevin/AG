@@ -175,29 +175,28 @@
     
 <style>
     .privacy-container {
-      width: 80%;
       margin: auto;
       padding: 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      
     }
-    
     .privacy-title {
       text-align: center;
       font-weight: bold;
       margin-bottom: 20px;
     }
-    
     .privacy-card {
+      width: 70%;
       margin-bottom: 40px;
       padding: 30px;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     }
-    
     .privacy-subtitle {
-      
       font-weight: bold;
       margin-bottom: 20px;
     }
-    
     .privacy-card p {
       line-height: 1.5;
       margin-bottom: 15px;
@@ -215,10 +214,22 @@
       padding: 0;
       margin-bottom: 20px;
     }
-    
     .privacy-card li {
-      
       line-height: 1.5;
       margin-bottom: 5px;
     }
+
+  @media only screen and (max-width:780px) {
+  .privacy-card {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (max-width:480px) {
+  .privacy-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
 </style>

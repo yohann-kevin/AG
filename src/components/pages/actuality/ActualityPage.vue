@@ -73,7 +73,7 @@ export default {
           this.dataLoaded = true;
         })
         .catch(error => {
-          console.error(error);
+          this.$hygie.error(error);
         });
     },
     sortArticles(articles) {
