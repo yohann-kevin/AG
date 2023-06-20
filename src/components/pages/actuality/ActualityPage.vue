@@ -128,7 +128,6 @@ h2 {
 .article-description {
   text-align: justify;
 }
-
 @media screen and (max-width: 768px) {
   .cards {
     width: 90%;
