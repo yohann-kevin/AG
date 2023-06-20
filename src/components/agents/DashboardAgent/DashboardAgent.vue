@@ -345,16 +345,17 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .dashbord-agent-descritption p {
+.dashbord-agent-descritption {
+  text-align: justify;
+  width: 80%;
+}
+.dashbord-agent-descritption ul {
+  list-style-type: circle;
+}
+.agent-options {
     width: 90%;
-    text-align: justify;
   }
-
-  .agent-options {
-    width: 90%;
-  }
-
-  .update-agent-btn {
+.update-agent-btn {
     display: flex;
     justify-content: center;
   }

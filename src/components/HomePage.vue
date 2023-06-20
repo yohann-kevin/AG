@@ -13,27 +13,27 @@
     </div>
     <div class="news-article news-article-mobile">
       <p>
-        Retrouvez nos
+        Retrouvez les
         <router-link
           to="/actuality"
           class="news-link"
         >
           <strong>Actualités</strong>
         </router-link>
-        sur notre nouvelle page
+        d'AG Scouting
       </p>
     </div>
     <IntroductionSection />
     <div class="news-article news-article-laptop">
       <p>
-        Retrouvez nos
+        Retrouvez les
         <router-link
           to="/actuality"
           class="news-link"
         >
           <strong>Actualités</strong>
         </router-link>
-        sur notre nouvelle page
+        d'AG Scouting
       </p>
     </div>
     <div class="home-section">
