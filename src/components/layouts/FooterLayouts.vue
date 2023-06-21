@@ -55,8 +55,6 @@
   </footer>
 </template>
 
-
-
 <script>
 import utils from '../../utils/utils.js';
 
@@ -66,8 +64,6 @@ export default {
   }),
 };
 </script>
-
-
 
 <style>
 .footer {
