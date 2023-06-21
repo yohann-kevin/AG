@@ -33,9 +33,10 @@ import Error404 from './components/404Page.vue';
 import Error500 from './components/500Page.vue';
 
 
-// LegalNotice & RgpdManagement
+// LegalNotice & RgpdManagement & Cgu Management
 import LegalNotice from './components/legals/LegalNotice.vue';
 import RgpdManagement from './components/legals/RgpdManagement.vue';
+import CguManagement from './components/legals/CguManagement.vue';
 
 
 
@@ -95,8 +96,12 @@ const routes = [
     name: "rgpd",
     component:RgpdManagement
   },
- 
   {
+    path:"/cgu",
+    name: "cgu",
+    component:CguManagement
+  },
+ {
     path: '/contact',
     name: 'contact',
     component: ContactPage

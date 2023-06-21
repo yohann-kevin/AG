@@ -1,19 +1,13 @@
 <template>
   <div class="agent-dashboard">
-    <h2>Mon Compte</h2>
+    <h2>Mon Profil</h2>
     <div 
       class="dashbord-agent-descritption"
       v-if="agents"
     >
       <p class="agent-name">
-        Bienvenue sur votre espace personnel <strong>{{ agents.firstname }}</strong>
+        Bienvenue sur votre espace personnel <strong>{{ agents.firstname }}</strong>. Ici, vous pourrez modifier vos informations.
       </p>
-      <p>Ici, vous pourrez :</p>
-      <ul>
-        <li>Modifier vos informations</li>
-        <li>Consulter l'avancement de votre demande de rendez-vous avec modèle</li>
-        <li>Consulter les différentes factures que vous avez réglées</li>
-      </ul>
     </div>
 
     <div class="agent-options">
@@ -175,15 +169,6 @@
         >
           Supprimer votre compte
         </v-btn>
-        <v-btn
-          class="ma-2 test"
-          dark
-          text
-          color="error"
-          @click="logoutAgent"
-        >
-          Déconnexion
-        </v-btn>
       </div>
     </div>
   </div>
@@ -296,7 +281,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .agent-dashboard {
   width: 100%;
   display: flex;
@@ -307,7 +292,8 @@ export default {
 .agent-dashboard h2 {
   width: 100%;
   text-align: center;
-  margin: 10px;
+  margin: 20px;
+ 
 }
 .dashbord-agent-descritption {
   text-align: justify;

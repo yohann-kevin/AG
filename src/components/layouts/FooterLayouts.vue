@@ -25,18 +25,32 @@
     </h4>
    
     <div class="footer-btns">
-      <v-btn
-        text
-        to="/legal"
-      >
-        Mentions légales
-      </v-btn>
-      <v-btn
-        text
-        to="/rgpd"
-      >
-        RGPD
-      </v-btn>
+      <ul class="footer-btns-list">
+        <li>
+          <v-btn
+            text
+            to="/legal"
+          >
+            Mentions légales
+          </v-btn>
+        </li>
+        <li>
+          <v-btn
+            text
+            to="/rgpd"
+          >
+            RGPD
+          </v-btn>
+        </li>
+        <li>
+          <v-btn
+            text
+            to="/cgu"
+          >
+            CGU
+          </v-btn>
+        </li>
+      </ul>
     </div>
   </footer>
 </template>
@@ -91,6 +105,19 @@ export default {
 
 .footer-btns {
   display: flex;
+  align-items: center;
+}
+
+.footer-btns-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-btns-list li {
+  margin-bottom: 0px;
 }
 
 /* footer tablette */
@@ -104,9 +131,8 @@ export default {
 .ag-logo {
   margin: 10px auto;
 }
-.footer-btns {
-  display: flex;
-  flex-direction: column;
+.footer-btns-list li {
+  text-align: center;
 }
 }
 
@@ -116,5 +142,8 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .footer-btns-list li {
+  text-align: center;
+}
   }
 </style>

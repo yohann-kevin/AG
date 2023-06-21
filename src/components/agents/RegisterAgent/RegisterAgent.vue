@@ -73,6 +73,7 @@
         color="black"
         :rules="[(this.password === this.confirmPassword) || 'Les mot de passe ne corresponde pas']"
         type="password"
+        label="Confirmer le mot de passe"
         class="register-agent-input"
         required
       />
@@ -92,7 +93,7 @@
               <template #activator="{ on }">
                 <a
                   target="_blank"
-                  href="#/legal"
+                  href="#/cgu"
                   @click.stop
                   v-on="on"
                 >
