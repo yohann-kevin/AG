@@ -27,28 +27,31 @@
     <div class="footer-btns">
       <ul class="footer-btns-list">
         <li>
-          <a
+          <router-link
             text
             to="/legal"
+            class="footer-link"
           >
             Mentions légales
-          </a>
+          </router-link>
         </li>
         <li>
-          <a
+          <router-link
             text
             to="/rgpd"
+            class="footer-link"
           >
             RGPD
-          </a>
+          </router-link>
         </li>
         <li>
-          <a
+          <router-link
             text
             to="/cgu"
+            class="footer-link"
           >
             CGU
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -83,16 +86,17 @@ export default {
 .ag-logo {
   margin-right: 20px;
   transition: scale;
-  
 }
 
 .footer h4 {
   font-style: italic;
   font-weight: 300;
  text-align: center;
-  
 }
-
+.footer-link {
+text-decoration: none;
+color: rgba(0, 0, 0, 0.87) !important;
+}
 .dev-link {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.87) !important;
@@ -111,20 +115,12 @@ export default {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  text-decoration: none;
 }
 
 .footer-btns-list li {
   margin-bottom: 0px;
   margin-right: 20px;
-}
-
-.footer-btns-list li a {
-  color: black;
-  transition: 0.5s;
-}
-
-.footer-btns-list li a:hover {
-  color: #757575;
 }
 
 /* footer tablette */
@@ -140,6 +136,7 @@ export default {
 }
 .footer-btns-list li {
   text-align: center;
+  margin: 2px;
 }
 }
 
@@ -151,6 +148,7 @@ export default {
   }
   .footer-btns-list li {
   text-align: center;
+ 
 }
   }
 </style>

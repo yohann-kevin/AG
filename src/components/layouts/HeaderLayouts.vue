@@ -104,7 +104,7 @@
       </v-btn>
       <v-btn
         v-else
-        href="https://www.instagram.com/ag.scouting/"
+        @click.prevent="redirectToInstagram"
         target="_blank"
         text
         class="instagram-header-btn"
@@ -225,6 +225,9 @@ export default {
       delete sessionStorage.agttoken;
       this.$router.push({ path: '/' });
     },
+    redirectToInstagram() {
+    window.open("https://www.instagram.com/ag.scouting/", "_blank");
+  },
   },
   computed: {
     agentConnected() {
