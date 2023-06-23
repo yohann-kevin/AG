@@ -18,9 +18,9 @@
           to="/actuality"
           class="news-link"
         >
-          <strong>Actualités</strong>
+          <strong>actualités</strong>
         </router-link>
-        sur notre nouvelle page
+        sur notre nouvelle page.
       </p>
     </div>
     <IntroductionSection />
@@ -31,9 +31,9 @@
           to="/actuality"
           class="news-link"
         >
-          <strong>Actualités</strong>
+          <strong>actualités</strong>
         </router-link>
-        sur notre nouvelle page
+        sur notre nouvelle page.
       </p>
     </div>
     <div class="home-section">
@@ -91,7 +91,6 @@ span .news {
 }
 
 .news-link:hover {
-  color: blue; 
   text-decoration: underline;
 }
 

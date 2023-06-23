@@ -25,23 +25,38 @@
     </h4>
    
     <div class="footer-btns">
-      <v-btn
-        text
-        to="/legal"
-      >
-        Mentions légales
-      </v-btn>
-      <v-btn
-        text
-        to="/rgpd"
-      >
-        RGPD
-      </v-btn>
+      <ul class="footer-btns-list">
+        <li>
+          <router-link
+            text
+            to="/legal"
+            class="footer-link"
+          >
+            Mentions légales
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            text
+            to="/rgpd"
+            class="footer-link"
+          >
+            RGPD
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            text
+            to="/cgu"
+            class="footer-link"
+          >
+            CGU
+          </router-link>
+        </li>
+      </ul>
     </div>
   </footer>
 </template>
-
-
 
 <script>
 import utils from '../../utils/utils.js';
@@ -52,8 +67,6 @@ export default {
   }),
 };
 </script>
-
-
 
 <style>
 .footer {
@@ -73,16 +86,17 @@ export default {
 .ag-logo {
   margin-right: 20px;
   transition: scale;
-  
 }
 
 .footer h4 {
   font-style: italic;
   font-weight: 300;
  text-align: center;
-  
 }
-
+.footer-link {
+text-decoration: none;
+color: rgba(0, 0, 0, 0.87) !important;
+}
 .dev-link {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.87) !important;
@@ -91,6 +105,22 @@ export default {
 
 .footer-btns {
   display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.footer-btns-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+.footer-btns-list li {
+  margin-bottom: 0px;
+  margin-right: 20px;
 }
 
 /* footer tablette */
@@ -104,9 +134,9 @@ export default {
 .ag-logo {
   margin: 10px auto;
 }
-.footer-btns {
-  display: flex;
-  flex-direction: column;
+.footer-btns-list li {
+  text-align: center;
+  margin: 2px;
 }
 }
 
@@ -116,5 +146,9 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .footer-btns-list li {
+  text-align: center;
+ 
+}
   }
 </style>

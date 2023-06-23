@@ -16,12 +16,12 @@
           v-if="article.main_picture"
           class="article-photo bw"
           :src="article.main_picture.picture_path"
-          max-height="200px"
+          max-height="235px"
           contain
           @load="imageLoaded"
         />
         <v-progress-circular
-          :size="90"
+          :size="50"
           color="black"
           indeterminate
           class="img-loader"
@@ -93,7 +93,7 @@ export default {
       this.imgIsLoaded = true;
     },
     formatDescription(description) {
-      return description.substring(0, 160) + "...";
+      return description.substring(0, 140) + "...";
     }
   }
 };
@@ -111,34 +111,26 @@ h2 {
   flex-wrap: wrap;
   margin-top: 25px;
 }
-
 .cards {
-  width: 33%;
   margin-bottom: 25px;
   margin-top: 25px;
 }
-
 .img-loader {
   width: 100% !important;
   margin-top: 50px;
   margin-bottom:50px;
-}
-
-.article-card-action-bottom {
+}.article-card-action-bottom {
   width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
 }
-
 .article-description {
-  margin-top: 15px;
   text-align: justify;
 }
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .cards {
-    width: 300px;
+    width: 90%;
   }
 }
 </style>

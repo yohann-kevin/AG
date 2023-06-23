@@ -60,17 +60,21 @@
         v-model="password"
         color="black"
         :rules="passwordRules"
-        type="password"
+        :append-icon="eyesPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="eyesPassword ? 'text' : 'password'"
         label="Mot de passe"
         class="register-agent-input"
         required
+        @click:append="eyesPassword = !eyesPassword"
       />
 
       <v-text-field
         v-model="confirmPassword"
         color="black"
         :rules="[(this.password === this.confirmPassword) || 'Les mot de passe ne corresponde pas']"
-        type="password"
+        :append-icon="eyesConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="eyesConfirmPassword ? 'text' : 'password'"
+        @click:append="eyesConfirmPassword = !eyesConfirmPassword"
         label="Confirmer le mot de passe"
         class="register-agent-input"
         required
@@ -91,7 +95,7 @@
               <template #activator="{ on }">
                 <a
                   target="_blank"
-                  href="#"
+                  href="#/cgu"
                   @click.stop
                   v-on="on"
                 >
@@ -132,6 +136,8 @@ export default {
     email: '',
     password: '',
     confirmPassword: '',
+    eyesPassword: false,
+    eyesConfirmPassword: false,
     cgu: false,
     emailRules: [ v => /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || 'Adresse email invalide' ],
     passwordRules: [ v => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(v) || 'Mot de passe invalide' ],

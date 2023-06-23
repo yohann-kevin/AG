@@ -1,13 +1,12 @@
 <template>
   <div class="agent-dashboard">
-    <h2>Tableau de bord</h2>
+    <h2>Mon Profil</h2>
     <div 
       class="dashbord-agent-descritption"
       v-if="agents"
     >
-      <p>
-        Bienvenue sur votre espace personnel {{ agents.firstname }} ici, vous pourrez modifier vos informations, 
-        consulter l'avancement de votre demande de rendez-vous ave modèle et consulter les différentes factures que vous avez réglées.
+      <p class="agent-name">
+        Bienvenue sur votre espace personnel <strong>{{ agents.firstname }}</strong>. Ici, vous pourrez modifier vos informations.
       </p>
     </div>
 
@@ -160,15 +159,17 @@
           :modal-info="modalDeleteInfo"
         />
       </div>
-      <v-btn
-        class="ma-2"
-        dark
-        text
-        color="error"
-        @click="showModal = true"
-      >
-        Supprimer votre compte
-      </v-btn>
+      <div class="agent-buttons">
+        <v-btn
+          class="ma-2 test"
+          dark
+          text
+          color="error"
+          @click="showModal = true"
+        >
+          Supprimer votre compte
+        </v-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -274,12 +275,13 @@ export default {
       this.$store.commit("agentConnected", false);
       delete sessionStorage.agttoken;
       this.$router.push({ path: '/' });
-    }
+    },
+    
   }
 }
 </script>
 
-<style>
+<style scoped>
 .agent-dashboard {
   width: 100%;
   display: flex;
@@ -290,31 +292,34 @@ export default {
 .agent-dashboard h2 {
   width: 100%;
   text-align: center;
-  margin: 10px;
+  margin: 20px;
+ 
 }
-
 .dashbord-agent-descritption {
-  width: 100%;
-  display: flex;
-  justify-content: left;
+  text-align: justify;
 }
-
-.dashbord-agent-descritption p {
-  width: 60%;
-  margin-left: 25px;
+.dashbord-agent-descritption ul {
+  list-style-type: circle;
 }
-
 .agent-options {
   width: 80%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-
+.agent-name{
+  text-align: center;
+}
 .agent-card {
   width: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+.agent-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 .update-info-agent-form {
@@ -326,16 +331,17 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .dashbord-agent-descritption p {
+.dashbord-agent-descritption {
+  text-align: justify;
+  width: 80%;
+}
+.dashbord-agent-descritption ul {
+  list-style-type: circle;
+}
+.agent-options {
     width: 90%;
-    text-align: justify;
   }
-
-  .agent-options {
-    width: 90%;
-  }
-
-  .update-agent-btn {
+.update-agent-btn {
     display: flex;
     justify-content: center;
   }

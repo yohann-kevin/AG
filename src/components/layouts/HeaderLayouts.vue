@@ -95,12 +95,21 @@
       </v-icon>
 
       <v-btn
-        href="https://www.instagram.com/ag.scouting/"
+        v-if="agentConnected"
+        @click="logoutAgent"
+        text
+        class="logout-button"
+      >
+        Se déconnecter
+      </v-btn>
+      <v-btn
+        v-else
+        @click.prevent="redirectToInstagram"
         target="_blank"
         text
         class="instagram-header-btn"
       >
-        <span class="mr-2">Notre instagram</span>
+        <span class="mr-2">Notre Instagram</span>
         <v-icon>mdi-instagram</v-icon>
       </v-btn>
     </v-app-bar>
@@ -117,7 +126,7 @@
         mdi-close
       </v-icon>
 
-      <div class="nav-smartphone-link">
+      <ul class="nav-smartphone-link">
         <li class="menu">
           <router-link to="/">
             Accueil
@@ -144,7 +153,22 @@
           </router-link>
         </li>
 
-        <li class="menu insta-link">
+        <li
+          class="menu"
+          v-if="agentConnected"
+        >
+          <a
+            @click="logoutAgent"
+            text
+            class="logout-button-menu"
+          >
+            Se déconnecter
+          </a>
+        </li>
+        <li
+          class="menu insta-link"
+          v-else
+        >
           <a
             href="https://www.instagram.com/ag.scouting/"
             target="_blank"
@@ -155,7 +179,7 @@
             >mdi-instagram</v-icon> Instagram
           </a>
         </li>
-      </div>
+      </ul>
     </div>
   </div>
 </template>
@@ -193,7 +217,17 @@ export default {
     },
     redirectToHome() {
       this.$router.push('/');
-    }
+    },
+    logoutAgent() {
+      this.$store.commit("agentData", null);
+      this.$store.commit("agentToken", null);
+      this.$store.commit("agentConnected", false);
+      delete sessionStorage.agttoken;
+      this.$router.push({ path: '/' });
+    },
+    redirectToInstagram() {
+    window.open("https://www.instagram.com/ag.scouting/", "_blank");
+  },
   },
   computed: {
     agentConnected() {
@@ -376,10 +410,16 @@ export default {
   .instagram-header-btn {
     display: none;
   }
+  .logout-button{
+    display: none;
+  }
+  
 }
-
 @media only screen and (max-width: 480px) {
   .instagram-header-btn {
+    display: none;
+  }
+  .logout-button{
     display: none;
   }
 }
