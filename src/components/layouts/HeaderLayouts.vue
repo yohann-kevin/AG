@@ -106,8 +106,8 @@
         v-else
         @click.prevent="redirectToInstagram"
         target="_blank"
-        text
         class="instagram-header-btn"
+        text
       >
         <span class="mr-2">Notre Instagram</span>
         <v-icon>mdi-instagram</v-icon>
@@ -166,11 +166,11 @@
           </a>
         </li>
         <li
-          class="menu insta-link"
           v-else
+          class="menu insta-link"
         >
           <a
-            href="https://www.instagram.com/ag.scouting/"
+            @click.prevent="redirectToInstagram"
             target="_blank"
           >
             <v-icon
@@ -226,9 +226,9 @@ export default {
       this.$store.commit("agentConnected", false);
       delete sessionStorage.agttoken;
       this.$router.push({ path: '/' });
-      this.redirectToHome();
-    },
+      },
     redirectToInstagram() {
+      if (!this.agentConnected) 
       window.open("https://www.instagram.com/ag.scouting/", "_blank");
     },
   },
