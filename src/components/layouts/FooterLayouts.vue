@@ -27,28 +27,28 @@
     <div class="footer-btns">
       <ul class="footer-btns-list">
         <li>
-          <v-btn
+          <a
             text
             to="/legal"
           >
             Mentions légales
-          </v-btn>
+          </a>
         </li>
         <li>
-          <v-btn
+          <a
             text
             to="/rgpd"
           >
             RGPD
-          </v-btn>
+          </a>
         </li>
         <li>
-          <v-btn
+          <a
             text
             to="/cgu"
           >
             CGU
-          </v-btn>
+          </a>
         </li>
       </ul>
     </div>
@@ -102,6 +102,7 @@ export default {
 .footer-btns {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .footer-btns-list {
@@ -114,6 +115,16 @@ export default {
 
 .footer-btns-list li {
   margin-bottom: 0px;
+  margin-right: 20px;
+}
+
+.footer-btns-list li a {
+  color: black;
+  transition: 0.5s;
+}
+
+.footer-btns-list li a:hover {
+  color: #757575;
 }
 
 /* footer tablette */

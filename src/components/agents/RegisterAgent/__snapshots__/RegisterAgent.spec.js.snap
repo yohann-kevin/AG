@@ -16,7 +16,7 @@ exports[`RegisterAgent should test component render correctly 1`] = `
     <v-text-field color="black" label="Nom de famille" required="" class="register-agent-input"></v-text-field>
     <v-text-field color="black" rules="v => /^[\\w-\\\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/.test(v) || 'Adresse email invalide'" type="email" label="Courriel" required="" class="register-agent-input"></v-text-field>
     <v-text-field color="black" rules="v => /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(v) || 'Mot de passe invalide'" append-icon="mdi-eye-off" type="password" label="Mot de passe" required="" class="register-agent-input"></v-text-field>
-    <v-text-field color="black" rules="true" type="password" label="Confirmer le mot de passe" required="" class="register-agent-input"></v-text-field>
+    <v-text-field color="black" rules="true" append-icon="mdi-eye-off" type="password" label="Confirmer le mot de passe" required="" class="register-agent-input"></v-text-field>
     <v-checkbox color="black" rules="Veuillez accepter les CGU" label="Accepter les CGU" required="" class="register-agent-input"></v-checkbox>
     <div class="register-agent-btn">
       <v-btn text="" disabled="true">

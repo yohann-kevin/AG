@@ -91,7 +91,6 @@ span .news {
 }
 
 .news-link:hover {
-  color: blue; 
   text-decoration: underline;
 }
 
