@@ -213,10 +213,12 @@ export default {
       if (this.$store.state.agentConnected) {
         return '/agent';
       }
-      return'/login/agents';
+      return '/login/agents';
     },
     redirectToHome() {
-      this.$router.push('/');
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
     },
     logoutAgent() {
       this.$store.commit("agentData", null);
@@ -224,10 +226,11 @@ export default {
       this.$store.commit("agentConnected", false);
       delete sessionStorage.agttoken;
       this.$router.push({ path: '/' });
+      this.redirectToHome();
     },
     redirectToInstagram() {
-    window.open("https://www.instagram.com/ag.scouting/", "_blank");
-  },
+      window.open("https://www.instagram.com/ag.scouting/", "_blank");
+    },
   },
   computed: {
     agentConnected() {
@@ -240,8 +243,8 @@ export default {
     }
   },
 }
-
 </script>
+
 
 <style scoped>
 .logo-link:hover {

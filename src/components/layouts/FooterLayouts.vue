@@ -31,6 +31,7 @@
             text
             to="/legal"
             class="footer-link"
+            exact-active-class="active-link"
           >
             Mentions légales
           </router-link>
@@ -40,6 +41,7 @@
             text
             to="/rgpd"
             class="footer-link"
+            exact-active-class="active-link"
           >
             RGPD
           </router-link>
@@ -49,6 +51,7 @@
             text
             to="/cgu"
             class="footer-link"
+            exact-active-class="active-link"
           >
             CGU
           </router-link>
@@ -96,6 +99,13 @@ export default {
 .footer-link {
 text-decoration: none;
 color: rgba(0, 0, 0, 0.87) !important;
+transition:0.3s;
+}
+.footer-link:hover{
+  background: rgb(239, 239, 239);
+}
+.active-link {
+  font-weight: bold;
 }
 .dev-link {
   font-weight: 400;
