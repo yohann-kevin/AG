@@ -33,7 +33,7 @@
         >
           <strong>actualités</strong>
         </router-link>
-        sur notre nouvelle page.
+        sur notre page.
       </p>
     </div>
     <div class="home-section">
